@@ -5,7 +5,7 @@ const ora = require('ora')
 const fetch = require('node-fetch')
 const addMinutes = require('date-fns/add_minutes')
 
-const { getTestResults } = require('../api/test')
+const { getTestByUuid, getTestResults } = require('../api/test')
 const clientInfo = require('../utils/client-info')
 const headers = require('../utils/http-headers')
 const formatTest = require('../views/test')
@@ -59,23 +59,9 @@ const startRun = args => {
   })
 }
 
-const getRunByUuid = runUuid => {
-  return new Promise((resolve, reject) => {
-    try {
-      fetch(`${process.env.CALIBRE_HOST}/api/cli/run/${runUuid}`, {
-        headers
-      })
-        .then(res => resolve(res.json()))
-        .catch(reject)
-    } catch (e) {
-      console.error(e)
-    }
-  })
-}
-
 const runIsComplete = runUuid => {
   return new Promise((resolve, reject) => {
-    getRunByUuid(runUuid)
+    getTestByUuid(runUuid)
       .then(run => (run.status === 'completed' ? resolve(run) : reject(run)))
       .catch(reject)
   })
