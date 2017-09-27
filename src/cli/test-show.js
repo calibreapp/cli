@@ -62,7 +62,7 @@ module.exports = {
   handler: main,
   builder: yargs => {
     yargs.option('json', {
-      describe: 'Return the list of tests as JSON'
+      describe: 'Return the test result as JSON'
     })
   }
 }

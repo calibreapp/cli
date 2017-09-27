@@ -22,10 +22,15 @@ const formatErrorMessage = res => {
   }
 }
 
-const startRun = ({ url, location, device, connection }) => {
-  const spinner = ora(chalk.magenta('Connecting to Calibre'))
-  spinner.color = 'magenta'
-  spinner.start()
+const startRun = args => {
+  let spinner
+  const { url, location, device, connection } = args
+
+  if (!args.json) {
+    spinner = ora('Connecting to Calibre')
+    spinner.color = 'magenta'
+    spinner.start()
+  }
 
   return new Promise((resolve, reject) => {
     fetch(`${process.env.CALIBRE_HOST}/api/cli/run`, {
@@ -43,11 +48,11 @@ const startRun = ({ url, location, device, connection }) => {
       .then(res => res.json())
       .then(json => {
         if (json.error) {
-          spinner.fail(formatErrorMessage(json))
+          if (!args.json) spinner.fail(formatErrorMessage(json))
           return reject(json)
         }
 
-        spinner.succeed(`Created test: ${json.uuid}`)
+        if (!args.json) spinner.succeed(`Created test: ${json.uuid}`)
         return resolve(json.uuid)
       })
   })
@@ -76,10 +81,13 @@ const runIsComplete = runUuid => {
 }
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time))
-const waitUntilReady = runUuid => {
-  const spinner = ora('Scheduling test')
-  spinner.color = 'magenta'
-  spinner.start()
+const waitUntilReady = (runUuid, args) => {
+  let spinner
+  if (!args.json) {
+    spinner = ora('Scheduling test')
+    spinner.color = 'magenta'
+    spinner.start()
+  }
 
   return new Promise((resolve, reject) => {
     let timelimit = addMinutes(new Date(), 5)
@@ -87,21 +95,25 @@ const waitUntilReady = runUuid => {
     const poll = () => {
       runIsComplete(runUuid)
         .then(res => {
-          spinner.succeed('Testing complete')
+          if (!args.json) spinner.succeed('Testing complete')
           resolve(res)
         })
         .catch(res => {
-          if (res.status === 'scheduled') spinner.text = 'Waiting to start'
-          if (res.status === 'running') spinner.text = 'Running test'
+          if (res.status === 'scheduled' && !args.json)
+            spinner.text = 'Waiting to start'
+          if (res.status === 'running' && !args.json)
+            spinner.text = 'Running test'
           if (res.status === 'timeout' || res.status === 'errored') {
-            spinner.fail(chalk.red('An unexpected error occurred'))
+            if (!args.json)
+              spinner.fail(chalk.red('An unexpected error occurred'))
             return reject(res)
           }
 
           if (new Date() > timelimit) {
-            spinner.fail(
-              'Test run did not complete in time and has been cancelled 🤦‍'
-            )
+            if (!args.json)
+              spinner.fail(
+                'Test run did not complete in time and has been cancelled 🤦‍'
+              )
             return reject(res)
           }
 
@@ -122,11 +134,13 @@ const main = async function(args) {
     process.exit()
   }
 
-  waitUntilReady(runUuid)
+  waitUntilReady(runUuid, args)
     .then(({ response }) => {
+      if (args.json) return console.log(JSON.stringify(response, null, 2))
       console.log(formatTest(response))
     })
     .catch(res => {
+      if (args.json) return console.log(JSON.stringify(res, null, 2))
       console.error(res)
     })
 }
@@ -144,6 +158,9 @@ module.exports = {
       })
       .option('connection', {
         describe: 'Sets the emulated connection speed for this test'
+      })
+      .option('json', {
+        describe: 'Return the test result as JSON'
       })
       .demandOption(
         'location',
