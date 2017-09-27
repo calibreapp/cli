@@ -5,6 +5,7 @@ const ora = require('ora')
 const fetch = require('node-fetch')
 const addMinutes = require('date-fns/add_minutes')
 
+const { getTestResults } = require('../api/test')
 const clientInfo = require('../utils/client-info')
 const headers = require('../utils/http-headers')
 const formatTest = require('../views/test')
@@ -130,19 +131,16 @@ const main = async function(args) {
 
   try {
     runUuid = await startRun(args)
+    const { response } = await waitUntilReady(runUuid, args)
+    response.reports = await getTestResults(response)
+
+    if (args.json) return console.log(JSON.stringify(response, null, 2))
+
+    console.log(formatTest(response))
   } catch (e) {
+    console.error(e)
     process.exit()
   }
-
-  waitUntilReady(runUuid, args)
-    .then(({ response }) => {
-      if (args.json) return console.log(JSON.stringify(response, null, 2))
-      console.log(formatTest(response))
-    })
-    .catch(res => {
-      if (args.json) return console.log(JSON.stringify(res, null, 2))
-      console.error(res)
-    })
 }
 
 module.exports = {

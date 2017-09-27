@@ -2,20 +2,10 @@ const { URL } = require('url')
 
 const chalk = require('chalk')
 const ora = require('ora')
-const fetch = require('node-fetch')
 const columnify = require('columnify')
 const distanceInWordsToNow = require('date-fns/distance_in_words_to_now')
 
-const clientInfo = require('../utils/client-info')
-const headers = require('../utils/http-headers')
-
-const getIndex = () => {
-  return new Promise((resolve, reject) => {
-    fetch(`${process.env.CALIBRE_HOST}/api/cli/runs`, { headers })
-      .then(res => resolve(res.json()))
-      .catch(reject)
-  })
-}
+const { getList } = require('../api/test')
 
 const formatRun = test => {
   const url = new URL(test.url)
@@ -37,7 +27,7 @@ const main = async args => {
   }
 
   try {
-    index = await getIndex()
+    index = await getList()
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
     process.exit()
@@ -54,7 +44,7 @@ const main = async args => {
       uuid: chalk.grey(row.uuid),
       url: formattedTestUrl,
       'test location': `${row.location.emoji}  ${row.location.name}`,
-      device: row.device.title
+      device: row.device ? row.device.title : 'Desktop'
     }
   })
 
