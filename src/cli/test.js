@@ -5,7 +5,7 @@ const ora = require('ora')
 const fetch = require('node-fetch')
 const addMinutes = require('date-fns/add_minutes')
 
-const { getTestByUuid, getTestResults } = require('../api/test')
+const { create, getTestByUuid, getTestResults } = require('../api/test')
 const clientInfo = require('../utils/client-info')
 const headers = require('../utils/http-headers')
 const formatTest = require('../views/test')
@@ -21,42 +21,6 @@ const formatErrorMessage = res => {
     default:
       return res.error
   }
-}
-
-const startRun = args => {
-  let spinner
-  const { url, location, device, connection } = args
-
-  if (!args.json) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
-  }
-
-  return new Promise((resolve, reject) => {
-    fetch(`${process.env.CALIBRE_HOST}/api/cli/run`, {
-      headers,
-      method: 'POST',
-      body: JSON.stringify({
-        url,
-        location,
-        device,
-        connection,
-        client_name: clientInfo.name,
-        client_version: clientInfo.version
-      })
-    })
-      .then(res => res.json())
-      .then(json => {
-        if (json.error) {
-          if (!args.json) spinner.fail(formatErrorMessage(json))
-          return reject(json)
-        }
-
-        if (!args.json) spinner.succeed(`Created test: ${json.uuid}`)
-        return resolve(json.uuid)
-      })
-  })
 }
 
 const runIsComplete = runUuid => {
@@ -113,18 +77,26 @@ const waitUntilReady = (runUuid, args) => {
 }
 
 const main = async function(args) {
-  let runUuid
+  let runUuid, spinner
+
+  if (!args.json) {
+    spinner = ora('Connecting to Calibre')
+    spinner.color = 'magenta'
+    spinner.start()
+  }
 
   try {
-    runUuid = await startRun(args)
+    runUuid = await create(args)
+    if (!args.json) spinner.succeed(`Created test: ${runUuid}`)
     const { response } = await waitUntilReady(runUuid, args)
     response.reports = await getTestResults(response)
 
+    // Return result
     if (args.json) return console.log(JSON.stringify(response, null, 2))
-
     console.log(formatTest(response))
   } catch (e) {
-    console.error(e)
+    if (args.json) return console.log(e)
+    spinner.fail(formatErrorMessage(json))
     process.exit()
   }
 }

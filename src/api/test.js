@@ -3,10 +3,39 @@ const fetch = require('node-fetch')
 const clientInfo = require('../utils/client-info')
 const headers = require('../utils/http-headers')
 
+const create = ({ url, location, device, connection }) => {
+  return new Promise((resolve, reject) => {
+    fetch(`${process.env.CALIBRE_HOST}/api/cli/run`, {
+      headers,
+      method: 'POST',
+      body: JSON.stringify({
+        url,
+        location,
+        device,
+        connection,
+        client_name: clientInfo.name,
+        client_version: clientInfo.version
+      })
+    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.error) {
+          return reject(json)
+        }
+
+        resolve(json.uuid)
+      })
+      .catch(reject)
+  })
+}
+
 const getList = () => {
   return new Promise((resolve, reject) => {
     fetch(`${process.env.CALIBRE_HOST}/api/cli/runs`, { headers })
-      .then(res => resolve(res.json()))
+      .then(res => res.json())
+      .then(res => {
+        resolve(res)
+      })
       .catch(reject)
   })
 }
@@ -36,6 +65,7 @@ const getTestResults = async ({ reports }) => {
 }
 
 module.exports = {
+  create,
   getList,
   getTestByUuid,
   getTestResults
