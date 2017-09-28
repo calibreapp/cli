@@ -3,19 +3,11 @@ const { URL } = require('url')
 const chalk = require('chalk')
 const ora = require('ora')
 const columnify = require('columnify')
-const distanceInWordsToNow = require('date-fns/distance_in_words_to_now')
+const dateFormat = require('date-fns/format')
 
 const { getList } = require('../api/test')
 
-const formatRun = test => {
-  const url = new URL(test.url)
-  const formattedTestUrl = `${url.hostname}${url.pathname}`
-
-  return `• ${chalk.bold(formattedTestUrl)} from ${test.location
-    .emoji}  ${chalk.green(test.location.name)} ${distanceInWordsToNow(
-    test.created_at
-  )} ago (${chalk.grey(test.uuid)})`
-}
+const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
 const main = async args => {
   let index
@@ -30,6 +22,7 @@ const main = async args => {
     index = await getList()
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
+    console.error(e)
     process.exit()
   }
 
@@ -43,12 +36,26 @@ const main = async args => {
     return {
       uuid: chalk.grey(row.uuid),
       url: formattedTestUrl,
-      'test location': `${row.location.emoji}  ${row.location.name}`,
-      device: row.device ? row.device.title : 'Desktop'
+      device: row.device ? row.device.title : 'Desktop',
+      connection: row.bandwidth ? row.bandwidth.title : 'Not Throttled',
+      location: `${row.location.emoji}  ${row.location.short_name}`,
+      status: `${titleize(row.status)} ${dateFormat(
+        row.updated_at,
+        'h:mma D-MMM-YY'
+      )}`
     }
   })
 
-  console.log(columnify(rows))
+  console.log(
+    columnify(rows, {
+      columnSplitter: ' | ',
+      truncate: true,
+      maxLineWidth: 'auto',
+      config: {
+        url: { maxWidth: 20 }
+      }
+    })
+  )
 }
 
 module.exports = {
