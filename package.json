@@ -1,6 +1,6 @@
 {
   "name": "calibre",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Performance testing",
   "author": "calibreapp.com",
   "main": "index.js",
@@ -17,7 +17,9 @@
     "update-notifier": "^2.2.0",
     "yargs": "^8.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "pkg": "^4.2.4"
+  },
   "scripts": {
     "test": "mocha"
   },
@@ -31,5 +33,15 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "pkg": {
+    "scripts": [
+      "src/**/*.js"
+    ],
+    "targets": [
+      "node7-linux-x64",
+      "node7-macos-x64",
+      "node7-win-x64"
+    ]
   }
 }

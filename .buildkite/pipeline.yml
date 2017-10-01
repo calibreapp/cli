@@ -1,0 +1,4 @@
+steps:
+  - label: 'Build packages'
+    command: './script/build'
+    artifact_paths: bin/*
