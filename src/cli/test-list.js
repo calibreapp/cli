@@ -41,7 +41,7 @@ const main = async args => {
       location: `${row.location.emoji}  ${row.location.short_name}`,
       status: `${titleize(row.status)} ${dateFormat(
         row.updated_at,
-        'h:mma D-MMM-YY'
+        'h:mma D-MMM-YYYY'
       )}`
     }
   })
