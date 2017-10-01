@@ -9,6 +9,9 @@ function topic() {
   echo "${bold} -----> $* ${normal}"
 }
 
+topic "Installing dependencies"
+npm install
+
 topic "Building packages"
 pkg . --out-path=bin
 
