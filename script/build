@@ -1,6 +1,31 @@
 #!/bin/bash
 
 set -e
-set -x
 
-npx pkg . --out-path=bin
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+function topic() {
+  echo "${bold} -----> $* ${normal}"
+}
+
+topic "Building packages"
+pkg . --out-path=bin
+
+
+topic "Creating directories"
+mkdir -p bin/{mac,windows,linux}
+mv bin/calibre-macos bin/mac/calibre
+mv bin/calibre-win.exe bin/windows/calibre.exe
+mv bin/calibre-linux bin/linux/calibre
+
+topic "Copying install README"
+cp INSTALL.md bin/mac
+cp INSTALL.md bin/windows
+cp INSTALL.md bin/linux
+
+topic "Creating tarballs & zips"
+mkdir -p packages
+tar cjf packages/mac.tar.bz2 bin/mac/*
+zip -r packages/windows.zip bin/windows/*
+tar cjf packages/linux.tar.bz2 bin/linux/*
