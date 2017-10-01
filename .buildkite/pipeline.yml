@@ -1,6 +1,13 @@
 steps:
   - label: 'Build packages'
     command: './script/build'
-    artifact_paths: packages/*
+    artifact_paths: bin/*
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: cli
+
+  - wait
+
+  - label: ":mag:"
+    command: "./script/extract-cli-version"
+
+  - wait

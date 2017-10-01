@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -euo pipefail
+
+BIN_NAME="bin/linux/calibre"
+
+echo '--- Downloading built cli'
+
+mkdir -p packages/linux
+buildkite-agent artifact download "${BIN_NAME}" packages
+chmod +x "${BIN_NAME}"
+
+echo '+++ Extracting cli version from binary'
+
+CLI_VERSION=$("${BIN_NAME}" --version)
+
+echo "Full cli version: $CLI_VERSION"
+
+buildkite-agent meta-data set "cli-version" "$CLI_VERSION"
