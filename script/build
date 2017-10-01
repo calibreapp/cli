@@ -10,8 +10,7 @@ function topic() {
 }
 
 topic "Building packages"
-pkg . --out-path=bin
-
+npx pkg . --out-path=bin
 
 topic "Creating directories"
 mkdir -p bin/{mac,windows,linux}
