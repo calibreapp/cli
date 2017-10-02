@@ -8,7 +8,6 @@ const bar = (value, maxValue) => {
   const barLength = value * chartWidth / maxValue
   const wholeNumberPart = Math.floor(barLength)
   const emptyPart = chartWidth - wholeNumberPart
-
   let bar = chalk.blue(barSection).repeat(wholeNumberPart)
   let empty = chalk.grey(barSection).repeat(emptyPart)
 
@@ -21,10 +20,10 @@ const formatValue = (value, formatter) => {
 }
 
 const chart = (data, formatter) => {
-  const maxValue = Math.max(...data.map(item => parseInt(item.value)))
+  const maxValue = Math.max(...data.map(item => parseInt(item.value || 0)))
   return data
     .map(item => {
-      const barText = bar(item.value, maxValue)
+      const barText = bar(item.value || 0, maxValue)
       return `${item.key}\n${barText} ${formatValue(item.value, formatter)}`
     })
     .join('\n\n')
