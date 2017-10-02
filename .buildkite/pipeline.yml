@@ -1,7 +1,7 @@
 steps:
   - label: 'Build packages'
     command: './script/build'
-    artifact_paths: bin/*
+    artifact_paths: bin/**/*
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: cli
 
