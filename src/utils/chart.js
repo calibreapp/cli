@@ -1,7 +1,7 @@
 const chalk = require('chalk')
 const { duration, filesize } = require('../utils/formatters')
 
-const barSection = '■'
+const barSection = '█'
 const chartWidth = 80
 
 const bar = (value, maxValue) => {
