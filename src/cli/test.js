@@ -97,7 +97,7 @@ const main = async function(args) {
   } catch (e) {
     if (args.json) return console.log(e)
     spinner.fail(formatErrorMessage(json))
-    process.exit()
+    process.exit(1)
   }
 }
 

@@ -18,15 +18,16 @@ const main = async args => {
 
   try {
     const { response } = await getTestByUuid(args.uuid)
-    response.reports = await getTestResults(response)
 
+    response.reports = await getTestResults(response)
     if (args.json) return console.log(JSON.stringify(response, null, 2))
 
     spinner.stop()
 
     console.log(formatTest(response))
   } catch (e) {
-    console.error(e)
+    spinner.fail(e.message)
+    process.exit(1)
   }
 }
 

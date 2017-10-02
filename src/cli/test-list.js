@@ -23,7 +23,7 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
     console.error(e)
-    process.exit()
+    process.exit(1)
   }
 
   spinner.stop()
