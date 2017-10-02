@@ -15,5 +15,5 @@ steps:
   - wait
 
   - name: ":s3: publish binaries"
-    command: "scripts/publish-to-s3"
+    command: "scripts/publish"
     branches: "master"
