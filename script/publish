@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -euo pipefail
+set -x
 
 version=$(buildkite-agent meta-data get "cli-version")
 
@@ -23,7 +24,7 @@ tar cjf packages/linux.tar.bz2 bin/linux/*
 echo "--- :s3: Publishing $version to download.calibreapp.com"
 
 s3_base_url="s3://download.calibreapp.com/cli"
-
+ls packages
 cd packages
 for binary in *; do
   binary_s3_url="$s3_base_url/$version/$binary"
