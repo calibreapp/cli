@@ -43,7 +43,11 @@ const getList = () => {
 const getTestByUuid = uuid => {
   return new Promise((resolve, reject) => {
     fetch(`${process.env.CALIBRE_HOST}/api/cli/run/${uuid}`, { headers })
-      .then(res => resolve(res.json()))
+      .then(res => res.json())
+      .then(res => {
+        if (res.error) return reject(res)
+        resolve(res)
+      })
       .catch(reject)
   })
 }
