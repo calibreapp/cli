@@ -17,8 +17,8 @@ cp INSTALL.md bin/linux
 echo '--- Creating tar and zip archives'
 rm -rf packages
 mkdir -p packages
-tar cjf packages/mac.tar.bz2 -C bin/mac .
-tar cjf packages/linux.tar.bz2 -C bin/linux .
+tar cjfp packages/mac.tar.bz2 -C bin/mac/ .
+tar cjfp packages/linux.tar.bz2 -C bin/linux/ .
 zip -r packages/windows.zip bin/windows/*
 
 echo "--- :s3: Publishing $version to download.calibreapp.com"
