@@ -8,7 +8,7 @@ npm install
 echo "--- Building packages"
 pkg . --out-path=bin
 
-echo "--- Creating directories"
+echo "--- Renaming binaries"
 mkdir -p bin/{mac,windows,linux}
 mv bin/calibre-macos bin/mac/calibre
 mv bin/calibre-win.exe bin/windows/calibre.exe

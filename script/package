@@ -1,0 +1,51 @@
+#!/bin/bash
+
+set -euo pipefail
+
+version=$(buildkite-agent meta-data get "agent-version")
+
+echo '--- Downloading built artefacts'
+
+rm -rf bin/*
+buildkite-agent artifact download "bin/**" bin
+
+echo '--- Copying install README'
+cp INSTALL.md bin/mac
+cp INSTALL.md bin/windows
+cp INSTALL.md bin/linux
+
+echo '--- Creating tar and zip archives'
+mkdir -p packages
+tar cjf packages/mac.tar.bz2 bin/mac/*
+zip -r packages/windows.zip bin/windows/*
+tar cjf packages/linux.tar.bz2 bin/linux/*
+
+echo "--- :s3: Publishing $version to download.calibreapp.com"
+
+s3_base_url="s3://download.calibreapp.com/cli"
+
+cd packages
+for binary in *; do
+  binary_s3_url="$s3_base_url/$version/$binary"
+
+  echo "Publishing $binary to $binary_s3_url"
+  aws s3 --region "us-east-1" cp --acl "public-read" "$binary" "$binary_s3_url"
+
+  echo "Calculating SHA256"
+  sha256sum "$binary" | awk '{print $1}' > "$binary.sha256"
+
+  echo "Publishing $binary.sha256 to $binary_s3_url.sha256"
+  aws s3 cp --region "us-east-1" --acl "public-read" --content-type "text/plain" "$binary.sha256" "$binary_s3_url.sha256"
+done
+
+echo "--- :s3: Copying /$version to /latest"
+
+latest_version=$(aws s3 ls --region "us-east-1" "$s3_base_url/" | grep PRE | awk '{print $2}' | awk -F '/' '{print $1}' | ruby ../scripts/utils/latest_version.rb)
+latest_version_s3_url="$s3_base_url/$latest_version/"
+latest_s3_url="$s3_base_url/latest/"
+
+echo "Copying $latest_version_s3_url to $latest_s3_url"
+
+aws s3 cp --region "us-east-1" --acl "public-read" --recursive "$latest_version_s3_url" "$latest_s3_url"
+
+echo "--- :sparkles: All done!"

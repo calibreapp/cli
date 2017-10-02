@@ -13,3 +13,7 @@ steps:
       CALIBRE_API_KEY: noop
 
   - wait
+
+  - name: ":s3: publish binaries"
+    command: "scripts/publish-to-s3"
+    branches: "master"
