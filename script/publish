@@ -16,6 +16,7 @@ cp INSTALL.md bin/windows
 cp INSTALL.md bin/linux
 
 echo '--- Creating tar and zip archives'
+rm -rf packages
 mkdir -p packages
 tar cjf packages/mac.tar.bz2 bin/mac/*
 zip -r packages/windows.zip bin/windows/*
