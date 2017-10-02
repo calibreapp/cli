@@ -9,5 +9,7 @@ steps:
 
   - label: ":mag:"
     command: "./script/extract-cli-version"
+    env:
+      CALIBRE_API_KEY: noop
 
   - wait
