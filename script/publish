@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-version=$(buildkite-agent meta-data get "agent-version")
+version=$(buildkite-agent meta-data get "cli-version")
 
 echo '--- Downloading built artefacts'
 
