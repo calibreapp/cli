@@ -29,4 +29,8 @@ module.exports = require('yargs')
   })
   .version(() => pkg.version)
   .showHelpOnFail(true)
+  .example(
+    '$0 test https://calibreapp.com --location=us-east --device=iPhone7 --connection=good3G',
+    'Run a test on calibreapp.com from NYC emulating an iPhone 7 with a 3G connection'
+  )
   .epilogue('For more information on Calibre, see https://calibreapp.com.').argv
