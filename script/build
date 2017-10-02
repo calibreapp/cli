@@ -6,10 +6,11 @@ echo "--- Installing dependencies"
 npm install
 
 echo "--- Building packages"
+rm -rf bin
+mkdir -p bin/{mac,windows,linux}
 pkg . --out-path=bin
 
 echo "--- Renaming binaries"
-mkdir -p bin/{mac,windows,linux}
 mv bin/calibre-macos bin/mac/calibre
 mv bin/calibre-win.exe bin/windows/calibre.exe
 mv bin/calibre-linux bin/linux/calibre
