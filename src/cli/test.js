@@ -2,8 +2,6 @@ const { URL } = require('url')
 
 const chalk = require('chalk')
 const ora = require('ora')
-const fetch = require('node-fetch')
-const addMinutes = require('date-fns/add_minutes')
 
 const { create, getTestByUuid, getTestResults } = require('../api/test')
 const clientInfo = require('../utils/client-info')
@@ -41,8 +39,6 @@ const waitUntilReady = (runUuid, args) => {
   }
 
   return new Promise((resolve, reject) => {
-    let timelimit = addMinutes(new Date(), 5)
-
     const poll = () => {
       runIsComplete(runUuid)
         .then(res => {
@@ -57,14 +53,6 @@ const waitUntilReady = (runUuid, args) => {
           if (res.status === 'timeout' || res.status === 'errored') {
             if (!args.json)
               spinner.fail(chalk.red('An unexpected error occurred'))
-            return reject(res)
-          }
-
-          if (new Date() > timelimit) {
-            if (!args.json)
-              spinner.fail(
-                'Test run did not complete in time and has been cancelled 🤦‍'
-              )
             return reject(res)
           }
 
@@ -87,7 +75,7 @@ const main = async function(args) {
 
   try {
     runUuid = await create(args)
-    if (!args.json) spinner.succeed(`Created test: ${runUuid}`)
+    if (!args.json) spinner.succeed(`Test created: ${runUuid}`)
     const { response } = await waitUntilReady(runUuid, args)
     response.reports = await getTestResults(response)
 
