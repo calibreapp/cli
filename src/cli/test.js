@@ -77,7 +77,6 @@ const main = async function(args) {
     runUuid = await create(args)
     if (!args.json) spinner.succeed(`Test created: ${runUuid}`)
     const { response } = await waitUntilReady(runUuid, args)
-    response.reports = await getTestResults(response)
 
     // Return result
     if (args.json) return console.log(JSON.stringify(response, null, 2))
