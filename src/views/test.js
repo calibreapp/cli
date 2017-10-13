@@ -17,41 +17,41 @@ const formatPerfScore = score => {
 }
 
 module.exports = test => {
-  const lh = test.reports.find(report => report.name === 'lighthouse').report
-  const video = test.reports.find(report => report.name === 'video').report
-  const screenshot = test.reports.find(report => report.name === 'screenshot')
-    .report
-
   let intro = [chalk.underline.bold(test.url)]
   if (!test.device) intro.push('on Chrome Desktop')
   if (test.device) intro.push(`on a ${test.device.title}`)
   if (test.bandwidth) intro.push(`with a ${test.bandwidth.title} connection.`)
 
+  const { metrics } = test
+
   const timingChartData = [
     {
-      key: 'First Paint',
-      value:
-        lh.audits['speed-index-metric'].extendedInfo.value.timings
-          .firstVisualChange
+      key: metrics['time-to-first-byte'].label,
+      value: metrics['time-to-first-byte'].value
     },
     {
-      key: 'First Meaningful Paint',
-      value: lh.audits['first-meaningful-paint'].rawValue
+      key: metrics['page_wait_timing'].label,
+      value: metrics['page_wait_timing'].value
     },
     {
-      key: '85% Visually Complete',
-      value:
-        lh.audits['speed-index-metric'].extendedInfo.value.timings.visuallyReady
+      key: metrics['speed_index'].label,
+      value: metrics['speed_index'].value
     },
     {
-      key: 'Visually Complete',
-      value:
-        lh.audits['speed-index-metric'].extendedInfo.value.timings
-          .visuallyComplete
+      key: metrics['first-meaningful-paint'].label,
+      value: metrics['first-meaningful-paint'].value
     },
     {
-      key: 'Time to Interactive',
-      value: lh.audits['first-interactive'].rawValue
+      key: metrics['visually_complete_85'].label,
+      value: metrics['visually_complete_85'].value
+    },
+    {
+      key: metrics['visually_complete'].label,
+      value: metrics['visually_complete'].value
+    },
+    {
+      key: metrics['consistently-interactive'].label,
+      value: metrics['consistently-interactive'].value
     }
   ]
 
@@ -62,7 +62,22 @@ ${chalk.grey(dateFormat(test.updated_at, 'h:mma D-MMM-YYYY'))}
 
 ${chalk.bold(
     `Performance Grade: ${formatPerfScore(
-      lh.reportCategories[0].score.toFixed()
+      metrics['lighthouse-performance-score'].value.toFixed()
+    )}`
+  )}
+${chalk.bold(
+    `Progressive Web App Grade: ${formatPerfScore(
+      metrics['lighthouse-pwa-score'].value.toFixed()
+    )}`
+  )}
+${chalk.bold(
+    `Best Practices Grade: ${formatPerfScore(
+      metrics['lighthouse-best-practices-score'].value.toFixed()
+    )}`
+  )}
+${chalk.bold(
+    `Accessibility Grade: ${formatPerfScore(
+      metrics['lighthouse-accessibility-score'].value.toFixed()
     )}`
   )}
 
@@ -71,19 +86,9 @@ ${chalk.bold.underline('Timing')}
 ${chart(timingChartData, 'duration')}
 
 
-${chalk.bold.underline('Assets by Type')}
-
-
-
-Total Requests: ${lh.audits['total-byte-weight'].extendedInfo.value
-    .totalCompletedRequests}
-Total Bytes: ${filesize(lh.audits['total-byte-weight'].rawValue)}
-
-
-${chalk.bold.underline('Test Output')}
-
-GIF: ${video.gifUrl}
-Video: ${video.videoUrl}
-Screenshot: ${screenshot.url}
+${metrics['asset_count'].label}: ${metrics['asset_count'].value}
+${metrics['page_size_in_bytes'].label}: ${filesize(
+    metrics['page_size_in_bytes'].value
+  )}
   `
 }
