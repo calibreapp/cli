@@ -1,6 +1,6 @@
 {
   "name": "calibre",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Performance testing",
   "author": "calibreapp.com",
   "main": "index.js",
@@ -23,25 +23,14 @@
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [
-    "performance",
-    "testing",
-    "test",
-    "lighthouse"
-  ],
+  "keywords": ["performance", "testing", "test", "lighthouse"],
   "license": "ISC",
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
   "pkg": {
-    "scripts": [
-      "src/**/*.js"
-    ],
-    "targets": [
-      "node8-linux-x64",
-      "node8-macos-x64",
-      "node8-win-x64"
-    ]
+    "scripts": ["src/**/*.js"],
+    "targets": ["node8-linux-x64", "node8-macos-x64", "node8-win-x64"]
   }
 }
