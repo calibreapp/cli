@@ -19,9 +19,7 @@ const create = ({ url, location, device, connection }) => {
     })
       .then(res => res.json())
       .then(json => {
-        if (json.error) {
-          return reject(json)
-        }
+        if (json.error) return reject(json)
 
         resolve(json.uuid)
       })
@@ -33,8 +31,10 @@ const getList = () => {
   return new Promise((resolve, reject) => {
     fetch(`${process.env.CALIBRE_HOST}/api/cli/runs`, { headers })
       .then(res => res.json())
-      .then(res => {
-        resolve(res)
+      .then(json => {
+        if (json.error) return reject(json)
+
+        resolve(json)
       })
       .catch(reject)
   })

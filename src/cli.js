@@ -6,7 +6,7 @@ const pkg = require('../package.json')
 
 updateNotifier({ pkg }).notify()
 
-process.env.CALIBRE_HOST = 'https://calibreapp.com'
+process.env.CALIBRE_HOST = process.env.CALIBRE_HOST || 'https://calibreapp.com'
 
 if (!process.env.CALIBRE_API_KEY) {
   console.log(
@@ -33,4 +33,6 @@ module.exports = require('yargs')
     '$0 test https://calibreapp.com --location=us-east --device=iPhone7 --connection=good3G',
     'Run a test on calibreapp.com from NYC emulating an iPhone 7 with a 3G connection'
   )
-  .epilogue('For more information on Calibre, see https://calibreapp.com.').argv
+  .epilogue(
+    `For more information on Calibre, see ${process.env.CALIBRE_HOST}.`
+  ).argv

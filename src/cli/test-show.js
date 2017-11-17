@@ -22,7 +22,6 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(response, null, 2))
 
     spinner.stop()
-
     console.log(formatTest(response))
   } catch (e) {
     spinner.fail(e.message)

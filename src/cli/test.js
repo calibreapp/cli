@@ -10,6 +10,8 @@ const formatTest = require('../views/test')
 
 const formatErrorMessage = res => {
   switch (res.error) {
+    case 'unauthorised':
+      return res.message
     case 'invalid_device':
       return `${res.message}: ${res.devices.join(', ')}`
     case 'invalid_connection':
@@ -82,8 +84,8 @@ const main = async function(args) {
     if (args.json) return console.log(JSON.stringify(response, null, 2))
     console.log(formatTest(response))
   } catch (e) {
-    if (args.json) return console.log(e)
-    spinner.fail(formatErrorMessage(json))
+    if (args.json) return console.error(e)
+    spinner.fail(formatErrorMessage(e))
     process.exit(1)
   }
 }

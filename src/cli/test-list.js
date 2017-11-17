@@ -9,6 +9,15 @@ const { getList } = require('../api/test')
 
 const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
+const formatErrorMessage = res => {
+  switch (res.error) {
+    case 'unauthorised':
+      return res.message
+    default:
+      return res.error
+  }
+}
+
 const main = async args => {
   let index
   let spinner
@@ -22,7 +31,8 @@ const main = async args => {
     index = await getList()
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
-    console.error(e)
+    if (args.json) return console.error(e)
+    spinner.fail(formatErrorMessage(e))
     process.exit(1)
   }
 

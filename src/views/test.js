@@ -90,5 +90,7 @@ ${metrics['asset_count'].label}: ${metrics['asset_count'].value}
 ${metrics['page_size_in_bytes'].label}: ${filesize(
     metrics['page_size_in_bytes'].value
   )}
+
+${chalk.bold(`View the full report ${test.test_url}`)}
   `
 }
