@@ -24,7 +24,7 @@ module.exports = test => {
 
   const { metrics } = test
 
-  const timingChartData = [
+  let timingChartData = [
     {
       key: metrics['time-to-first-byte'].label,
       value: metrics['time-to-first-byte'].value
@@ -48,12 +48,15 @@ module.exports = test => {
     {
       key: metrics['visually_complete'].label,
       value: metrics['visually_complete'].value
-    },
-    {
-      key: metrics['consistently-interactive'].label,
-      value: metrics['consistently-interactive'].value
     }
   ]
+
+  if (metrics['consistently-interactive']) {
+    timingChartData.push({
+      key: metrics['consistently-interactive'].label,
+      value: metrics['consistently-interactive'].value
+    })
+  }
 
   return `
 ${intro.join(' ')}
