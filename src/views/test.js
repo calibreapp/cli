@@ -24,38 +24,32 @@ module.exports = test => {
 
   const { metrics } = test
 
-  let timingChartData = [
-    {
-      key: metrics['time-to-first-byte'].label,
-      value: metrics['time-to-first-byte'].value
-    },
-    {
-      key: metrics['page_wait_timing'].label,
-      value: metrics['page_wait_timing'].value
-    },
-    {
-      key: metrics['speed_index'].label,
-      value: metrics['speed_index'].value
-    },
-    {
-      key: metrics['first-meaningful-paint'].label,
-      value: metrics['first-meaningful-paint'].value
-    },
-    {
-      key: metrics['visually_complete_85'].label,
-      value: metrics['visually_complete_85'].value
-    },
-    {
-      key: metrics['visually_complete'].label,
-      value: metrics['visually_complete'].value
-    }
-  ]
+  const timingChartData = () => {
+    const measurements = [
+      'time-to-first-byte',
+      'page_wait_timing',
+      'firstRender',
+      'first-meaningful-paint',
+      'visually_complete_85',
+      'visually_complete',
+      'consistently-interactive'
+    ]
 
-  if (metrics['consistently-interactive']) {
-    timingChartData.push({
-      key: metrics['consistently-interactive'].label,
-      value: metrics['consistently-interactive'].value
+    let list = []
+
+    measurements.map(name => {
+      const metric = metrics[name]
+      if (!metric) {
+        return
+      }
+
+      list.push({
+        key: metric.label,
+        value: metric.value
+      })
     })
+
+    return list
   }
 
   return `
@@ -86,7 +80,7 @@ ${chalk.bold(
 
 ${chalk.bold.underline('Timing')}
 
-${chart(timingChartData, 'duration')}
+${chart(timingChartData(), 'duration')}
 
 
 ${metrics['asset_count'].label}: ${metrics['asset_count'].value}
