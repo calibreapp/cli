@@ -26,6 +26,10 @@
   },
   "keywords": ["performance", "testing", "test", "lighthouse"],
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/calibre/cli.git"
+  },
   "prettier": {
     "semi": false,
     "singleQuote": true
