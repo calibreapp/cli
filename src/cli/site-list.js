@@ -28,7 +28,7 @@ const main = async args => {
 
   const rows = index.map(row => {
     return {
-      id: chalk.grey(row.slug),
+      identifier: chalk.grey(row.slug),
       name: row.name,
       status: `${dateFormat(row.created_at, 'h:mma D-MMM-YYYY')}`
     }
