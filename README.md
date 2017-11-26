@@ -1,4 +1,4 @@
-![Calibre CLI - Automate your performance system](./.github/header.png)
+![Calibre CLI - Automate your performance system](https://user-images.githubusercontent.com/924/33245064-93ef3f98-d356-11e7-8048-a8446100356c.png)
 
 [![Build status](https://badge.buildkite.com/5e41ea8c42fa868fc2c41c063e742d5350de1daabd99acd636.svg)](https://buildkite.com/calibre/terminal-cli)
 
