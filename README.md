@@ -18,7 +18,7 @@ produce a standalone binary for Mac, Windows or Linux.
 
 ## Authentication
 
-All authentication is handled via an environment variable: `CALIBRE_API_TOKEN`. You can create an API token from the API
+All authentication is handled via an environment variable: `CALIBRE_API_TOKEN`. Create your token via the team API tokens page.
 
 ## Usage
 
