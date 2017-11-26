@@ -1,6 +1,7 @@
 {
   "name": "calibre",
   "version": "0.0.6",
+  "engines": { "node": "> 7.6.0" },
   "description": "Performance testing",
   "author": "calibreapp.com",
   "main": "index.js",
