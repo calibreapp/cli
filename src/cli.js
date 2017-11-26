@@ -8,12 +8,12 @@ updateNotifier({ pkg }).notify()
 
 process.env.CALIBRE_HOST = process.env.CALIBRE_HOST || 'https://calibreapp.com'
 
-if (!process.env.CALIBRE_API_KEY) {
+if (!process.env.CALIBRE_API_TOKEN) {
   console.log(
     chalk.grey(
-      'Please set CALIBRE_API_KEY as an environment variable, Get your key at'
+      'Please set CALIBRE_API_TOKEN as an environment variable, Create your token via the team API tokens page'
     ),
-    chalk.blue(`${process.env.CALIBRE_HOST}/profile`)
+    chalk.blue(`${process.env.CALIBRE_HOST}/home`)
   )
   process.exit()
 }
