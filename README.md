@@ -16,6 +16,14 @@ Standalone binaries are available for download at [https://calibreapp.com/cli](c
 Optionally, you can clone this repo and run `npm run build` to
 produce a standalone binary for Mac, Windows or Linux.
 
+## Features
+
+- **Manage your performance system with a single command**: `calibre`.
+- **Single page tests**. Create one-off, sharable Calibre tests for fast feedback: `calibre test <url> --location=eu-central --device=iPhone6`
+- **Deployments**. Track performance and accesibility between deploys
+- **CI/CD/Automation**. Every command has a --json flag for machine readable output: `calibre test <url> --location=us-east --json`
+- **Scriptable**. All API methods are exported to the Calibre NPM package
+
 ## Authentication
 
 All authentication is handled via an environment variable: `CALIBRE_API_TOKEN`. Create your token via the team API tokens page.
