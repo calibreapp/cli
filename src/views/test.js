@@ -21,7 +21,6 @@ module.exports = test => {
   if (!test.device) intro.push('on Chrome Desktop')
   if (test.device) intro.push(`on a ${test.device.title}`)
   if (test.bandwidth) intro.push(`with a ${test.bandwidth.title} connection.`)
-
   const { metrics } = test
 
   const timingChartData = () => {
@@ -38,7 +37,7 @@ module.exports = test => {
     let list = []
 
     measurements.map(name => {
-      const metric = metrics[name]
+      const metric = metrics.find(metric => metric.name === name)
       if (!metric) {
         return
       }
@@ -55,26 +54,34 @@ module.exports = test => {
   return `
 ${intro.join(' ')}
 ${test.location.emoji}  ${test.location.name}
-${chalk.grey(dateFormat(test.updated_at, 'h:mma D-MMM-YYYY'))}
+${chalk.grey(dateFormat(test.updatedAt, 'h:mma D-MMM-YYYY'))}
 
 ${chalk.bold(
     `Performance Grade: ${formatPerfScore(
-      metrics['lighthouse-performance-score'].value.toFixed()
+      metrics
+        .find(metric => metric.name === 'lighthouse-performance-score')
+        .value.toFixed()
     )}`
   )}
 ${chalk.bold(
     `Progressive Web App Grade: ${formatPerfScore(
-      metrics['lighthouse-pwa-score'].value.toFixed()
+      metrics
+        .find(metric => metric.name === 'lighthouse-pwa-score')
+        .value.toFixed()
     )}`
   )}
 ${chalk.bold(
     `Best Practices Grade: ${formatPerfScore(
-      metrics['lighthouse-best-practices-score'].value.toFixed()
+      metrics
+        .find(metric => metric.name === 'lighthouse-best-practices-score')
+        .value.toFixed()
     )}`
   )}
 ${chalk.bold(
     `Accessibility Grade: ${formatPerfScore(
-      metrics['lighthouse-accessibility-score'].value.toFixed()
+      metrics
+        .find(metric => metric.name === 'lighthouse-accessibility-score')
+        .value.toFixed()
     )}`
   )}
 
@@ -83,11 +90,15 @@ ${chalk.bold.underline('Timing')}
 ${chart(timingChartData(), 'duration')}
 
 
-${metrics['asset_count'].label}: ${metrics['asset_count'].value}
-${metrics['page_size_in_bytes'].label}: ${filesize(
-    metrics['page_size_in_bytes'].value
+${metrics.find(metric => metric.name === 'asset_count').label}: ${
+    metrics.find(metric => metric.name === 'asset_count').value
+  }
+${
+    metrics.find(metric => metric.name === 'page_size_in_bytes').label
+  }: ${filesize(
+    metrics.find(metric => metric.name === 'page_size_in_bytes').value
   )}
 
-${chalk.bold(`View the full report ${test.test_url}`)}
+${chalk.bold(`View the full report ${test.formattedTestUrl}`)}
   `
 }

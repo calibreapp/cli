@@ -5,7 +5,7 @@ const ora = require('ora')
 const columnify = require('columnify')
 const dateFormat = require('date-fns/format')
 
-const { getList } = require('../api/test')
+const { getList } = require('../../api/test')
 
 const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
@@ -48,9 +48,9 @@ const main = async args => {
       url: formattedTestUrl,
       device: row.device ? row.device.title : 'Desktop',
       connection: row.bandwidth ? row.bandwidth.title : 'Not Throttled',
-      location: `${row.location.emoji}  ${row.location.short_name}`,
+      location: `${row.location.emoji}  ${row.location.shortName}`,
       status: `${titleize(row.status)} ${dateFormat(
-        row.updated_at,
+        row.updatedAt,
         'h:mma D-MMM-YYYY'
       )}`
     }
@@ -69,7 +69,7 @@ const main = async args => {
 }
 
 module.exports = {
-  command: 'test-list',
+  command: 'list',
   describe: 'Print a list of previously run tests',
   handler: main,
   builder: yargs => {

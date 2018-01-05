@@ -2,11 +2,13 @@ const gql = require('../utils/api-client')
 
 const LIST_QUERY = `
   query {
-    organisation {
-      sites {
-        name
-        slug
-        createdAt
+    locations {
+      name
+      emoji
+      tag
+
+      agents {
+        ipv4
       }
     }
   }
@@ -15,7 +17,7 @@ const LIST_QUERY = `
 const list = async () => {
   try {
     const response = await gql.request(LIST_QUERY)
-    return response.organisation.sites
+    return response.locations
   } catch (e) {
     throw e.response.errors
   }

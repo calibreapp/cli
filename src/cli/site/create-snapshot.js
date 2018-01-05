@@ -3,9 +3,9 @@ const { URL } = require('url')
 const chalk = require('chalk')
 const ora = require('ora')
 
-const { create } = require('../api/snapshot')
-const clientInfo = require('../utils/client-info')
-const headers = require('../utils/http-headers')
+const { create } = require('../../api/snapshot')
+const clientInfo = require('../../utils/client-info')
+const headers = require('../../utils/http-headers')
 
 const main = async function(args) {
   let spinner
@@ -18,13 +18,13 @@ const main = async function(args) {
 
   try {
     const response = await create(args)
-    if (!args.json) spinner.succeed(`Snapshot created: ${response.id}`)
+    if (!args.json) spinner.succeed(`Snapshot created: ${response.iid}`)
 
     // Return result
     if (args.json) return console.log(JSON.stringify(response, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(e.message)
+    spinner.fail(e[0].message)
     process.exit(1)
   }
 }

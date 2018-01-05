@@ -1,76 +1,103 @@
-const fetch = require('node-fetch')
+const gql = require('../utils/api-client')
 
-const clientInfo = require('../utils/client-info')
-const headers = require('../utils/http-headers')
+const CREATE_MUTATION = `
+  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag) {
+    createTest(url: $url, location: $location, device: $device, connection: $connection) {
+      uuid
+    }
+  }
+`
 
-const create = ({ url, location, device, connection }) => {
-  return new Promise((resolve, reject) => {
-    fetch(`${process.env.CALIBRE_HOST}/api/cli/run`, {
-      headers,
-      method: 'POST',
-      body: JSON.stringify({
-        url,
-        location,
-        device,
-        connection,
-        client_name: clientInfo.name,
-        client_version: clientInfo.version
-      })
+const LIST_QUERY = `
+  query ListSinglePageTests {
+    organisation {
+      singlePageTests{
+        uuid
+        url
+        formattedTestUrl
+
+        device {
+          title
+        }
+
+        connection {
+          title
+        }
+
+        location {
+          emoji
+          shortName
+        }
+
+        status
+        updatedAt
+      }
+    }
+  }
+`
+
+const GET_BY_UUID = `
+  query GetSinglePageTest($uuid: String!) {
+    organisation{
+      singlePageTest(uuid: $uuid) {
+        uuid
+        url
+        formattedTestUrl
+        status
+        updatedAt
+
+        metrics: measurements {
+          name
+          label
+          value
+        }
+
+        location {
+          name
+          emoji
+        }
+      }
+    }
+  }
+`
+
+const create = async ({ url, location, device, connection }) => {
+  try {
+    const response = await gql.request(CREATE_MUTATION, {
+      url,
+      location,
+      device,
+      connection
     })
-      .then(res => res.json())
-      .then(json => {
-        if (json.error) return reject(json)
 
-        resolve(json.uuid)
-      })
-      .catch(reject)
-  })
+    return response.createTest
+  } catch (e) {
+    throw e.response.errors
+  }
 }
 
-const getList = () => {
-  return new Promise((resolve, reject) => {
-    fetch(`${process.env.CALIBRE_HOST}/api/cli/runs`, { headers })
-      .then(res => res.json())
-      .then(json => {
-        if (json.error) return reject(json)
-
-        resolve(json)
-      })
-      .catch(reject)
-  })
+const getList = async () => {
+  try {
+    const response = await gql.request(LIST_QUERY)
+    return response.organisation.singlePageTests
+  } catch (e) {
+    throw e.response
+  }
 }
 
-const getTestByUuid = uuid => {
-  return new Promise((resolve, reject) => {
-    fetch(`${process.env.CALIBRE_HOST}/api/cli/run/${uuid}`, { headers })
-      .then(res => res.json())
-      .then(res => {
-        if (res.error) return reject(res)
-        resolve(res)
-      })
-      .catch(reject)
-  })
-}
-
-const fetchReport = ({ name, url }) => {
-  return new Promise((resolve, reject) => {
-    fetch(url, {
-      headers: { 'Content-Type': 'application/json' }
+const getTestByUuid = async uuid => {
+  try {
+    const response = await gql.request(GET_BY_UUID, {
+      uuid
     })
-      .then(res => res.json())
-      .then(res => resolve({ name, url, report: res }))
-      .catch(reject)
-  })
-}
-
-const getTestResults = async ({ reports }) => {
-  const promises = reports.map(report => fetchReport(report))
-  return await Promise.all(promises)
+    return response.organisation.singlePageTest
+  } catch (e) {
+    throw e.response
+  }
 }
 
 module.exports = {
   create,
   getList,
-  getTestByUuid,
-  getTestResults
+  getTestByUuid
 }

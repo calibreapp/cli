@@ -3,7 +3,9 @@ const ora = require('ora')
 const columnify = require('columnify')
 const dateFormat = require('date-fns/format')
 
-const { list } = require('../api/site')
+const { list } = require('../../api/snapshot')
+
+const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
 const main = async args => {
   let index
@@ -24,13 +26,18 @@ const main = async args => {
   }
 
   spinner.stop()
-  console.log(`${chalk.bold(index.length)} sites`)
+  console.log(`${chalk.bold(index.length)} snapshots`)
 
   const rows = index.map(row => {
     return {
-      identifier: chalk.grey(row.slug),
-      name: row.name,
-      status: `${dateFormat(row.created_at, 'h:mma D-MMM-YYYY')}`
+      id: chalk.grey(row.iid),
+      url: row.htmlUrl,
+      ref: row.ref,
+      client: row.client,
+      status: `${row.status ? titleize(row.status) : ''} ${dateFormat(
+        row.createdAt,
+        'h:mma D-MMM-YYYY'
+      )}`
     }
   })
 
@@ -44,12 +51,12 @@ const main = async args => {
 }
 
 module.exports = {
-  command: 'site-list',
-  describe: 'Print a list of sites being tracked by Calibre',
+  command: 'snapshots <site>',
+  describe: 'Print a list of snapshots',
   handler: main,
   builder: yargs => {
     yargs.option('json', {
-      describe: 'Return the list of sites as JSON'
+      describe: 'Return the list of snapshots as JSON'
     })
   }
 }

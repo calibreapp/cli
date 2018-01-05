@@ -1,38 +1,54 @@
-const fetch = require('node-fetch')
+const gql = require('../utils/api-client')
 
-const clientInfo = require('../utils/client-info')
-const headers = require('../utils/http-headers')
+const CREATE_MUTATION = `
+  mutation CreateSnapshot(
+    $site: String!
+    $ref: String
+  ) {
+    createSnapshot(site: $site, ref: $ref) {
+      iid
+      ref
+      htmlUrl
+      createdAt
+    }
+  }
+`
 
-const create = ({ site, ref }) => {
-  return new Promise((resolve, reject) => {
-    fetch(`${process.env.CALIBRE_HOST}/api/cli/snapshot/${site}`, {
-      headers,
-      method: 'POST',
-      body: JSON.stringify({
-        ref
-      })
-    })
-      .then(res => res.json())
-      .then(json => {
-        if (json.error) return reject(json)
+const LIST_QUERY = `
+  query ListSnapshots(
+    $site: String!
+  ) {
+    organisation {
+      site(slug: $site) {
+        snapshots {
+          iid
+          htmlUrl
+          ref
+          client
+          createdAt
+          status
+        }
+      }
+    }
+  }
+`
 
-        resolve(json)
-      })
-      .catch(reject)
-  })
+const create = async ({ site, ref }) => {
+  try {
+    const response = await gql.request(CREATE_MUTATION, { site, ref })
+    return response.createSnapshot
+  } catch (e) {
+    throw e.response.errors
+  }
 }
 
-const list = ({ site }) => {
-  return new Promise((resolve, reject) => {
-    fetch(`${process.env.CALIBRE_HOST}/api/cli/snapshots/${site}`, { headers })
-      .then(res => res.json())
-      .then(json => {
-        if (json.error) return reject(json)
-
-        resolve(json)
-      })
-      .catch(reject)
-  })
+const list = async ({ site }) => {
+  try {
+    const response = await gql.request(LIST_QUERY, { site })
+    return response.organisation.site.snapshots
+  } catch (e) {
+    throw e.response.errors
+  }
 }
 
 module.exports = {

@@ -1,9 +1,8 @@
 const chalk = require('chalk')
 const ora = require('ora')
-const fetch = require('node-fetch')
 
-const { getTestByUuid, getTestResults } = require('../api/test')
-const formatTest = require('../views/test')
+const { getTestByUuid } = require('../../api/test')
+const formatTest = require('../../views/test')
 
 const main = async args => {
   let spinner
@@ -17,7 +16,7 @@ const main = async args => {
   }
 
   try {
-    const { response } = await getTestByUuid(args.uuid)
+    const response = await getTestByUuid(args.uuid)
 
     if (args.json) return console.log(JSON.stringify(response, null, 2))
 
@@ -30,7 +29,7 @@ const main = async args => {
 }
 
 module.exports = {
-  command: 'test-show <uuid>',
+  command: 'show <uuid>',
   describe: 'Print the details of a given test',
   handler: main,
   builder: yargs => {
