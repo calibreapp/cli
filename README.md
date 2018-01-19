@@ -11,7 +11,7 @@ To get the latest version, run this command:
 npm install -g calibre
 ```
 
-Standalone binaries are available for download at [https://calibreapp.com/cli](calibreapp.com/cli)
+Standalone binaries are available for download at [https://calibreapp.com/cli](https://calibreapp.com/cli)
 
 Optionally, you can clone this repo and run `npm run build` to
 produce a standalone binary for Mac, Windows or Linux.
