@@ -11,22 +11,20 @@ To get the latest version, run this command:
 npm install -g calibre
 ```
 
-Standalone binaries are available for download at [https://calibreapp.com/cli](calibreapp.com/cli)
-
 Optionally, you can clone this repo and run `npm run build` to
 produce a standalone binary for Mac, Windows or Linux.
 
 ## Features
 
-- **Manage your performance system with a single command**: `calibre`.
-- **Single page tests**. Create one-off, sharable Calibre tests for fast feedback: `calibre test <url> --location=eu-central --device=iPhone6`
-- **Deployments**. Track performance and accesibility between deploys
-- **CI/CD/Automation**. Every command has a --json flag for machine readable output: `calibre test <url> --location=us-east --json`
-- **Scriptable**. All API methods are exported to the Calibre NPM package
+* **Manage your performance system with a single command**: `calibre`.
+* **Single page tests**. Create one-off, sharable Calibre tests for fast feedback: `calibre test create <url> --location=Frankfurt --device=iPhone6`
+* **Deployments**. Track performance and accesibility between deploys
+* **CI/CD/Automation**. Every command has a --json flag for machine readable output: `calibre test <url> --location=Sydney --json`
+* **Scriptable**. All API methods are exported to the Calibre NPM package
 
 ## Authentication
 
-All authentication is handled via an environment variable: `CALIBRE_API_TOKEN`. Create your token via the team API tokens page.
+Authentication is handled via an environment variable: `CALIBRE_API_TOKEN`. Create your token via the team API tokens page.
 
 ## Usage
 
@@ -36,7 +34,7 @@ $ calibre --help
 
 ## Node client
 
-The Calibre package exports a node API that can be used to automate your performance system however you’d like to. 
+The Calibre package exports a node API that can be used to automate your performance system however you’d like to.
 
 If you’d like to splunk around check `src/api/`.
 
