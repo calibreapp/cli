@@ -11,8 +11,7 @@ To get the latest version, run this command:
 npm install -g calibre
 ```
 
-Optionally, you can clone this repo and run `npm run build` to
-produce a standalone binary for Mac, Windows or Linux.
+Optionally, you can clone this repo and run `npm run build` to produce a standalone binary for Mac, Windows or Linux.
 
 ## Features
 
