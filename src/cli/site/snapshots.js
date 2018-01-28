@@ -51,12 +51,13 @@ const main = async args => {
 }
 
 module.exports = {
-  command: 'snapshots <site>',
+  command: 'snapshots [options]',
   describe: 'Print a list of snapshots',
   handler: main,
   builder: yargs => {
-    yargs.option('json', {
-      describe: 'Return the list of snapshots as JSON'
+    yargs.options({
+      site: { demandOption: true, describe: 'The identifying slug of a site' },
+      json: { describe: 'Return the list of snapshots as JSON' }
     })
   }
 }

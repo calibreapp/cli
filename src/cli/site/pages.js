@@ -2,7 +2,7 @@ const chalk = require('chalk')
 const ora = require('ora')
 const columnify = require('columnify')
 
-const { list } = require('../../api/test_profile')
+const { list } = require('../../api/page')
 
 const main = async args => {
   let index
@@ -23,17 +23,13 @@ const main = async args => {
   }
 
   spinner.stop()
-
-  console.log(`\n`)
+  console.log(`${chalk.bold(args.site)} has ${chalk.bold(index.length)} pages`)
 
   const rows = index.map(row => {
     return {
-      uuid: chalk.cyan(row.uuid),
+      slug: chalk.grey(row.slug),
       name: row.name,
-      device: row.device.title ? row.device.title : 'Desktop',
-      connection: row.bandwidth.title ? row.bandwidth.title : 'Not Throttled',
-      'javascript disabled': row.jsIsDisabled ? 'Yes' : 'No',
-      cookies: row.cookies.map(cookie => cookie.name).join(', ') || 'None'
+      url: row.url
     }
   })
 
@@ -45,15 +41,14 @@ const main = async args => {
     })
   )
 }
-
 module.exports = {
-  command: 'test-profiles [options]',
-  describe: 'Print a list of test profiles for a given site',
+  command: 'pages [options]',
+  describe: 'Print a list of pages for a given site',
   handler: main,
   builder: yargs => {
     yargs.options({
       site: { demandOption: true, describe: 'The identifying slug of a site' },
-      json: { describe: 'Return the list of test profiles as JSON' }
+      json: { describe: 'Return the list of pages as JSON' }
     })
   }
 }

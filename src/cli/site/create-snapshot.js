@@ -1,11 +1,6 @@
-const { URL } = require('url')
-
-const chalk = require('chalk')
 const ora = require('ora')
 
 const { create } = require('../../api/snapshot')
-const clientInfo = require('../../utils/client-info')
-const headers = require('../../utils/http-headers')
 
 const main = async function(args) {
   let spinner
@@ -30,11 +25,13 @@ const main = async function(args) {
 }
 
 module.exports = {
-  command: 'snapshot <site> [options]',
+  command: 'create-snapshot [options]',
   describe: 'Create a snapshot',
   builder: yargs => {
-    yargs.option('ref', {
-      describe: 'Sets a reference to the snapshot'
+    yargs.options({
+      ref: { describe: 'Sets a reference to the snapshot' },
+      site: { demandOption: true, describe: 'The identifying slug of a site' },
+      json: { describe: 'Return the list of pages as JSON' }
     })
   },
   handler: main

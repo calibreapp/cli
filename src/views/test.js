@@ -2,19 +2,7 @@ const chalk = require('chalk')
 const dateFormat = require('date-fns/format')
 
 const chart = require('../utils/chart')
-const { filesize, duration } = require('../utils/formatters')
-
-const formatPerfScore = score => {
-  let grade = 'F'
-  if (score > 20) grade = 'D'
-  if (score > 40) grade = 'C'
-  if (score > 60) grade = 'B'
-  if (score > 80) grade = 'A'
-
-  if (score >= 80) return chalk.green.bold(grade)
-  if (score > 60 && score < 80) return chalk.yellow.bold(grade)
-  if (score <= 60) return chalk.red.bold(grade)
-}
+const { filesize, duration, perfScore } = require('../utils/formatters')
 
 module.exports = test => {
   let intro = [chalk.underline.bold(test.url)]
@@ -57,28 +45,28 @@ ${test.location.emoji}  ${test.location.name}
 ${chalk.grey(dateFormat(test.updatedAt, 'h:mma D-MMM-YYYY'))}
 
 ${chalk.bold(
-    `Performance Grade: ${formatPerfScore(
+    `Performance Grade: ${perfScore(
       metrics
         .find(metric => metric.name === 'lighthouse-performance-score')
         .value.toFixed()
     )}`
   )}
 ${chalk.bold(
-    `Progressive Web App Grade: ${formatPerfScore(
+    `Progressive Web App Grade: ${perfScore(
       metrics
         .find(metric => metric.name === 'lighthouse-pwa-score')
         .value.toFixed()
     )}`
   )}
 ${chalk.bold(
-    `Best Practices Grade: ${formatPerfScore(
+    `Best Practices Grade: ${perfScore(
       metrics
         .find(metric => metric.name === 'lighthouse-best-practices-score')
         .value.toFixed()
     )}`
   )}
 ${chalk.bold(
-    `Accessibility Grade: ${formatPerfScore(
+    `Accessibility Grade: ${perfScore(
       metrics
         .find(metric => metric.name === 'lighthouse-accessibility-score')
         .value.toFixed()
