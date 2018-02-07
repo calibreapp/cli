@@ -35,6 +35,13 @@ ${chalk.bold(
         .value.toFixed()
     )}`
   )}
+${chalk.bold(
+    `SEO Grade: ${perfScore(
+      test.measurements
+        .find(metric => metric.name === 'lighthouse-seo-score')
+        .value.toFixed()
+    )}`
+  )}
   `
 }
 

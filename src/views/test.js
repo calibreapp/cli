@@ -15,7 +15,6 @@ module.exports = test => {
     const measurements = [
       'time-to-first-byte',
       'page_wait_timing',
-      'firstRender',
       'first-meaningful-paint',
       'visually_complete_85',
       'visually_complete',
@@ -69,6 +68,13 @@ ${chalk.bold(
     `Accessibility Grade: ${perfScore(
       metrics
         .find(metric => metric.name === 'lighthouse-accessibility-score')
+        .value.toFixed()
+    )}`
+  )}
+${chalk.bold(
+    `SEO Grade: ${perfScore(
+      metrics
+        .find(metric => metric.name === 'lighthouse-seo-score')
         .value.toFixed()
     )}`
   )}
