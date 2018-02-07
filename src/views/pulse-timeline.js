@@ -58,7 +58,7 @@ ${set.profile.name}
 ${chalk.bold('Metric history')}
 Page: ${data.page.name} ${chalk.grey(`(${data.page.url})`)}
 
-${!data.page.timeseries.length ? 'There is no data for this time period' : null}
+${data.page.timeseries.length ? 'There is no data for this time period' : ''}
 
 ${metrics.join('\n')}
 
