@@ -1,10 +1,67 @@
 const ora = require('ora')
+const json2csv = require('json2csv')
+
 const { pulse } = require('../../api/snapshot-metrics')
 const formatPulseTimeline = require('../../views/pulse-timeline')
 
+const formatCSV = payload => {
+  let data = []
+
+  payload.page.timeseries.series.forEach(series => {
+    series.sets.forEach(set => {
+      const profile = payload.testProfiles.find(
+        profile => profile.id == set.profile.id
+      )
+
+      set.values.forEach(value => {
+        const snapshot = payload.page.timeseries.snapshots.find(
+          snapshot => snapshot.id === value.snapshot
+        )
+
+        data.push({
+          Timestamp: snapshot.createdAt,
+          PageName: payload.page.name,
+          PageURL: payload.page.url,
+          MetricName: series.metric.name,
+          MetricLabel: series.metric.label,
+          MetricValue: value.value,
+          SnapshotSequenceId: snapshot.sequenceId,
+          TestProfileId: set.profile.id,
+          TestProfileName: set.profile.name,
+          DeviceName: profile.device.title,
+          BandwidthName: profile.bandwidth.title,
+          isMobile: profile.isMobile,
+          hasDeviceEmulation: profile.hasDeviceEmulation,
+          hasBandwidthEmulation: profile.hasBandwidthEmulation
+        })
+      })
+    })
+  })
+
+  const fields = [
+    'Timestamp',
+    'PageName',
+    'PageURL',
+    'MetricName',
+    'MetricLabel',
+    'MetricValue',
+    'SnapshotId',
+    'SnapshotSequenceId',
+    'TestProfileId',
+    'TestProfileName',
+    'DeviceName',
+    'BandwidthName',
+    'isMobile',
+    'hasDeviceEmulation',
+    'hasBandwidthEmulation'
+  ]
+
+  return json2csv({ data, fields })
+}
+
 const main = async args => {
   let spinner
-  if (!args.json) {
+  if (!args.json && !args.csv) {
     spinner = ora('Connecting to Calibre')
     spinner.color = 'magenta'
     spinner.start()
@@ -41,6 +98,7 @@ const main = async args => {
     }
 
     if (args.json) return console.log(JSON.stringify(tests, null, 2))
+    if (args.csv) return console.log(formatCSV(tests))
 
     spinner.stop()
     console.log(formatPulseTimeline(tests))
@@ -61,7 +119,8 @@ module.exports = {
         demandOption: true,
         describe: 'The identifying id of a page'
       },
-      json: { describe: 'Return the list of pages as JSON' },
+      json: { describe: 'Return pulse data as JSON' },
+      csv: { describe: 'Return pulse data as CSV' },
       '30-day': {
         describe:
           'Get the last 30 days of metrics (without this flag, the default is 7 days)'

@@ -16,6 +16,7 @@
     "date-fns": "^1.28.5",
     "graphql-request": "^1.4.1",
     "humanize": "0.0.9",
+    "json2csv": "^3.11.5",
     "ora": "^1.3.0",
     "stats-percentile": "^3.1.0",
     "update-notifier": "^2.2.0",
@@ -27,7 +28,12 @@
   "scripts": {
     "test": "mocha"
   },
-  "keywords": ["performance", "testing", "test", "lighthouse"],
+  "keywords": [
+    "performance",
+    "testing",
+    "test",
+    "lighthouse"
+  ],
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -38,7 +44,13 @@
     "singleQuote": true
   },
   "pkg": {
-    "scripts": ["src/**/*.js"],
-    "targets": ["node8-linux-x64", "node8-macos-x64", "node8-win-x64"]
+    "scripts": [
+      "src/**/*.js"
+    ],
+    "targets": [
+      "node8-linux-x64",
+      "node8-macos-x64",
+      "node8-win-x64"
+    ]
   }
 }

@@ -15,18 +15,34 @@ const SNAPSHOT_METRICS_QUERY = `
             }
 
             testProfile {
-              name
+              id
             }
 
             measurements {
               name
+              label
               value
             }
           }
-          iid
+          sequenceId: iid
           htmlUrl
           status
           createdAt
+        }
+
+        testProfiles {
+          id
+          name
+          device {
+            title
+          }
+          bandwidth {
+            title
+          }
+          isMobile
+          jsIsDisabled
+          hasDeviceEmulation
+          hasBandwidthEmulation
         }
       }
     }
@@ -48,6 +64,12 @@ const PULSE_METRICS_QUERY = `
           url
 
           timeseries(duration_in_days: $durationInDays) {
+            snapshots {
+              id
+              sequenceId: iid
+              createdAt
+            }
+
             series {
               metric {
                 name
@@ -96,7 +118,7 @@ const snapshot = async ({ site, snapshotId }) => {
       site,
       snapshotId
     })
-    return response.organisation.site.snapshot
+    return response.organisation.site
   } catch (e) {
     throw e.response.errors
   }
