@@ -17,7 +17,7 @@ Optionally, you can clone this repo and run `npm run build` to produce a standal
 
 * **Manage your performance system with a single command**: `calibre`.
 * **Single page tests**. Create one-off, sharable Calibre tests for fast feedback: `calibre test create <url> --location=Frankfurt --device=iPhone6`
-* **Deployments**. Track performance and accesibility between deploys
+* **Deployments**. Track performance, best practices, accessibility and SEO between deploys
 * **CI/CD/Automation**. Every command has a --json flag for machine readable output: `calibre test <url> --location=Sydney --json`
 * **Scriptable**. All API methods are exported to the Calibre NPM package
 
