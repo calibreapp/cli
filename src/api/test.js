@@ -72,7 +72,8 @@ const create = async ({ url, location, device, connection }) => {
 
     return response.createTest
   } catch (e) {
-    throw e.response.errors
+    if (e.response.error) throw e.response
+    else throw e.response.errors
   }
 }
 
@@ -81,7 +82,8 @@ const getList = async () => {
     const response = await gql.request(LIST_QUERY)
     return response.organisation.singlePageTests
   } catch (e) {
-    throw e.response
+    if (e.response.error) throw e.response
+    else throw e.response.errors
   }
 }
 
@@ -92,7 +94,8 @@ const getTestByUuid = async uuid => {
     })
     return response.organisation.singlePageTest
   } catch (e) {
-    throw e.response
+    if (e.response.error) throw e.response
+    else throw e.response.errors
   }
 }
 

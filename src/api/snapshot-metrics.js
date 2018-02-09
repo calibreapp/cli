@@ -120,7 +120,8 @@ const snapshot = async ({ site, snapshotId }) => {
     })
     return response.organisation.site
   } catch (e) {
-    throw e.response.errors
+    if (e.response.error) throw e.response
+    else throw e.response.errors
   }
 }
 
@@ -133,7 +134,8 @@ const pulse = async ({ site, page, durationInDays }) => {
     })
     return response.organisation.site
   } catch (e) {
-    throw e.response.errors
+    if (e.response.error) throw e.response
+    else throw e.response.errors
   }
 }
 

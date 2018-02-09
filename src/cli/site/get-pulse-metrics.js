@@ -67,15 +67,6 @@ const main = async args => {
     spinner.start()
   }
 
-  const notFound = (name, objName, args) => {
-    const errorString = `${name} "${args['objName']}" not found`
-    if (args.json)
-      return console.error(JSON.stringify({ error: errorString }, null, 2))
-
-    spinner.fail(errorString)
-    process.exit(1)
-  }
-
   let durationInDays = 7
   if (args['30-day']) durationInDays = 30
 
