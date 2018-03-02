@@ -1,11 +1,11 @@
+process.env.CALIBRE_HOST = process.env.CALIBRE_HOST || 'https://calibreapp.com'
+
 const chalk = require('chalk')
 
 const Site = require('./src/api/site')
 const Snapshot = require('./src/api/snapshot')
 const Test = require('./src/api/test')
 const TestProfile = require('./src/api/test_profile')
-
-process.env.CALIBRE_HOST = process.env.CALIBRE_HOST || 'https://calibreapp.com'
 
 if (!process.env.CALIBRE_API_TOKEN) {
   console.log(
