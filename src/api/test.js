@@ -77,6 +77,23 @@ const create = async ({ url, location, device, connection }) => {
   }
 }
 
+const delay = time => new Promise(resolve => setTimeout(resolve, time))
+const waitForTest = uuid => {
+  return new Promise((resolve, reject) => {
+    const poll = async () => {
+      await delay(5000)
+      const run = await getTestByUuid(uuid)
+
+      if (run.status === 'completed') return resolve(run)
+      if (run.status === 'timeout' || run.status === 'errored')
+        return reject(run)
+      poll()
+    }
+
+    poll()
+  })
+}
+
 const getList = async () => {
   try {
     const response = await gql.request(LIST_QUERY)
@@ -102,5 +119,6 @@ const getTestByUuid = async uuid => {
 module.exports = {
   create,
   getList,
-  getTestByUuid
+  getTestByUuid,
+  waitForTest
 }
