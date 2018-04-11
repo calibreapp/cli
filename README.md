@@ -33,17 +33,4 @@ $ calibre --help
 
 ## Node client
 
-The Calibre package exports a node API that can be used to automate your performance system however you’d like to.
-
-If you’d like to splunk around check `src/api/`.
-
-```
-const { Site, Snapshot, Test } = require('calibre')
-
-// List all sites for your account
-const sites = await Site.list()
-const site = sites[0]
-
-// Create a snapshot for the first site
-await Snapshot.create({ site: site.slug })
-```
+The Calibre package exports a node API that can be used to automate your performance system however you’d like to. Check the examples/nodejs directory for reference.
