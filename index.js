@@ -2,11 +2,6 @@ const chalk = require('chalk')
 
 process.env.CALIBRE_HOST = process.env.CALIBRE_HOST || 'https://calibreapp.com/'
 
-const Site = require('./src/api/site')
-const Snapshot = require('./src/api/snapshot')
-const Test = require('./src/api/test')
-const TestProfile = require('./src/api/test_profile')
-
 if (!process.env.CALIBRE_API_TOKEN) {
   console.log(
     chalk.grey(
@@ -17,9 +12,16 @@ if (!process.env.CALIBRE_API_TOKEN) {
   process.exit()
 }
 
+const Site = require('./src/api/site')
+const Snapshot = require('./src/api/snapshot')
+const Test = require('./src/api/test')
+const TestProfile = require('./src/api/test_profile')
+const Agent = require('./src/api/location')
+
 module.exports = {
   Site,
   Snapshot,
   Test,
-  TestProfile
+  TestProfile,
+  Agent
 }
