@@ -6,9 +6,10 @@ const { filesize, duration, perfScore } = require('../utils/formatters')
 
 module.exports = test => {
   let intro = [chalk.underline.bold(test.url)]
+
   if (!test.device) intro.push('on Chrome Desktop')
   if (test.device) intro.push(`on a ${test.device.title}`)
-  if (test.bandwidth) intro.push(`with a ${test.bandwidth.title} connection.`)
+  if (test.connection) intro.push(`with a ${test.connection.title} connection.`)
   const { metrics } = test
 
   const timingChartData = () => {

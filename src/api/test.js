@@ -52,6 +52,14 @@ const GET_BY_UUID = `
           value
         }
 
+        device {
+          title
+        }
+
+        connection {
+          title
+        }
+
         location {
           name
           emoji
