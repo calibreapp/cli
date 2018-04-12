@@ -1,10 +1,12 @@
 {
   "name": "calibre-nodejs-examples",
   "version": "1.0.0",
-  "description":
-    "Node JS examples can be run in the terminal, eg: `CALIBRE_API_TOKEN=YOUR_TOKEN_HERE examples/nodejs/create-test.js`.",
+  "engines": {
+    "node": "> 7.6.0"
+  },
+  "description": "Calibre’s Node.JS examples",
   "license": "ISC",
   "dependencies": {
-    "calibre": "@latest"
+    "calibre": "^1.0.3"
   }
 }
