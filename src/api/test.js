@@ -80,8 +80,9 @@ const create = async ({ url, location, device, connection }) => {
 
     return response.createTest
   } catch (e) {
-    if (e.response.error) throw e.response
-    else throw e.response.errors
+    if (e.response && e.response.error) throw e.response
+    if (e.response && e.response.errors) throw e.response.errors
+    else throw e
   }
 }
 
@@ -100,8 +101,9 @@ const getList = async () => {
     const response = await gql.request(LIST_QUERY)
     return response.organisation.singlePageTests
   } catch (e) {
-    if (e.response.error) throw e.response
-    else throw e.response.errors
+    if (e.response && e.response.error) throw e.response
+    if (e.response && e.response.errors) throw e.response.errors
+    else throw e
   }
 }
 
@@ -112,8 +114,9 @@ const getTestByUuid = async uuid => {
     })
     return response.organisation.singlePageTest
   } catch (e) {
-    if (e.response.error) throw e.response
-    else throw e.response.errors
+    if (e.response && e.response.error) throw e.response
+    if (e.response && e.response.errors) throw e.response.errors
+    else throw e
   }
 }
 

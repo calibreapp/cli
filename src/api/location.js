@@ -19,8 +19,9 @@ const list = async () => {
     const response = await gql.request(LIST_QUERY)
     return response.locations
   } catch (e) {
-    if (e.response.error) throw e.response
-    else throw e.response.errors
+    if (e.response && e.response.error) throw e.response
+    if (e.response && e.response.errors) throw e.response.errors
+    else throw e
   }
 }
 

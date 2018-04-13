@@ -1,12 +1,10 @@
 const gql = require('../utils/api-client')
 
 const LIST_QUERY = `
-  query {
-    organisation {
-      sites {
+  query{
+    __type(name: "DeviceTag") {
+      enumValues {
         name
-        slug
-        createdAt
       }
     }
   }
@@ -15,7 +13,7 @@ const LIST_QUERY = `
 const list = async () => {
   try {
     const response = await gql.request(LIST_QUERY)
-    return response.organisation.sites
+    return response.__type.enumValues
   } catch (e) {
     if (e.response && e.response.error) throw e.response
     if (e.response && e.response.errors) throw e.response.errors

@@ -22,8 +22,9 @@ const list = async ({ site }) => {
     const response = await gql.request(LIST_QUERY, { site })
     return response.organisation.site.pages
   } catch (e) {
-    if (e.response.error) throw e.response
-    else throw e.response.errors
+    if (e.response && e.response.error) throw e.response
+    if (e.response && e.response.errors) throw e.response.errors
+    else throw e
   }
 }
 
