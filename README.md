@@ -11,7 +11,10 @@ To get the latest version, run this command:
 npm install -g calibre
 ```
 
-Optionally, you can clone this repo and run `npm run build` to produce a standalone binary for Mac, Windows or Linux.
+**Other installation options**
+
+* [Install a standalone binary](https://calibreapp.com/docs/api/binaries) Mac, Windows or Linux.
+* Run the command directly with npx: `npx calibre --help`
 
 ## Features
 
@@ -31,6 +34,11 @@ Authentication is handled via an environment variable: `CALIBRE_API_TOKEN`. Crea
 $ calibre --help
 ```
 
-## Node client
+## Examples
+
+* [Bash examples](examples/bash)
+* [Node.JS examples](examples/nodejs)
+
+### Node client
 
 The Calibre package exports a node API that can be used to automate your performance system however you’d like to. Check the examples/nodejs directory for reference.
