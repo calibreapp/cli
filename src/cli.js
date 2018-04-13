@@ -6,8 +6,6 @@ const pkg = require('../package.json')
 
 updateNotifier({ pkg }).notify()
 
-process.env.CALIBRE_HOST = process.env.CALIBRE_HOST || 'https://calibreapp.com'
-
 if (!process.env.CALIBRE_API_TOKEN) {
   console.log(
     chalk.grey(
