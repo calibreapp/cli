@@ -2,6 +2,7 @@ const { URL } = require('url')
 
 const chalk = require('chalk')
 const ora = require('ora')
+const { CookieMap } = require('cookiefile')
 
 const { create, waitForTest } = require('../../api/test')
 const formatTest = require('../../views/test')
@@ -18,6 +19,7 @@ const formatErrorMessage = errors => {
 
 const main = async function(args) {
   let spinner
+  let cookies = []
 
   if (!args.json) {
     spinner = ora('Connecting to Calibre')
@@ -25,8 +27,18 @@ const main = async function(args) {
     spinner.start()
   }
 
+  if (args.cookieJar) {
+    const jar = new CookieMap(args.cookieJar)
+
+    for (const cookie of jar.values()) {
+      const { name, value, domain, path, httpOnly, https } = cookie
+
+      cookies.push({ name, value, domain, path, httpOnly, secure: https })
+    }
+  }
+
   try {
-    const { uuid } = await create(args)
+    const { uuid } = await create({ ...args, cookies })
 
     if (!args.json) {
       spinner.succeed(`Test scheduled: ${uuid}`)
@@ -66,11 +78,14 @@ module.exports = {
       .option('json', {
         describe: 'Return the test result as JSON'
       })
+      .option('cookie-jar', {
+        describe: 'Uses a netscape formatted cookie jar file at this path'
+      })
       .demandOption(
         'location',
         'Please provide the location your URL should be tested from'
       )
-      .check(({ url, location }) => {
+      .check(({ url, location, cookieJar }) => {
         if (!url.length) return new Error('Please provide a URL')
 
         try {
@@ -80,6 +95,9 @@ module.exports = {
         }
 
         if (!location) return new Error('Please set --location')
+
+        // Validate that the cookie-jar exists
+        if (cookieJar) new CookieMap(cookieJar)
 
         return true
       })
