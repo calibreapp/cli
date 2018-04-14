@@ -3,17 +3,31 @@
 const { Test } = require('calibre')
 
 const createTest = async () => {
+  // Required
   const url = 'https://calibreapp.com/cli'
   const location = 'Sydney'
+
+  // Optional
   const device = 'iPhone8'
   const connection = 'good3G'
+  const cookies = [
+    {
+      name: 'app.uid',
+      value: 'my-secret-tokens',
+      domain: 'calibreapp.com',
+      path: '/',
+      secure: true,
+      httpOnly: true
+    }
+  ]
 
   // Create the test
   const { uuid } = await Test.create({
     url,
     location,
     device,
-    connection
+    connection,
+    cookies
   })
 
   console.log(`Test created, ID: ${uuid}`)
