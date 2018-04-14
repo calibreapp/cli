@@ -1,8 +1,8 @@
 const gql = require('../utils/api-client')
 
 const CREATE_MUTATION = `
-  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag) {
-    createTest(url: $url, location: $location, device: $device, connection: $connection) {
+  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!]) {
+    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies) {
       uuid
     }
   }
@@ -69,13 +69,14 @@ const GET_BY_UUID = `
   }
 `
 
-const create = async ({ url, location, device, connection }) => {
+const create = async ({ url, location, device, connection, cookies }) => {
   try {
     const response = await gql.request(CREATE_MUTATION, {
       url,
       location,
       device,
-      connection
+      connection,
+      cookies
     })
 
     return response.createTest
