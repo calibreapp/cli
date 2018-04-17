@@ -9,9 +9,8 @@ updateNotifier({ pkg }).notify()
 if (!process.env.CALIBRE_API_TOKEN) {
   console.log(
     chalk.grey(
-      'Please set CALIBRE_API_TOKEN as an environment variable. Create your token via the team API tokens page, or see calibreapp.com/docs/api/tokens for help.'
-    ),
-    chalk.blue(`${process.env.CALIBRE_HOST}/home`)
+      'Please set CALIBRE_API_TOKEN as an environment variable. See calibreapp.com/docs/api/tokens for help.'
+    )
   )
   process.exit()
 }
