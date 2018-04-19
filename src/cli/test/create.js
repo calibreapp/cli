@@ -10,10 +10,12 @@ const formatTest = require('../../views/test')
 const formatErrorMessage = errors => {
   const error = errors[0]
 
-  if (error.problems && error.problems[0]) {
+  if (error && error.problems && error.problems[0]) {
     return error.problems[0].explanation
-  } else {
+  } else if (error && error.message) {
     return error.message
+  } else {
+    return errors
   }
 }
 
