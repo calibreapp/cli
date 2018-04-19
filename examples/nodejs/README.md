@@ -6,5 +6,14 @@
 
 Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR_TOKEN_HERE examples/nodejs/create-test.js`.
 
-To check what API endpoints are available, check index.js at the root of this repository. If you spot something note quite right, or have a question, please log a [new issue](https://github.com/calibreapp/cli/issues) or contact Calibre support.
+### Available examples
+
+* **[create-test.js](create-test.js)** - Creates a one-off test for a given URL
+* **[list-agent-locations.js](list-agent-locations.js)** - Prints a list of Calibre’s test locations
+* **[world.js](world.js)** - Create a one-off test for a given URL from every Calibre test location
+* **[create-site.js](create-site.js)** - Add a site to be tracked by Calibre. Includes configuration of mobile emulation, cookies, and a number of pages
+
+### Writing your own, or looking for help?
+
+To check what API functionality is available, check index.js at the root of this repository. If you spot something note quite right, or have a question, please log a [new issue](https://github.com/calibreapp/cli/issues) or contact Calibre support.
 If you’ve built or adapated an example for your usecase, be sure to share it in a [new issue](https://github.com/calibreapp/cli/issues) ✌️
