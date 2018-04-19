@@ -1,4 +1,5 @@
 const gql = require('../utils/api-client')
+const handleError = require('../utils/api-error')
 
 const LIST_QUERY = `
   query ListPages(
@@ -22,9 +23,7 @@ const list = async ({ site }) => {
     const response = await gql.request(LIST_QUERY, { site })
     return response.organisation.site.pages
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 

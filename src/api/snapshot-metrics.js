@@ -1,4 +1,5 @@
 const gql = require('../utils/api-client')
+const handleError = require('../utils/api-error')
 
 const SNAPSHOT_METRICS_QUERY = `
   query GetSnapshotMetrics(
@@ -120,9 +121,7 @@ const snapshot = async ({ site, snapshotId }) => {
     })
     return response.organisation.site
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 
@@ -135,9 +134,7 @@ const pulse = async ({ site, page, durationInDays }) => {
     })
     return response.organisation.site
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 

@@ -1,4 +1,5 @@
 const gql = require('../utils/api-client')
+const handleError = require('../utils/api-error')
 
 const LIST_QUERY = `
   query{
@@ -15,9 +16,7 @@ const list = async () => {
     const response = await gql.request(LIST_QUERY)
     return response.__type.enumValues
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 

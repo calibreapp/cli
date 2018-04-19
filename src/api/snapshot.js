@@ -1,4 +1,5 @@
 const gql = require('../utils/api-client')
+const handleError = require('../utils/api-error')
 
 const CREATE_MUTATION = `
   mutation CreateSnapshot(
@@ -38,9 +39,7 @@ const create = async ({ site, ref }) => {
     const response = await gql.request(CREATE_MUTATION, { site, ref })
     return response.createSnapshot
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 
@@ -49,9 +48,7 @@ const list = async ({ site }) => {
     const response = await gql.request(LIST_QUERY, { site })
     return response.organisation.site.snapshots
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 
