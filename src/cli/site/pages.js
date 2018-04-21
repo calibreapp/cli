@@ -27,7 +27,7 @@ const main = async args => {
 
   const rows = index.map(row => {
     return {
-      slug: chalk.grey(row.slug),
+      uuid: chalk.grey(row.uuid),
       name: row.name,
       url: row.url
     }
