@@ -74,7 +74,8 @@ const main = async args => {
     const tests = await pulse({
       site: args.site,
       page: args.page,
-      durationInDays
+      durationInDays,
+      metrics: args.metrics
     })
 
     if (!tests.page) {
@@ -105,10 +106,18 @@ module.exports = {
   describe: 'Get a recent timeline of metrics for a given page',
   builder: yargs => {
     yargs.options({
-      site: { demandOption: true, describe: 'The identifying slug of a site' },
+      site: {
+        demandOption: true,
+        describe: 'The identifying slug of a site'
+      },
       page: {
         demandOption: true,
         describe: 'The identifying id of a page'
+      },
+      metrics: {
+        type: 'array',
+        describe:
+          'A list of metrics to return. eg: --metrics=first-meaningful-paint,first-interactive'
       },
       json: { describe: 'Return pulse data as JSON' },
       csv: { describe: 'Return pulse data as CSV' },
