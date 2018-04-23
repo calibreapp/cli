@@ -28,6 +28,25 @@ const LIST_QUERY = `
   }
 `
 
+const DELETE_MUTATION = `
+  mutation DeletePage($site:String!, $uuid: String!){
+    deletePage(site: $site, uuid: $uuid) {
+      name
+      uuid
+    }
+  }
+`
+
+const UPDATE_MUTATION = `
+  mutation UpdatePage($site:String!, $uuid: String!, $name: String, $url: URL){
+    updatePage(site: $site, uuid: $uuid, name: $name, url: $url) {
+      uuid
+      name
+      url
+    }
+  }
+`
+
 const create = async ({ site, name, url }) => {
   try {
     const response = await gql.request(CREATE_MUTATION, {
@@ -51,7 +70,33 @@ const list = async ({ site }) => {
   }
 }
 
+const destroy = async ({ site, uuid }) => {
+  try {
+    const response = await gql.request(DELETE_MUTATION, { site, uuid })
+    return response.deletePage
+  } catch (e) {
+    return handleError(e)
+  }
+}
+
+const update = async ({ site, uuid, name, url }) => {
+  try {
+    const response = await gql.request(UPDATE_MUTATION, {
+      site,
+      uuid,
+      name,
+      url
+    })
+
+    return response.updatePage
+  } catch (e) {
+    return handleError(e)
+  }
+}
+
 module.exports = {
   create,
-  list
+  list,
+  destroy,
+  update
 }
