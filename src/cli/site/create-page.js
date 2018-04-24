@@ -2,6 +2,7 @@ const { URL } = require('url')
 const ora = require('ora')
 
 const { create } = require('../../api/page')
+const { humaniseError } = require('../../utils/api-error')
 
 const main = async function(args) {
   let spinner
@@ -21,13 +22,13 @@ const main = async function(args) {
     if (args.json) return console.log(JSON.stringify(response, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(e[0].message)
+    spinner.fail(humaniseError(e))
     process.exit(1)
   }
 }
 
 module.exports = {
-  command: 'add-page [options]',
+  command: 'create-page [options]',
   describe: 'Add a page to an existing site tracked by Calibre',
   builder: yargs => {
     yargs
@@ -38,7 +39,7 @@ module.exports = {
           demandOption: true,
           describe: 'The identifying slug of a site'
         },
-        json: { describe: 'Return the list of pages as JSON' }
+        json: { describe: 'Return the page attributes as JSON' }
       })
       .check(({ url, location, cookieJar }) => {
         if (!url.length) return new Error('Please provide a URL')

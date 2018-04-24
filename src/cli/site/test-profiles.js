@@ -2,7 +2,8 @@ const chalk = require('chalk')
 const ora = require('ora')
 const columnify = require('columnify')
 
-const { list } = require('../../api/test_profile')
+const { list } = require('../../api/test-profile')
+const { humaniseError } = require('../../utils/api-error')
 
 const main = async args => {
   let index
@@ -18,7 +19,7 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(e.message)
+    spinner.fail(humaniseError(e))
     process.exit(1)
   }
 

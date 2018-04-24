@@ -3,16 +3,7 @@ const chalk = require('chalk')
 const ora = require('ora')
 
 const { create } = require('../../api/site')
-
-const formatErrorMessage = errors => {
-  const error = errors[0]
-
-  if (error.problems && error.problems[0]) {
-    return error.problems[0].explanation
-  } else {
-    return error.message
-  }
-}
+const { humaniseError } = require('../../utils/api-error')
 
 const main = async function(args) {
   let spinner
@@ -42,7 +33,7 @@ const main = async function(args) {
     }
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(formatErrorMessage(e))
+    spinner.fail(humaniseError(e))
     process.exit(1)
   }
 }
@@ -59,7 +50,7 @@ module.exports = {
         describe: 'Calibre will monitor from this location'
       })
       .option('json', {
-        describe: 'Return the test result as JSON'
+        describe: 'Return the site attributes as JSON'
       })
       .demandOption(
         'url',

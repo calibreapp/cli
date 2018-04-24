@@ -1,5 +1,5 @@
 const gql = require('../utils/api-client')
-const handleError = require('../utils/api-error')
+const { handleError } = require('../utils/api-error')
 
 const LIST_QUERY = `
   query{

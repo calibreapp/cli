@@ -4,6 +4,7 @@ const columnify = require('columnify')
 const dateFormat = require('date-fns/format')
 
 const { list } = require('../../api/site')
+const { humaniseError } = require('../../utils/api-error')
 
 const main = async args => {
   let index
@@ -19,7 +20,7 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(e.message)
+    spinner.fail(humaniseError(e))
     process.exit(1)
   }
 

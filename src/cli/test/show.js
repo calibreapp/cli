@@ -3,6 +3,7 @@ const ora = require('ora')
 
 const { getTestByUuid } = require('../../api/test')
 const formatTest = require('../../views/test')
+const { humaniseError } = require('../../utils/api-error')
 
 const main = async args => {
   let spinner
@@ -23,7 +24,7 @@ const main = async args => {
     spinner.stop()
     console.log(formatTest(response))
   } catch (e) {
-    spinner.fail(e.message)
+    spinner.fail(humaniseError(e))
     process.exit(1)
   }
 }

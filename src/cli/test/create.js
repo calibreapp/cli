@@ -6,18 +6,7 @@ const { CookieMap } = require('cookiefile')
 
 const { create, waitForTest } = require('../../api/test')
 const formatTest = require('../../views/test')
-
-const formatErrorMessage = errors => {
-  const error = errors[0]
-
-  if (error && error.problems && error.problems[0]) {
-    return error.problems[0].explanation
-  } else if (error && error.message) {
-    return error.message
-  } else {
-    return errors
-  }
-}
+const { humaniseError } = require('../../utils/api-error')
 
 const main = async function(args) {
   let spinner
@@ -58,7 +47,7 @@ const main = async function(args) {
     console.log(formatTest(response))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(formatErrorMessage(e))
+    spinner.fail(humaniseError(e))
     process.exit(1)
   }
 }
