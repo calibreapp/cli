@@ -1,10 +1,13 @@
 ### 1.0.7 - Unreleased
 
 * Added `calibre site create <name> [options]` command.
-* Added Node.js example for creating a site using the new Site.create method
-* Cleaned up internal error handling
-* Added Node.js example that demonstrates how to create a single page test from every Calibre testing location
-* Added `--metrics` flag to `calibre site get-pulse-metrics` command. Specify the metrics you’d like returned
+* Added `calibre site add-page` command.
+* Added `calibre site delete-page` command.
+* Added `calibre site update-page` command.
+* Added `--metrics` flag to `calibre site get-pulse-metrics` command. Specify the metrics you’d like returned.
+* Added Node.js example for creating a site using the new Site.create method.
+* Added Node.js example that demonstrates how to create a single page test from every Calibre testing location.
+* Cleaned up internal error handling.
 
 ### 1.0.6 - 2018-04-14
 

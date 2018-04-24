@@ -2,8 +2,8 @@ const gql = require('../utils/api-client')
 const handleError = require('../utils/api-error')
 
 const CREATE_MUTATION = `
-  mutation CreateSite($name:String!, $location: LocationTag!, $pages: [PageInput!]!, $testProfiles:[TestProfileInput!]){
-    createSite(name: $name, pages: $pages, location:$location, testProfiles: $testProfiles) {
+  mutation CreateSite($attributes: SiteInput!){
+    createSite(attributes: $attributes) {
       name
       slug
 
@@ -35,10 +35,12 @@ const LIST_QUERY = `
 const create = async ({ name, location, pages, testProfiles }) => {
   try {
     const response = await gql.request(CREATE_MUTATION, {
-      name,
-      location,
-      pages,
-      testProfiles
+      attributes: {
+        name,
+        location,
+        pages,
+        testProfiles
+      }
     })
 
     return response.createSite

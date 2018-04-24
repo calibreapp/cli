@@ -2,8 +2,8 @@ const gql = require('../utils/api-client')
 const handleError = require('../utils/api-error')
 
 const CREATE_MUTATION = `
-  mutation CreatePage($site:String!, $name: String!, $url: URL!){
-    createPage(site: $site, name: $name, url: $url) {
+  mutation CreatePage($site: String!, $attributes: PageInput!){
+    createPage(site: $site, attributes: $attributes) {
       uuid
       name
       url
@@ -38,8 +38,8 @@ const DELETE_MUTATION = `
 `
 
 const UPDATE_MUTATION = `
-  mutation UpdatePage($site:String!, $uuid: String!, $name: String, $url: URL){
-    updatePage(site: $site, uuid: $uuid, name: $name, url: $url) {
+  mutation UpdatePage($site:String!, $uuid: String!, $attributes: PageInput!){
+    updatePage(site: $site, uuid: $uuid, attributes: $attributes) {
       uuid
       name
       url
@@ -51,8 +51,10 @@ const create = async ({ site, name, url }) => {
   try {
     const response = await gql.request(CREATE_MUTATION, {
       site,
-      name,
-      url
+      attributes: {
+        name,
+        url
+      }
     })
 
     return response.createPage
@@ -84,8 +86,10 @@ const update = async ({ site, uuid, name, url }) => {
     const response = await gql.request(UPDATE_MUTATION, {
       site,
       uuid,
-      name,
-      url
+      attributes: {
+        name,
+        url
+      }
     })
 
     return response.updatePage

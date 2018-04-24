@@ -4,9 +4,9 @@ const handleError = require('../utils/api-error')
 const CREATE_MUTATION = `
   mutation CreateSnapshot(
     $site: String!
-    $ref: String
+    $attributes: SnapshotInput
   ) {
-    createSnapshot(site: $site, ref: $ref) {
+    createSnapshot(site: $site, attributes: $attributes) {
       iid
       ref
       htmlUrl
@@ -36,7 +36,10 @@ const LIST_QUERY = `
 
 const create = async ({ site, ref }) => {
   try {
-    const response = await gql.request(CREATE_MUTATION, { site, ref })
+    const response = await gql.request(CREATE_MUTATION, {
+      site,
+      attributes: { ref: new String(ref) }
+    })
     return response.createSnapshot
   } catch (e) {
     return handleError(e)
