@@ -9,7 +9,7 @@
 
 ## CLI Installation method
 
-* [ ] NPM
+* [ ] NPM / NPX
 * [ ] Binary
 
 ## Output of `calibre --version`
