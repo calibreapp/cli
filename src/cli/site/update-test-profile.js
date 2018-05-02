@@ -2,7 +2,7 @@ const ora = require('ora')
 const { CookieMap } = require('cookiefile')
 
 const formatProfile = require('../../views/test-profile')
-const { create } = require('../../api/test-profile')
+const { update } = require('../../api/test-profile')
 const { humaniseError } = require('../../utils/api-error')
 
 const main = async function(args) {
@@ -15,6 +15,7 @@ const main = async function(args) {
     spinner.start()
   }
 
+  if (args.enableJavascript) args.jsIsDisabled = false
   if (args.disableJavascript) args.jsIsDisabled = true
 
   if (args.cookieJar) {
@@ -27,9 +28,11 @@ const main = async function(args) {
   }
 
   try {
-    const response = await create({ ...args, cookies })
+    const response = await update({ ...args, cookies })
     if (!args.json) {
-      spinner.succeed('Created Test Profile')
+      spinner.succeed(
+        `Test profile updated: ${response.name} (${response.uuid})`
+      )
       console.log(formatProfile(response))
     }
 
@@ -44,11 +47,12 @@ const main = async function(args) {
 }
 
 module.exports = {
-  command: 'create-test-profile <name> [options]',
-  describe: 'Add a test profile to a site',
+  command: 'update-test-profile [options]',
+  describe: 'Update a test profile. Only updates attributes sent.',
   builder: yargs => {
     yargs
       .options({
+        uuid: { demandOption: true, describe: 'The UUID of the test profile' },
         device: {
           describe: 'Sets the emulated device that the profile will be run on'
         },
@@ -63,6 +67,10 @@ module.exports = {
         disableJavascript: {
           type: 'boolean',
           describe: 'Disable JavaScript'
+        },
+        enableJavascript: {
+          type: 'boolean',
+          describe: 'Enable JavaScript'
         },
         'cookie-jar': {
           describe: 'Uses a netscape formatted cookie jar file at this path'

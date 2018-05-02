@@ -6,6 +6,24 @@ const CREATE_MUTATION = `
     createTestProfile(site: $site, attributes: $attributes) {
       uuid
       name
+      jsIsDisabled
+
+      device {
+        title
+      }
+      bandwidth {
+        title
+      }
+      cookies {
+        name
+        value
+        domain
+        path
+        secure
+        httpOnly
+      }
+      updatedAt
+      createdAt
     }
   }
 `
@@ -30,6 +48,33 @@ const LIST_QUERY = `
           }
         }
       }
+    }
+  }
+`
+
+const UPDATE_MUTATION = `
+  mutation UpdateTestProfile($site: String!, $uuid: String!, $attributes: TestProfileInput!){
+    updateTestProfile(site: $site, uuid: $uuid, attributes: $attributes) {
+      uuid
+      name
+      jsIsDisabled
+
+      device {
+        title
+      }
+      bandwidth {
+        title
+      }
+      cookies {
+        name
+        value
+        domain
+        path
+        secure
+        httpOnly
+      }
+      updatedAt
+      createdAt
     }
   }
 `
@@ -78,6 +123,34 @@ const list = async ({ site }) => {
   }
 }
 
+const update = async ({
+  uuid,
+  site,
+  name,
+  device,
+  connection,
+  cookies,
+  jsIsDisabled
+}) => {
+  try {
+    const response = await gql.request(UPDATE_MUTATION, {
+      uuid,
+      site,
+      attributes: {
+        name,
+        device,
+        connection,
+        cookies,
+        jsIsDisabled
+      }
+    })
+
+    return response.updateTestProfile
+  } catch (e) {
+    return handleError(e)
+  }
+}
+
 const destroy = async ({ site, uuid }) => {
   try {
     const response = await gql.request(DELETE_MUTATION, { site, uuid })
@@ -90,5 +163,6 @@ const destroy = async ({ site, uuid }) => {
 module.exports = {
   create,
   list,
+  update,
   destroy
 }

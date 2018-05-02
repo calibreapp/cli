@@ -32,14 +32,25 @@ module.exports = {
   command: 'delete-test-profile [options]',
   describe: 'Deletes a test profile from a site',
   builder: yargs => {
-    yargs.options({
-      uuid: { demandOption: true, describe: 'The UUID of the test profile' },
-      site: {
-        demandOption: true,
-        describe: 'The identifying slug of a site'
-      },
-      json: { describe: 'Return the test profile attributes as JSON' }
-    })
+    yargs
+      .options({
+        uuid: { demandOption: true, describe: 'The UUID of the test profile' },
+        site: {
+          demandOption: true,
+          describe: 'The identifying slug of a site'
+        },
+        confirm: {
+          describe: 'Confirm the deletion'
+        },
+        json: { describe: 'Return the test profile attributes as JSON' }
+      })
+      .check(({ confirm }) => {
+        if (process.stdout.isTTY && !confirm)
+          return new Error(
+            'Add the --confirm flag to confirm the immediate & irreversible deletion of this test profile.'
+          )
+        return true
+      })
   },
   handler: main
 }
