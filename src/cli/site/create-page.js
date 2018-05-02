@@ -28,12 +28,11 @@ const main = async function(args) {
 }
 
 module.exports = {
-  command: 'create-page [options]',
+  command: 'create-page <name> [options]',
   describe: 'Add a page to an existing site tracked by Calibre',
   builder: yargs => {
     yargs
       .options({
-        name: { demandOption: true, describe: 'The name of the page' },
         url: { demandOption: true, describe: 'The name of the page' },
         site: {
           demandOption: true,
