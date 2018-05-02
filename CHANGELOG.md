@@ -1,4 +1,8 @@
-### 1.0.7 - Unreleased
+### 1.0.8 - 2018-05-03
+
+* Fixed path issue
+
+### 1.0.7 - 2018-05-02
 
 * Added `calibre site create <name> [options]` command.
 * Added `calibre site delete` command.
