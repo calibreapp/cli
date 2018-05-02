@@ -32,6 +32,15 @@ const LIST_QUERY = `
   }
 `
 
+const DELETE_MUTATION = `
+  mutation DeleteSite($slug:String!){
+    deleteSite(site: $slug) {
+      name
+      slug
+    }
+  }
+`
+
 const create = async ({ name, location, pages, testProfiles }) => {
   try {
     const response = await gql.request(CREATE_MUTATION, {
@@ -58,7 +67,17 @@ const list = async () => {
   }
 }
 
+const destroy = async ({ slug }) => {
+  try {
+    const response = await gql.request(DELETE_MUTATION, { slug })
+    return response.deleteSite
+  } catch (e) {
+    return handleError(e)
+  }
+}
+
 module.exports = {
   create,
-  list
+  list,
+  destroy
 }
