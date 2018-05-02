@@ -31,14 +31,25 @@ module.exports = {
   command: 'delete-page [options]',
   describe: 'Deletes a page from a site',
   builder: yargs => {
-    yargs.options({
-      uuid: { demandOption: true, describe: 'The UUID of the page' },
-      site: {
-        demandOption: true,
-        describe: 'The identifying slug of a site'
-      },
-      json: { describe: 'Return the page attributes as JSON' }
-    })
+    yargs
+      .options({
+        uuid: { demandOption: true, describe: 'The UUID of the page' },
+        site: {
+          demandOption: true,
+          describe: 'The identifying slug of a site'
+        },
+        confirm: {
+          describe: 'Confirm the deletion'
+        },
+        json: { describe: 'Return the page attributes as JSON' }
+      })
+      .check(({ confirm }) => {
+        if (process.stdout.isTTY && !confirm)
+          return new Error(
+            'Add the --confirm flag to confirm the immediate & irreversible deletion of this test profile.'
+          )
+        return true
+      })
   },
   handler: main
 }
