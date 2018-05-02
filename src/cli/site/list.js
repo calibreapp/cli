@@ -29,7 +29,7 @@ const main = async args => {
 
   const rows = index.map(row => {
     return {
-      identifier: chalk.grey(row.slug),
+      slug: chalk.grey(row.slug),
       name: row.name,
       status: `${dateFormat(row.createdAt, 'h:mma D-MMM-YYYY')}`
     }
