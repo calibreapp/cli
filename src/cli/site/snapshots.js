@@ -4,6 +4,7 @@ const columnify = require('columnify')
 const dateFormat = require('date-fns/format')
 
 const { list } = require('../../api/snapshot')
+const { humaniseError } = require('../../utils/api-error')
 
 const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
@@ -21,7 +22,7 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(e.message)
+    spinner.fail(humaniseError(e))
     process.exit(1)
   }
 

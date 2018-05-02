@@ -1,4 +1,5 @@
 const gql = require('../utils/api-client')
+const { handleError } = require('../utils/api-error')
 
 const SNAPSHOT_METRICS_QUERY = `
   query GetSnapshotMetrics(
@@ -54,6 +55,7 @@ const PULSE_METRICS_QUERY = `
     $site: String!
     $page: String
     $durationInDays: Int
+    $metrics: [MetricTag!]
   ) {
     organisation {
       site(slug: $site) {
@@ -63,7 +65,7 @@ const PULSE_METRICS_QUERY = `
           name
           url
 
-          timeseries(duration_in_days: $durationInDays) {
+          timeseries(duration_in_days: $durationInDays, metrics: $metrics) {
             snapshots {
               id
               sequenceId: iid
@@ -120,24 +122,21 @@ const snapshot = async ({ site, snapshotId }) => {
     })
     return response.organisation.site
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 
-const pulse = async ({ site, page, durationInDays }) => {
+const pulse = async ({ site, page, durationInDays, metrics }) => {
   try {
     const response = await gql.request(PULSE_METRICS_QUERY, {
       site,
       page,
-      durationInDays
+      durationInDays,
+      metrics
     })
     return response.organisation.site
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 

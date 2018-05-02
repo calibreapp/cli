@@ -1,6 +1,7 @@
 const ora = require('ora')
 
 const { create } = require('../../api/snapshot')
+const { humaniseError } = require('../../utils/api-error')
 
 const main = async function(args) {
   let spinner
@@ -19,7 +20,7 @@ const main = async function(args) {
     if (args.json) return console.log(JSON.stringify(response, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(e[0].message)
+    spinner.fail(humaniseError(e))
     process.exit(1)
   }
 }
@@ -31,7 +32,7 @@ module.exports = {
     yargs.options({
       ref: { describe: 'Sets a reference to the snapshot' },
       site: { demandOption: true, describe: 'The identifying slug of a site' },
-      json: { describe: 'Return the list of pages as JSON' }
+      json: { describe: 'Return the snapshot attributes as JSON' }
     })
   },
   handler: main

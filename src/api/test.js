@@ -1,4 +1,5 @@
 const gql = require('../utils/api-client')
+const { handleError } = require('../utils/api-error')
 
 const CREATE_MUTATION = `
   mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!]) {
@@ -81,9 +82,7 @@ const create = async ({ url, location, device, connection, cookies }) => {
 
     return response.createTest
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 
@@ -102,9 +101,7 @@ const getList = async () => {
     const response = await gql.request(LIST_QUERY)
     return response.organisation.singlePageTests
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 
@@ -115,9 +112,7 @@ const getTestByUuid = async uuid => {
     })
     return response.organisation.singlePageTest
   } catch (e) {
-    if (e.response && e.response.error) throw e.response
-    if (e.response && e.response.errors) throw e.response.errors
-    else throw e
+    return handleError(e)
   }
 }
 

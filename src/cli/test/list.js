@@ -6,17 +6,9 @@ const columnify = require('columnify')
 const dateFormat = require('date-fns/format')
 
 const { getList } = require('../../api/test')
+const { humaniseError } = require('../../utils/api-error')
 
 const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
-
-const formatErrorMessage = res => {
-  switch (res.error) {
-    case 'unauthorised':
-      return res.message
-    default:
-      return res.error
-  }
-}
 
 const main = async args => {
   let index
@@ -32,7 +24,7 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(formatErrorMessage(e))
+    spinner.fail(humaniseError(e))
     process.exit(1)
   }
 
