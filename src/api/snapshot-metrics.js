@@ -61,8 +61,9 @@ const PULSE_METRICS_QUERY = `
       site(slug: $site) {
         hasCompletedSnapshots
 
-        page(slug: $page) {
+        page(uuid: $page) {
           name
+          uuid
           url
 
           timeseries(duration_in_days: $durationInDays, metrics: $metrics) {

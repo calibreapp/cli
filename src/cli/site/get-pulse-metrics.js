@@ -112,7 +112,7 @@ module.exports = {
       },
       page: {
         demandOption: true,
-        describe: 'The identifying id of a page'
+        describe: 'The identifying uuid of a page'
       },
       metrics: {
         type: 'array',

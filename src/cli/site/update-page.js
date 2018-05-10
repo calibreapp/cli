@@ -35,7 +35,7 @@ module.exports = {
       .options({
         uuid: { demandOption: true, describe: 'The UUID of the page' },
         name: { describe: 'The name of the page' },
-        url: { describe: 'The name of the page' },
+        url: { describe: 'The URL of the page' },
         site: {
           demandOption: true,
           describe: 'The identifying slug of a site'
