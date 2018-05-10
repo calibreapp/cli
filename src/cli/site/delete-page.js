@@ -46,7 +46,7 @@ module.exports = {
       .check(({ confirm }) => {
         if (process.stdout.isTTY && !confirm)
           return new Error(
-            'Add the --confirm flag to confirm the immediate & irreversible deletion of this test profile.'
+            'Add the --confirm flag to confirm the immediate & irreversible deletion of this page.'
           )
         return true
       })
