@@ -2,4 +2,4 @@ language: node_js
 node_js:
   - node
   - lts/*
-script: npm run ci
+script: ./node_modules/.bin/jest test
