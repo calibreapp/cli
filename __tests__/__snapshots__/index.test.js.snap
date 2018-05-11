@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index should be able to resolve the same dependencies 1`] = `
+Object {
+  "Agent": Object {
+    "list": [Function],
+  },
+  "Site": Object {
+    "create": [Function],
+    "destroy": [Function],
+    "list": [Function],
+  },
+  "Snapshot": Object {
+    "create": [Function],
+    "list": [Function],
+  },
+  "Test": Object {
+    "create": [Function],
+    "getList": [Function],
+    "getTestByUuid": [Function],
+    "waitForTest": [Function],
+  },
+  "TestProfile": Object {
+    "create": [Function],
+    "destroy": [Function],
+    "list": [Function],
+    "update": [Function],
+  },
+}
+`;

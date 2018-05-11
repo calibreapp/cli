@@ -13,7 +13,7 @@ if (!process.env.CALIBRE_API_TOKEN) {
 const Site = require('./src/api/site')
 const Snapshot = require('./src/api/snapshot')
 const Test = require('./src/api/test')
-const TestProfile = require('./src/api/test_profile')
+const TestProfile = require('./src/api/test-profile')
 const Agent = require('./src/api/location')
 
 module.exports = {
