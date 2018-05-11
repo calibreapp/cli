@@ -28,6 +28,7 @@
     "pkg": "^4.3.1"
   },
   "scripts": {
+    "ci": "CI=true jest --coverage --runInBand",
     "test": "jest"
   },
   "keywords": [
