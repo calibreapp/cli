@@ -2,7 +2,7 @@
   "name": "calibre",
   "version": "1.0.9",
   "engines": {
-    "node": "> 7.6.0"
+    "node": "> 8.3.0"
   },
   "description": "Performance testing",
   "author": "calibreapp.com",
