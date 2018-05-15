@@ -1,0 +1,17 @@
+{
+  "plugins": ["node"],
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "script"
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "no-console": "off",
+    "semi": [2, "never"],
+    "quotes": [2, "single", "avoid-escape"]
+  }
+}
