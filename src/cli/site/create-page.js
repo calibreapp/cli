@@ -40,7 +40,7 @@ module.exports = {
         },
         json: { describe: 'Return the page attributes as JSON' }
       })
-      .check(({ url, location, cookieJar }) => {
+      .check(({ url }) => {
         if (!url.length) return new Error('Please provide a URL')
 
         try {

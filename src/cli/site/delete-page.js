@@ -1,4 +1,3 @@
-const { URL } = require('url')
 const ora = require('ora')
 
 const { destroy } = require('../../api/page')

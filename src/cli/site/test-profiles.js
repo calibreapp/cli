@@ -25,7 +25,7 @@ const main = async args => {
 
   spinner.stop()
 
-  console.log(`\n`)
+  console.log('\n')
 
   const rows = index.map(row => {
     return {

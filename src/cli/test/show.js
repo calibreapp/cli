@@ -1,4 +1,3 @@
-const chalk = require('chalk')
 const ora = require('ora')
 
 const { getTestByUuid } = require('../../api/test')
