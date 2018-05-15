@@ -22,8 +22,8 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(humaniseError(e))
-    process.exit(1)
+    spinner.fail()
+    throw new Error(humaniseError(e))
   }
 
   spinner.stop()

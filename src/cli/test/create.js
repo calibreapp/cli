@@ -46,8 +46,8 @@ const main = async function(args) {
     console.log(formatTest(response))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(humaniseError(e))
-    process.exit(1)
+    spinner.fail()
+    throw new Error(humaniseError(e))
   }
 }
 

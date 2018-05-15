@@ -23,8 +23,8 @@ const main = async args => {
     spinner.stop()
     console.log(formatTest(response))
   } catch (e) {
-    spinner.fail(humaniseError(e))
-    process.exit(1)
+    spinner.fail()
+    throw new Error(humaniseError(e))
   }
 }
 

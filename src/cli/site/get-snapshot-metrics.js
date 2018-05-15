@@ -73,8 +73,8 @@ const main = async args => {
       if (args.csv)
         return json2csv({ data: ['No data found'], fields: ['Error'] })
 
-      spinner.fail('No data found for this search')
-      process.exit(1)
+      spinner.fail()
+      throw new Error('No data found for this search')
     }
 
     if (args.json) return console.log(JSON.stringify(payload, null, 2))
@@ -84,8 +84,8 @@ const main = async args => {
     console.log(formatSnapshot(payload.snapshot))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(e.map(err => err.message).join(', '))
-    process.exit(1)
+    spinner.fail()
+    throw new Error(e.map(err => err.message).join(', '))
   }
 }
 
