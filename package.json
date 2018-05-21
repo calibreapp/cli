@@ -31,7 +31,8 @@
   },
   "scripts": {
     "ci": "CI=true jest --coverage --runInBand",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ."
   },
   "keywords": [
     "performance",
