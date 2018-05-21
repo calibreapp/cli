@@ -1,5 +1,3 @@
-const { URL } = require('url')
-const chalk = require('chalk')
 const ora = require('ora')
 
 const { create } = require('../../api/site')
@@ -33,8 +31,8 @@ const main = async function(args) {
     }
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(humaniseError(e))
-    process.exit(1)
+    spinner.fail()
+    throw new Error(humaniseError(e))
   }
 }
 

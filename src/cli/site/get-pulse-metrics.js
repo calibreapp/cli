@@ -85,8 +85,8 @@ const main = async args => {
           JSON.stringify({ errors: [{ message: errMsg }] }, null, 2)
         )
 
-      spinner.fail(errMsg)
-      process.exit(1)
+      spinner.fail()
+      throw new Error(errMsg)
     }
 
     if (args.json) return console.log(JSON.stringify(tests, null, 2))
@@ -96,8 +96,8 @@ const main = async args => {
     console.log(formatPulseTimeline(tests))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(e.map(err => err.message).join(', '))
-    process.exit(1)
+    spinner.fail()
+    throw new Error(e.map(err => err.message).join(', '))
   }
 }
 

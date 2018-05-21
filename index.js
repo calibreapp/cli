@@ -1,7 +1,7 @@
-const chalk = require('chalk')
-
 if (!process.env.CALIBRE_API_TOKEN) {
-  throw new Error('Please set CALIBRE_API_TOKEN as an environment variable. Create your token via the team API tokens page, or see calibreapp.com/docs/api/tokens for help.');
+  throw new Error(
+    'Please set CALIBRE_API_TOKEN as an environment variable. Create your token via the team API tokens page, or see calibreapp.com/docs/api/tokens for help.'
+  )
 }
 
 const Site = require('./src/api/site')

@@ -2,7 +2,7 @@ const chalk = require('chalk')
 const dateFormat = require('date-fns/format')
 
 const chart = require('../utils/chart')
-const { filesize, duration, perfScore } = require('../utils/formatters')
+const { filesize, perfScore } = require('../utils/formatters')
 
 module.exports = test => {
   let intro = [chalk.underline.bold(test.url)]
