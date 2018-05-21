@@ -24,12 +24,15 @@
     "yargs": "^8.0.2"
   },
   "devDependencies": {
+    "jest": "^22.4.3",
     "eslint": "^4.19.1",
     "eslint-plugin-node": "^6.0.1",
     "pkg": "^4.3.1"
   },
   "scripts": {
-    "test": "mocha"
+    "ci": "CI=true jest --coverage --runInBand",
+    "test": "jest",
+    "lint": "eslint ."
   },
   "keywords": [
     "performance",
