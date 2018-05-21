@@ -1,4 +1,3 @@
-const { URL } = require('url')
 const ora = require('ora')
 
 const { destroy } = require('../../api/page')
@@ -22,8 +21,8 @@ const main = async function(args) {
     if (args.json) return console.log(JSON.stringify(response, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail(humaniseError(e))
-    process.exit(1)
+    spinner.fail()
+    throw new Error(humaniseError(e))
   }
 }
 

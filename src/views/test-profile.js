@@ -5,10 +5,10 @@ const cookies = cookies => {
   return cookies.length > 0
     ? cookies
         .map(cookie => {
-          const secure = cookie.secure ? `✔ Shared with Non-SSL servers` : ''
+          const secure = cookie.secure ? '✔ Shared with Non-SSL servers' : ''
 
           const httpOnly = cookie.httpOnly
-            ? `✔ Shared with \`document.cookie\``
+            ? '✔ Shared with `document.cookie`'
             : ''
 
           return `
@@ -34,7 +34,7 @@ ${chalk.grey(`Updated: ${dateFormat(profile.updatedAt, 'h:mma D-MMM-YYYY')}`)}
 
 ${profile.device.title ? `• ${profile.device.title}` : ''}
 ${profile.bandwidth.title ? `• ${profile.bandwidth.title}` : ''}
-${profile.jsIsDisabled ? `• Javascript Disabled` : ''}
+${profile.jsIsDisabled ? '• Javascript Disabled' : ''}
 
 ${cookies(profile.cookies)}
   `

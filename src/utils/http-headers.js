@@ -1,4 +1,3 @@
-const pkg = require('../../package.json')
 const clientInfo = require('./client-info')
 
 module.exports = {

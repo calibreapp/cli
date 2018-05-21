@@ -1,10 +1,7 @@
 const chalk = require('chalk')
-const dateFormat = require('date-fns/format')
 const percentile = require('stats-percentile')
 
 const { filesize, duration } = require('../utils/formatters')
-
-const format = (value, formatter) => {}
 
 module.exports = data => {
   const metrics = data.page.timeseries.series.map(series => {
@@ -18,6 +15,7 @@ module.exports = data => {
         break
       case 'trust':
         formatFn = val => val
+        break
       default:
         formatFn = val => val
     }

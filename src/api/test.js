@@ -88,6 +88,7 @@ const create = async ({ url, location, device, connection, cookies }) => {
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time))
 const waitForTest = async uuid => {
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     await delay(5000)
     const run = await getTestByUuid(uuid)

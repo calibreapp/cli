@@ -2,7 +2,7 @@
   "name": "calibre",
   "version": "1.0.9",
   "engines": {
-    "node": "> 7.6.0"
+    "node": "> 8.3.0"
   },
   "description": "Performance testing",
   "author": "calibreapp.com",
@@ -24,6 +24,8 @@
     "yargs": "^8.0.2"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-node": "^6.0.1",
     "pkg": "^4.3.1"
   },
   "scripts": {
