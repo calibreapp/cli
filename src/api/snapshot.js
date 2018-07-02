@@ -15,6 +15,14 @@ const CREATE_MUTATION = `
   }
 `
 
+const DELETE_MUTATION = `
+  mutation DeleteSnapshot($site:String!, $iid: String!){
+    deleteSnapshot(site: $site, iid: $iid) {
+      iid
+    }
+  }
+`
+
 const LIST_QUERY = `
   query ListSnapshots(
     $site: String!
@@ -46,6 +54,18 @@ const create = async ({ site, ref }) => {
   }
 }
 
+const destroy = async ({ site, iid }) => {
+  try {
+    const response = await gql.request(DELETE_MUTATION, {
+      site,
+      iid: String(iid)
+    })
+    return response.deleteSnapshot
+  } catch (e) {
+    return handleError(e)
+  }
+}
+
 const list = async ({ site }) => {
   try {
     const response = await gql.request(LIST_QUERY, { site })
@@ -57,5 +77,6 @@ const list = async ({ site }) => {
 
 module.exports = {
   create,
+  destroy,
   list
 }
