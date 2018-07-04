@@ -1,5 +1,5 @@
 steps:
-  - label: 'Build packages'
+  - name: 'Build packages'
     command: './script/build'
     artifact_paths: bin/**/*
     plugins:
@@ -8,7 +8,7 @@ steps:
 
   - wait
 
-  - label: ":mag:"
+  - name: ":mag:"
     command: "./script/extract-cli-version"
     env:
       CALIBRE_API_TOKEN: noop
