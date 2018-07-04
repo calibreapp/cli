@@ -2,9 +2,6 @@
 
 set -euo pipefail
 
-echo "--- Installing dependencies"
-npm install
-
 echo "--- Building packages"
 rm -rf bin
 mkdir -p bin/{mac,windows,linux}
