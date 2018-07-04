@@ -4,7 +4,7 @@ steps:
     artifact_paths: bin/**/*
     plugins:
       docker-compose#v2.2.1:
-        build: cli
+        run: cli
 
   - wait
 
