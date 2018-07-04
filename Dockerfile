@@ -5,7 +5,7 @@ RUN apt-get update -qq && apt-get install -y zip
 RUN mkdir /cli
 WORKDIR /cli
 COPY package.json package-lock.json /cli/
-RUN npm ci
+RUN npm install
 RUN npm link pkg
 
 COPY . /cli
