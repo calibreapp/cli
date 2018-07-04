@@ -2,5 +2,3 @@ version: '2'
 services:
   cli:
     build: .
-    volumes:
-      - .:/cli
