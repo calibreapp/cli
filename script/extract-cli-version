@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-BIN_NAME="bin/linux/calibre"
+BIN_NAME="packages/bin/linux/calibre"
 
 echo '--- Downloading built cli'
 
