@@ -2,17 +2,18 @@
 
 set -euo pipefail
 
-BIN_NAME="packages/bin/linux/calibre"
+BIN_NAME="bin/linux/calibre"
 
 echo '--- Downloading built cli'
 
-mkdir -p packages/linux
+mkdir -p packages
 buildkite-agent artifact download "${BIN_NAME}" packages
-chmod +x "${BIN_NAME}"
+ls packages
+chmod +x "packages/calibre"
 
 echo '+++ Extracting cli version from binary'
 
-CLI_VERSION=$("${BIN_NAME}" --version)
+CLI_VERSION=$(packages/calibre --version)
 
 echo "Full cli version: $CLI_VERSION"
 
