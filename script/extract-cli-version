@@ -9,7 +9,7 @@ echo '--- Downloading built cli'
 
 mkdir -p packages
 buildkite-agent artifact download "${ARTIFACT_NAME}" packages
-ls packages
+
 chmod +x "${BIN_PATH}"
 
 echo '+++ Extracting cli version from binary'
