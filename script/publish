@@ -4,9 +4,10 @@ set -euo pipefail
 
 version=$(buildkite-agent meta-data get "cli-version")
 
-echo '--- Downloading built artefacts'
+echo '--- Downloading built artifacts'
 
 rm -rf bin/*
+mkdir -p bin
 buildkite-agent artifact download "bin/**" bin
 
 echo '--- Copying install README'
