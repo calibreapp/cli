@@ -9,11 +9,19 @@ const Snapshot = require('./src/api/snapshot')
 const Test = require('./src/api/test')
 const TestProfile = require('./src/api/test-profile')
 const Agent = require('./src/api/location')
+const Page = require('./src/api/page')
+const Connection = require('./src/api/connection')
+const Device = require('./src/api/device')
+const SnapshotMetrics = require('./src/api/snapshot-metrics')
 
 module.exports = {
   Site,
   Snapshot,
   Test,
   TestProfile,
-  Agent
+  Agent,
+  Page,
+  Connection,
+  Device,
+  SnapshotMetrics
 }

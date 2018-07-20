@@ -1,13 +1,14 @@
 steps:
-  - label: 'Build packages'
+  - name: 'Build packages'
     command: './script/build'
     artifact_paths: bin/**/*
-    env:
-      BUILDKITE_DOCKER_COMPOSE_CONTAINER: cli
+    plugins:
+      docker-compose#v2.2.1:
+        run: cli
 
   - wait
 
-  - label: ":mag:"
+  - name: ":mag:"
     command: "./script/extract-cli-version"
     env:
       CALIBRE_API_TOKEN: noop

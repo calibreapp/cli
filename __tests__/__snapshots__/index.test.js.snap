@@ -5,6 +5,18 @@ Object {
   "Agent": Object {
     "list": [Function],
   },
+  "Connection": Object {
+    "list": [Function],
+  },
+  "Device": Object {
+    "list": [Function],
+  },
+  "Page": Object {
+    "create": [Function],
+    "destroy": [Function],
+    "list": [Function],
+    "update": [Function],
+  },
   "Site": Object {
     "create": [Function],
     "destroy": [Function],
@@ -13,6 +25,10 @@ Object {
   "Snapshot": Object {
     "create": [Function],
     "list": [Function],
+  },
+  "SnapshotMetrics": Object {
+    "pulse": [Function],
+    "snapshot": [Function],
   },
   "Test": Object {
     "create": [Function],
