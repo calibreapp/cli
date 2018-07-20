@@ -3,4 +3,4 @@ services:
   cli:
     build: .
     volumes:
-      - .:/cli
+      - ./bin:/cli/bin

@@ -1,6 +1,6 @@
 {
   "name": "calibre",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "engines": {
     "node": "> 8.3.0"
   },
@@ -24,10 +24,10 @@
     "yargs": "^8.0.2"
   },
   "devDependencies": {
-    "jest": "^22.4.3",
     "eslint": "^4.19.1",
     "eslint-plugin-node": "^6.0.1",
-    "pkg": "^4.3.1"
+    "jest": "^22.4.3",
+    "pkg": "^4.3.3"
   },
   "scripts": {
     "ci": "CI=true jest --coverage --runInBand",
