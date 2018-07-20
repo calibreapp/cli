@@ -24,6 +24,7 @@ Object {
   },
   "Snapshot": Object {
     "create": [Function],
+    "destroy": [Function],
     "list": [Function],
   },
   "SnapshotMetrics": Object {
