@@ -86,7 +86,7 @@ const main = async args => {
         )
 
       spinner.fail()
-      throw new Error(errMsg)
+      return new Error(errMsg)
     }
 
     if (args.json) return console.log(JSON.stringify(tests, null, 2))
