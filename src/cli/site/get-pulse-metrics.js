@@ -1,6 +1,7 @@
 const ora = require('ora')
 const json2csv = require('json2csv')
 
+const { humaniseError } = require('../../utils/api-error')
 const { pulse } = require('../../api/snapshot-metrics')
 const formatPulseTimeline = require('../../views/pulse-timeline')
 
@@ -97,7 +98,8 @@ const main = async args => {
   } catch (e) {
     if (args.json) return console.error(e)
     spinner.fail()
-    throw new Error(e.map(err => err.message).join(', '))
+
+    throw new Error(humaniseError(e))
   }
 }
 
