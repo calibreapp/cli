@@ -117,7 +117,7 @@ module.exports = {
       metrics: {
         type: 'array',
         describe:
-          'A list of metrics to return. eg: --metrics=first-meaningful-paint,first-interactive'
+          'A list of metrics to return. eg: --metrics=first-meaningful-paint first-interactive or use multiple --metrics flags for each metric'
       },
       json: { describe: 'Return pulse data as JSON' },
       csv: { describe: 'Return pulse data as CSV' },
