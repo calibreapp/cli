@@ -12,7 +12,7 @@ Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR
 - **[list-agent-locations.js](list-agent-locations.js)** - Prints a list of Calibre’s test locations
 - **[world.js](world.js)** - Create a one-off test for a given URL from every Calibre test location
 - **[create-site.js](create-site.js)** - Add a site to be tracked by Calibre. Includes configuration of mobile emulation, cookies, and a number of pages
-- **[get-all-pulse-metrics](get-all-pulse-metrics)** - Iterates through every site and page in an account, returns the last 7 days of 'consistently-interactive' metrics for each.
+- **[get-all-pulse-metrics.js](get-all-pulse-metrics.js)** - Iterates through every site and page in an account, returns the last 7 days of 'consistently-interactive' metrics for each.
 
 ### Writing your own, or looking for help?
 
