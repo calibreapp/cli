@@ -1,17 +1,18 @@
 ## Requirements to run these examples
 
-* Node 8+
-* Install the dependencies by running `npm install` from within the `examples/nodejs` directory.
-* [A Calibre API token](https://calibreapp.com/docs/api/tokens)
+- Node 8+
+- Install the dependencies by running `npm install` from within the `examples/nodejs` directory.
+- [A Calibre API token](https://calibreapp.com/docs/api/tokens)
 
 Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR_TOKEN_HERE examples/nodejs/create-test.js`.
 
 ### Available examples
 
-* **[create-test.js](create-test.js)** - Creates a one-off test for a given URL
-* **[list-agent-locations.js](list-agent-locations.js)** - Prints a list of Calibre’s test locations
-* **[world.js](world.js)** - Create a one-off test for a given URL from every Calibre test location
-* **[create-site.js](create-site.js)** - Add a site to be tracked by Calibre. Includes configuration of mobile emulation, cookies, and a number of pages
+- **[create-test.js](create-test.js)** - Creates a one-off test for a given URL
+- **[list-agent-locations.js](list-agent-locations.js)** - Prints a list of Calibre’s test locations
+- **[world.js](world.js)** - Create a one-off test for a given URL from every Calibre test location
+- **[create-site.js](create-site.js)** - Add a site to be tracked by Calibre. Includes configuration of mobile emulation, cookies, and a number of pages
+- **[get-all-pulse-metrics](get-all-pulse-metrics)** - Iterates through every site and page in an account, returns the last 7 days of 'consistently-interactive' metrics for each.
 
 ### Writing your own, or looking for help?
 
