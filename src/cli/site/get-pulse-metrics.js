@@ -29,8 +29,8 @@ const formatCSV = payload => {
           SnapshotSequenceId: snapshot.sequenceId,
           TestProfileId: set.profile.id,
           TestProfileName: set.profile.name,
-          DeviceName: profile.device.title,
-          BandwidthName: profile.bandwidth.title,
+          DeviceName: profile.device ? profile.device.title : null,
+          BandwidthName: profile.bandwidth ? profile.bandwidth.title : null,
           isMobile: profile.isMobile,
           hasDeviceEmulation: profile.hasDeviceEmulation,
           hasBandwidthEmulation: profile.hasBandwidthEmulation
@@ -97,8 +97,9 @@ const main = async args => {
     console.log(formatPulseTimeline(tests))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail()
+    if (args.csv) return console.error(`Error\n${e}`)
 
+    spinner.fail()
     throw new Error(humaniseError(e))
   }
 }
