@@ -64,6 +64,7 @@ typings/
 bin/*
 packages
 
+.DS_Store
 
 # End of https://www.gitignore.io/api/node
 my-jar
