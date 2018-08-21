@@ -29,8 +29,8 @@ const formatCSV = payload => {
           SnapshotSequenceId: snapshot.sequenceId,
           TestProfileId: set.profile.id,
           TestProfileName: set.profile.name,
-          DeviceName: profile.device.title,
-          BandwidthName: profile.bandwidth.title,
+          DeviceName: profile.device ? profile.device.title : null,
+          BandwidthName: profile.bandwidth ? profile.bandwidth.title : null,
           isMobile: profile.isMobile,
           hasDeviceEmulation: profile.hasDeviceEmulation,
           hasBandwidthEmulation: profile.hasBandwidthEmulation
