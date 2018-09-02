@@ -79,17 +79,6 @@ const main = async args => {
       metrics: args.metrics
     })
 
-    if (!tests.page) {
-      const errMsg = `Page "${args.page}" could not be found`
-      if (args.json)
-        return console.error(
-          JSON.stringify({ errors: [{ message: errMsg }] }, null, 2)
-        )
-
-      spinner.fail()
-      return new Error(errMsg)
-    }
-
     if (args.json) return console.log(JSON.stringify(tests, null, 2))
     if (args.csv) return console.log(formatCSV(tests))
 
@@ -99,7 +88,7 @@ const main = async args => {
     if (args.json) return console.error(e)
     if (args.csv) return console.error(`Error\n${e}`)
 
-    spinner.fail()
+    spinner.fail(humaniseError(e))
     throw new Error(humaniseError(e))
   }
 }
