@@ -1,5 +1,7 @@
 const gql = require('../utils/api-client')
-const { handleError } = require('../utils/api-error')
+const {
+  handleError
+} = require('../utils/api-error')
 
 const CREATE_MUTATION = `
   mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!]) {
@@ -70,7 +72,29 @@ const GET_BY_UUID = `
   }
 `
 
-const create = async ({ url, location, device, connection, cookies }) => {
+const GET_TEST_ARTIFACT_URLS = `
+  query GetSinglePageTestArtifacts($uuid: String!) {
+    organisation {
+      singlePageTest(uuid: $uuid) {
+        uuid
+
+        har: artifactURL(name: TEST_ARTIFACT_HAR)
+      	lighthouse: artifactURL(name: TEST_ARTIFACT_LIGHTHOUSE)
+      	image: mediaURL(name: TEST_MEDIA_IMAGE)
+      	gif: mediaURL(name:TEST_MEDIA_GIF)
+      	video: mediaURL(name: TEST_MEDIA_VIDEO)
+      }
+    }
+  }
+`
+
+const create = async ({
+  url,
+  location,
+  device,
+  connection,
+  cookies
+}) => {
   try {
     const response = await gql.request(CREATE_MUTATION, {
       url,
@@ -117,9 +141,21 @@ const getTestByUuid = async uuid => {
   }
 }
 
+const fetchArtifacts = async uuid => {
+  try {
+    const response = await gql.request(GET_TEST_ARTIFACT_URLS, {
+      uuid
+    })
+    return response.organisation.singlePageTest
+  } catch (e) {
+    return handleError(e)
+  }
+}
+
 module.exports = {
   create,
   getList,
   getTestByUuid,
-  waitForTest
+  waitForTest,
+  fetchArtifacts
 }
