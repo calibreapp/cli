@@ -3,16 +3,12 @@ const fs = require('fs')
 
 const listr = require('listr')
 
-const {
-  fetchArtifacts
-} = require('../../api/test')
+const { fetchArtifacts } = require('../../api/test')
 
-const {
-  humaniseError
-} = require('../../utils/api-error')
+const { humaniseError } = require('../../utils/api-error')
 
 const download = (url, destination) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     const file = fs.createWriteStream(destination)
     https.get(url, response => {
       response.pipe(file)
@@ -35,27 +31,38 @@ const main = async args => {
       fs.mkdirSync(directory)
     }
 
-    const tasks = new listr([{
-      title: 'Fetching test artifact URLs',
-      task: () => Promise.resolve()
-    }, {
-      title: 'Downloading Screenshot',
-      task: () => download(response.image, `${directory}/image.jpg`)
-    }, {
-      title: 'Downloading GIF',
-      task: () => download(response.gif, `${directory}/render.gif`)
-    }, {
-      title: 'Downloading Video',
-      task: () => download(response.video, `${directory}/render.mp4`)
-    }, {
-      title: 'Downloading HAR',
-      task: () => download(response.har, `${directory}/requests.har`)
-    }, {
-      title: 'Downloading Lighthouse report',
-      task: () => download(response.lighthouse, `${directory}/lighthouse.json`)
-    }], {
-      concurrent: true
-    })
+    const tasks = new listr(
+      [
+        {
+          title: 'Fetching test artifact URLs',
+          task: () => Promise.resolve()
+        },
+        {
+          title: 'Downloading Screenshot',
+          task: () => download(response.image, `${directory}/image.jpg`)
+        },
+        {
+          title: 'Downloading GIF',
+          task: () => download(response.gif, `${directory}/render.gif`)
+        },
+        {
+          title: 'Downloading Video',
+          task: () => download(response.video, `${directory}/render.mp4`)
+        },
+        {
+          title: 'Downloading HAR',
+          task: () => download(response.har, `${directory}/requests.har`)
+        },
+        {
+          title: 'Downloading Lighthouse report',
+          task: () =>
+            download(response.lighthouse, `${directory}/lighthouse.json`)
+        }
+      ],
+      {
+        concurrent: true
+      }
+    )
 
     await tasks.run()
 
