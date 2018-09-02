@@ -1,5 +1,6 @@
 const https = require('https')
 const fs = require('fs')
+const path = require('path')
 
 const listr = require('listr')
 
@@ -25,11 +26,17 @@ const main = async args => {
 
     if (args.json) return console.log(JSON.stringify(response, null, 2))
 
-    const directory = `${process.cwd()}/${args.uuid}`
+    const directories = [process.cwd(), 'test-artifacts', args.uuid]
 
-    if (!fs.existsSync(directory)) {
-      fs.mkdirSync(directory)
-    }
+    directories.reduce((reducePath, dir) => {
+      reducePath = path.join(reducePath, dir)
+      if (!fs.existsSync(reducePath)) {
+        fs.mkdirSync(reducePath)
+      }
+      return reducePath
+    }, '')
+
+    const directory = path.join(...directories)
 
     const tasks = new listr(
       [
@@ -39,24 +46,30 @@ const main = async args => {
         },
         {
           title: 'Downloading Screenshot',
-          task: () => download(response.image, `${directory}/image.jpg`)
+          task: () =>
+            download(response.image, path.join(directory, 'image.jpg'))
         },
         {
           title: 'Downloading GIF',
-          task: () => download(response.gif, `${directory}/render.gif`)
+          task: () => download(response.gif, path.join(directory, 'render.gif'))
         },
         {
           title: 'Downloading Video',
-          task: () => download(response.video, `${directory}/render.mp4`)
+          task: () =>
+            download(response.video, path.join(directory, 'render.mp4'))
         },
         {
           title: 'Downloading HAR',
-          task: () => download(response.har, `${directory}/requests.har`)
+          task: () =>
+            download(response.har, path.join(directory, 'requests.har'))
         },
         {
           title: 'Downloading Lighthouse report',
           task: () =>
-            download(response.lighthouse, `${directory}/lighthouse.json`)
+            download(
+              response.lighthouse,
+              path.join(directory, 'lighthouse.json')
+            )
         }
       ],
       {
@@ -74,7 +87,7 @@ const main = async args => {
 
 module.exports = {
   command: 'download-artifacts <uuid>',
-  describe: 'Downloads the artifacts of a test to ./<uuid>',
+  describe: 'Downloads the artifacts of a test to ./test-artifacts/<uuid>',
   handler: main,
   builder: yargs => {
     yargs.option('json', {
