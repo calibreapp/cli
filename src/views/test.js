@@ -17,8 +17,6 @@ module.exports = test => {
       'time-to-first-byte',
       'page_wait_timing',
       'first-meaningful-paint',
-      'visually_complete_85',
-      'visually_complete',
       'consistently-interactive'
     ]
 
