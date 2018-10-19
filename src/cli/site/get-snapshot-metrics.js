@@ -81,7 +81,13 @@ const main = async args => {
     if (args.csv) return console.log(formatCSV(payload))
 
     spinner.stop()
-    console.log(formatSnapshot(payload.snapshot))
+
+    console.log(
+      formatSnapshot({
+        snapshot: payload.snapshot,
+        testProfiles: payload.testProfiles
+      })
+    )
   } catch (e) {
     if (args.json) return console.error(e)
     spinner.fail()
