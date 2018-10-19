@@ -9,6 +9,8 @@ const SNAPSHOT_METRICS_QUERY = `
     organisation {
       site(slug: $site) {
         snapshot(id: $snapshotId) {
+          iid
+
           tests {
             page {
               name
@@ -16,7 +18,7 @@ const SNAPSHOT_METRICS_QUERY = `
             }
 
             testProfile {
-              id
+              uuid
             }
 
             measurements {
@@ -32,7 +34,7 @@ const SNAPSHOT_METRICS_QUERY = `
         }
 
         testProfiles {
-          id
+          uuid
           name
           device {
             title
