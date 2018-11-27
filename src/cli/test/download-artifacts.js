@@ -1,6 +1,7 @@
 const https = require('https')
 const fs = require('fs')
 const path = require('path')
+const zlib = require('zlib')
 
 const listr = require('listr')
 
@@ -12,10 +13,13 @@ const download = (url, destination) => {
   return new Promise(resolve => {
     const file = fs.createWriteStream(destination)
     https.get(url, response => {
-      response.pipe(file)
-      file.on('finish', () => {
-        file.close(resolve)
-      })
+      if (response.headers['content-encoding'] == 'gzip') {
+        response.pipe(zlib.createGunzip()).pipe(file)
+      } else {
+        response.pipe(file)
+      }
+
+      file.on('finish', () => file.close(resolve))
     })
   })
 }
