@@ -42,6 +42,46 @@ const LIST_QUERY = `
   }
 `
 
+const GET_SNAPSHOT_ARTIFACT_URLS = `
+  query GetSnapshotArtifacts($site: String!, $id: Int!) {
+    organisation {
+      site(slug: $site) {
+        pages {
+          uuid
+          name
+        }
+
+        testProfiles {
+          uuid
+          name
+        }
+
+        snapshot(id: $id) {
+          iid
+
+          tests {
+            status
+
+            har: artifactURL(name: TEST_ARTIFACT_HAR)
+            lighthouse: artifactURL(name: TEST_ARTIFACT_LIGHTHOUSE)
+            image: mediaURL(name: TEST_MEDIA_IMAGE)
+            gif: mediaURL(name:TEST_MEDIA_GIF)
+            video: mediaURL(name: TEST_MEDIA_VIDEO)
+
+            page {
+              uuid
+            }
+
+            testProfile {
+              uuid
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 const create = async ({ site, ref }) => {
   try {
     const response = await gql.request(CREATE_MUTATION, {
@@ -75,8 +115,22 @@ const list = async ({ site }) => {
   }
 }
 
+const fetchArtifacts = async ({ site, id }) => {
+  try {
+    const response = await gql.request(GET_SNAPSHOT_ARTIFACT_URLS, {
+      site,
+      id: Number(id)
+    })
+
+    return response.organisation.site
+  } catch (e) {
+    return handleError(e)
+  }
+}
+
 module.exports = {
   create,
   destroy,
-  list
+  list,
+  fetchArtifacts
 }
