@@ -28,7 +28,7 @@ module.exports = require('yargs')
     '$0 test create https://calibreapp.com --location=Sydney --device=iPhone8 --connection=good3G',
     'Run a test on calibreapp.com from Sydney emulating an iPhone 8 with a 3G connection'
   )
-  .fail((msg, err, yargs) => {
+  .fail((_msg, err, yargs) => {
     console.error(
       chalk.bold.red(err),
       '\n\n',
