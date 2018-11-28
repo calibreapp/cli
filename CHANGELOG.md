@@ -1,3 +1,9 @@
+### 1.2.0 - 2018-11-30
+
+- Added `calibre test download-artifact <uuid>` command.
+- Added `calibre site download-snapshot-artifacts --site=<slug> <id>` command.
+- Changed `calibre site delete-snapshot` to use `id` rather than `iid`.
+
 ### 1.1.1 - 2018-08-22
 
 - Fixed `--csv` output (#26)
