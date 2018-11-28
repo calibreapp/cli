@@ -31,7 +31,7 @@ module.exports = {
   builder: yargs => {
     yargs
       .options({
-        iid: { demandOption: true, describe: 'The iid of the snapshot' },
+        id: { demandOption: true, describe: 'The id of the snapshot' },
         site: {
           demandOption: true,
           describe: 'The identifying slug of a site'
