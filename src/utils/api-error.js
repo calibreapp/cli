@@ -13,6 +13,8 @@ const humaniseError = apiError => {
     return apiError[0].problems[0].explanation
   } else if (apiError[0] && apiError[0].message) {
     return apiError[0].message
+  } else if (apiError.message) {
+    return apiError.message
   } else {
     return `An unknown error occurred ${JSON.stringify(apiError, null, 2)}`
   }
