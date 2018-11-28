@@ -16,8 +16,8 @@ const CREATE_MUTATION = `
 `
 
 const DELETE_MUTATION = `
-  mutation DeleteSnapshot($site:String!, $iid: String!){
-    deleteSnapshot(site: $site, iid: $iid) {
+  mutation DeleteSnapshot($site:String!, $id: String!){
+    deleteSnapshot(site: $site, iid: $id) {
       iid
     }
   }
@@ -94,11 +94,11 @@ const create = async ({ site, ref }) => {
   }
 }
 
-const destroy = async ({ site, iid }) => {
+const destroy = async ({ site, id }) => {
   try {
     const response = await gql.request(DELETE_MUTATION, {
       site,
-      iid: String(iid)
+      id: Number(id)
     })
     return response.deleteSnapshot
   } catch (e) {
