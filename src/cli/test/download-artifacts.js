@@ -49,26 +49,26 @@ const main = async args => {
           task: () => Promise.resolve()
         },
         {
-          title: 'Downloading Screenshot',
+          title: 'Screenshot',
           task: () =>
             download(response.image, path.join(directory, 'image.jpg'))
         },
         {
-          title: 'Downloading GIF',
+          title: 'GIF Render',
           task: () => download(response.gif, path.join(directory, 'render.gif'))
         },
         {
-          title: 'Downloading Video',
+          title: 'MP4 Video Render',
           task: () =>
             download(response.video, path.join(directory, 'render.mp4'))
         },
         {
-          title: 'Downloading HAR',
+          title: 'HAR',
           task: () =>
             download(response.har, path.join(directory, 'requests.har'))
         },
         {
-          title: 'Downloading Lighthouse report',
+          title: 'Lighthouse Report',
           task: () =>
             download(
               response.lighthouse,
