@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --no-deprecation
 
 const updateNotifier = require('update-notifier')
 const chalk = require('chalk')
@@ -21,13 +21,26 @@ module.exports = require('yargs')
     'Commands:': chalk.grey('Commands:\n'),
     'Options:': chalk.grey('Options:\n')
   })
-  .version(() => pkg.version)
+  .version(pkg.version)
   .showHelpOnFail(true)
   .recommendCommands()
   .example(
     '$0 test create https://calibreapp.com --location=Sydney --device=iPhone8 --connection=good3G',
     'Run a test on calibreapp.com from Sydney emulating an iPhone 8 with a 3G connection'
   )
+  .fail((_msg, err, yargs) => {
+    console.error(
+      chalk.bold.red(err),
+      '\n\n',
+      chalk.bold('--- Command documentation\n'),
+      yargs.help(),
+      '\n\n',
+      chalk.bold('--- Stack trace below')
+    )
+
+    process.exitCode = 1
+    if (err) throw err // Throw the trace, likley a unhandled promise error
+  })
   .epilogue(
     `For more information on Calibre, see ${process.env.CALIBRE_HOST}.`
   ).argv
