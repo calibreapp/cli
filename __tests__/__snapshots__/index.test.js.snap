@@ -33,6 +33,7 @@ Object {
   },
   "Test": Object {
     "create": [Function],
+    "fetchArtifacts": [Function],
     "getList": [Function],
     "getTestByUuid": [Function],
     "waitForTest": [Function],
