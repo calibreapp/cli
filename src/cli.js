@@ -21,7 +21,7 @@ module.exports = require('yargs')
     'Commands:': chalk.grey('Commands:\n'),
     'Options:': chalk.grey('Options:\n')
   })
-  .version(() => pkg.version)
+  .version(pkg.version)
   .showHelpOnFail(true)
   .recommendCommands()
   .example(
