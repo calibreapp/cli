@@ -4,7 +4,7 @@
   "engines": {
     "node": "> 8.3.0"
   },
-  "description": "Performance testing",
+  "description": "Calibre - Page speed performance testing with Google Lighthouse",
   "author": "calibreapp.com",
   "main": "index.js",
   "bin": {
