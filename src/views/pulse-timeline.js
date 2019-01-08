@@ -4,7 +4,8 @@ const percentile = require('stats-percentile')
 const { filesize, duration } = require('../utils/formatters')
 
 module.exports = data => {
-  const metrics = data.page.timeseries.series.map(series => {
+  const timeseries = data.page ? data.page.timeseries : data.timeseries
+  const metrics = timeseries.series.map(series => {
     let formatFn
     switch (series.metric.formatter) {
       case 'humanDuration':
@@ -40,6 +41,7 @@ ${series.sets
         const formattedP95 = formatFn(p95)
 
         return `
+${set.page.name}
 ${set.profile.name}
 
   Min: ${formattedMinValue}
@@ -54,9 +56,8 @@ ${set.profile.name}
 
   return `
 ${chalk.bold('Metric history')}
-Page: ${data.page.name} ${chalk.grey(`(${data.page.url})`)}
 
-${data.page.timeseries.length ? 'There is no data for this time period' : ''}
+${timeseries.length ? 'There is no data for this time period' : ''}
 
 ${metrics.join('\n')}
 

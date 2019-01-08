@@ -52,7 +52,80 @@ const SNAPSHOT_METRICS_QUERY = `
   }
 `
 
+const TIMESERIES_FRAGMENT = `
+timeseries(duration_in_days: $durationInDays, metrics: $metrics) {
+  snapshots {
+    id
+    sequenceId: iid
+    createdAt
+  }
+
+  series {
+    metric {
+      name
+      label
+      formatter
+      docsPath
+    }
+
+    sets {
+      page {
+        uuid
+        name
+        url
+      }
+
+      profile {
+        uuid
+        name
+      }
+
+      values {
+        snapshot
+        value
+      }
+    }
+  }
+}`
+
 const PULSE_METRICS_QUERY = `
+  query GetPulseData(
+    $site: String!
+    $durationInDays: Int
+    $metrics: [MetricTag!]
+  ) {
+    organisation {
+      site(slug: $site) {
+        hasCompletedSnapshots
+
+        ${TIMESERIES_FRAGMENT}
+
+        pages {
+          name
+          uuid
+          url
+        }
+
+        testProfiles {
+          name
+          uuid
+          device {
+            title
+          }
+          bandwidth {
+            title
+          }
+          isMobile
+          jsIsDisabled
+          hasDeviceEmulation
+          hasBandwidthEmulation
+        }
+      }
+    }
+  }
+`
+
+const PULSE_PAGE_METRICS_QUERY = `
   query GetPulsePageData(
     $site: String!
     $page: String
@@ -64,42 +137,11 @@ const PULSE_METRICS_QUERY = `
         hasCompletedSnapshots
 
         page(uuid: $page) {
-          name
-          uuid
-          url
-
-          timeseries(duration_in_days: $durationInDays, metrics: $metrics) {
-            snapshots {
-              id
-              sequenceId: iid
-              createdAt
-            }
-
-            series {
-              metric {
-                name
-                label
-                formatter
-                docsPath
-              }
-
-              sets {
-                profile {
-                  id
-                  name
-                }
-
-                values {
-                  snapshot
-                  value
-                }
-              }
-            }
-          }
+          ${TIMESERIES_FRAGMENT}
         }
 
         testProfiles {
-          id
+          uuid
           name
           device {
             title
@@ -130,13 +172,24 @@ const snapshot = async ({ site, snapshotId }) => {
 }
 
 const pulse = async ({ site, page, durationInDays, metrics }) => {
-  try {
-    const response = await gql.request(PULSE_METRICS_QUERY, {
+  let query,
+    attributes = {}
+
+  if (page) {
+    query = PULSE_PAGE_METRICS_QUERY
+    attributes = {
       site,
       page,
       durationInDays,
       metrics
-    })
+    }
+  } else {
+    query = PULSE_METRICS_QUERY
+    attributes = { site, durationInDays, metrics }
+  }
+
+  try {
+    const response = await gql.request(query, attributes)
     return response.organisation.site
   } catch (e) {
     return handleError(e)
