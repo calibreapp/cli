@@ -44,7 +44,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/calibre/cli.git"
+    "url": "https://github.com/calibreapp/cli.git"
   },
   "prettier": {
     "semi": false,
