@@ -96,7 +96,7 @@ const PULSE_METRICS_QUERY = `
   ) {
     organisation {
       site(slug: $site) {
-        hasCompletedSnapshots
+        hasRecentlyCompletedSnapshots
 
         ${TIMESERIES_FRAGMENT}
 
@@ -134,7 +134,7 @@ const PULSE_PAGE_METRICS_QUERY = `
   ) {
     organisation {
       site(slug: $site) {
-        hasCompletedSnapshots
+        hasRecentlyCompletedSnapshots
 
         page(uuid: $page) {
           ${TIMESERIES_FRAGMENT}

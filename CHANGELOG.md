@@ -4,6 +4,7 @@
 - Added `calibre site download-snapshot-artifacts --site=<slug> <id>` command.
 - Changed `calibre site delete-snapshot` to use `id` rather than `iid`.
 - Changed `calibre site get-pulse-metrics` to default to returning data for all pages. (Previously the --page flag was required)
+- Changed internal queries to use `hasRecentlyCompletedSnapshots` rather than `hasCompletedSnapshots`
 
 ### 1.1.1 - 2018-08-22
 
