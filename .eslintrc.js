@@ -2,7 +2,7 @@ module.exports = {
   plugins: ['node'],
   extends: ['eslint:recommended', 'plugin:node/recommended'],
   parserOptions: {
-    ecmaVersion: 2017,
+    ecmaVersion: 2018,
     sourceType: 'script',
     ecmaFeatures: {
       experimentalObjectRestSpread: true
