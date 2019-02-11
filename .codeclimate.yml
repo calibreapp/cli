@@ -2,3 +2,8 @@ plugins:
   eslint:
     enabled: true
     channel: "eslint-4"
+    checks:
+      complexity:
+        enabled: false
+      duplication:
+        enabled: false
