@@ -23,7 +23,7 @@ checks:
   no-process-exit:
     enabled: false
   node/no-unpublished-require:
-    enabled: false<Paste>
+    enabled: false
 plugins: 
   eslint:
     enabled: true
