@@ -20,6 +20,10 @@ checks:
     enabled: false
   identical-code:
     enabled: false
+  no-process-exit:
+    enabled: false
+  node/no-unpublished-require:
+    enabled: false<Paste>
 plugins: 
   eslint:
     enabled: true
