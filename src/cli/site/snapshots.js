@@ -57,7 +57,12 @@ module.exports = {
   handler: main,
   builder: yargs => {
     yargs.options({
-      site: { demandOption: true, describe: 'The identifying slug of a site' },
+      site: {
+        demandOption: true,
+        describe: 'The identifying slug of a site',
+        type: 'string',
+        requiresArg: true
+      },
       json: { describe: 'Return the list of snapshots as JSON' }
     })
   }

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`missing site argument 1`] = `
+"
+
+ Missing required argument: site 
+
+ --- Command documentation
+ cli.js site snapshots [options]
+
+Print a list of snapshots
+
+Options:
+
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+  --site     The identifying slug of a site                  [string] [required]
+  --json     Return the list of snapshots as JSON
+"
+`;
+
+exports[`missing site argument value 1`] = `
+"
+
+ Not enough arguments following: site 
+
+ --- Command documentation
+ cli.js site snapshots [options]
+
+Print a list of snapshots
+
+Options:
+
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+  --site     The identifying slug of a site                  [string] [required]
+  --json     Return the list of snapshots as JSON
+"
+`;

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`calibre --help 1`] = `
+"♤  calibre subcommand [options]
+
+Commands:
+
+  cli.js connection-list  Print a list of Calibre’s prebaked emulated connection
+                          options
+  cli.js device-list      Print a list of Calibre’s test devices
+  cli.js location-list    Print a list of Calibre’s test locations
+  cli.js site <command>   Tasks related to sites
+  cli.js test <command>   Single page tests
+
+Options:
+
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+
+Examples:
+  cli.js test create                        Run a test on calibreapp.com from
+  https://calibreapp.com --location=Sydney  Sydney emulating an iPhone 8 with a
+  --device=iPhone8 --connection=good3G      3G connection
+
+For more information on Calibre, see https://calibreapp.com.
+"
+`;
