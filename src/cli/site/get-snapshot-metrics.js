@@ -89,9 +89,12 @@ const main = async args => {
       })
     )
   } catch (e) {
-    if (args.json) return console.error(e)
-    spinner.fail()
-    throw new Error(e.map(err => err.message).join(', '))
+    if (args.json) {
+      console.error(e)
+    } else {
+      spinner.fail()
+      throw new Error(e.map(err => err.message).join(', '))
+    }
   }
 }
 
