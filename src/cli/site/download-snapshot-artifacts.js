@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')
 const listr = require('listr')
@@ -14,6 +15,14 @@ const main = async args => {
     args.site,
     String(args.id)
   ]
+  const rootPath = path.join(...directories)
+
+  const manifest = {
+    site: args.site,
+    snapshotId: args.id,
+    rootPath,
+    tests: []
+  }
 
   try {
     const response = await fetchArtifacts(args)
@@ -23,7 +32,10 @@ const main = async args => {
 
     let tasks = [
       {
-        title: `Creating directory for artifacts: ${path.join(...directories)}`,
+        title: `Creating directory for artifacts: ${path.relative(
+          process.cwd(),
+          rootPath
+        )}`,
         task: () => {
           mkdirp(directories)
           return Promise.resolve()
@@ -52,6 +64,16 @@ const main = async args => {
           const profileDirectory = mkdirp(
             [pageDirectory].concat([`${profile.name}-${profile.uuid}`])
           )
+          const testManifest = {
+            page: {
+              uuid: page.uuid,
+              name: page.name
+            },
+            profile: {
+              uuid: profile.uuid,
+              name: profile.name
+            }
+          }
 
           tasks.push({
             title: `Downloading artifacts (Page: ${page.name}) (Test Profile: ${
@@ -65,44 +87,62 @@ const main = async args => {
                   skip: () => {
                     if (!test.image) return 'No screenshot available'
                   },
-                  task: () =>
-                    download(
-                      test.image,
-                      path.join(profileDirectory, 'image.jpg')
+                  task: () => {
+                    const screenshotPath = path.join(
+                      profileDirectory,
+                      'image.jpg'
                     )
+                    testManifest.screenshotPath = path.relative(
+                      rootPath,
+                      screenshotPath
+                    )
+                    return download(test.image, screenshotPath)
+                  }
                 },
                 {
                   title: 'GIF Render',
                   skip: () => {
                     if (!test.gif) return 'No GIF Render available'
                   },
-                  task: () =>
-                    download(
-                      test.gif,
-                      path.join(profileDirectory, 'render.gif')
+                  task: () => {
+                    const gifRenderPath = path.join(
+                      profileDirectory,
+                      'render.gif'
                     )
+                    testManifest.gifRenderPath = path.relative(
+                      rootPath,
+                      gifRenderPath
+                    )
+                    return download(test.gif, gifRenderPath)
+                  }
                 },
                 {
                   title: 'MP4 Video Render',
                   skip: () => {
                     if (!test.video) return 'No MP4 Video Render available'
                   },
-                  task: () =>
-                    download(
-                      test.video,
-                      path.join(profileDirectory, 'render.mp4')
+                  task: () => {
+                    const mp4VideoRenderPath = path.join(
+                      profileDirectory,
+                      'render.mp4'
                     )
+                    testManifest.mp4VideoRenderPath = path.relative(
+                      rootPath,
+                      mp4VideoRenderPath
+                    )
+                    return download(test.video, mp4VideoRenderPath)
+                  }
                 },
                 {
                   title: 'HAR',
                   skip: () => {
                     if (!test.har) return 'No HAR available'
                   },
-                  task: () =>
-                    download(
-                      test.har,
-                      path.join(profileDirectory, 'requests.har')
-                    )
+                  task: () => {
+                    const harPath = path.join(profileDirectory, 'requests.har')
+                    testManifest.harPath = path.relative(rootPath, harPath)
+                    return download(test.har, harPath)
+                  }
                 },
                 {
                   title: 'Lighthouse Report',
@@ -110,20 +150,38 @@ const main = async args => {
                     if (!test.lighthouse)
                       return 'No Lighthouse Report available'
                   },
-                  task: () =>
-                    download(
-                      test.lighthouse,
-                      path.join(profileDirectory, 'lighthouse.json')
+                  task: () => {
+                    const lighthousePath = path.join(
+                      profileDirectory,
+                      'lighthouse.json'
                     )
+                    testManifest.lighthousePath = path.relative(
+                      rootPath,
+                      lighthousePath
+                    )
+                    return download(test.lighthouse, lighthousePath)
+                  }
                 }
               ]
 
               return new listr(subtasks, { concurrent: true })
             }
           })
+
+          manifest.tests.push(testManifest)
         }
       }
     }
+
+    tasks.push({
+      title: 'Saving manifest file',
+      task: () => {
+        const manifestPath = path.join(...directories, 'manifest.json')
+        return fs.writeFile(manifestPath, JSON.stringify(manifest), error => {
+          if (error) throw error
+        })
+      }
+    })
 
     await new listr(tasks).run()
   } catch (error) {
