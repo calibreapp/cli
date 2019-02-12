@@ -1,3 +1,7 @@
+os:
+  - osx
+env:
+  - CALIBRE_API_TOKEN=xxx
 language: node_js
 node_js:
   - node
