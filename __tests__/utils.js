@@ -51,7 +51,6 @@ const setupIntegrationServer = (
   const app = express()
   app.use(express.json())
   app.post('/graphql', (req, res) => {
-    const { query } = req.body
     res.status(200).send(mockResponse)
   })
   server = app.listen(5678, () => true)
