@@ -1,39 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`missing site argument 1`] = `
-"
-
- Missing required argument: site 
-
- --- Command documentation
- cli.js site snapshots [options]
-
-Print a list of snapshots
-
-Options:
-
-  --help     Show help                                                 [boolean]
-  --version  Show version number                                       [boolean]
-  --site     The identifying slug of a site                  [string] [required]
-  --json     Return the list of snapshots as JSON
-"
-`;
-
-exports[`missing site argument value 1`] = `
-"
-
- Not enough arguments following: site 
-
- --- Command documentation
- cli.js site snapshots [options]
-
-Print a list of snapshots
-
-Options:
-
-  --help     Show help                                                 [boolean]
-  --version  Show version number                                       [boolean]
-  --site     The identifying slug of a site                  [string] [required]
-  --json     Return the list of snapshots as JSON
+exports[`site snapshots lists all snapshots 1`] = `
+"2 snapshots
+ID | URL                                                | REF | CLIENT | STATUS                       
+14 | http://localhost:3000/calibre/calibre/snapshots/14 |     |        | Completed 12:00am 6-Feb-2019 
+13 | http://localhost:3000/calibre/calibre/snapshots/13 |     |        | Completed 12:22am 30-Jan-2019
 "
 `;

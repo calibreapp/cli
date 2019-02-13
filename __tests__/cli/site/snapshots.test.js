@@ -1,15 +1,19 @@
-const { runCLI } = require('../../utils')
+const {
+  runCLI,
+  setupIntegrationServer,
+  teardownIntegrationServer
+} = require('../../utils')
+const listSnapshots = require('../../fixtures/listSnapshots.json')
 
-test('missing site argument', () => {
-  return runCLI({ args: 'site snapshots', testForError: true }).then(stdout => {
-    expect(stdout).toMatchSnapshot()
-  })
-})
+describe('site snapshots', () => {
+  beforeAll(() => setupIntegrationServer(listSnapshots))
+  afterAll(() => teardownIntegrationServer())
 
-test('missing site argument value', () => {
-  return runCLI({ args: 'site snapshots --site', testForError: true }).then(
-    stdout => {
+  it('lists all snapshots', () => {
+    return runCLI({
+      args: 'site snapshots --site=test'
+    }).then(stdout => {
       expect(stdout).toMatchSnapshot()
-    }
-  )
+    })
+  })
 })

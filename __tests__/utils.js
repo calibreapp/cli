@@ -1,5 +1,7 @@
+const express = require('express')
 const path = require('path')
 const spawn = require('spawn-command')
+
 const CLI_PATH = require.resolve('../src/cli.js')
 
 const runCLI = ({ args = '', testForError = false }, cwd = process.cwd()) => {
@@ -11,7 +13,11 @@ const runCLI = ({ args = '', testForError = false }, cwd = process.cwd()) => {
   return new Promise((resolve, reject) => {
     let stdout = ''
     let stderr = ''
-    const command = `${CLI_PATH} ${args}`
+    const command = `CALIBRE_API_TOKEN=${
+      process.env.CALIBRE_API_TOKEN
+    } CALIBRE_HOST=${
+      process.env.CALIBRE_HOST
+    } TZ=Sydney/Australia ${CLI_PATH} ${args}`
     const child = spawn(command, { cwd })
 
     child.on('error', error => {
@@ -38,4 +44,20 @@ const runCLI = ({ args = '', testForError = false }, cwd = process.cwd()) => {
   })
 }
 
+let server
+const setupIntegrationServer = (
+  mockResponse = { error: 'No mock response', data: null }
+) => {
+  const app = express()
+  app.use(express.json())
+  app.post('/graphql', (req, res) => {
+    const { query } = req.body
+    res.status(200).send(mockResponse)
+  })
+  server = app.listen(5678, () => true)
+}
+const teardownIntegrationServer = () => server.close(() => true)
+
+exports.setupIntegrationServer = setupIntegrationServer
+exports.teardownIntegrationServer = teardownIntegrationServer
 exports.runCLI = runCLI

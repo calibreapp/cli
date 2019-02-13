@@ -1,0 +1,26 @@
+{
+  "data": {
+    "organisation": {
+      "site": {
+        "snapshots": [
+          {
+            "iid": 14,
+            "htmlUrl": "http://localhost:3000/calibre/calibre/snapshots/14",
+            "ref": null,
+            "client": null,
+            "createdAt": "2019-02-06T00:00:00Z",
+            "status": "completed"
+          },
+          {
+            "iid": 13,
+            "htmlUrl": "http://localhost:3000/calibre/calibre/snapshots/13",
+            "ref": null,
+            "client": null,
+            "createdAt": "2019-01-30T00:22:23Z",
+            "status": "completed"
+          }
+        ]
+      }
+    }
+  }
+}

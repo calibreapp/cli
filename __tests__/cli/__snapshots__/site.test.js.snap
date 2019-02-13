@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`missing site argument 1`] = `
+"
+
+ Missing required argument: site 
+
+ --- Command documentation
+ cli.js site pages [options]
+
+Print a list of pages for a given site
+
+Options:
+
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+  --site     The identifying slug of a site                           [required]
+  --json     Return the list of pages as JSON
+"
+`;
+
+exports[`missing site argument value 1`] = `
+"✖ Connecting to Calibre
+
+
+ Error: request to http://localhost:5678/graphql failed, reason: connect ECONNREFUSED 127.0.0.1:5678 
+
+ --- Command documentation
+ cli.js site pages [options]
+
+Print a list of pages for a given site
+
+Options:
+
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+  --site     The identifying slug of a site                           [required]
+  --json     Return the list of pages as JSON
+"
+`;

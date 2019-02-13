@@ -22,6 +22,6 @@ Examples:
   https://calibreapp.com --location=Sydney  Sydney emulating an iPhone 8 with a
   --device=iPhone8 --connection=good3G      3G connection
 
-For more information on Calibre, see https://calibreapp.com.
+For more information on Calibre, see http://localhost:5678.
 "
 `;

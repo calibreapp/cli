@@ -27,6 +27,7 @@
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-plugin-node": "^6.0.1",
+    "express": "^4.16.4",
     "jest": "^22.4.3",
     "pkg": "^4.3.3",
     "spawn-command": "0.0.2-1"
