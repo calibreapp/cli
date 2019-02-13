@@ -14,16 +14,15 @@ Options:
 
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-  --site     The identifying slug of a site                           [required]
-  --json     Return the list of pages as JSON
+  --site     The identifying slug of a site                  [string] [required]
+  --json     Return the output in JSON format
 "
 `;
 
 exports[`missing site argument value 1`] = `
-"✖ Connecting to Calibre
+"
 
-
- Error: request to http://localhost:5678/graphql failed, reason: connect ECONNREFUSED 127.0.0.1:5678 
+ Not enough arguments following: site 
 
  --- Command documentation
  cli.js site pages [options]
@@ -34,7 +33,7 @@ Options:
 
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-  --site     The identifying slug of a site                           [required]
-  --json     Return the list of pages as JSON
+  --site     The identifying slug of a site                  [string] [required]
+  --json     Return the output in JSON format
 "
 `;

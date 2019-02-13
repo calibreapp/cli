@@ -4,6 +4,7 @@ const json2csv = require('json2csv')
 const { humaniseError } = require('../../utils/api-error')
 const { pulse } = require('../../api/snapshot-metrics')
 const formatPulseTimeline = require('../../views/pulse-timeline')
+const { options } = require('../../utils/cli')
 
 const formatCSV = payload => {
   let data = []
@@ -101,10 +102,7 @@ module.exports = {
   describe: 'Get a recent timeline of metrics for a given page',
   builder: yargs => {
     yargs.options({
-      site: {
-        demandOption: true,
-        describe: 'The identifying slug of a site'
-      },
+      site: options.site,
       page: {
         describe: 'The identifying uuid of a page'
       },
@@ -113,8 +111,8 @@ module.exports = {
         describe:
           'A list of metrics to return. eg: --metrics=first-meaningful-paint first-interactive or use multiple --metrics flags for each metric'
       },
-      json: { describe: 'Return pulse data as JSON' },
-      csv: { describe: 'Return pulse data as CSV' },
+      json: options.json,
+      csv: options.csv,
       '30-day': {
         describe:
           'Get the last 30 days of metrics (without this flag, the default is 7 days)'

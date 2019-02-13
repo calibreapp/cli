@@ -20,8 +20,8 @@ Options:
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
   --id       The id of the snapshot                                   [required]
-  --site     The identifying slug of a site                           [required]
+  --site     The identifying slug of a site                  [string] [required]
   --confirm  Confirm the deletion
-  --json     Return the snapshot attributes as JSON
+  --json     Return the output in JSON format
 "
 `;

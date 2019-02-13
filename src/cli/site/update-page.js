@@ -3,6 +3,7 @@ const ora = require('ora')
 
 const { update } = require('../../api/page')
 const { humaniseError } = require('../../utils/api-error')
+const { options } = require('../../utils/cli')
 
 const main = async function(args) {
   let spinner
@@ -36,11 +37,8 @@ module.exports = {
         uuid: { demandOption: true, describe: 'The UUID of the page' },
         name: { describe: 'The name of the page' },
         url: { describe: 'The URL of the page' },
-        site: {
-          demandOption: true,
-          describe: 'The identifying slug of a site'
-        },
-        json: { describe: 'Return the page attributes as JSON' }
+        site: options.site,
+        json: options.json
       })
       .check(({ url }) => {
         if (url) {

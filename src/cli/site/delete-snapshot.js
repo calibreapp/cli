@@ -2,6 +2,7 @@ const ora = require('ora')
 
 const { destroy } = require('../../api/snapshot')
 const { humaniseError } = require('../../utils/api-error')
+const { options } = require('../../utils/cli')
 
 const main = async function(args) {
   let spinner
@@ -32,14 +33,11 @@ module.exports = {
     yargs
       .options({
         id: { demandOption: true, describe: 'The id of the snapshot' },
-        site: {
-          demandOption: true,
-          describe: 'The identifying slug of a site'
-        },
+        site: options.site,
         confirm: {
           describe: 'Confirm the deletion'
         },
-        json: { describe: 'Return the snapshot attributes as JSON' }
+        json: options.json
       })
       .check(({ confirm }) => {
         if (process.stdout.isTTY && !confirm)
