@@ -4,6 +4,7 @@ const { CookieMap } = require('cookiefile')
 const formatProfile = require('../../views/test-profile')
 const { update } = require('../../api/test-profile')
 const { humaniseError } = require('../../utils/api-error')
+const { options } = require('../../utils/cli')
 
 const main = async function(args) {
   let spinner
@@ -59,11 +60,8 @@ module.exports = {
         connection: {
           describe: 'Sets the emulated connection speed this profile'
         },
-        site: {
-          demandOption: true,
-          describe: 'The identifying slug of a site'
-        },
-        json: { describe: 'Return the test profile attributes as JSON' },
+        site: options.site,
+        json: options.json,
         disableJavascript: {
           type: 'boolean',
           describe: 'Disable JavaScript'

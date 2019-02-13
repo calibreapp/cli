@@ -7,6 +7,7 @@ const download = require('../../utils/download')
 const mkdirp = require('../../utils/mkdirp')
 const { fetchArtifacts } = require('../../api/snapshot')
 const { humaniseError } = require('../../utils/api-error')
+const { options } = require('../../utils/cli')
 
 const main = async args => {
   const directories = [
@@ -196,11 +197,8 @@ module.exports = {
   builder: yargs => {
     yargs.options({
       id: { demandOption: true, describe: 'The id of the snapshot' },
-      site: {
-        demandOption: true,
-        describe: 'The identifying slug of a site'
-      },
-      json: { describe: 'Return the snapshot attributes as JSON' }
+      site: options.site,
+      json: options.json
     })
   },
   handler: main

@@ -2,6 +2,7 @@ const ora = require('ora')
 
 const { create } = require('../../api/snapshot')
 const { humaniseError } = require('../../utils/api-error')
+const { options } = require('../../utils/cli')
 
 const main = async function(args) {
   let spinner
@@ -31,8 +32,8 @@ module.exports = {
   builder: yargs => {
     yargs.options({
       ref: { describe: 'Sets a reference to the snapshot' },
-      site: { demandOption: true, describe: 'The identifying slug of a site' },
-      json: { describe: 'Return the snapshot attributes as JSON' }
+      site: options.site,
+      json: options.json
     })
   },
   handler: main
