@@ -9,4 +9,6 @@ const query = async ( {query, ...variables} ) => {
   }
 }
 
-module.exports = query
+module.exports = {
+ query
+}

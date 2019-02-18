@@ -13,6 +13,7 @@ const Page = require('./src/api/page')
 const Connection = require('./src/api/connection')
 const Device = require('./src/api/device')
 const SnapshotMetrics = require('./src/api/snapshot-metrics')
+const GraphQL = require('./src/api/graphql')
 
 module.exports = {
   Site,
@@ -23,5 +24,6 @@ module.exports = {
   Page,
   Connection,
   Device,
-  SnapshotMetrics
+  SnapshotMetrics,
+  GraphQL
 }

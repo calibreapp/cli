@@ -11,6 +11,9 @@ Object {
   "Device": Object {
     "list": [Function],
   },
+  "GraphQL": Object {
+    "query": [Function],
+  },
   "Page": Object {
     "create": [Function],
     "destroy": [Function],
