@@ -1,5 +1,4 @@
-const gql = require('../utils/api-client')
-const { handleError } = require('../utils/api-error')
+const { request } = require('./graphql')
 
 const LIST_QUERY = `
   query {
@@ -16,12 +15,8 @@ const LIST_QUERY = `
 `
 
 const list = async () => {
-  try {
-    const response = await gql.request(LIST_QUERY)
-    return response.locations
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: LIST_QUERY })
+  return response.locations
 }
 
 module.exports = {

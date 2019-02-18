@@ -12,7 +12,7 @@ Object {
     "list": [Function],
   },
   "GraphQL": Object {
-    "query": [Function],
+    "request": [Function],
   },
   "Page": Object {
     "create": [Function],

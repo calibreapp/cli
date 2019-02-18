@@ -1,5 +1,4 @@
-const gql = require('../utils/api-client')
-const { handleError } = require('../utils/api-error')
+const { request } = require('./graphql')
 
 const CREATE_MUTATION = `
   mutation CreatePage($site: String!, $attributes: PageInput!){
@@ -48,54 +47,40 @@ const UPDATE_MUTATION = `
 `
 
 const create = async ({ site, name, url }) => {
-  try {
-    const response = await gql.request(CREATE_MUTATION, {
-      site,
-      attributes: {
-        name,
-        url
-      }
-    })
+  const response = await request({
+    query: CREATE_MUTATION,
+    site,
+    attributes: {
+      name,
+      url
+    }
+  })
 
-    return response.createPage
-  } catch (e) {
-    return handleError(e)
-  }
+  return response.createPage
 }
 
 const list = async ({ site }) => {
-  try {
-    const response = await gql.request(LIST_QUERY, { site })
-    return response.organisation.site.pages
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: LIST_QUERY, site })
+  return response.organisation.site.pages
 }
 
 const destroy = async ({ site, uuid }) => {
-  try {
-    const response = await gql.request(DELETE_MUTATION, { site, uuid })
-    return response.deletePage
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: DELETE_MUTATION, site, uuid })
+  return response.deletePage
 }
 
 const update = async ({ site, uuid, name, url }) => {
-  try {
-    const response = await gql.request(UPDATE_MUTATION, {
-      site,
-      uuid,
-      attributes: {
-        name,
-        url
-      }
-    })
+  const response = await request({
+    query: UPDATE_MUTATION,
+    site,
+    uuid,
+    attributes: {
+      name,
+      url
+    }
+  })
 
-    return response.updatePage
-  } catch (e) {
-    return handleError(e)
-  }
+  return response.updatePage
 }
 
 module.exports = {

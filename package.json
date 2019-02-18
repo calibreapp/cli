@@ -30,6 +30,7 @@
     "express": "^4.16.4",
     "jest": "^22.4.3",
     "pkg": "^4.3.3",
+    "prettier": "^1.16.4",
     "spawn-command": "0.0.2-1"
   },
   "scripts": {

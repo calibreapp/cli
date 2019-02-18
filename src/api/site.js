@@ -1,5 +1,4 @@
-const gql = require('../utils/api-client')
-const { handleError } = require('../utils/api-error')
+const { request } = require('./graphql')
 
 const CREATE_MUTATION = `
   mutation CreateSite($attributes: SiteInput!){
@@ -42,38 +41,27 @@ const DELETE_MUTATION = `
 `
 
 const create = async ({ name, location, pages, testProfiles }) => {
-  try {
-    const response = await gql.request(CREATE_MUTATION, {
-      attributes: {
-        name,
-        location,
-        pages,
-        testProfiles
-      }
-    })
+  const response = await request({
+    query: CREATE_MUTATION,
+    attributes: {
+      name,
+      location,
+      pages,
+      testProfiles
+    }
+  })
 
-    return response.createSite
-  } catch (e) {
-    return handleError(e)
-  }
+  return response.createSite
 }
 
 const list = async () => {
-  try {
-    const response = await gql.request(LIST_QUERY)
-    return response.organisation.sites
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: LIST_QUERY })
+  return response.organisation.sites
 }
 
 const destroy = async ({ slug }) => {
-  try {
-    const response = await gql.request(DELETE_MUTATION, { slug })
-    return response.deleteSite
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: DELETE_MUTATION, slug })
+  return response.deleteSite
 }
 
 module.exports = {

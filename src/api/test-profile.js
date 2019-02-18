@@ -1,5 +1,4 @@
-const gql = require('../utils/api-client')
-const { handleError } = require('../utils/api-error')
+const { request } = require('./graphql')
 
 const CREATE_MUTATION = `
   mutation CreateTestProfile($site: String!, $attributes: TestProfileInput!) {
@@ -96,31 +95,24 @@ const create = async ({
   cookies,
   jsIsDisabled
 }) => {
-  try {
-    const response = await gql.request(CREATE_MUTATION, {
-      site,
-      attributes: {
-        name,
-        device,
-        connection,
-        cookies,
-        jsIsDisabled
-      }
-    })
+  const response = await request({
+    query: CREATE_MUTATION,
+    site,
+    attributes: {
+      name,
+      device,
+      connection,
+      cookies,
+      jsIsDisabled
+    }
+  })
 
-    return response.createTestProfile
-  } catch (e) {
-    return handleError(e)
-  }
+  return response.createTestProfile
 }
 
 const list = async ({ site }) => {
-  try {
-    const response = await gql.request(LIST_QUERY, { site })
-    return response.organisation.site.testProfiles
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: LIST_QUERY, site })
+  return response.organisation.site.testProfiles
 }
 
 const update = async ({
@@ -132,32 +124,24 @@ const update = async ({
   cookies,
   jsIsDisabled
 }) => {
-  try {
-    const response = await gql.request(UPDATE_MUTATION, {
-      uuid,
-      site,
-      attributes: {
-        name,
-        device,
-        connection,
-        cookies,
-        jsIsDisabled
-      }
-    })
-
-    return response.updateTestProfile
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({
+    query: UPDATE_MUTATION,
+    uuid,
+    site,
+    attributes: {
+      name,
+      device,
+      connection,
+      cookies,
+      jsIsDisabled
+    }
+  })
+  return response.updateTestProfile
 }
 
 const destroy = async ({ site, uuid }) => {
-  try {
-    const response = await gql.request(DELETE_MUTATION, { site, uuid })
-    return response.deleteTestProfile
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: DELETE_MUTATION, site, uuid })
+  return response.deleteTestProfile
 }
 
 module.exports = {

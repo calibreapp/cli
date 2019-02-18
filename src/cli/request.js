@@ -1,6 +1,6 @@
 const ora = require('ora')
 
-const { query } = require('../api/graphql')
+const { request } = require('../api/graphql')
 const { humaniseError } = require('../utils/api-error')
 
 const main = async args => {
@@ -11,7 +11,7 @@ const main = async args => {
 
   let result
   try {
-    result = await query(args)
+    result = await request(args)
   } catch (e) {
     spinner.fail()
     throw new Error(humaniseError(e))
@@ -22,8 +22,8 @@ const main = async args => {
 }
 
 module.exports = {
-  command: 'query',
-  describe: 'Query the Calibre GraphQL API',
+  command: 'request',
+  describe: 'Make a request to the Calibre GraphQL API',
   handler: main,
   builder: yargs => {
     yargs.options({
@@ -34,9 +34,11 @@ module.exports = {
         requiresArg: true
       },
       variables: {
-        describe: 'Pass query variables as named arguments',
-      },
+        describe: 'Pass query variables as named arguments'
+      }
     })
-    yargs.example('calibre query --query=\'query GetSite($slug: String!) {organisation{site(slug: $slug){slug}}}\' --slug=calibre')
+    yargs.example(
+      "calibre request --query='query GetSite($slug: String!) {organisation{site(slug: $slug){slug}}}' --slug=calibre"
+    )
   }
 }

@@ -1,7 +1,4 @@
-const gql = require('../utils/api-client')
-const {
-  handleError
-} = require('../utils/api-error')
+const { request } = require('./graphql')
 
 const CREATE_MUTATION = `
   mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!]) {
@@ -88,26 +85,16 @@ const GET_TEST_ARTIFACT_URLS = `
   }
 `
 
-const create = async ({
-  url,
-  location,
-  device,
-  connection,
-  cookies
-}) => {
-  try {
-    const response = await gql.request(CREATE_MUTATION, {
-      url,
-      location,
-      device,
-      connection,
-      cookies
-    })
-
-    return response.createTest
-  } catch (e) {
-    return handleError(e)
-  }
+const create = async ({ url, location, device, connection, cookies }) => {
+  const response = await request({
+    query: CREATE_MUTATION,
+    url,
+    location,
+    device,
+    connection,
+    cookies
+  })
+  return response.createTest
 }
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time))
@@ -122,34 +109,18 @@ const waitForTest = async uuid => {
 }
 
 const getList = async () => {
-  try {
-    const response = await gql.request(LIST_QUERY)
-    return response.organisation.singlePageTests
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: LIST_QUERY })
+  return response.organisation.singlePageTests
 }
 
 const getTestByUuid = async uuid => {
-  try {
-    const response = await gql.request(GET_BY_UUID, {
-      uuid
-    })
-    return response.organisation.singlePageTest
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: GET_BY_UUID, uuid })
+  return response.organisation.singlePageTest
 }
 
 const fetchArtifacts = async uuid => {
-  try {
-    const response = await gql.request(GET_TEST_ARTIFACT_URLS, {
-      uuid
-    })
-    return response.organisation.singlePageTest
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: GET_TEST_ARTIFACT_URLS, uuid })
+  return response.organisation.singlePageTest
 }
 
 module.exports = {

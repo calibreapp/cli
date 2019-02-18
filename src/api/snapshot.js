@@ -1,5 +1,4 @@
-const gql = require('../utils/api-client')
-const { handleError } = require('../utils/api-error')
+const { request } = require('./graphql')
 
 const CREATE_MUTATION = `
   mutation CreateSnapshot(
@@ -83,49 +82,36 @@ const GET_SNAPSHOT_ARTIFACT_URLS = `
 `
 
 const create = async ({ site, ref }) => {
-  try {
-    const response = await gql.request(CREATE_MUTATION, {
-      site,
-      ref: new String(ref)
-    })
-    return response.createSnapshot
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({
+    query: CREATE_MUTATION,
+    site,
+    ref: new String(ref)
+  })
+  return response.createSnapshot
 }
 
 const destroy = async ({ site, id }) => {
-  try {
-    const response = await gql.request(DELETE_MUTATION, {
-      site,
-      id: Number(id)
-    })
-    return response.deleteSnapshot
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({
+    query: DELETE_MUTATION,
+    site,
+    id: Number(id)
+  })
+  return response.deleteSnapshot
 }
 
 const list = async ({ site }) => {
-  try {
-    const response = await gql.request(LIST_QUERY, { site })
-    return response.organisation.site.snapshots
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: LIST_QUERY, site })
+  return response.organisation.site.snapshots
 }
 
 const fetchArtifacts = async ({ site, id }) => {
-  try {
-    const response = await gql.request(GET_SNAPSHOT_ARTIFACT_URLS, {
-      site,
-      id: Number(id)
-    })
+  const response = await request({
+    query: GET_SNAPSHOT_ARTIFACT_URLS,
+    site,
+    id: Number(id)
+  })
 
-    return response.organisation.site
-  } catch (e) {
-    return handleError(e)
-  }
+  return response.organisation.site
 }
 
 module.exports = {
