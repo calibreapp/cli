@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`query missing query argument 1`] = `
+"
+
+ Missing required argument: query 
+
+ --- Command documentation
+ cli.js query
+
+Query the Calibre GraphQL API
+
+Options:
+
+  --help       Show help                                               [boolean]
+  --version    Show version number                                     [boolean]
+  --query      GraphQL query to execute                      [string] [required]
+  --variables  Pass query variables as named arguments
+
+Examples:
+  calibre query --query='query GetSite($slug: String!)
+  {organisation{site(slug: $slug){slug}}}' --slug=calibre
+"
+`;
+
+exports[`query returns response 1`] = `
+"{ organisation: { site: { slug: 'calibre' } } }
+"
+`;
