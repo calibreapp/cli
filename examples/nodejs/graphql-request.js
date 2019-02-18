@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { GraphQL } = require('../../index.js')
+const { GraphQL } = require('calibre')
 
 const site = async () => {
   const query = `
@@ -13,7 +13,7 @@ const site = async () => {
       }
     }
   `
-  const slug = 'cal'
+  const slug = 'calibre'
 
   try {
     const result = await GraphQL.request({ query, slug })
