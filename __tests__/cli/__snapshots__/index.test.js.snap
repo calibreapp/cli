@@ -9,6 +9,7 @@ Commands:
                           options
   cli.js device-list      Print a list of Calibre’s test devices
   cli.js location-list    Print a list of Calibre’s test locations
+  cli.js request          Make a request to the Calibre GraphQL API
   cli.js site <command>   Tasks related to sites
   cli.js test <command>   Single page tests
 

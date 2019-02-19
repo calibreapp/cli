@@ -1,5 +1,4 @@
-const gql = require('../utils/api-client')
-const { handleError } = require('../utils/api-error')
+const { request } = require('./graphql')
 
 const SNAPSHOT_METRICS_QUERY = `
   query GetSnapshotMetrics(
@@ -160,15 +159,12 @@ const PULSE_PAGE_METRICS_QUERY = `
 `
 
 const snapshot = async ({ site, snapshotId }) => {
-  try {
-    const response = await gql.request(SNAPSHOT_METRICS_QUERY, {
-      site,
-      snapshotId
-    })
-    return response.organisation.site
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({
+    query: SNAPSHOT_METRICS_QUERY,
+    site,
+    snapshotId
+  })
+  return response.organisation.site
 }
 
 const pulse = async ({ site, page, durationInDays, metrics }) => {
@@ -188,12 +184,8 @@ const pulse = async ({ site, page, durationInDays, metrics }) => {
     attributes = { site, durationInDays, metrics }
   }
 
-  try {
-    const response = await gql.request(query, attributes)
-    return response.organisation.site
-  } catch (e) {
-    return handleError(e)
-  }
+  const response = await request({ query: query, ...attributes })
+  return response.organisation.site
 }
 
 module.exports = {
