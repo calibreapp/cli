@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`site delete-snapshot deletes snapshot 1`] = `
+"✔ Snapshot deleted: 14
+"
+`;
+
+exports[`site delete-snapshot requires id 1`] = `
+"
+
+ Missing required argument: id 
+
+ --- Command documentation
+ cli.js site delete-snapshot [options]
+
+Deletes a snapshot from a site
+
+Options:
+
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+  --id       The id of the snapshot                                   [required]
+  --site     The identifying slug of a site                  [string] [required]
+  --confirm  Confirm the deletion
+  --json     Return the output in JSON format
+"
+`;

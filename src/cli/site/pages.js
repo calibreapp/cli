@@ -4,6 +4,7 @@ const columnify = require('columnify')
 
 const { list } = require('../../api/page')
 const { humaniseError } = require('../../utils/api-error')
+const { options } = require('../../utils/cli')
 
 const main = async args => {
   let index
@@ -48,8 +49,8 @@ module.exports = {
   handler: main,
   builder: yargs => {
     yargs.options({
-      site: { demandOption: true, describe: 'The identifying slug of a site' },
-      json: { describe: 'Return the list of pages as JSON' }
+      site: options.site,
+      json: options.json
     })
   }
 }

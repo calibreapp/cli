@@ -2,6 +2,7 @@ const ora = require('ora')
 const json2csv = require('json2csv')
 const { snapshot } = require('../../api/snapshot-metrics')
 const formatSnapshot = require('../../views/snapshot-metrics')
+const { options } = require('../../utils/cli')
 
 const formatCSV = payload => {
   let data = []
@@ -89,9 +90,12 @@ const main = async args => {
       })
     )
   } catch (e) {
-    if (args.json) return console.error(e)
-    spinner.fail()
-    throw new Error(e.map(err => err.message).join(', '))
+    if (args.json) {
+      console.error(e)
+    } else {
+      spinner.fail()
+      throw new Error(e.map(err => err.message).join(', '))
+    }
   }
 }
 
@@ -100,13 +104,13 @@ module.exports = {
   describe: 'Get the metrics of a given snapshot',
   builder: yargs => {
     yargs.options({
-      site: { demandOption: true, describe: 'The identifying slug of a site' },
+      site: options.site,
       snapshot: {
         demandOption: true,
         describe: 'The identifying id of a snapshot'
       },
-      json: { describe: 'Return the snapshot metrics as JSON' },
-      csv: { describe: 'Return the snapshot metrics as CSV' }
+      json: options.json,
+      csv: options.csv
     })
   },
   handler: main

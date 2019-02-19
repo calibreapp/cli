@@ -3,6 +3,7 @@ const ora = require('ora')
 
 const { create } = require('../../api/page')
 const { humaniseError } = require('../../utils/api-error')
+const { options } = require('../../utils/cli')
 
 const main = async function(args) {
   let spinner
@@ -34,11 +35,8 @@ module.exports = {
     yargs
       .options({
         url: { demandOption: true, describe: 'The name of the page' },
-        site: {
-          demandOption: true,
-          describe: 'The identifying slug of a site'
-        },
-        json: { describe: 'Return the page attributes as JSON' }
+        site: options.site,
+        json: options.json
       })
       .check(({ url }) => {
         if (!url.length) return new Error('Please provide a URL')

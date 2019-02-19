@@ -5,6 +5,7 @@ const dateFormat = require('date-fns/format')
 
 const { list } = require('../../api/snapshot')
 const { humaniseError } = require('../../utils/api-error')
+const { options } = require('../../utils/cli')
 
 const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
@@ -57,8 +58,8 @@ module.exports = {
   handler: main,
   builder: yargs => {
     yargs.options({
-      site: { demandOption: true, describe: 'The identifying slug of a site' },
-      json: { describe: 'Return the list of snapshots as JSON' }
+      site: options.site,
+      json: options.json
     })
   }
 }

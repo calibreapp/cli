@@ -1,10 +1,10 @@
 {
   "name": "calibre",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "engines": {
-    "node": "> 8.3.0"
+    "node": "> 10.11.0"
   },
-  "description": "Performance testing",
+  "description": "Calibre - Page speed performance testing with Google Lighthouse",
   "author": "calibreapp.com",
   "main": "index.js",
   "bin": {
@@ -27,8 +27,11 @@
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-plugin-node": "^6.0.1",
+    "express": "^4.16.4",
     "jest": "^22.4.3",
-    "pkg": "^4.3.3"
+    "pkg": "^4.3.3",
+    "prettier": "^1.16.4",
+    "spawn-command": "0.0.2-1"
   },
   "scripts": {
     "ci": "CI=true jest --coverage --runInBand",

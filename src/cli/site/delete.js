@@ -2,6 +2,7 @@ const ora = require('ora')
 
 const { destroy } = require('../../api/site')
 const { humaniseError } = require('../../utils/api-error')
+const { options } = require('../../utils/cli')
 
 const main = async function(args) {
   let spinner
@@ -34,7 +35,7 @@ module.exports = {
         confirm: {
           describe: 'Confirm the deletion'
         },
-        json: { describe: 'Return the page attributes as JSON' }
+        json: options.json
       })
       .check(({ confirm }) => {
         if (process.stdout.isTTY && !confirm)

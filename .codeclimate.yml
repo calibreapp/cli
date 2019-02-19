@@ -1,0 +1,31 @@
+version: "2"
+checks:
+  argument-count:
+    enabled: true
+  complex-logic:
+    enabled: false
+  file-lines:
+    enabled: false
+  method-complexity:
+    enabled: false
+  method-count:
+    enabled: false
+  method-lines:
+    enabled: false
+  nested-control-flow:
+    enabled: false
+  return-statements:
+    enabled: true
+  similar-code:
+    enabled: false
+  identical-code:
+    enabled: false
+plugins: 
+  eslint:
+    enabled: true
+    channel: "eslint-4"
+    checks:
+      no-process-exit:
+        enabled: false
+      node/no-unpublished-require:
+        enabled: false

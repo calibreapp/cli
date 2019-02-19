@@ -1,7 +1,5 @@
 module.exports = {
-  testMatch: ['**/__tests__/**/*.js?(x)'],
+  testMatch: ['**/__tests__/**/*.test.js?(x)'],
   testEnvironment: 'node',
-  setupFiles: [
-    './.jest-setup.js',
-  ],
+  setupFiles: ['./.jest-setup.js']
 }

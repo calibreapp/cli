@@ -11,6 +11,9 @@ Object {
   "Device": Object {
     "list": [Function],
   },
+  "GraphQL": Object {
+    "request": [Function],
+  },
   "Page": Object {
     "create": [Function],
     "destroy": [Function],
@@ -25,6 +28,7 @@ Object {
   "Snapshot": Object {
     "create": [Function],
     "destroy": [Function],
+    "fetchArtifacts": [Function],
     "list": [Function],
   },
   "SnapshotMetrics": Object {
