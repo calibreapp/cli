@@ -29,7 +29,7 @@
     "eslint-plugin-node": "^6.0.1",
     "express": "^4.16.4",
     "jest": "^22.4.3",
-    "pkg": "^4.3.3",
+    "pkg": "^4.3.7",
     "prettier": "^1.16.4",
     "spawn-command": "0.0.2-1"
   },
@@ -58,9 +58,9 @@
       "src/**/*.js"
     ],
     "targets": [
-      "node8-linux-x64",
-      "node8-macos-x64",
-      "node8-win-x64"
+      "node10-linux-x64",
+      "node10-macos-x64",
+      "node10-win-x64"
     ]
   }
 }
