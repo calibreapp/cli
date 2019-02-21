@@ -1,3 +1,8 @@
+### 1.2.1 - 2019-02-21
+- Removed `await-for-of` to continue support for node 8.
+- Changed `download-artifact` commands to output relative directory of stored
+  artifacts.
+
 ### 1.2.0 - 2019-02-19
 
 - Added `calibre test download-artifact <uuid>` command.
