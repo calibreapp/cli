@@ -184,7 +184,9 @@ const main = async args => {
       }
     })
 
-    return new listr(tasks).run()
+    await new listr(tasks).run()
+
+    console.log(`Saved artifacts to ${path.relative(process.cwd(), rootPath)}`)
   } catch (error) {
     throw new Error(humaniseError(error))
   }
