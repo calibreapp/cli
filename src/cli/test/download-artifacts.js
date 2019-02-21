@@ -57,7 +57,7 @@ const main = async args => {
 
     await tasks.run()
 
-    console.log('Saved artifacts to', directory)
+    console.log(`Saved artifacts to ${path.relative(process.cwd(), directory)}`)
   } catch (e) {
     throw new Error(humaniseError(e))
   }

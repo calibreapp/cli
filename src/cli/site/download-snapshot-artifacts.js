@@ -50,12 +50,12 @@ const main = async args => {
       }
     ]
 
-    for await (const page of response.pages) {
+    for (const page of response.pages) {
       const pageDirectory = mkdirp(
         directories.concat([`${page.name}-${page.uuid}`])
       )
 
-      for await (const profile of response.testProfiles) {
+      for (const profile of response.testProfiles) {
         const test = response.snapshot.tests.find(
           test =>
             test.page.uuid == page.uuid && test.testProfile.uuid == profile.uuid
@@ -185,6 +185,8 @@ const main = async args => {
     })
 
     await new listr(tasks).run()
+
+    console.log(`Saved artifacts to ${path.relative(process.cwd(), rootPath)}`)
   } catch (error) {
     throw new Error(humaniseError(error))
   }
