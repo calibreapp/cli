@@ -1,4 +1,4 @@
-#!/usr/bin/env node --no-deprecation
+#!/usr/bin/env node
 
 const updateNotifier = require('update-notifier')
 const chalk = require('chalk')
