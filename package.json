@@ -38,7 +38,12 @@
     "test": "jest",
     "lint": "eslint ."
   },
-  "keywords": ["performance", "testing", "test", "lighthouse"],
+  "keywords": [
+    "performance",
+    "testing",
+    "test",
+    "lighthouse"
+  ],
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -49,7 +54,13 @@
     "singleQuote": true
   },
   "pkg": {
-    "scripts": ["src/**/*.js"],
-    "targets": ["node10-linux-x64", "node10-macos-x64", "node10-win-x64"]
+    "scripts": [
+      "src/**/*.js"
+    ],
+    "targets": [
+      "node10-linux-x64",
+      "node10-macos-x64",
+      "node10-win-x64"
+    ]
   }
 }
