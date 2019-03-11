@@ -23,8 +23,8 @@ const formatCSV = payload => {
         SnapshotSequenceId: payload.snapshot.sequenceId,
         TestProfileId: testProfile.id,
         TestProfileName: testProfile.name,
-        DeviceName: testProfile.device.title,
-        BandwidthName: testProfile.bandwidth.title,
+        DeviceName: testProfile.device && testProfile.device.title,
+        BandwidthName: testProfile.bandwidth && testProfile.bandwidth.title,
         isMobile: testProfile.isMobile,
         hasDeviceEmulation: testProfile.hasDeviceEmulation,
         hasBandwidthEmulation: testProfile.hasBandwidthEmulation
