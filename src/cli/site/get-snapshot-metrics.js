@@ -90,7 +90,7 @@ const main = async args => {
       })
     )
   } catch (e) {
-    if (args.json) {
+    if (args.json || args.csv) {
       console.error(e)
     } else {
       spinner.fail()
