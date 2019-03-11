@@ -23,8 +23,8 @@ const formatCSV = payload => {
         SnapshotSequenceId: payload.snapshot.sequenceId,
         TestProfileId: testProfile.id,
         TestProfileName: testProfile.name,
-        DeviceName: testProfile.device.title,
-        BandwidthName: testProfile.bandwidth.title,
+        DeviceName: testProfile.device && testProfile.device.title,
+        BandwidthName: testProfile.bandwidth && testProfile.bandwidth.title,
         isMobile: testProfile.isMobile,
         hasDeviceEmulation: testProfile.hasDeviceEmulation,
         hasBandwidthEmulation: testProfile.hasBandwidthEmulation
@@ -90,7 +90,7 @@ const main = async args => {
       })
     )
   } catch (e) {
-    if (args.json) {
+    if (args.json || args.csv) {
       console.error(e)
     } else {
       spinner.fail()
