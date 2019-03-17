@@ -24,6 +24,12 @@ Examples:
 `;
 
 exports[`request returns response 1`] = `
-"{ organisation: { site: { slug: 'calibre' } } }
+"{
+  \\"organisation\\": {
+    \\"site\\": {
+      \\"slug\\": \\"calibre\\"
+    }
+  }
+}
 "
 `;
