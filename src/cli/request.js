@@ -18,7 +18,7 @@ const main = async args => {
   }
 
   spinner.stop()
-  console.log(result)
+  console.log(JSON.stringify(result, null, 2))
 }
 
 module.exports = {
