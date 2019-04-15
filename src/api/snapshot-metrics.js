@@ -43,6 +43,7 @@ const SNAPSHOT_METRICS_QUERY = `
           }
           isMobile
           jsIsDisabled
+          adBlockerIsEnabled
           hasDeviceEmulation
           hasBandwidthEmulation
         }
@@ -116,6 +117,7 @@ const PULSE_METRICS_QUERY = `
           }
           isMobile
           jsIsDisabled
+          adBlockerIsEnabled
           hasDeviceEmulation
           hasBandwidthEmulation
         }
@@ -150,6 +152,7 @@ const PULSE_PAGE_METRICS_QUERY = `
           }
           isMobile
           jsIsDisabled
+          adBlockerIsEnabled
           hasDeviceEmulation
           hasBandwidthEmulation
         }

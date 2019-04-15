@@ -35,6 +35,7 @@ ${chalk.grey(`Updated: ${dateFormat(profile.updatedAt, 'h:mma D-MMM-YYYY')}`)}
 ${profile.device.title ? `• ${profile.device.title}` : ''}
 ${profile.bandwidth.title ? `• ${profile.bandwidth.title}` : ''}
 ${profile.jsIsDisabled ? '• Javascript Disabled' : ''}
+${profile.adBlockerIsEnabled ? '• Adblocker Enabled' : ''}
 
 ${cookies(profile.cookies)}
   `

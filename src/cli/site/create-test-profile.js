@@ -17,6 +17,7 @@ const main = async function(args) {
   }
 
   if (args.disableJavascript) args.jsIsDisabled = true
+  if (args.enableAdblocker) args.adBlockerIsEnabled = true
 
   if (args.cookieJar) {
     const jar = new CookieMap(args.cookieJar)
@@ -61,6 +62,10 @@ module.exports = {
         disableJavascript: {
           type: 'boolean',
           describe: 'Disable JavaScript'
+        },
+        enableAdblocker: {
+          type: 'boolean',
+          describe: 'Use an adblocker'
         },
         'cookie-jar': {
           describe: 'Uses a netscape formatted cookie jar file at this path'
