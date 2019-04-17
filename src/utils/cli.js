@@ -14,6 +14,13 @@ const options = {
   to: {
     describe:
       'The end date to retrieve to in the format Year-Month-Day (when not set, defaults to today)'
+  },
+  count: {
+    default: 25,
+    describe: 'The number of records to return'
+  },
+  cursor: {
+    describe: 'The cursor to fetch records after'
   }
 }
 

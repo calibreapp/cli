@@ -25,16 +25,29 @@ const DELETE_MUTATION = `
 const LIST_QUERY = `
   query ListSnapshots(
     $site: String!
+    $count: Int!
+    $cursor: String
   ) {
     organisation {
       site(slug: $site) {
-        snapshots {
-          iid
-          htmlUrl
-          ref
-          client
-          createdAt
-          status
+        snapshotsList(first: $count, after: $cursor) {
+          pageInfo {
+            hasPreviousPage
+            hasNextPage
+            endCursor
+            startCursor
+          }
+
+          edges {
+            node {
+              iid
+              htmlUrl
+              ref
+              client
+              createdAt
+              status
+            }
+          }
         }
       }
     }
@@ -98,9 +111,14 @@ const destroy = async ({ site, id }) => {
   return response.deleteSnapshot
 }
 
-const list = async ({ site }) => {
-  const response = await request({ query: LIST_QUERY, site })
-  return response.organisation.site.snapshots
+const list = async ({ site, count, cursor }) => {
+  const response = await request({ query: LIST_QUERY, site, count, cursor })
+  return {
+    snapshots: response.organisation.site.snapshotsList.edges.map(
+      edge => edge.node
+    ),
+    pageInfo: response.organisation.site.snapshotsList.pageInfo
+  }
 }
 
 const fetchArtifacts = async ({ site, id }) => {

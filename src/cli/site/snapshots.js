@@ -28,9 +28,9 @@ const main = async args => {
   }
 
   spinner.stop()
-  console.log(`${chalk.bold(index.length)} snapshots`)
+  console.log(`${chalk.bold(index.snapshots.length)} snapshots`)
 
-  const rows = index.map(row => {
+  const rows = index.snapshots.map(row => {
     return {
       id: chalk.grey(row.iid),
       url: row.htmlUrl,
@@ -50,6 +50,23 @@ const main = async args => {
       maxLineWidth: 'auto'
     })
   )
+
+  console.log(
+    '\n',
+    columnify(
+      [
+        {
+          'More?': index.pageInfo.hasNextPage,
+          cursor: index.pageInfo.endCursor
+        }
+      ],
+      {
+        columnSplitter: ' | ',
+        truncate: true,
+        maxLineWidth: 'auto'
+      }
+    )
+  )
 }
 
 module.exports = {
@@ -59,6 +76,8 @@ module.exports = {
   builder: yargs => {
     yargs.options({
       site: options.site,
+      count: options.count,
+      cursor: options.cursor,
       json: options.json
     })
   }

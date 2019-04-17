@@ -35,20 +35,18 @@ const main = async args => {
     })
   )
 
-  console.log('')
-
   console.log(
+    '\n',
     columnify(
       [
         {
-          cursor: index.pageInfo.endCursor,
-          'More?': index.pageInfo.hasNextPage
+          'More?': index.pageInfo.hasNextPage,
+          cursor: index.pageInfo.endCursor
         }
       ],
       {
         columnSplitter: ' | ',
         truncate: true,
-        minWidth: 10,
         maxLineWidth: 'auto'
       }
     )
@@ -62,13 +60,8 @@ module.exports = {
   builder: yargs => {
     yargs.options({
       site: options.site,
-      count: {
-        default: 25,
-        describe: 'The number of deploys to return'
-      },
-      cursor: {
-        describe: 'The cursor to fetch deploys after'
-      },
+      count: options.count,
+      cursor: options.cursor,
       json: options.json
     })
   }

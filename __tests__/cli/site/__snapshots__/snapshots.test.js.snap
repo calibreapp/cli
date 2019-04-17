@@ -5,5 +5,8 @@ exports[`site snapshots lists all snapshots 1`] = `
 ID | URL                                                | REF | CLIENT | STATUS                       
 14 | http://localhost:3000/calibre/calibre/snapshots/14 |     |        | Completed 12:00am 6-Feb-2019 
 13 | http://localhost:3000/calibre/calibre/snapshots/13 |     |        | Completed 12:22am 30-Jan-2019
+
+ MORE? | CURSOR
+true  | MjU== 
 "
 `;

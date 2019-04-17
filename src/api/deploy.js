@@ -37,7 +37,6 @@ const LIST_QUERY = `
 
           edges {
             node {
-              __typename
               uuid
               revision
               repository
