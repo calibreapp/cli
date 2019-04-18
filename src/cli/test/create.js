@@ -10,7 +10,6 @@ const { humaniseError } = require('../../utils/api-error')
 const main = async function(args) {
   let spinner
   let cookies = []
-  let adBlockerIsEnabled = false
 
   if (!args.json) {
     spinner = ora('Connecting to Calibre')
@@ -28,10 +27,8 @@ const main = async function(args) {
     }
   }
 
-  if (args['block-ads']) adBlockerIsEnabled = args['block-ads']
-
   try {
-    const { uuid } = await create({ ...args, cookies, adBlockerIsEnabled })
+    const { uuid } = await create({ ...args, cookies })
 
     if (!args.json) {
       spinner.succeed(`Test scheduled: ${uuid}`)
@@ -71,9 +68,10 @@ module.exports = {
       .option('json', {
         describe: 'Return the test result as JSON'
       })
-      .option('block-ads', {
-        describe: 'Use an adblocker',
-        type: 'boolean'
+      .option('adblocker', {
+        describe: 'Turn adblocking on/off',
+        type: 'boolean',
+        default: false
       })
       .option('cookie-jar', {
         describe: 'Uses a netscape formatted cookie jar file at this path'

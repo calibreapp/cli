@@ -96,8 +96,8 @@ const create = async ({
   device,
   connection,
   cookies,
-  jsIsDisabled,
-  adBlockerIsEnabled
+  javascript,
+  adblocker
 }) => {
   const response = await request({
     query: CREATE_MUTATION,
@@ -107,8 +107,8 @@ const create = async ({
       device,
       connection,
       cookies,
-      jsIsDisabled,
-      adBlockerIsEnabled
+      jsIsDisabled: javascript,
+      adBlockerIsEnabled: adblocker
     }
   })
 
@@ -127,8 +127,8 @@ const update = async ({
   device,
   connection,
   cookies,
-  jsIsDisabled,
-  adBlockerIsEnabled
+  javascript,
+  adblocker
 }) => {
   const response = await request({
     query: UPDATE_MUTATION,
@@ -139,8 +139,8 @@ const update = async ({
       device,
       connection,
       cookies,
-      jsIsDisabled,
-      adBlockerIsEnabled
+      jsIsDisabled: javascript,
+      adBlockerIsEnabled: adblocker
     }
   })
   return response.updateTestProfile

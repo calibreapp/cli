@@ -10,6 +10,8 @@ module.exports = test => {
   if (!test.device) intro.push('on Chrome Desktop')
   if (test.device) intro.push(`on a ${test.device.title}`)
   if (test.connection) intro.push(`with a ${test.connection.title} connection.`)
+  if (test.adBlockerIsEnabled) intro.push('(Adblocker enabled)')
+
   const { metrics } = test
 
   const timingChartData = () => {
@@ -41,8 +43,6 @@ module.exports = test => {
 ${intro.join(' ')}
 ${test.location.emoji}  ${test.location.name}
 ${chalk.grey(dateFormat(test.updatedAt, 'h:mma D-MMM-YYYY'))}
-
-${test.adBlockerIsEnabled && `${chalk.green('✓')} Adblocker enabled`}
 
 ${chalk.bold(
   `Performance Grade: ${perfScore(

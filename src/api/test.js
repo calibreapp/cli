@@ -93,7 +93,7 @@ const create = async ({
   device,
   connection,
   cookies,
-  adBlockerIsEnabled
+  adblocker
 }) => {
   const response = await request({
     query: CREATE_MUTATION,
@@ -102,7 +102,7 @@ const create = async ({
     device,
     connection,
     cookies,
-    adBlockerIsEnabled
+    adBlockerIsEnabled: adblocker
   })
   return response.createTest
 }
