@@ -1,8 +1,8 @@
 const { request } = require('./graphql')
 
 const CREATE_MUTATION = `
-  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!]) {
-    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies) {
+  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $adBlockerIsEnabled: Boolean) {
+    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies, adBlockerIsEnabled: $adBlockerIsEnabled) {
       uuid
     }
   }
@@ -11,10 +11,11 @@ const CREATE_MUTATION = `
 const LIST_QUERY = `
   query ListSinglePageTests {
     organisation {
-      singlePageTests{
+      singlePageTests {
         uuid
         url
         formattedTestUrl
+        adBlockerIsEnabled
 
         device {
           title
@@ -45,6 +46,7 @@ const GET_BY_UUID = `
         formattedTestUrl
         status
         updatedAt
+        adBlockerIsEnabled
 
         metrics: measurements {
           name
@@ -85,14 +87,22 @@ const GET_TEST_ARTIFACT_URLS = `
   }
 `
 
-const create = async ({ url, location, device, connection, cookies }) => {
+const create = async ({
+  url,
+  location,
+  device,
+  connection,
+  cookies,
+  adblocker
+}) => {
   const response = await request({
     query: CREATE_MUTATION,
     url,
     location,
     device,
     connection,
-    cookies
+    cookies,
+    adBlockerIsEnabled: adblocker
   })
   return response.createTest
 }

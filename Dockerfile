@@ -1,5 +1,5 @@
-FROM node:8.6.0-wheezy
-RUN apt-get update -qq && apt-get install -y zip
+FROM node:alpine
+RUN apk add zip bash
 
 # Copy to /cli
 RUN mkdir /cli

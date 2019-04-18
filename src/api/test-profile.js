@@ -6,6 +6,7 @@ const CREATE_MUTATION = `
       uuid
       name
       jsIsDisabled
+      adBlockerIsEnabled
 
       device {
         title
@@ -35,6 +36,7 @@ const LIST_QUERY = `
           uuid
           name
           jsIsDisabled
+          adBlockerIsEnabled
 
           device {
             title
@@ -57,6 +59,7 @@ const UPDATE_MUTATION = `
       uuid
       name
       jsIsDisabled
+      adBlockerIsEnabled
 
       device {
         title
@@ -93,7 +96,8 @@ const create = async ({
   device,
   connection,
   cookies,
-  jsIsDisabled
+  javascript,
+  adblocker
 }) => {
   const response = await request({
     query: CREATE_MUTATION,
@@ -103,7 +107,8 @@ const create = async ({
       device,
       connection,
       cookies,
-      jsIsDisabled
+      jsIsDisabled: javascript,
+      adBlockerIsEnabled: adblocker
     }
   })
 
@@ -122,7 +127,8 @@ const update = async ({
   device,
   connection,
   cookies,
-  jsIsDisabled
+  javascript,
+  adblocker
 }) => {
   const response = await request({
     query: UPDATE_MUTATION,
@@ -133,7 +139,8 @@ const update = async ({
       device,
       connection,
       cookies,
-      jsIsDisabled
+      jsIsDisabled: javascript,
+      adBlockerIsEnabled: adblocker
     }
   })
   return response.updateTestProfile

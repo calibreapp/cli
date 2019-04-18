@@ -16,8 +16,6 @@ const main = async function(args) {
     spinner.start()
   }
 
-  if (args.disableJavascript) args.jsIsDisabled = true
-
   if (args.cookieJar) {
     const jar = new CookieMap(args.cookieJar)
 
@@ -58,9 +56,15 @@ module.exports = {
         },
         site: options.site,
         json: options.json,
-        disableJavascript: {
+        javascript: {
           type: 'boolean',
-          describe: 'Disable JavaScript'
+          describe: 'Turn JavaScript execution on/off',
+          default: true
+        },
+        adblocker: {
+          type: 'boolean',
+          describe: 'Turn adblocking on/off',
+          default: false
         },
         'cookie-jar': {
           describe: 'Uses a netscape formatted cookie jar file at this path'

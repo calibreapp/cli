@@ -68,6 +68,11 @@ module.exports = {
       .option('json', {
         describe: 'Return the test result as JSON'
       })
+      .option('adblocker', {
+        describe: 'Turn adblocking on/off',
+        type: 'boolean',
+        default: false
+      })
       .option('cookie-jar', {
         describe: 'Uses a netscape formatted cookie jar file at this path'
       })
