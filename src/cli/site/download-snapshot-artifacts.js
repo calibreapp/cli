@@ -101,23 +101,6 @@ const main = async args => {
                   }
                 },
                 {
-                  title: 'GIF Render',
-                  skip: () => {
-                    if (!test.gif) return 'No GIF Render available'
-                  },
-                  task: () => {
-                    const gifRenderPath = path.join(
-                      profileDirectory,
-                      'render.gif'
-                    )
-                    testManifest.gifRenderPath = path.relative(
-                      rootPath,
-                      gifRenderPath
-                    )
-                    return download(test.gif, gifRenderPath)
-                  }
-                },
-                {
                   title: 'MP4 Video Render',
                   skip: () => {
                     if (!test.video) return 'No MP4 Video Render available'
