@@ -64,7 +64,6 @@ const GET_SNAPSHOT_ARTIFACT_URLS = `
             har: artifactURL(name: TEST_ARTIFACT_HAR)
             lighthouse: artifactURL(name: TEST_ARTIFACT_LIGHTHOUSE)
             image: mediaURL(name: TEST_MEDIA_IMAGE)
-            gif: mediaURL(name:TEST_MEDIA_GIF)
             video: mediaURL(name: TEST_MEDIA_VIDEO)
 
             page {
