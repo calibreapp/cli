@@ -28,10 +28,6 @@ const main = async args => {
             download(response.image, path.join(directory, 'image.jpg'))
         },
         {
-          title: 'GIF Render',
-          task: () => download(response.gif, path.join(directory, 'render.gif'))
-        },
-        {
           title: 'MP4 Video Render',
           task: () =>
             download(response.video, path.join(directory, 'render.mp4'))
