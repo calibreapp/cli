@@ -6,8 +6,6 @@ __TYPENAME | UUID                                 | REVISION | REPOSITORY       
 Deploy     | 8c68b9f6-b5bf-49bc-abd7-896db6338818 | v1       | https://github.com/calibreapp/app | Deployer | 2019-01-17T00:00:00Z
 Deploy     | 640d2460-13a7-417e-8478-08b1bf166fd1 | v2       | https://github.com/calibreapp/app | Deployer | 2019-01-19T00:00:00Z
 Deploy     | db846ca0-a26c-4667-b971-b6710506d866 | v3       | https://github.com/calibreapp/app | Deployer | 2019-01-22T16:00:00Z
-
- MORE? | CURSOR
-true  | MjU== 
+To see deploys prior to v3, run: calibre site deploys --site=calibre --cursor=MjU==
 "
 `;

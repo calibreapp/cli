@@ -51,22 +51,15 @@ const main = async args => {
     })
   )
 
-  console.log(
-    '\n',
-    columnify(
-      [
-        {
-          'More?': index.pageInfo.hasNextPage,
-          cursor: index.pageInfo.endCursor
-        }
-      ],
-      {
-        columnSplitter: ' | ',
-        truncate: true,
-        maxLineWidth: 'auto'
-      }
+  if (index.pageInfo.hasNextPage) {
+    const lastSnapshot = rows[rows.length - 1]
+    console.log(
+      `To see snapshots prior to ${lastSnapshot.ref ||
+        lastSnapshot.id}, run: calibre site snapshots --site=calibre --cursor=${
+        index.pageInfo.endCursor
+      }`
     )
-  )
+  }
 }
 
 module.exports = {
