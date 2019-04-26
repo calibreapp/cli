@@ -15,6 +15,7 @@ const Device = require('./src/api/device')
 const SnapshotMetrics = require('./src/api/snapshot-metrics')
 const GraphQL = require('./src/api/graphql')
 const TimeSeries = require('./src/api/time-series')
+const Deploy = require('./src/api/deploy')
 
 module.exports = {
   Site,
@@ -27,5 +28,6 @@ module.exports = {
   Device,
   SnapshotMetrics,
   GraphQL,
-  TimeSeries
+  TimeSeries,
+  Deploy
 }

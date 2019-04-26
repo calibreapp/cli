@@ -8,6 +8,11 @@ Object {
   "Connection": Object {
     "list": [Function],
   },
+  "Deploy": Object {
+    "create": [Function],
+    "destroy": [Function],
+    "list": [Function],
+  },
   "Device": Object {
     "list": [Function],
   },
