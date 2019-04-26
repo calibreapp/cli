@@ -17,7 +17,7 @@ const options = {
   },
   count: {
     default: 25,
-    describe: 'The number of records to return'
+    describe: 'The number of records to return, maximum: 500'
   },
   cursor: {
     describe: 'The cursor to fetch records after'
