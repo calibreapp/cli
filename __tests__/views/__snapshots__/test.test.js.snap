@@ -5,13 +5,16 @@ exports[`test completed 1`] = `
 [4m[1mhttps://calibreapp.com[22m[24m on Chrome Desktop
 🇺🇸  North Virginia, USA
 
-[90m3:09pm 26-Apr-2019[39m
+[90m5:09am 26-Apr-2019[39m
 
-[1mPerformance Grade: [32m[1m100[1m[39m[22m
-[1mProgressive Web App Grade: [33m[1m68[1m[39m[22m
-[1mBest Practices Grade: [32m[1m93[1m[39m[22m
-[1mAccessibility Grade: [33m[1m76[1m[39m[22m
-[1mSEO Grade: [32m[1m100[1m[39m[22m
+[1m[4mOverall scores[24m[22m
+
+CATEGORY            | SCORE
+Performance         |   [32m[1m100[22m[39m
+Best Practices      |    [32m[1m93[22m[39m
+Accessibility       |    [33m[1m76[22m[39m
+SEO                 |   [32m[1m100[22m[39m
+Progressive Web App |    [33m[1m68[22m[39m
 
 [1m[4mTiming[24m[22m
 
@@ -21,7 +24,7 @@ Time to First Byte
 Response time
 [34m■[39m[34m■[39m[34m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m 64 ms
 
-First Meaningful Paint
+First Contentful Paint
 [34m■[39m[34m■[39m[34m■[39m[34m■[39m[34m■[39m[34m■[39m[34m■[39m[34m■[39m[34m■[39m[34m■[39m[34m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m[90m■[39m 191 ms
 
 Time to Interactive
@@ -39,7 +42,7 @@ exports[`test errored 1`] = `
 [4m[1mhttps://calibreapp.com[22m[24m on Chrome Desktop
 🇺🇸  North Virginia, USA
 
-[90m3:09pm 26-Apr-2019[39m
+[90m5:09am 26-Apr-2019[39m
 
 [1m[31mCalibre was unable to load the page. Please make sure the page URL and site authentication settings are correct.[39m[22m
 
@@ -52,9 +55,9 @@ exports[`test timeout 1`] = `
 [4m[1mhttps://calibreapp.com[22m[24m on Chrome Desktop
 🇺🇸  North Virginia, USA
 
-[90m3:09pm 26-Apr-2019[39m 
+[90m5:09am 26-Apr-2019[39m 
 
-[1m[31mThe test took to long to complete.[39m[22m
+[1m[31mThe test took too long to complete.[39m[22m
 
 [1mView the full report https://calibreapp.com/tests/b3baaa1/1fe9862[22m"
 `;
