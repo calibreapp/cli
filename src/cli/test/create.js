@@ -42,7 +42,11 @@ const main = async function(args) {
 
     if (args.json) return console.log(JSON.stringify(response, null, 2))
 
-    spinner.succeed('Test complete')
+    if (response.status === "completed") {
+      spinner.succeed('Test complete')
+    } else {
+      spinner.fail('Test complete')
+    }
     console.log(formatTest(response))
   } catch (e) {
     if (args.json) return console.error(e)

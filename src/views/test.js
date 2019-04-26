@@ -40,10 +40,33 @@ module.exports = test => {
     return list
   }
 
-  return `
+  const header = `
 ${intro.join(' ')}
 ${test.location.emoji}  ${test.location.name}
-${chalk.grey(dateFormat(test.updatedAt, 'h:mma D-MMM-YYYY'))}
+
+${chalk.grey(dateFormat(test.updatedAt, 'h:mma D-MMM-YYYY'))}`
+
+  const footer = chalk.bold(`View the full report ${test.formattedTestUrl}`)
+
+  if (test.status === 'errored') {
+    return `${header}
+
+${chalk.bold.red(
+  (test.runtimeError && test.runtimeError.message) ||
+    'There was an error completing this test.'
+)}
+
+${footer}
+    `
+  } else if (test.status === 'timeout') {
+    return `${header} 
+
+${chalk.bold.red('The test took too long to complete.')}
+
+${footer}`
+  }
+
+  return `${header}
 
 ${chalk.bold.underline('Overall scores')}
 
@@ -52,7 +75,6 @@ ${gradeTable(metrics)}
 ${chalk.bold.underline('Timing')}
 
 ${chart(timingChartData(), 'duration')}
-
 
 ${metrics.find(metric => metric.name === 'asset_count').label}: ${
     metrics.find(metric => metric.name === 'asset_count').value
@@ -63,6 +85,6 @@ ${
     metrics.find(metric => metric.name === 'page_size_in_bytes').value
   )}
 
-${chalk.bold(`View the full report ${test.formattedTestUrl}`)}
+${footer}
   `
 }
