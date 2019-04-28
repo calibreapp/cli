@@ -1,24 +1,30 @@
 #!/usr/bin/env node
 
 /*
-  calibre v1.2.3+ required
+  calibre v2.0.0+ required
   
   This example will fetch all sites from a given account,
   then, the 7 days worth of consistently-interactive for each site
 */
 
-const { Site, SnapshotMetrics } = require('calibre')
+const { Site, TimeSeries } = require('calibre')
 
 const main = async () => {
   const sites = await Site.list()
+
+  const to = new Date()
+
+  const from = new Date()
+  from.setDate(to.getDate() - 7)
 
   console.log(`=== ${sites.length} sites`)
 
   const metrics = await Promise.all(
     sites.map(({ slug }) => {
-      return SnapshotMetrics.pulse({
+      return TimeSeries.list({
         site: slug,
-        durationInDays: 7,
+        from,
+        to,
         metrics: ['consistently-interactive']
       })
     })
