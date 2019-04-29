@@ -1,7 +1,6 @@
 const chalk = require('chalk')
 const dateFormat = require('date-fns/format')
 const gradeTable = require('../views/grade-table')
-const { perfScore } = require('../utils/formatters')
 
 const testTable = ({ test, testProfiles }) => {
   const testProfile = testProfiles.find(tp => tp.uuid == test.testProfile.uuid)
