@@ -18,7 +18,7 @@ module.exports = test => {
     const measurements = [
       'time-to-first-byte',
       'page_wait_timing',
-      'first-meaningful-paint',
+      'first-contentful-paint',
       'consistently-interactive'
     ]
 
