@@ -48,5 +48,8 @@ Object {
     "list": [Function],
     "update": [Function],
   },
+  "TimeSeries": Object {
+    "list": [Function],
+  },
 }
 `;

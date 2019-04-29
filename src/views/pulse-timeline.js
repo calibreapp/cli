@@ -1,65 +1,59 @@
 const chalk = require('chalk')
 const percentile = require('stats-percentile')
 
-const { filesize, duration } = require('../utils/formatters')
+const { format } = require('../utils/formatters')
 
-module.exports = data => {
-  const timeseries = data.page ? data.page.timeseries : data.timeseries
-  const metrics = timeseries.series.map(series => {
-    let formatFn
-    switch (series.metric.formatter) {
-      case 'humanDuration':
-        formatFn = duration
-        break
-      case 'fileSize':
-        formatFn = filesize
-        break
-      case 'trust':
-        formatFn = val => val
-        break
-      default:
-        formatFn = val => val
-    }
+module.exports = timeSeries => {
+  const page = timeSeries.pages.map(page => page.name).join(', ')
 
-    return `
-${chalk.blue.bold(series.metric.label)}
+  const metrics = timeSeries.measurements.map(measurement => {
+    const series = timeSeries.series.filter(
+      series => series.measurement === measurement.name
+    )
 
-${series.sets
-      .map(set => {
-        const values = set.values.map(value => value.value)
+    const metrics = series.map(set => {
+      const values = set.values.filter(v => v)
 
-        const min = Math.min(...values)
-        const formattedMinValue = formatFn(min)
+      const formattedMinValue = format({
+        formatter: measurement.formatter,
+        value: Math.min(...values)
+      })
 
-        const max = Math.max(...values)
-        const formattedMaxValue = formatFn(max)
+      const formattedMaxValue = format({
+        formatter: measurement.formatter,
+        value: Math.max(...values)
+      })
 
-        const median = percentile(values, 50)
-        const formattedMedian = formatFn(median)
+      const formattedMedian = format({
+        formatter: measurement.formatter,
+        value: percentile(values, 50)
+      })
 
-        const p95 = percentile(values, 95)
-        const formattedP95 = formatFn(p95)
+      const formattedP95 = format({
+        formatter: measurement.formatter,
+        value: percentile(values, 95)
+      })
 
-        return `
-${set.page.name}
-${set.profile.name}
+      return `
+${page}
+${set.name}
 
   Min: ${formattedMinValue}
   Max: ${formattedMaxValue}
   Median: ${formattedMedian}
   p95: ${formattedP95}
-  `
-      })
-      .join('\n')}
-    `
+`
+    })
+
+    return `
+${chalk.blue.bold(measurement.label)}
+${metrics.join('\n')}
+`
   })
 
   return `
 ${chalk.bold('Metric history')}
-
-${timeseries.length ? 'There is no data for this time period' : ''}
-
+${timeSeries.length ? 'There is no data for this time period' : ''}
 ${metrics.join('\n')}
-
-  `
+`
 }
