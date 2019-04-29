@@ -23,16 +23,25 @@ const main = async () => {
     sites.map(({ slug }) => {
       return TimeSeries.list({
         site: slug,
-        from,
-        to,
-        metrics: ['consistently-interactive']
+        from: from.toUTCString(),
+        to: to.toUTCString(),
+        measurements: ['consistently-interactive']
       })
     })
   )
 
   console.log('=== Logging formatted JSON metrics ===')
 
-  console.log(JSON.stringify(metrics, null, 2))
+  console.log(
+    JSON.stringify(
+      metrics.map(({ times, series }) => ({
+        times,
+        series
+      })),
+      null,
+      2
+    )
+  )
 }
 
 main()
