@@ -1,6 +1,6 @@
 const chalk = require('chalk')
 const dateFormat = require('date-fns/format')
-const { perfScore } = require('../utils/formatters')
+const gradeTable = require('../views/grade-table')
 
 const testTable = ({ test, testProfiles }) => {
   const testProfile = testProfiles.find(tp => tp.uuid == test.testProfile.uuid)
@@ -9,41 +9,7 @@ const testTable = ({ test, testProfiles }) => {
 ${chalk.bold(test.page.name)} ${chalk.grey(`(${test.page.url})`)}
 Tested with: ${testProfile.name}
 
-${chalk.bold(
-    `Performance Grade: ${perfScore(
-      test.measurements
-        .find(metric => metric.name === 'lighthouse-performance-score')
-        .value.toFixed()
-    )}`
-  )}
-${chalk.bold(
-    `Progressive Web App Grade: ${perfScore(
-      test.measurements
-        .find(metric => metric.name === 'lighthouse-pwa-score')
-        .value.toFixed()
-    )}`
-  )}
-${chalk.bold(
-    `Best Practices Grade: ${perfScore(
-      test.measurements
-        .find(metric => metric.name === 'lighthouse-best-practices-score')
-        .value.toFixed()
-    )}`
-  )}
-${chalk.bold(
-    `Accessibility Grade: ${perfScore(
-      test.measurements
-        .find(metric => metric.name === 'lighthouse-accessibility-score')
-        .value.toFixed()
-    )}`
-  )}
-${chalk.bold(
-    `SEO Grade: ${perfScore(
-      test.measurements
-        .find(metric => metric.name === 'lighthouse-seo-score')
-        .value.toFixed()
-    )}`
-  )}
+${gradeTable(test.measurements)}
   `
 }
 
