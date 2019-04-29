@@ -1,68 +1,10 @@
 const ora = require('ora')
-const json2csv = require('json2csv')
+const { parse, subDays } = require('date-fns')
 
 const { humaniseError } = require('../../utils/api-error')
-const { pulse } = require('../../api/snapshot-metrics')
+const { list } = require('../../api/time-series')
 const formatPulseTimeline = require('../../views/pulse-timeline')
 const { options } = require('../../utils/cli')
-
-const formatCSV = payload => {
-  let data = []
-
-  const timeseries = payload.page ? payload.page.timeseries : payload.timeseries
-
-  timeseries.series.forEach(series => {
-    series.sets.forEach(set => {
-      const profile = payload.testProfiles.find(
-        profile => profile.uuid == set.profile.uuid
-      )
-
-      set.values.forEach(value => {
-        const snapshot = timeseries.snapshots.find(
-          snapshot => snapshot.id === value.snapshot
-        )
-
-        data.push({
-          Timestamp: snapshot.createdAt,
-          PageUuid: set.page.uuid,
-          PageName: set.page.name,
-          PageURL: set.page.url,
-          MetricName: series.metric.name,
-          MetricLabel: series.metric.label,
-          MetricValue: value.value,
-          SnapshotSequenceId: snapshot.sequenceId,
-          TestProfileUuid: set.profile.uuid,
-          TestProfileName: set.profile.name,
-          DeviceName: profile.device ? profile.device.title : null,
-          BandwidthName: profile.bandwidth ? profile.bandwidth.title : null,
-          isMobile: profile.isMobile,
-          hasDeviceEmulation: profile.hasDeviceEmulation,
-          hasBandwidthEmulation: profile.hasBandwidthEmulation
-        })
-      })
-    })
-  })
-
-  const fields = [
-    'Timestamp',
-    'PageUuid',
-    'PageName',
-    'PageURL',
-    'MetricName',
-    'MetricLabel',
-    'MetricValue',
-    'SnapshotSequenceId',
-    'TestProfileUuid',
-    'TestProfileName',
-    'DeviceName',
-    'BandwidthName',
-    'isMobile',
-    'hasDeviceEmulation',
-    'hasBandwidthEmulation'
-  ]
-
-  return json2csv({ data, fields })
-}
 
 const main = async args => {
   let spinner
@@ -72,22 +14,31 @@ const main = async args => {
     spinner.start()
   }
 
-  let durationInDays = 7
-  if (args['30-day']) durationInDays = 30
+  let to, from
+  if (args['30-day']) {
+    to = new Date()
+    from = subDays(new Date(), 30)
+  } else {
+    if (args.to) to = parse(args.to)
+    if (args.from) from = parse(args.from)
+  }
+
+  const variables = {
+    site: args.site,
+    pages: [args.page],
+    measurements: args.metrics,
+    from,
+    to
+  }
 
   try {
-    const tests = await pulse({
-      site: args.site,
-      page: args.page,
-      durationInDays,
-      metrics: args.metrics
-    })
+    const { csv, ...timeSeries } = await list(variables)
 
-    if (args.json) return console.log(JSON.stringify(tests, null, 2))
-    if (args.csv) return console.log(formatCSV(tests))
+    if (args.csv) return console.log(csv)
+    if (args.json) return console.log(JSON.stringify(timeSeries, null, 2))
 
     spinner.stop()
-    console.log(formatPulseTimeline(tests))
+    console.log(formatPulseTimeline(timeSeries))
   } catch (e) {
     if (args.json) return console.error(e)
     if (args.csv) return console.error('Error', e)
@@ -113,9 +64,11 @@ module.exports = {
       },
       json: options.json,
       csv: options.csv,
+      from: options.from,
+      to: options.to,
       '30-day': {
         describe:
-          'Get the last 30 days of metrics (without this flag, the default is 7 days)'
+          'Get the last 30 days of metrics (without this flag, the to and from values will be used)'
       }
     })
   },
