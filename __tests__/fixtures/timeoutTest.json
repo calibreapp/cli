@@ -1,0 +1,205 @@
+{
+  "uuid": "b3baaa1",
+  "url": "https://calibreapp.com",
+  "formattedTestUrl": "https://calibreapp.com/tests/b3baaa1/1fe9862",
+  "status": "timeout",
+  "updatedAt": "2019-04-26T05:09:26Z",
+  "adBlockerIsEnabled": false,
+  "runtimeError": {
+    "code": "INTERSTITIAL_ERROR",
+    "message": "Calibre was unable to load the page. Please make sure the page URL and site authentication settings are correct."
+  },
+  "metrics": [
+    {
+      "name": "json_body_size_in_bytes",
+      "label": "Total JSON size in bytes",
+      "value": 13712
+    },
+    {
+      "name": "json_size_in_bytes",
+      "label": "Total JSON transferred",
+      "value": 10901
+    },
+    {
+      "name": "image_body_size_in_bytes",
+      "label": "Total Image size in bytes",
+      "value": 320962
+    },
+    {
+      "name": "image_size_in_bytes",
+      "label": "Total Image transferred",
+      "value": 118615
+    },
+    {
+      "name": "font_body_size_in_bytes",
+      "label": "Total Webfont size in bytes",
+      "value": 110125
+    },
+    {
+      "name": "font_size_in_bytes",
+      "label": "Total Webfont transferred",
+      "value": 111496
+    },
+    {
+      "name": "js_body_size_in_bytes",
+      "label": "Total JavaScript size in bytes",
+      "value": 2118815
+    },
+    {
+      "name": "js_size_in_bytes",
+      "label": "Total JavaScript Transferred",
+      "value": 510192
+    },
+    {
+      "name": "css_body_size_in_bytes",
+      "label": "Total CSS size in bytes",
+      "value": 75788
+    },
+    {
+      "name": "css_size_in_bytes",
+      "label": "Total CSS transferred",
+      "value": 17073
+    },
+    {
+      "name": "html_body_size_in_bytes",
+      "label": "Total HTML size in bytes",
+      "value": 24367
+    },
+    {
+      "name": "html_size_in_bytes",
+      "label": "Total HTML transferred",
+      "value": 10258
+    },
+    {
+      "name": "page_wait_timing",
+      "label": "Response time",
+      "value": 64
+    },
+    {
+      "name": "page_size_in_bytes",
+      "label": "Total Page transferred",
+      "value": 782505
+    },
+    {
+      "name": "page_body_size_in_bytes",
+      "label": "Total Page size in bytes",
+      "value": 2665469
+    },
+    {
+      "name": "asset_count",
+      "label": "Number of requests",
+      "value": 44
+    },
+    {
+      "name": "onload",
+      "label": "onLoad",
+      "value": 798
+    },
+    {
+      "name": "oncontentload",
+      "label": "onContentLoad",
+      "value": 271
+    },
+    {
+      "name": "lighthouse-seo-score",
+      "label": "Lighthouse SEO Score",
+      "value": 100
+    },
+    {
+      "name": "lighthouse-best-practices-score",
+      "label": "Lighthouse Best Practices Score",
+      "value": 93
+    },
+    {
+      "name": "lighthouse-accessibility-score",
+      "label": "Lighthouse Accessibility Score",
+      "value": 76
+    },
+    {
+      "name": "lighthouse-performance-score",
+      "label": "Lighthouse Performance Score",
+      "value": 100
+    },
+    {
+      "name": "lighthouse-pwa-score",
+      "label": "Lighthouse Progressive Web App Score",
+      "value": 68
+    },
+    {
+      "name": "js-parse-compile",
+      "label": "JS Parse & Compile",
+      "value": 121
+    },
+    {
+      "name": "dom-size",
+      "label": "DOM Element Count",
+      "value": 324
+    },
+    {
+      "name": "visually_complete_85",
+      "label": "85% Visually Complete",
+      "value": 276
+    },
+    {
+      "name": "visually_complete",
+      "label": "Visually Complete",
+      "value": 1475
+    },
+    {
+      "name": "consistently-interactive",
+      "label": "Time to Interactive",
+      "value": 1319
+    },
+    {
+      "name": "first-interactive",
+      "label": "First CPU Idle",
+      "value": 1319
+    },
+    {
+      "name": "time-to-first-byte",
+      "label": "Time to First Byte",
+      "value": 41
+    },
+    {
+      "name": "estimated-input-latency",
+      "label": "Estimated input latency",
+      "value": 16
+    },
+    {
+      "name": "speed_index",
+      "label": "Speed Index",
+      "value": 263
+    },
+    {
+      "name": "first-meaningful-paint",
+      "label": "First Meaningful Paint",
+      "value": 191
+    },
+    {
+      "name": "first-contentful-paint",
+      "label": "First Contentful Paint",
+      "value": 191
+    },
+    {
+      "name": "firstRender",
+      "label": "First Paint",
+      "value": 191
+    },
+    {
+      "name": "test-duration",
+      "label": "translation missing: en.metrics.test-duration.human",
+      "value": 9584
+    },
+    {
+      "name": "benchmark-index",
+      "label": "translation missing: en.metrics.benchmark-index.human",
+      "value": 1396
+    }
+  ],
+  "device": null,
+  "connection": null,
+  "location": {
+    "name": "North Virginia, USA",
+    "emoji": "🇺🇸"
+  }
+}

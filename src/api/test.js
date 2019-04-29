@@ -47,6 +47,8 @@ const GET_BY_UUID = `
         status
         updatedAt
         adBlockerIsEnabled
+        runtimeError: artifact(name: TEST_ARTIFACT_RUNTIME_ERROR)
+
 
         metrics: measurements {
           name
@@ -112,8 +114,7 @@ const waitForTest = async uuid => {
   while (true) {
     await delay(5000)
     const run = await getTestByUuid(uuid)
-    if (run.status === 'completed') return run
-    if (run.status === 'timeout' || run.status === 'errored') throw Error(run)
+    if (['completed', 'errored', 'timeout'].includes(run.status)) return run
   }
 }
 
