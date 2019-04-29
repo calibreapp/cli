@@ -1,6 +1,7 @@
 const chalk = require('chalk')
 const ora = require('ora')
 const columnify = require('columnify')
+const dateFormat = require('date-fns/format')
 
 const { list } = require('../../api/deploy')
 const { humaniseError } = require('../../utils/api-error')
@@ -27,8 +28,20 @@ const main = async args => {
   spinner.stop()
   console.log(`${chalk.bold(index.deploys.length)} deploys`)
 
+  const deploys = index.deploys.map(
+    ({ uuid, revision, repository, username, createdAt }) => {
+      return {
+        uuid: chalk.grey(uuid),
+        revision,
+        repository,
+        username,
+        created: dateFormat(createdAt, 'h:mma D-MMM-YYYY')
+      }
+    }
+  )
+
   console.log(
-    columnify(index.deploys, {
+    columnify(deploys, {
       columnSplitter: ' | ',
       truncate: true,
       maxLineWidth: 'auto'
