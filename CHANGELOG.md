@@ -1,4 +1,23 @@
+### 1.2.4 - 2019-03-18
+
+- Fixed output of request result (format with JSON)
+
+### 1.2.3 - 2019-03-11
+
+- Fixed snapshot metrics CSV
+
+### 1.2.2 - 2019-02-28
+
+- Removed `--no-deprecation` flag
+
 ### 1.2.1 - 2019-02-21
+
+- Removed `await-for-of` to continue support for node 8.
+- Changed `download-artifact` commands to output relative directory of stored
+  artifacts.
+
+### 1.2.1 - 2019-02-21
+
 - Removed `await-for-of` to continue support for node 8.
 - Changed `download-artifact` commands to output relative directory of stored
   artifacts.
