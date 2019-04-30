@@ -51,7 +51,7 @@ const main = async args => {
   if (index.pageInfo.hasNextPage) {
     const lastDeploy = index.deploys[index.deploys.length - 1]
     console.log(
-      `To see deploys prior to ${lastDeploy.revision ||
+      `To see deploys after ${lastDeploy.revision ||
         lastDeploy.id}, run: calibre site deploys --site=calibre --cursor=${
         index.pageInfo.endCursor
       }`

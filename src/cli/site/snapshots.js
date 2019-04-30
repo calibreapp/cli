@@ -54,7 +54,7 @@ const main = async args => {
   if (index.pageInfo.hasNextPage) {
     const lastSnapshot = rows[rows.length - 1]
     console.log(
-      `To see snapshots prior to ${lastSnapshot.ref ||
+      `To see snapshots after ${lastSnapshot.ref ||
         lastSnapshot.id}, run: calibre site snapshots --site=calibre --cursor=${
         index.pageInfo.endCursor
       }`
