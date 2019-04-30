@@ -1,0 +1,51 @@
+{
+  "data": {
+    "organisation": {
+      "site": {
+        "deploys": {
+          "edges": [
+            {
+              "node": {
+                "__typename": "Deploy",
+                "uuid": "8c68b9f6-b5bf-49bc-abd7-896db6338818",
+                "revision": "v1",
+                "repository": "https://github.com/calibreapp/app",
+                "username": "Deployer",
+                "createdAt": "2019-01-17T00:00:00Z"
+              },
+              "__typename": "DeployEdge"
+            },
+            {
+              "node": {
+                "__typename": "Deploy",
+                "uuid": "640d2460-13a7-417e-8478-08b1bf166fd1",
+                "revision": "v2",
+                "repository": "https://github.com/calibreapp/app",
+                "username": "Deployer",
+                "createdAt": "2019-01-19T00:00:00Z"
+              },
+              "__typename": "DeployEdge"
+            },
+            {
+              "node": {
+                "__typename": "Deploy",
+                "uuid": "db846ca0-a26c-4667-b971-b6710506d866",
+                "revision": "v3",
+                "repository": "https://github.com/calibreapp/app",
+                "username": "Deployer",
+                "createdAt": "2019-01-22T16:00:00Z"
+              },
+              "__typename": "DeployEdge"
+            }
+          ],
+          "pageInfo": {
+            "endCursor": "MjU==",
+            "startCursor": "MxU==",
+            "hasPreviousPage": false,
+            "hasNextPage": true
+          }
+        }
+      }
+    }
+  }
+}

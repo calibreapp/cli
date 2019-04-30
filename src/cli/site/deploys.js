@@ -3,11 +3,9 @@ const ora = require('ora')
 const columnify = require('columnify')
 const dateFormat = require('date-fns/format')
 
-const { list } = require('../../api/snapshot')
+const { list } = require('../../api/deploy')
 const { humaniseError } = require('../../utils/api-error')
 const { options } = require('../../utils/cli')
-
-const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
 const main = async args => {
   let index
@@ -28,23 +26,22 @@ const main = async args => {
   }
 
   spinner.stop()
-  console.log(`${chalk.bold(index.snapshots.length)} snapshots`)
+  console.log(`${chalk.bold(index.deploys.length)} deploys`)
 
-  const rows = index.snapshots.map(row => {
-    return {
-      id: chalk.grey(row.iid),
-      url: row.htmlUrl,
-      ref: row.ref,
-      client: row.client,
-      status: `${row.status ? titleize(row.status) : ''} ${dateFormat(
-        row.createdAt,
-        'h:mma D-MMM-YYYY'
-      )}`
+  const deploys = index.deploys.map(
+    ({ uuid, revision, repository, username, createdAt }) => {
+      return {
+        uuid: chalk.grey(uuid),
+        revision,
+        repository,
+        username,
+        created: dateFormat(createdAt, 'h:mma D-MMM-YYYY')
+      }
     }
-  })
+  )
 
   console.log(
-    columnify(rows, {
+    columnify(deploys, {
       columnSplitter: ' | ',
       truncate: true,
       maxLineWidth: 'auto'
@@ -52,10 +49,10 @@ const main = async args => {
   )
 
   if (index.pageInfo.hasNextPage) {
-    const lastSnapshot = rows[rows.length - 1]
+    const lastDeploy = index.deploys[index.deploys.length - 1]
     console.log(
-      `To see snapshots after ${lastSnapshot.ref ||
-        lastSnapshot.id}, run: calibre site snapshots --site=calibre --cursor=${
+      `To see deploys after ${lastDeploy.revision ||
+        lastDeploy.id}, run: calibre site deploys --site=calibre --cursor=${
         index.pageInfo.endCursor
       }`
     )
@@ -63,8 +60,8 @@ const main = async args => {
 }
 
 module.exports = {
-  command: 'snapshots [options]',
-  describe: 'Print a list of snapshots',
+  command: 'deploys [options]',
+  describe: 'Print a list of deploys',
   handler: main,
   builder: yargs => {
     yargs.options({
