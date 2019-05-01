@@ -1,4 +1,42 @@
+### 2.0.0 - 2019-04-30
+
+- Added `calibre site deploys` command.
+- Added `calibre site create-deploy` command.
+- Added `calibre site delete-deploy` command.
+- Added ability to turn adblocker on in `test` API
+- Added ability to turn adblocker on or off in `test-profile` API
+- Added `--adblocker` flag to create test with adblocker enabled.
+- Added `--no-adblocker` and `--adblocker` flags for turning adblocking on or off for a test profile.
+- Changed `--disableJavascript` flag to `--no-javascript` to turn JS off for a test profile.
+- Changed `--enableJavascript` flag to `--javascript` to turn JS on for a test profile.
+- Removed GIF download from `download-snapshot-artifacts`.
+- Changed `get-pulse-metrics` to use the `TimeSeries` query method.
+- Changed `calibre site snapshots` to use paginated query method.
+- Changed `test` API to return tests when they complete, error or timeout.
+- Changed `calibre site create test` to show the error or timeout failure.
+- Updated formatting of Lighthouse scores for single page tests.
+- Changed the metrics chart for single page tests to show First Contentful Paint instead of First Meaningful Paint.
+
+### 1.2.4 - 2019-03-18
+
+- Fixed output of request result (format with JSON)
+
+### 1.2.3 - 2019-03-11
+
+- Fixed snapshot metrics CSV
+
+### 1.2.2 - 2019-02-28
+
+- Removed `--no-deprecation` flag
+
 ### 1.2.1 - 2019-02-21
+
+- Removed `await-for-of` to continue support for node 8.
+- Changed `download-artifact` commands to output relative directory of stored
+  artifacts.
+
+### 1.2.1 - 2019-02-21
+
 - Removed `await-for-of` to continue support for node 8.
 - Changed `download-artifact` commands to output relative directory of stored
   artifacts.
