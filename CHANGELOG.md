@@ -1,3 +1,7 @@
+### 2.0.1 - 2019-05-15
+
+- Fixed test output to only display metric if available
+
 ### 2.0.0 - 2019-04-30
 
 - Added `calibre site deploys` command.
