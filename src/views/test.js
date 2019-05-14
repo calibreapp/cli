@@ -40,6 +40,24 @@ module.exports = test => {
     return list
   }
 
+  const assetCountData = () => {
+    const metric = metrics.find(metric => metric.name === 'asset_count')
+    if (!metric) {
+      return 'Asset count metric not available.'
+    }
+
+    return `${metric.label}: ${metric.value}`
+  }
+
+  const pageSizeData = () => {
+    const metric = metrics.find(metric => metric.name === 'page_size_in_bytes')
+    if (!metric) {
+      return 'Page size in bytes metric not available.'
+    }
+
+    return `${metric.label}: ${filesize(metric.value)}`
+  }
+
   const header = `
 ${intro.join(' ')}
 ${test.location.emoji}  ${test.location.name}
@@ -76,14 +94,9 @@ ${chalk.bold.underline('Timing')}
 
 ${chart(timingChartData(), 'duration')}
 
-${metrics.find(metric => metric.name === 'asset_count').label}: ${
-    metrics.find(metric => metric.name === 'asset_count').value
-  }
-${
-  metrics.find(metric => metric.name === 'page_size_in_bytes').label
-}: ${filesize(
-    metrics.find(metric => metric.name === 'page_size_in_bytes').value
-  )}
+${assetCountData()}
+
+${pageSizeData()}
 
 ${footer}
   `

@@ -2,42 +2,53 @@ const columnify = require('columnify')
 const { gradeFormatter } = require('../utils/formatters')
 
 const table = measurements => {
-  const perf = measurements
-    .find(metric => metric.name === 'lighthouse-performance-score')
-    .value.toFixed()
-  const bp = measurements
-    .find(metric => metric.name === 'lighthouse-best-practices-score')
-    .value.toFixed()
-  const accessibility = measurements
-    .find(metric => metric.name === 'lighthouse-accessibility-score')
-    .value.toFixed()
-  const seo = measurements
-    .find(metric => metric.name === 'lighthouse-seo-score')
-    .value.toFixed()
-  const pwa = measurements
-    .find(metric => metric.name === 'lighthouse-pwa-score')
-    .value.toFixed()
+  const perfMetric = measurements.find(
+    metric => metric.name === 'lighthouse-performance-score'
+  )
+  const perfScore = perfMetric && perfMetric.value.toFixed()
+
+  const bestPracticesMetric = measurements.find(
+    metric => metric.name === 'lighthouse-best-practices-score'
+  )
+  const bestPracticesScore =
+    bestPracticesMetric && bestPracticesMetric.value.toFixed()
+
+  const accessibilityMetric = measurements.find(
+    metric => metric.name === 'lighthouse-accessibility-score'
+  )
+  const accessibilityScore =
+    accessibilityMetric && accessibilityMetric.value.toFixed()
+
+  const seoMetric = measurements.find(
+    metric => metric.name === 'lighthouse-seo-score'
+  )
+  const seoScore = seoMetric && seoMetric.value.toFixed()
+
+  const pwaMetric = measurements.find(
+    metric => metric.name === 'lighthouse-pwa-score'
+  )
+  const pwaScore = pwaMetric && pwaMetric.value.toFixed()
 
   const rows = [
     {
       category: 'Performance',
-      score: gradeFormatter(perf)
+      score: gradeFormatter(perfScore)
     },
     {
       category: 'Best Practices',
-      score: gradeFormatter(bp)
+      score: gradeFormatter(bestPracticesScore)
     },
     {
       category: 'Accessibility',
-      score: gradeFormatter(accessibility)
+      score: gradeFormatter(accessibilityScore)
     },
     {
       category: 'SEO',
-      score: gradeFormatter(seo)
+      score: gradeFormatter(seoScore)
     },
     {
       category: 'Progressive Web App',
-      score: gradeFormatter(pwa)
+      score: gradeFormatter(pwaScore)
     }
   ]
 

@@ -3,6 +3,7 @@ const formatTest = require('../../src/views/test')
 const completedTest = require('../fixtures/completedTest.json')
 const erroredTest = require('../fixtures/erroredTest.json')
 const timeoutTest = require('../fixtures/timeoutTest.json')
+const incompleteTest = require('../fixtures/incompleteTest.json')
 
 describe('test', () => {
   it('completed', () => {
@@ -17,6 +18,11 @@ describe('test', () => {
 
   it('timeout', () => {
     const formattedTest = formatTest(timeoutTest)
+    expect(formattedTest).toMatchSnapshot()
+  })
+
+  it('incomplete', () => {
+    const formattedTest = formatTest(incompleteTest)
     expect(formattedTest).toMatchSnapshot()
   })
 })
