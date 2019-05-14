@@ -61,7 +61,7 @@ exports[`test incomplete 1`] = `
 [1m[4mOverall scores[24m[22m
 
 CATEGORY            | SCORE
-Performance         |      
+Performance         |   N/A
 Best Practices      |    [32m[1m93[22m[39m
 Accessibility       |    [33m[1m76[22m[39m
 SEO                 |   [32m[1m100[22m[39m
