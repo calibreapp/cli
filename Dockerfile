@@ -6,6 +6,5 @@ RUN mkdir /cli
 WORKDIR /cli
 COPY package.json package-lock.json /cli/
 RUN npm install
-RUN npm link pkg
 
 COPY . /cli
