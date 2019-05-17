@@ -1,4 +1,4 @@
-### 2.0.1 - 2019-05-15
+### 2.0.1 - 2019-05-17
 
 - Fixed test output to only display metric if available
 
