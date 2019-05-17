@@ -5,7 +5,7 @@ set -euo pipefail
 echo "--- Building packages"
 rm -rf bin/*
 mkdir -p bin/{mac,windows,linux}
-pkg . --out-path=bin
+npm run package
 
 echo "--- Renaming binaries"
 mv bin/calibre-macos bin/mac/calibre
