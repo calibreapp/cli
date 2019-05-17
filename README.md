@@ -1,7 +1,7 @@
 ![Calibre CLI - Automate your performance system](https://user-images.githubusercontent.com/924/54003204-7c294700-41a5-11e9-911e-c4d603fb619f.png)
 
 [![Build status](https://badge.buildkite.com/5e41ea8c42fa868fc2c41c063e742d5350de1daabd99acd636.svg)](https://buildkite.com/calibre/terminal-cli)
-[![NPM package](https://img.shields.io/npm/v/calibre.svg)](https://www.npmjs.com/package/calibre)
+[![NPM package](https://img.shields.io/npm/v/calibre.svg)](https://www.npmjs.com/package/calibre) [![Greenkeeper badge](https://badges.greenkeeper.io/calibreapp/cli.svg)](https://greenkeeper.io/)
 
 ## Installation
 
