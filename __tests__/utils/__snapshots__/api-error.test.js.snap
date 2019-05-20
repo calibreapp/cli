@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`apiError error 1`] = `"Expected Error"`;
+
+exports[`apiError error string 1`] = `"An unknown error occurred \\"Error string\\""`;
+
+exports[`apiError graphql 1`] = `"Expected value to not be null"`;
+
+exports[`apiError message 1`] = `"Expected Error Message"`;
+
+exports[`apiError messages 1`] = `"First Expected Error Message"`;

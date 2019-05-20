@@ -1,0 +1,28 @@
+{
+  "errors": [
+    {
+      "message": "Variable attributes of type SiteInput! was provided invalid value",
+      "locations": [
+        {
+          "line": 1,
+          "column": 44
+        }
+      ],
+      "problems": [
+        {
+          "path": [],
+          "explanation": "Expected value to not be null"
+        }
+      ],
+      "extensions": {
+        "value": null,
+        "problems": [
+          {
+            "path": [],
+            "explanation": "Expected value to not be null"
+          }
+        ]
+      }
+    }
+  ]
+}

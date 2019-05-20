@@ -7,10 +7,11 @@ const handleError = err => {
 const humaniseError = apiError => {
   if (
     apiError[0] &&
-    apiError[0].problems &&
-    apiError[0].problems[0].explanation
+    apiError[0].extensions &&
+    apiError[0].extensions.problems &&
+    apiError[0].extensions.problems[0].explanation
   ) {
-    return apiError[0].problems[0].explanation
+    return apiError[0].extensions.problems[0].explanation
   } else if (apiError[0] && apiError[0].message) {
     return apiError[0].message
   } else if (apiError.message) {
