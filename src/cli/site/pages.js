@@ -25,9 +25,9 @@ const main = async args => {
   }
 
   spinner.stop()
-  console.log(`${chalk.bold(args.site)} has ${chalk.bold(index.length)} pages`)
+  console.log(`${chalk.bold(index.pages.length)} pages`)
 
-  const rows = index.map(row => {
+  const rows = index.pages.map(row => {
     return {
       uuid: chalk.grey(row.uuid),
       name: row.name,
@@ -42,6 +42,16 @@ const main = async args => {
       maxLineWidth: 'auto'
     })
   )
+
+  if (index.pageInfo.hasNextPage) {
+    const lastPage = rows[rows.length - 1]
+    console.log(
+      `To see pages after ${lastPage.name ||
+        lastPage.uuid}, run: calibre site pages --site=calibre --cursor=${
+        index.pageInfo.endCursor
+      }`
+    )
+  }
 }
 module.exports = {
   command: 'pages [options]',
@@ -50,6 +60,8 @@ module.exports = {
   builder: yargs => {
     yargs.options({
       site: options.site,
+      count: options.count,
+      cursor: options.cursor,
       json: options.json
     })
   }

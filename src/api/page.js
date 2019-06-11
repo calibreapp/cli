@@ -13,14 +13,27 @@ const CREATE_MUTATION = `
 const LIST_QUERY = `
   query ListPages(
     $site: String!
+    $count: Int!
+    $cursor: String
   ) {
     organisation {
       site(slug: $site) {
-        pages {
-          uuid
-          name
-          url
-          canonical
+        pagesList(first: $count, after: $cursor) {
+          pageInfo {
+            hasPreviousPage
+            hasNextPage
+            endCursor
+            startCursor
+          }
+
+          edges {
+            node {
+              uuid
+              name
+              url
+              canonical
+            }
+          }
         }
       }
     }
@@ -59,9 +72,12 @@ const create = async ({ site, name, url }) => {
   return response.createPage
 }
 
-const list = async ({ site }) => {
-  const response = await request({ query: LIST_QUERY, site })
-  return response.organisation.site.pages
+const list = async ({ site, count, cursor }) => {
+  const response = await request({ query: LIST_QUERY, site, count, cursor })
+  return {
+    pages: response.organisation.site.pagesList.edges.map(edge => edge.node),
+    pageInfo: response.organisation.site.pagesList.pageInfo
+  }
 }
 
 const destroy = async ({ site, uuid }) => {
