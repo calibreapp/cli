@@ -50,111 +50,99 @@ const main = async args => {
       }
     ]
 
-    for (const page of response.pages) {
+    for (const test of response.snapshot.tests) {
+      const { page, testProfile: profile } = test
       const pageDirectory = mkdirp(
         directories.concat([`${page.name}-${page.uuid}`])
       )
 
-      for (const profile of response.testProfiles) {
-        const test = response.snapshot.tests.find(
-          test =>
-            test.page.uuid == page.uuid && test.testProfile.uuid == profile.uuid
-        )
-
-        if (test) {
-          const profileDirectory = mkdirp(
-            [pageDirectory].concat([`${profile.name}-${profile.uuid}`])
-          )
-          const testManifest = {
-            page: {
-              uuid: page.uuid,
-              name: page.name
-            },
-            profile: {
-              uuid: profile.uuid,
-              name: profile.name
-            }
-          }
-
-          tasks.push({
-            title: `Downloading artifacts (Page: ${page.name}) (Test Profile: ${
-              profile.name
-            })`,
-
-            task: () => {
-              const subtasks = [
-                {
-                  title: 'Screenshot',
-                  skip: () => {
-                    if (!test.image) return 'No screenshot available'
-                  },
-                  task: () => {
-                    const screenshotPath = path.join(
-                      profileDirectory,
-                      'image.jpg'
-                    )
-                    testManifest.screenshotPath = path.relative(
-                      rootPath,
-                      screenshotPath
-                    )
-                    return download(test.image, screenshotPath)
-                  }
-                },
-                {
-                  title: 'MP4 Video Render',
-                  skip: () => {
-                    if (!test.video) return 'No MP4 Video Render available'
-                  },
-                  task: () => {
-                    const mp4VideoRenderPath = path.join(
-                      profileDirectory,
-                      'render.mp4'
-                    )
-                    testManifest.mp4VideoRenderPath = path.relative(
-                      rootPath,
-                      mp4VideoRenderPath
-                    )
-                    return download(test.video, mp4VideoRenderPath)
-                  }
-                },
-                {
-                  title: 'HAR',
-                  skip: () => {
-                    if (!test.har) return 'No HAR available'
-                  },
-                  task: () => {
-                    const harPath = path.join(profileDirectory, 'requests.har')
-                    testManifest.harPath = path.relative(rootPath, harPath)
-                    return download(test.har, harPath)
-                  }
-                },
-                {
-                  title: 'Lighthouse Report',
-                  skip: () => {
-                    if (!test.lighthouse)
-                      return 'No Lighthouse Report available'
-                  },
-                  task: () => {
-                    const lighthousePath = path.join(
-                      profileDirectory,
-                      'lighthouse.json'
-                    )
-                    testManifest.lighthousePath = path.relative(
-                      rootPath,
-                      lighthousePath
-                    )
-                    return download(test.lighthouse, lighthousePath)
-                  }
-                }
-              ]
-
-              return new listr(subtasks, { concurrent: true })
-            }
-          })
-
-          manifest.tests.push(testManifest)
+      const profileDirectory = mkdirp(
+        [pageDirectory].concat([`${profile.name}-${profile.uuid}`])
+      )
+      const testManifest = {
+        page: {
+          uuid: page.uuid,
+          name: page.name
+        },
+        profile: {
+          uuid: profile.uuid,
+          name: profile.name
         }
       }
+
+      tasks.push({
+        title: `Downloading artifacts (Page: ${page.name}) (Test Profile: ${
+          profile.name
+        })`,
+
+        task: () => {
+          const subtasks = [
+            {
+              title: 'Screenshot',
+              skip: () => {
+                if (!test.image) return 'No screenshot available'
+              },
+              task: () => {
+                const screenshotPath = path.join(profileDirectory, 'image.jpg')
+                testManifest.screenshotPath = path.relative(
+                  rootPath,
+                  screenshotPath
+                )
+                return download(test.image, screenshotPath)
+              }
+            },
+            {
+              title: 'MP4 Video Render',
+              skip: () => {
+                if (!test.video) return 'No MP4 Video Render available'
+              },
+              task: () => {
+                const mp4VideoRenderPath = path.join(
+                  profileDirectory,
+                  'render.mp4'
+                )
+                testManifest.mp4VideoRenderPath = path.relative(
+                  rootPath,
+                  mp4VideoRenderPath
+                )
+                return download(test.video, mp4VideoRenderPath)
+              }
+            },
+            {
+              title: 'HAR',
+              skip: () => {
+                if (!test.har) return 'No HAR available'
+              },
+              task: () => {
+                const harPath = path.join(profileDirectory, 'requests.har')
+                testManifest.harPath = path.relative(rootPath, harPath)
+                return download(test.har, harPath)
+              }
+            },
+            {
+              title: 'Lighthouse Report',
+              skip: () => {
+                if (!test.lighthouse) return 'No Lighthouse Report available'
+              },
+              task: () => {
+                const lighthousePath = path.join(
+                  profileDirectory,
+                  'lighthouse.json'
+                )
+                testManifest.lighthousePath = path.relative(
+                  rootPath,
+                  lighthousePath
+                )
+                return download(test.lighthouse, lighthousePath)
+              }
+            }
+          ]
+
+          return new listr(subtasks, { concurrent: true })
+        }
+      })
+
+      manifest.tests.push(testManifest)
     }
 
     tasks.push({
