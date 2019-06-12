@@ -1,4 +1,4 @@
-### 2.1.0 - 2019-05-20
+### 2.1.0 - 2019-06-12
 
 - Changed `calibre site pages` to use paginated query method.
 
