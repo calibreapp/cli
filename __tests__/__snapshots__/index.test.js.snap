@@ -37,7 +37,6 @@ Object {
     "list": [Function],
   },
   "SnapshotMetrics": Object {
-    "pulse": [Function],
     "snapshot": [Function],
   },
   "Test": Object {

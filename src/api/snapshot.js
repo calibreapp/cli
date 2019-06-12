@@ -58,16 +58,6 @@ const GET_SNAPSHOT_ARTIFACT_URLS = `
   query GetSnapshotArtifacts($site: String!, $id: Int!) {
     organisation {
       site(slug: $site) {
-        pages {
-          uuid
-          name
-        }
-
-        testProfiles {
-          uuid
-          name
-        }
-
         snapshot(id: $id) {
           iid
 
@@ -81,10 +71,12 @@ const GET_SNAPSHOT_ARTIFACT_URLS = `
 
             page {
               uuid
+              name
             }
 
             testProfile {
               uuid
+              name
             }
           }
         }

@@ -1,3 +1,7 @@
+### 2.1.0 - 2019-06-12
+
+- Changed `calibre site pages` to use paginated query method.
+
 ### 2.0.2 - 2019-05-20
 
 - Updated `api-error` util to get GraphQL errors from `extensions`

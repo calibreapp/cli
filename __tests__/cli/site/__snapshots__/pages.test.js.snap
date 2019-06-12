@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`site snapshots lists all snapshots 1`] = `
+"20 pages
+UUID                                 | NAME    | URL
+85b54dfe-6e12-4fc7-99ca-1422f3700fdb | Home    |    
+6e95b705-0340-4b83-856d-ca7db00d6031 | About   |    
+83c48abc-4df6-421a-af62-2e241e62daf9 | About   |    
+cebc2df0-19f9-45ed-a1b3-776aba593a5e | Page 0  |    
+e7cfd3e3-64c7-4429-9420-1cded0065955 | Page 1  |    
+7291d0ab-1108-46ef-839a-557efc872756 | Page 2  |    
+f2e289c4-ee5b-41c9-baf1-18ad796eea27 | Page 3  |    
+8f6d9254-09f9-42db-a44a-b405ef9884b4 | Page 4  |    
+d4aaebcf-0343-4f4b-8c27-9bfa6f056f41 | Page 5  |    
+323a3713-c159-4007-816a-1ec133e5f94e | Page 6  |    
+3319b9ce-8464-4834-a584-21cedb154e54 | Page 7  |    
+9f1e4d8a-f50a-4571-877f-35341cc1a588 | Page 8  |    
+ef090fd1-3598-4820-b519-3e5c59f3afb2 | Page 9  |    
+4f8b55b4-04c4-4679-8370-70c5ea1746e2 | Page 10 |    
+eedfc447-ecbb-4f1e-a0d5-7c0eb736001c | Page 11 |    
+ba46b351-dff0-45c3-9aa9-c738985034d3 | Page 12 |    
+649878bc-e8a4-4201-9fa6-687c6d874db7 | Page 13 |    
+5242679c-1379-4128-a265-198b138069c6 | Page 14 |    
+47c587f1-f372-434e-bea6-8a10960e9d53 | Page 15 |    
+fb4dcfec-64e0-4671-beab-f505f7502f33 | Page 16 |    
+To see pages after Page 16, run: calibre site pages --site=calibre --cursor=MjA
+"
+`;
