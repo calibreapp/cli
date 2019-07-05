@@ -22,6 +22,7 @@ Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR
   - **[delete.js](integrations/delete.js)** - Deletes a given integration for a given site
   - **[update.js](integrations/update.js)** - Updates a given integration for a given site
   - **[list.js](integrations/update.js)** - Lists integrations for a given site
+- **[agent-settings.js](agent-settings.js)** - Updates the agent settings for a given site
 
 ### Writing your own, or looking for help?
 
