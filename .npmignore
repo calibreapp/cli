@@ -1,1 +1,15 @@
-examples/*
+node_modules
+examples
+__tests__
+snapshot-artifacts
+test-artifacts
+import
+coverage
+bin
+cookie-jar
+.DS_Store
+*.log
+*.env
+*.csv
+*.tgz
+*.json
