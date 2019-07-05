@@ -4,7 +4,7 @@ const { Integration } = require('calibre')
 
 const listIntegrations = async () => {
   const site = 'calibre' // site slug
-  const count = 20 // number to return, maximum 500
+  const count = 20 // number of integrations to return, maximum 500
 
   // List the integrations
   const integrations = await Integration.list({
