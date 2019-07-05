@@ -17,6 +17,11 @@ Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR
 - **[graphql-request](graphql-request.js)** - Make a request to the Calibre GraphQL API
 - **[create-deploy.js](create-deploy.js)** - Creates a deploy for a given site
 - **[create-snapshot.js](create-snapshot.js)** - Creates a snapshot for a given site
+- **[integrations](integrations)**
+  - **[create.js](integrations/create.js)** - Creates an integration for a given site
+  - **[delete.js](integrations/delete.js)** - Deletes a given integration for a given site
+  - **[update.js](integrations/update.js)** - Updates a given integration for a given site
+  - **[list.js](integrations/update.js)** - Lists integrations for a given site
 
 ### Writing your own, or looking for help?
 
