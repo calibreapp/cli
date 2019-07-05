@@ -1,3 +1,9 @@
+### 2.2.0 - 2019-07-05
+
+- Added `integrations` to to API
+- Added `metric-budgets` to to API
+- Added `agent-settings` to to API
+
 ### 2.1.0 - 2019-06-12
 
 - Changed `calibre site pages` to use paginated query method.
