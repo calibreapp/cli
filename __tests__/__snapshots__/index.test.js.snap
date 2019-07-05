@@ -19,6 +19,12 @@ Object {
   "GraphQL": Object {
     "request": [Function],
   },
+  "Integration": Object {
+    "create": [Function],
+    "destroy": [Function],
+    "list": [Function],
+    "update": [Function],
+  },
   "Page": Object {
     "create": [Function],
     "destroy": [Function],
