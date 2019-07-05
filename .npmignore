@@ -2,6 +2,7 @@ node_modules
 examples
 __tests__
 snapshot-artifacts
+test-artifacts
 import
 coverage
 bin
