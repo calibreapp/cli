@@ -28,6 +28,12 @@ Object {
     "list": [Function],
     "update": [Function],
   },
+  "MetricBudget": Object {
+    "create": [Function],
+    "destroy": [Function],
+    "list": [Function],
+    "update": [Function],
+  },
   "Page": Object {
     "create": [Function],
     "destroy": [Function],

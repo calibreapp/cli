@@ -21,7 +21,12 @@ Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR
   - **[create.js](integrations/create.js)** - Creates an integration for a given site
   - **[delete.js](integrations/delete.js)** - Deletes a given integration for a given site
   - **[update.js](integrations/update.js)** - Updates a given integration for a given site
-  - **[list.js](integrations/update.js)** - Lists integrations for a given site
+  - **[list.js](integrations/list.js)** - Lists integrations for a given site
+- **[metric-budgets](metric-budgets)**
+  - **[create.js](metric-budgets/create.js)** - Creates a metric budget for a given site
+  - **[delete.js](metric-budgets/delete.js)** - Deletes a given metric budget for a given site
+  - **[update.js](metric-budgets/update.js)** - Updates a given metric budget for a given site
+  - **[list.js](metric-budgets/list.js)** - Lists metric budgets for a given site
 - **[agent-settings.js](agent-settings.js)** - Updates the agent settings for a given site
 
 ### Writing your own, or looking for help?

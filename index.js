@@ -17,6 +17,7 @@ const GraphQL = require('./src/api/graphql')
 const TimeSeries = require('./src/api/time-series')
 const Deploy = require('./src/api/deploy')
 const Integration = require('./src/api/integration')
+const MetricBudget = require('./src/api/metric-budget')
 const AgentSettings = require('./src/api/agent-settings')
 
 module.exports = {
@@ -33,5 +34,6 @@ module.exports = {
   TimeSeries,
   Deploy,
   Integration,
+  MetricBudget,
   AgentSettings
 }
