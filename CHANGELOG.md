@@ -1,3 +1,7 @@
+### 2.2.1 - 2019-07-06
+
+- Updated .npmignore so that development data isn't included in the package
+
 ### 2.2.0 - 2019-07-05
 
 - Added `integrations` to to API
