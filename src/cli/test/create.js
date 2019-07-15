@@ -30,9 +30,9 @@ const main = async function(args) {
   }
 
   if (args.headers) {
-    if (['{', '['].includes(args.headers.substr(0, 1))) {
+    try {
       headers = JSON.parse(args.headers)
-    } else {
+    } catch (e) {
       headers = fs.readFileSync(args.headers, 'utf-8')
       headers = JSON.parse(headers)
     }
