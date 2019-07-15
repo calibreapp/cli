@@ -20,6 +20,12 @@ const createTest = async () => {
       httpOnly: true
     }
   ]
+  const headers = [
+    {
+      name: 'User-Agent',
+      value: 'My Custom User Agent'
+    }
+  ]
 
   // Create the test
   const { uuid } = await Test.create({
@@ -27,7 +33,8 @@ const createTest = async () => {
     location,
     device,
     connection,
-    cookies
+    cookies,
+    headers
   })
 
   console.log(`Test created, ID: ${uuid}`)

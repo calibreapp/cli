@@ -2,6 +2,7 @@ const { URL } = require('url')
 
 const ora = require('ora')
 const { CookieMap } = require('cookiefile')
+const fs = require('fs')
 
 const { create, waitForTest } = require('../../api/test')
 const formatTest = require('../../views/test')
@@ -10,6 +11,7 @@ const { humaniseError } = require('../../utils/api-error')
 const main = async function(args) {
   let spinner
   let cookies = []
+  let headers = []
 
   if (!args.json) {
     spinner = ora('Connecting to Calibre')
@@ -27,8 +29,25 @@ const main = async function(args) {
     }
   }
 
+  if (args.headers) {
+    if (['{', '['].includes(args.headers.substr(0, 1))) {
+      headers = JSON.parse(args.headers)
+    } else {
+      headers = fs.readFileSync(args.headers, 'utf-8')
+      headers = JSON.parse(headers)
+    }
+
+    headers = [].concat(headers).map(header => {
+      const name = Object.keys(header)[0]
+      return {
+        name,
+        value: header[name]
+      }
+    })
+  }
+
   try {
-    const { uuid } = await create({ ...args, cookies })
+    const { uuid } = await create({ ...args, cookies, headers })
 
     if (!args.json) {
       spinner.succeed(`Test scheduled: ${uuid}`)
@@ -42,7 +61,7 @@ const main = async function(args) {
 
     if (args.json) return console.log(JSON.stringify(response, null, 2))
 
-    if (response.status === "completed") {
+    if (response.status === 'completed') {
       spinner.succeed('Test complete')
     } else {
       spinner.fail('Test complete')
@@ -79,6 +98,10 @@ module.exports = {
       })
       .option('cookie-jar', {
         describe: 'Uses a netscape formatted cookie jar file at this path'
+      })
+      .option('headers', {
+        describe:
+          "Stringify'd JSON HTTP Header key/value pairs or path to JSON file of HTTP Header key/value pairs "
       })
       .demandOption(
         'location',
