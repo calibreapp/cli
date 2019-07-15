@@ -1,3 +1,8 @@
+### 2.3.0 - 2019-07-15
+
+- Added ability to add custom headers in `test` API
+- Added `--headers` flag to create test with custom headers
+
 ### 2.2.1 - 2019-07-06
 
 - Updated .npmignore so that development data isn't included in the package
