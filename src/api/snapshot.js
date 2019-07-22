@@ -98,7 +98,7 @@ const destroy = async ({ site, id }) => {
   const response = await request({
     query: DELETE_MUTATION,
     site,
-    id: Number(id)
+    id: String(id)
   })
   return response.deleteSnapshot
 }
