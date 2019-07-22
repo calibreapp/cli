@@ -73,7 +73,7 @@ const destroy = async ({ site, uuid }) => {
   return response.deleteDeploy
 }
 
-const list = async ({ site, count, cursor }) => {
+const list = async ({ site, count = 25, cursor }) => {
   const response = await request({
     query: LIST_QUERY,
     site,
