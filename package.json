@@ -34,8 +34,8 @@
     "prettier": "^1.16.4"
   },
   "scripts": {
-    "ci": "CI=true jest --coverage --runInBand --no-color",
-    "test": "TZ=Etc/GMT jest --runInBand --no-color",
+    "ci": "CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
+    "test": "TZ=Etc/GMT jest --runInBand --no-colors",
     "lint": "eslint .",
     "package": "pkg . --out-path=bin"
   },

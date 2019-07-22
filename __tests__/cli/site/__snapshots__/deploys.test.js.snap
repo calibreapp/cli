@@ -3,8 +3,8 @@
 exports[`site deploys lists all deploys 1`] = `
 "3 deploys
 UUID                                 | REVISION | REPOSITORY                        | USERNAME | CREATED            
-8c68b9f6-b5bf-49bc-abd7-896db6338818 | v1       | https://github.com/calibreapp/app | Deployer | 11:00am 17-Jan-2019
-640d2460-13a7-417e-8478-08b1bf166fd1 | v2       | https://github.com/calibreapp/app | Deployer | 11:00am 19-Jan-2019
-db846ca0-a26c-4667-b971-b6710506d866 | v3       | https://github.com/calibreapp/app | Deployer | 3:00am 23-Jan-2019 
+8c68b9f6-b5bf-49bc-abd7-896db6338818 | v1       | https://github.com/calibreapp/app | Deployer | 12:00am 17-Jan-2019
+640d2460-13a7-417e-8478-08b1bf166fd1 | v2       | https://github.com/calibreapp/app | Deployer | 12:00am 19-Jan-2019
+db846ca0-a26c-4667-b971-b6710506d866 | v3       | https://github.com/calibreapp/app | Deployer | 4:00pm 22-Jan-2019 
 To see deploys after v3, run: calibre site deploys --site=calibre --cursor=MjU=="
 `;

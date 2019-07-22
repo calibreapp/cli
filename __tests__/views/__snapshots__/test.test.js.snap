@@ -5,7 +5,7 @@ exports[`test completed 1`] = `
 https://calibreapp.com on Chrome Desktop
 🇺🇸  North Virginia, USA
 
-3:09pm 26-Apr-2019
+5:09am 26-Apr-2019
 
 Overall scores
 
@@ -43,7 +43,7 @@ exports[`test errored 1`] = `
 https://calibreapp.com on Chrome Desktop
 🇺🇸  North Virginia, USA
 
-3:09pm 26-Apr-2019
+5:09am 26-Apr-2019
 
 Calibre was unable to load the page. Please make sure the page URL and site authentication settings are correct.
 
@@ -56,7 +56,7 @@ exports[`test incomplete 1`] = `
 https://calibreapp.com on Chrome Desktop
 🇺🇸  North Virginia, USA
 
-3:09pm 26-Apr-2019
+5:09am 26-Apr-2019
 
 Overall scores
 
@@ -94,7 +94,7 @@ exports[`test timeout 1`] = `
 https://calibreapp.com on Chrome Desktop
 🇺🇸  North Virginia, USA
 
-3:09pm 26-Apr-2019 
+5:09am 26-Apr-2019 
 
 The test took too long to complete.
 
