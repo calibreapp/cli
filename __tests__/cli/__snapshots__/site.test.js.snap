@@ -6,7 +6,7 @@ exports[`missing site argument 1`] = `
  Missing required argument: site 
 
  --- Command documentation
- cli.js site pages [options]
+ calibre site pages [options]
 
 Print a list of pages for a given site
 
@@ -17,8 +17,7 @@ Options:
   --site     The identifying slug of a site                  [string] [required]
   --count    The number of records to return, maximum: 500         [default: 25]
   --cursor   The cursor to fetch records after
-  --json     Return the output in JSON format
-"
+  --json     Return the output in JSON format"
 `;
 
 exports[`missing site argument value 1`] = `
@@ -27,7 +26,7 @@ exports[`missing site argument value 1`] = `
  Not enough arguments following: site 
 
  --- Command documentation
- cli.js site pages [options]
+ calibre site pages [options]
 
 Print a list of pages for a given site
 
@@ -38,6 +37,5 @@ Options:
   --site     The identifying slug of a site                  [string] [required]
   --count    The number of records to return, maximum: 500         [default: 25]
   --cursor   The cursor to fetch records after
-  --json     Return the output in JSON format
-"
+  --json     Return the output in JSON format"
 `;

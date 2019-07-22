@@ -9,11 +9,10 @@ describe('site snapshots', () => {
   beforeAll(() => setupIntegrationServer(listSnapshots))
   afterAll(() => teardownIntegrationServer())
 
-  it('lists all snapshots', () => {
-    return runCLI({
+  test('lists all snapshots', async () => {
+    const out = await runCLI({
       args: 'site snapshots --site=test'
-    }).then(stdout => {
-      expect(stdout).toMatchSnapshot()
     })
+    expect(out).toMatchSnapshot()
   })
 })

@@ -9,18 +9,16 @@ describe('request', () => {
   beforeAll(() => setupIntegrationServer(site))
   afterAll(() => teardownIntegrationServer())
 
-  test('missing query argument', () => {
-    return runCLI({ args: 'request', testForError: true }).then(stdout => {
-      expect(stdout).toMatchSnapshot()
-    })
+  test('missing query argument', async () => {
+    const out = await runCLI({ args: 'request', testForError: true })
+    expect(out).toMatchSnapshot()
   })
 
-  it('returns response', () => {
+  test('returns response', async () => {
     const slug = 'calibre'
-    return runCLI({
+    const out = await runCLI({
       args: `request --query='query GetSite($slug: String!) {organisation{site(slug: $slug){slug}}}' --slug=${slug}`
-    }).then(stdout => {
-      expect(stdout).toMatchSnapshot()
     })
+    expect(out).toMatchSnapshot()
   })
 })

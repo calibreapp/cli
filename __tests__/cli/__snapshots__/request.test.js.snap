@@ -6,7 +6,7 @@ exports[`request missing query argument 1`] = `
  Missing required argument: query 
 
  --- Command documentation
- cli.js request
+ calibre request
 
 Make a request to the Calibre GraphQL API
 
@@ -19,8 +19,7 @@ Options:
 
 Examples:
   calibre request --query='query GetSite($slug: String!)
-  {organisation{site(slug: $slug){slug}}}' --slug=calibre
-"
+  {organisation{site(slug: $slug){slug}}}' --slug=calibre"
 `;
 
 exports[`request returns response 1`] = `
@@ -30,6 +29,5 @@ exports[`request returns response 1`] = `
       \\"slug\\": \\"calibre\\"
     }
   }
-}
-"
+}"
 `;

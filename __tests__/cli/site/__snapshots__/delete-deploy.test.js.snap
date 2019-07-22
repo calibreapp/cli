@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`site delete-deploy deletes deploy 1`] = `
-"✔ Deploy deleted: 8c68b9f6-b5bf-49bc-abd7-896db6338818
-"
+"- Connecting to Calibre
+✔ Deploy deleted: 8c68b9f6-b5bf-49bc-abd7-896db6338818"
 `;
 
 exports[`site delete-deploy requires uuid 1`] = `
@@ -11,7 +11,7 @@ exports[`site delete-deploy requires uuid 1`] = `
  Missing required argument: uuid 
 
  --- Command documentation
- cli.js site delete-deploy [options]
+ calibre site delete-deploy [options]
 
 Deletes a deploy from a site
 
@@ -22,6 +22,5 @@ Options:
   --uuid     The uuid of the deploy                                   [required]
   --site     The identifying slug of a site                  [string] [required]
   --confirm  Confirm the deletion
-  --json     Return the output in JSON format
-"
+  --json     Return the output in JSON format"
 `;
