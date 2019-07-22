@@ -1,5 +1,5 @@
 const ora = require('ora')
-const json2csv = require('json2csv')
+const { parse: json2csv } = require('json2csv')
 const { snapshot } = require('../../api/snapshot-metrics')
 const formatSnapshot = require('../../views/snapshot-metrics')
 const { options } = require('../../utils/cli')
