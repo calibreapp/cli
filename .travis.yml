@@ -5,4 +5,6 @@ env:
 language: node_js
 node_js:
   - "11.10.1"
-script: npm run ci
+script: 
+  - npm link
+  - npm run ci

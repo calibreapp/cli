@@ -5,13 +5,13 @@ exports[`calibre --help 1`] = `
 
 Commands:
 
-  cli.js connection-list  Print a list of Calibre’s prebaked emulated connection
-                          options
-  cli.js device-list      Print a list of Calibre’s test devices
-  cli.js location-list    Print a list of Calibre’s test locations
-  cli.js request          Make a request to the Calibre GraphQL API
-  cli.js site <command>   Tasks related to sites
-  cli.js test <command>   Single page tests
+  calibre connection-list  Print a list of Calibre’s prebaked emulated
+                           connection options
+  calibre device-list      Print a list of Calibre’s test devices
+  calibre location-list    Print a list of Calibre’s test locations
+  calibre request          Make a request to the Calibre GraphQL API
+  calibre site <command>   Tasks related to sites
+  calibre test <command>   Single page tests
 
 Options:
 
@@ -19,10 +19,11 @@ Options:
   --version  Show version number                                       [boolean]
 
 Examples:
-  cli.js test create                        Run a test on calibreapp.com from
+  calibre test create                       Run a test on calibreapp.com from
   https://calibreapp.com --location=Sydney  Sydney emulating an iPhone 8 with a
   --device=iPhone8 --connection=good3G      3G connection
 
-For more information on Calibre, see http://localhost:5678.
-"
+For more information on Calibre, see http://localhost:5678."
 `;
+
+exports[`calibre --version 1`] = `"2.3.0"`;

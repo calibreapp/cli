@@ -23,6 +23,5 @@ ba46b351-dff0-45c3-9aa9-c738985034d3 | Page 12 |
 5242679c-1379-4128-a265-198b138069c6 | Page 14 |    
 47c587f1-f372-434e-bea6-8a10960e9d53 | Page 15 |    
 fb4dcfec-64e0-4671-beab-f505f7502f33 | Page 16 |    
-To see pages after Page 16, run: calibre site pages --site=calibre --cursor=MjA
-"
+To see pages after Page 16, run: calibre site pages --site=calibre --cursor=MjA"
 `;

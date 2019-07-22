@@ -1,47 +1,16 @@
 const express = require('express')
-const path = require('path')
-const spawn = require('spawn-command')
+const { command } = require('execa')
 
-const CLI_PATH = require.resolve('../src/cli.js')
-
-const runCLI = ({ args = '', testForError = false }, cwd = process.cwd()) => {
-  const isRelative = cwd[0] !== '/'
-  if (isRelative) {
-    cwd = path.resolve(__dirname, cwd)
+const runCLI = async ({ args = '', testForError = false }) => {
+  try {
+    const { stdout, stderr } = await command(`calibre ${args}`, {
+      shell: true
+    })
+    if (testForError) return stderr
+    return stdout
+  } catch (error) {
+    return error.stderr
   }
-
-  return new Promise((resolve, reject) => {
-    let stdout = ''
-    let stderr = ''
-    const command = `CALIBRE_API_TOKEN=${
-      process.env.CALIBRE_API_TOKEN
-    } CALIBRE_HOST=${
-      process.env.CALIBRE_HOST
-    } TZ=Sydney/Australia ${CLI_PATH} ${args}`
-    const child = spawn(command, { cwd })
-
-    child.on('error', error => {
-      reject(error)
-    })
-
-    child.stdout.on('data', data => {
-      stdout += data.toString()
-    })
-
-    child.stderr.on('data', data => {
-      stderr += data.toString()
-    })
-
-    child.on('close', () => {
-      if (testForError) {
-        resolve(stderr)
-      } else if (stderr) {
-        reject(stderr)
-      } else {
-        resolve(stdout)
-      }
-    })
-  })
 }
 
 let server

@@ -9,21 +9,19 @@ describe('site delete-deploy', () => {
   beforeAll(() => setupIntegrationServer(deleteDeploy))
   afterAll(() => teardownIntegrationServer())
 
-  test('requires uuid', () => {
-    return runCLI({
+  test('requires uuid', async () => {
+    const out = await runCLI({
       args: 'site delete-deploy --site=test',
       testForError: true
-    }).then(stdout => {
-      expect(stdout).toMatchSnapshot()
     })
+    expect(out).toMatchSnapshot()
   })
 
-  it('deletes deploy', () => {
-    return runCLI({
+  test('deletes deploy', async () => {
+    const out = await runCLI({
       args: 'site delete-deploy --site=test --uuid=1',
       testForError: true
-    }).then(stdout => {
-      expect(stdout).toMatchSnapshot()
     })
+    expect(out).toMatchSnapshot()
   })
 })

@@ -9,11 +9,8 @@ describe('site deploys', () => {
   beforeAll(() => setupIntegrationServer(listDeploys))
   afterAll(() => teardownIntegrationServer())
 
-  it('lists all deploys', () => {
-    return runCLI({
-      args: 'site deploys --site=test'
-    }).then(stdout => {
-      expect(stdout).toMatchSnapshot()
-    })
+  test('lists all deploys', async () => {
+    const out = await runCLI({ args: 'site deploys --site=test' })
+    expect(out).toMatchSnapshot()
   })
 })
