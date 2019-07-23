@@ -26,4 +26,4 @@ Examples:
 For more information on Calibre, see http://localhost:5678."
 `;
 
-exports[`calibre --version 1`] = `"2.3.0"`;
+exports[`calibre --version 1`] = `"2.3.1"`;
