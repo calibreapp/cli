@@ -1,7 +1,7 @@
 os:
   - osx
 env:
-  - CALIBRE_API_TOKEN=xxx
+  - CALIBRE_API_TOKEN=xxx  NPM_AUTH_TOKEN=xx 
 language: node_js
 node_js:
   - "11.10.1"

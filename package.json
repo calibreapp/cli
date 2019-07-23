@@ -37,7 +37,8 @@
     "ci": "CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
     "test": "TZ=Etc/GMT jest --runInBand --no-colors",
     "lint": "eslint .",
-    "package": "pkg . --out-path=bin"
+    "package": "pkg . --out-path=bin",
+    "pre-publish": "echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc"
   },
   "keywords": [
     "performance",
