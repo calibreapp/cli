@@ -38,7 +38,7 @@
     "test": "TZ=Etc/GMT jest --runInBand --no-colors",
     "lint": "eslint .",
     "package": "pkg . --out-path=bin",
-    "pre-publish": "echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc"
+    "pre-publish": "echo //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN} > .npmrc"
   },
   "keywords": [
     "performance",
