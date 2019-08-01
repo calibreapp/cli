@@ -3,7 +3,7 @@
 - Set default count in `deploys` API
 - Fix `destroy` mutation in `snapshot` API to pass `String` to GraphQL API
 
-###2.3.0 - 2019-07-15
+### 2.3.0 - 2019-07-15
 
 - Added ability to add custom headers in `test` API
 - Added `--headers` flag to create test with custom headers
