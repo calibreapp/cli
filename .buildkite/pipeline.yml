@@ -18,4 +18,4 @@ steps:
   - name: ":s3: publish binaries"
     command: "script/publish"
     if: |
-      env("BUILDKITE_TAG") != ""
+    env("BUILDKITE_TAG") != ""
