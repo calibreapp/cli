@@ -24,11 +24,19 @@ const TIME_SERIES_QUERY = `
         }
 
         pages {
+          uuid
           name
+          canonical
         }
 
         testProfiles {
+          uuid
           name
+          jsIsDisabled
+          adBlockerIsEnabled
+          hasDeviceEmulation
+          hasBandwidthEmulation
+          isMobile
         }
 
         measurements {
