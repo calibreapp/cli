@@ -1,3 +1,7 @@
+### 2.3.2 - 2019-08-08
+
+- Update the TimeSeries api to return `uuid` and `canonical` for `pages` and `uuid`, `name`, `jsIsDisabled`, `adBlockIsEnabled`, `hasDeviceEmulation`, `hasBandwidthEmulation` and `isMobile` for `testProfiles`
+
 ### 2.3.1 - 2019-07-23
 
 - Set default count in `deploys` API
