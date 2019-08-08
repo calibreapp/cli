@@ -17,4 +17,5 @@ steps:
 
   - name: ":s3: publish binaries"
     command: "script/publish"
-    branches: "master"
+    if: |
+      env("BUILDKITE_TAG") != ""
