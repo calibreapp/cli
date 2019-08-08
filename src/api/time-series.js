@@ -26,6 +26,7 @@ const TIME_SERIES_QUERY = `
         pages {
           uuid
           name
+          url
           canonical
         }
 
