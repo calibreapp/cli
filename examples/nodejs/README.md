@@ -15,7 +15,10 @@ Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR
 - **[bulk-page-import.js](bulk-page-import.js)** - Adds pages to a pre-existing site from an array.
 - **[get-all-pulse-metrics.js](get-all-pulse-metrics.js)** - Iterates through every site and page in an account, returns the last 7 days of 'consistently-interactive' metrics for each.
 - **[graphql-request](graphql-request.js)** - Make a request to the Calibre GraphQL API
-- **[create-deploy.js](create-deploy.js)** - Creates a deploy for a given site
+- **[deploys](deploys)**
+  - **[create.js](deploys/create.js)** - Creates a deploy for a given site
+  - **[delete.js](deploys/delete.js)** - Deletes a given deploy for a given site
+  - **[list.js](deploys/list.js)** - Lists deploys for a given site
 - **[snapshots](snapshots)**
   - **[create.js](snapshots/create.js)** - Creates an snapshot for a given site
   - **[delete.js](snapshots/delete.js)** - Deletes a given snapshot for a given site
