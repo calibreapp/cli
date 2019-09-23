@@ -19,7 +19,7 @@
     "humanize": "0.0.9",
     "json2csv": "^4.5.2",
     "listr": "^0.14.1",
-    "ora": "^3.4.0",
+    "ora": "^4.0.1",
     "stats-percentile": "^3.1.0",
     "update-notifier": "^3.0.1",
     "yargs": "^13.2.4"
