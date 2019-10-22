@@ -2,7 +2,7 @@
 
 const { Deploy } = require('calibre')
 
-const listDeploy = async () => {
+const listDeploys = async () => {
   // Required
   const site = 'calibre'
 
@@ -12,7 +12,7 @@ const listDeploy = async () => {
   })
 
   // Output the formatted JSON response
-  console.log(JSON.stringify(deploy, null, 2))
+  console.log(JSON.stringify(deploys, null, 2))
 }
 
-createDeploy()
+listDeploys()
