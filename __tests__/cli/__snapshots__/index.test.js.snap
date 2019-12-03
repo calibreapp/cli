@@ -12,6 +12,7 @@ Commands:
   calibre request          Make a request to the Calibre GraphQL API
   calibre site <command>   Tasks related to sites
   calibre test <command>   Single page tests
+  calibre token <command>  Tasks related to tokens
 
 Options:
 
