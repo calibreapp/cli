@@ -1,8 +1,8 @@
 const { request } = require('./graphql')
 
 const CREATE_MUTATION = `
-  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $headers: [HeaderInput!], $adBlockerIsEnabled: Boolean) {
-    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies, headers: $headers, adBlockerIsEnabled: $adBlockerIsEnabled) {
+  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $headers: [HeaderInput!], $adBlockerIsEnabled: Boolean, $isPrivate: Boolean) {
+    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies, headers: $headers, adBlockerIsEnabled: $adBlockerIsEnabled, isPrivate: $isPrivate) {
       uuid
     }
   }
@@ -16,6 +16,7 @@ const LIST_QUERY = `
         url
         formattedTestUrl
         adBlockerIsEnabled
+        isPrivate
 
         device {
           title
@@ -47,6 +48,7 @@ const GET_BY_UUID = `
         status
         updatedAt
         adBlockerIsEnabled
+        isPrivate
         runtimeError: artifact(name: TEST_ARTIFACT_RUNTIME_ERROR)
 
 
@@ -80,9 +82,9 @@ const GET_TEST_ARTIFACT_URLS = `
         uuid
 
         har: artifactURL(name: TEST_ARTIFACT_HAR)
-      	lighthouse: artifactURL(name: TEST_ARTIFACT_LIGHTHOUSE)
-      	image: mediaURL(name: TEST_MEDIA_IMAGE)
-      	video: mediaURL(name: TEST_MEDIA_VIDEO)
+        lighthouse: artifactURL(name: TEST_ARTIFACT_LIGHTHOUSE)
+        image: mediaURL(name: TEST_MEDIA_IMAGE)
+        video: mediaURL(name: TEST_MEDIA_VIDEO)
       }
     }
   }
@@ -95,7 +97,8 @@ const create = async ({
   connection,
   cookies,
   headers,
-  adblocker
+  adblocker,
+  private
 }) => {
   const response = await request({
     query: CREATE_MUTATION,
@@ -105,7 +108,8 @@ const create = async ({
     connection,
     cookies,
     headers,
-    adBlockerIsEnabled: adblocker
+    adBlockerIsEnabled: adblocker,
+    isPrivate: private
   })
   return response.createTest
 }
