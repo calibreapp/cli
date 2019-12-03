@@ -46,8 +46,10 @@ const main = async function(args) {
     })
   }
 
+  const isPrivate = args.private
+
   try {
-    const { uuid } = await create({ ...args, cookies, headers })
+    const { uuid } = await create({ ...args, cookies, headers, isPrivate })
 
     if (!args.json) {
       spinner.succeed(`Test scheduled: ${uuid}`)

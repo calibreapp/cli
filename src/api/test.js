@@ -98,7 +98,7 @@ const create = async ({
   cookies,
   headers,
   adblocker,
-  private
+  isPrivate
 }) => {
   const response = await request({
     query: CREATE_MUTATION,
@@ -109,7 +109,7 @@ const create = async ({
     cookies,
     headers,
     adBlockerIsEnabled: adblocker,
-    isPrivate: private
+    isPrivate
   })
   return response.createTest
 }
