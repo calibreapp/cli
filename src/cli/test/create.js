@@ -96,6 +96,11 @@ module.exports = {
         type: 'boolean',
         default: false
       })
+      .option('private', {
+        describe: 'Private tests are only accessible by logged in team members',
+        type: 'boolean',
+        default: false
+      })
       .option('cookie-jar', {
         describe: 'Uses a netscape formatted cookie jar file at this path'
       })
