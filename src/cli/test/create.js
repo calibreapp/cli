@@ -46,8 +46,10 @@ const main = async function(args) {
     })
   }
 
+  const isPrivate = args.private
+
   try {
-    const { uuid } = await create({ ...args, cookies, headers })
+    const { uuid } = await create({ ...args, cookies, headers, isPrivate })
 
     if (!args.json) {
       spinner.succeed(`Test scheduled: ${uuid}`)
@@ -93,6 +95,11 @@ module.exports = {
       })
       .option('adblocker', {
         describe: 'Turn adblocking on/off',
+        type: 'boolean',
+        default: false
+      })
+      .option('private', {
+        describe: 'Private tests are only accessible by logged in team members',
         type: 'boolean',
         default: false
       })
