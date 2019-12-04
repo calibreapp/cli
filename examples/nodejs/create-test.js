@@ -10,6 +10,7 @@ const createTest = async () => {
   // Optional
   const device = 'iPhone8'
   const connection = 'good3G'
+  const isPrivate = false
   const cookies = [
     {
       name: 'app.uid',
@@ -34,7 +35,8 @@ const createTest = async () => {
     device,
     connection,
     cookies,
-    headers
+    headers,
+    isPrivate
   })
 
   console.log(`Test created, ID: ${uuid}`)
