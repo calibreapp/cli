@@ -1,3 +1,8 @@
+### 2.4.0 - 2019-12-03
+
+- Added ability to set `isPrivate` in `test` API
+- Added `--private` flag to create private test
+
 ### 2.3.2 - 2019-08-08
 
 - Update the TimeSeries api to return `uuid` and `canonical` for `pages` and `uuid`, `name`, `jsIsDisabled`, `adBlockIsEnabled`, `hasDeviceEmulation`, `hasBandwidthEmulation` and `isMobile` for `testProfiles`
