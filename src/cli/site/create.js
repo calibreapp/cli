@@ -13,17 +13,22 @@ const main = async function(args) {
     spinner.start()
   }
 
-  const { name, location, url } = args
+  const { name, location, url, schedule, interval } = args
   const pages = [
     {
       url,
-      name: 'Home',
-      canonical: true
+      name: 'Home'
     }
   ]
 
+  const agentSettings = {
+    location,
+    scheduleInterval: schedule,
+    scheduleAnchor: interval
+  }
+
   try {
-    const site = await create({ name, location, pages })
+    const site = await create({ name, pages, agentSettings })
 
     if (!args.json) {
       spinner.succeed(`${site.name} added to Calibre`)
@@ -47,6 +52,14 @@ module.exports = {
       })
       .option('location', {
         describe: 'Calibre will monitor from this location'
+      })
+      .option('schedule', {
+        describe:
+          'Calibre will schedule for automated. One of: hourly, daily, every_x_hours'
+      })
+      .option('interval', {
+        describe:
+          "Snapshot shcedule interval. UTC hour of day for 'daily', hour interval for 'every_x_hours'"
       })
       .option('json', {
         describe: 'Return the site attributes as JSON'
