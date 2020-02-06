@@ -3,7 +3,7 @@ const { request } = require('./graphql')
 const CREATE_MUTATION = `
   mutation CreateSnapshot(
     $site: String!
-    $ref: String!
+    $ref: String
   ) {
     createSnapshot(site: $site, ref: $ref) {
       iid
@@ -89,7 +89,7 @@ const create = async ({ site, ref }) => {
   const response = await request({
     query: CREATE_MUTATION,
     site,
-    ref: new String(ref)
+    ref: ref ? new String(ref) : null
   })
   return response.createSnapshot
 }
