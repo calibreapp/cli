@@ -36,7 +36,9 @@ Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR
   - **[delete.js](metric-budgets/delete.js)** - Deletes a given metric budget for a given site
   - **[update.js](metric-budgets/update.js)** - Updates a given metric budget for a given site
   - **[list.js](metric-budgets/list.js)** - Lists metric budgets for a given site
-- **[agent-settings.js](agent-settings.js)** - Updates the agent settings for a given site
+- **[agent-settings](agent-settings)**
+  - **[get](agent-settings/get.js)** - Get the agent settings for a given site
+  - **[update](agent-settings/update.js)** - Updates the agent settings for a given site
 
 ### Writing your own, or looking for help?
 
