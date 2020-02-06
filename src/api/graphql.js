@@ -5,7 +5,7 @@ const clientInfo = require('../utils/client-info')
 const retrieveToken = require('../utils/token')
 
 const request = async ({ query, ...variables }) => {
-  const host = process.env.CALIBRE_HOST || 'https://calibreapp.com'
+  const host = process.env.CALIBRE_HOST || 'https://api.calibreapp.com'
   const endpoint = `${host}/graphql`
   const token = retrieveToken()
   const headers = {
