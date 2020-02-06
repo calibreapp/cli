@@ -4,7 +4,13 @@ const { Site } = require('calibre')
 
 const create = async () => {
   const name = 'Calibre'
-  const location = 'Frankfurt'
+
+  const agentSettings = {
+    location: 'Frankfurt', // location tag
+    scheduleAnchor: 6,
+    scheduleInterval: 'every_x_hours' // options: off, daily, hourly, every_x_hours
+  }
+
   const pages = [
     {
       name: 'Home',
@@ -41,8 +47,14 @@ const create = async () => {
       connection: 'good3G'
     }
   ]
+
   try {
-    const site = await Site.create({ name, location, pages, testProfiles })
+    const site = await Site.create({
+      name,
+      agentSettings,
+      pages,
+      testProfiles
+    })
 
     console.log('Created', site)
   } catch (e) {
