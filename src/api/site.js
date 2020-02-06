@@ -6,6 +6,21 @@ const CREATE_MUTATION = `
       name
       slug
 
+      agentSettings {
+        location {
+          identifier
+          name
+          shortName
+          emoji
+          tag
+          agents {
+            ipv4
+          }
+        }
+        scheduleAnchor
+        scheduleInterval
+      }
+
       testProfiles {
         name
         uuid
@@ -40,14 +55,27 @@ const DELETE_MUTATION = `
   }
 `
 
-const create = async ({ name, location, pages, testProfiles }) => {
+const create = async ({
+  name,
+  location,
+  pages,
+  testProfiles,
+  agentSettings
+}) => {
+  // Support deprecated `location` variable
+  // Location should now be passed as part of agentSettings
+  const updatedAgentSettings = { ...agentSettings }
+  if (location) {
+    updatedAgentSettings.location = location
+  }
+
   const response = await request({
     query: CREATE_MUTATION,
     attributes: {
       name,
-      location,
       pages,
-      testProfiles
+      testProfiles,
+      agentSettings: updatedAgentSettings
     }
   })
 
