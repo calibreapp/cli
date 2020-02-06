@@ -6,6 +6,7 @@ Object {
     "list": [Function],
   },
   "AgentSettings": Object {
+    "get": [Function],
     "update": [Function],
   },
   "Connection": Object {
