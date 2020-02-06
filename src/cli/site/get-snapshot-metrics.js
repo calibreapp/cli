@@ -3,6 +3,7 @@ const { parse: json2csv } = require('json2csv')
 const { snapshot } = require('../../api/snapshot-metrics')
 const formatSnapshot = require('../../views/snapshot-metrics')
 const { options } = require('../../utils/cli')
+const { humaniseError } = require('../../utils/api-error')
 
 const formatCSV = payload => {
   let data = []
@@ -65,6 +66,18 @@ const main = async args => {
       snapshotId: args.snapshot
     })
 
+    if (!payload.snapshot) {
+      if (args.json)
+        return console.error(
+          JSON.stringify({ error: 'snapshot not found', args: args }, null, 2)
+        )
+
+      if (args.csv)
+        return json2csv({ data: ['snapshot not found'], fields: ['Error'] })
+
+      throw new Error('Snapshot not found')
+    }
+
     if (!payload.snapshot.tests.length) {
       if (args.json)
         return console.error(
@@ -74,7 +87,6 @@ const main = async args => {
       if (args.csv)
         return json2csv({ data: ['No data found'], fields: ['Error'] })
 
-      spinner.fail()
       throw new Error('No data found for this search')
     }
 
@@ -94,7 +106,7 @@ const main = async args => {
       console.error(e)
     } else {
       spinner.fail()
-      throw new Error(e.map(err => err.message).join(', '))
+      throw new Error(humaniseError(e))
     }
   }
 }
