@@ -66,29 +66,8 @@ const main = async args => {
       snapshotId: args.snapshot
     })
 
-    if (!payload.snapshot) {
-      if (args.json)
-        return console.error(
-          JSON.stringify({ error: 'snapshot not found', args: args }, null, 2)
-        )
-
-      if (args.csv)
-        return json2csv({ data: ['snapshot not found'], fields: ['Error'] })
-
-      throw new Error('Snapshot not found')
-    }
-
-    if (!payload.snapshot.tests.length) {
-      if (args.json)
-        return console.error(
-          JSON.stringify({ error: 'no data found', args: args }, null, 2)
-        )
-
-      if (args.csv)
-        return json2csv({ data: ['No data found'], fields: ['Error'] })
-
-      throw new Error('No data found for this search')
-    }
+    if (!payload.snapshot) throw new Error('Snapshot not found')
+    if (!payload.snapshot.tests.length) throw new Error('No data found')
 
     if (args.json) return console.log(JSON.stringify(payload, null, 2))
     if (args.csv) return console.log(formatCSV(payload))
