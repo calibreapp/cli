@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`remove token is removed 1`] = `""`;
+
+exports[`remove token no token to remove 1`] = `""`;

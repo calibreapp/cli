@@ -6,12 +6,6 @@ const pkg = require('../package.json')
 
 updateNotifier({ pkg }).notify()
 
-if (!process.env.CALIBRE_API_TOKEN) {
-  throw new Error(
-    'Please set CALIBRE_API_TOKEN as an environment variable. See calibreapp.com/docs/api/tokens for help.'
-  )
-}
-
 module.exports = require('yargs')
   .usage(`${chalk.bold('♤  calibre')} subcommand [options]`)
   .commandDir('./cli')
