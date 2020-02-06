@@ -31,7 +31,7 @@ const main = async args => {
     return {
       slug: chalk.grey(row.slug),
       name: row.name,
-      status: `${dateFormat(row.createdAt, 'h:mma D-MMM-YYYY')}`
+      status: `${dateFormat(new Date( row.createdAt ), 'h:mma d-MMM-yyyy')}`
     }
   })
 

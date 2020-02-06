@@ -14,7 +14,7 @@
     "chalk": "^3.0.0",
     "columnify": "^1.5.4",
     "cookiefile": "^1.0.10",
-    "date-fns": "^1.28.5",
+    "date-fns": "^2.9.0",
     "graphql-request": "^1.4.1",
     "humanize": "0.0.9",
     "json2csv": "^4.5.2",

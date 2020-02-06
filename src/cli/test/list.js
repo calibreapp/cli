@@ -42,8 +42,8 @@ const main = async args => {
       connection: row.bandwidth ? row.bandwidth.title : 'Not Throttled',
       location: `${row.location.emoji}  ${row.location.shortName}`,
       status: `${titleize(row.status)} ${dateFormat(
-        row.updatedAt,
-        'h:mma D-MMM-YYYY'
+        new Date(row.updatedAt),
+        'h:mma d-MMM-yyyy'
       )}`
     }
   })

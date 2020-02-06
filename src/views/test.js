@@ -62,7 +62,7 @@ module.exports = test => {
 ${intro.join(' ')}
 ${test.location.emoji}  ${test.location.name}
 
-${chalk.grey(dateFormat(test.updatedAt, 'h:mma D-MMM-YYYY'))}`
+${chalk.grey(dateFormat(new Date(test.updatedAt), 'h:mma d-MMM-yyyy'))}`
 
   const footer = chalk.bold(`View the full report ${test.formattedTestUrl}`)
 

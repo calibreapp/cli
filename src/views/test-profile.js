@@ -29,8 +29,12 @@ const cookies = cookies => {
 module.exports = profile => {
   return `
 ${chalk.bold.cyan(`⬢ ${profile.name}`)} (${profile.uuid})
-${chalk.grey(`Created: ${dateFormat(profile.createdAt, 'h:mma D-MMM-YYYY')}`)}
-${chalk.grey(`Updated: ${dateFormat(profile.updatedAt, 'h:mma D-MMM-YYYY')}`)}
+${chalk.grey(
+  `Created: ${dateFormat(new Date(profile.createdAt), 'h:mma d-MMM-yyyy')}`
+)}
+${chalk.grey(
+  `Updated: ${dateFormat(new Date(profile.updatedAt), 'h:mma d-MMM-yyyy')}`
+)}
 
 ${profile.device ? `• ${profile.device.title}` : ''}
 ${profile.bandwidth ? `• ${profile.bandwidth.title}` : ''}

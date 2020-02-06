@@ -1,5 +1,6 @@
 const ora = require('ora')
-const { parse, subDays } = require('date-fns')
+const subDays = require('date-fns/subDays')
+const parse = require('date-fns/parse')
 
 const { humaniseError } = require('../../utils/api-error')
 const { list } = require('../../api/time-series')
