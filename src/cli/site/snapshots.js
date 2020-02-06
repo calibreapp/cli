@@ -37,8 +37,8 @@ const main = async args => {
       ref: row.ref,
       client: row.client,
       status: `${row.status ? titleize(row.status) : ''} ${dateFormat(
-        row.createdAt,
-        'h:mma D-MMM-YYYY'
+        new Date(row.createdAt),
+        'h:mma d-MMM-yyyy'
       )}`
     }
   })

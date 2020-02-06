@@ -35,7 +35,7 @@ const main = async args => {
         revision,
         repository,
         username,
-        created: dateFormat(createdAt, 'h:mma D-MMM-YYYY')
+        created: dateFormat(new Date(createdAt), 'h:mma d-MMM-yyyy')
       }
     }
   )

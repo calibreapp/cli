@@ -3,7 +3,7 @@
 exports[`site snapshots lists all snapshots 1`] = `
 "2 snapshots
 ID | URL                                                | REF | CLIENT | STATUS                       
-14 | http://localhost:3000/calibre/calibre/snapshots/14 |     |        | Completed 12:00am 6-Feb-2019 
-13 | http://localhost:3000/calibre/calibre/snapshots/13 |     |        | Completed 12:22am 30-Jan-2019
+14 | http://localhost:3000/calibre/calibre/snapshots/14 |     |        | Completed 12:00AM 6-Feb-2019 
+13 | http://localhost:3000/calibre/calibre/snapshots/13 |     |        | Completed 12:22AM 30-Jan-2019
 To see snapshots after 13, run: calibre site snapshots --site=calibre --cursor=MjU=="
 `;

@@ -16,7 +16,7 @@ ${gradeTable(test.measurements)}
 module.exports = ({ snapshot, testProfiles }) => {
   let intro = [
     chalk.bold(`Snapshot #${snapshot.iid}`),
-    chalk.grey(dateFormat(snapshot.createdAt, 'h:mma D-MMM-YYYY'))
+    chalk.grey(dateFormat(new Date(snapshot.createdAt), 'h:mma d-MMM-yyyy'))
   ]
 
   const view = snapshot.tests.map(test => testTable({ test, testProfiles }))
