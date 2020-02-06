@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot metrics returns no snapshot error 1`] = `
+"- Connecting to Calibre
+✖ Connecting to Calibre
+
+
+ Error: Snapshot not found 
+
+ --- Command documentation
+ calibre site get-snapshot-metrics [options]
+
+Get the metrics of a given snapshot
+
+Options:
+
+  --help      Show help                                                [boolean]
+  --version   Show version number                                      [boolean]
+  --site      The identifying slug of a site                 [string] [required]
+  --snapshot  The identifying id of a snapshot                        [required]
+  --json      Return the output in JSON format
+  --csv       Return the output in CSV format"
+`;
