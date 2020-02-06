@@ -55,11 +55,11 @@ module.exports = {
       })
       .option('schedule', {
         describe:
-          'Calibre will schedule for automated. One of: hourly, daily, every_x_hours'
+          'Schedule for automated snapshots. One of: hourly, daily, every_x_hours'
       })
       .option('interval', {
         describe:
-          "Snapshot shcedule interval. UTC hour of day for 'daily', hour interval for 'every_x_hours'"
+          "Automated snapshot interval. UTC hour of day for 'daily', hour interval for 'every_x_hours'"
       })
       .option('json', {
         describe: 'Return the site attributes as JSON'
