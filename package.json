@@ -1,8 +1,8 @@
 {
   "name": "calibre",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "engines": {
-    "node": "> 8.15.0"
+    "node": ">= 10.13.0"
   },
   "description": "Calibre - Page speed performance testing with Google Lighthouse",
   "author": "calibreapp.com",

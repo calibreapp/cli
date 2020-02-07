@@ -1,3 +1,18 @@
+### 3.0.0 - 2020-02-07
+
+- Added `calibre token set` command.
+- Added `calibre token remove` command.
+- Updated default host to https://api.calibreapp.com
+- Added ability to get agent settings in `agentSettings` API
+- Added `agentSettings` to create in `site` API
+- Added `--schedule` flag to `create site` with snapshot schedule
+- Added `--interval` flag to `create site` with snapshot schedule interval
+- Updated `create site` to have same defaults as web
+- Improved error handling when trying to `get-snapshot-metrics` for a snapshot
+  that does not exist
+- Fix undefined `ref` when creating a snapshot in API without a `ref`
+- Support node version >= 10.13.0 (the first version of 10.x that was considered LTS.)
+
 ### 2.4.0 - 2019-12-03
 
 - Added ability to set `isPrivate` in `test` API

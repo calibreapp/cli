@@ -27,8 +27,20 @@ const main = async function(args) {
     scheduleAnchor: interval
   }
 
+  const testProfiles = [
+    {
+      name: 'Chrome Desktop',
+      connection: 'cable'
+    },
+    {
+      name: 'MotoG4, 3G connection',
+      device: 'MotorolaMotoG4',
+      connection: 'regular3G'
+    }
+  ]
+
   try {
-    const site = await create({ name, pages, agentSettings })
+    const site = await create({ name, pages, agentSettings, testProfiles })
 
     if (!args.json) {
       spinner.succeed(`${site.name} added to Calibre`)
@@ -55,11 +67,13 @@ module.exports = {
       })
       .option('schedule', {
         describe:
-          'Schedule for automated snapshots. One of: hourly, daily, every_x_hours'
+          'Schedule for automated snapshots. One of: hourly, daily, every_x_hours',
+        default: 'every_x_hours'
       })
       .option('interval', {
         describe:
-          "Automated snapshot interval. UTC hour of day for 'daily', hour interval for 'every_x_hours'"
+          "Automated snapshot interval. UTC hour of day for 'daily', hour interval for 'every_x_hours'",
+        default: 6
       })
       .option('json', {
         describe: 'Return the site attributes as JSON'
