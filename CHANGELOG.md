@@ -5,8 +5,9 @@
 - Updated default host to https://api.calibreapp.com
 - Added ability to get agent settings in `agentSettings` API
 - Added `agentSettings` to create in `site` API
-- Added `--schedule` flag to create site with snapshot schedule
-- Added `--interval` flag to create site with snapshot schedule interval
+- Added `--schedule` flag to `create site` with snapshot schedule
+- Added `--interval` flag to `create site` with snapshot schedule interval
+- Updated `create site` to have same defaults as web
 - Improved error handling when trying to `get-snapshot-metrics` for a snapshot
   that does not exist
 - Fix undefined `ref` when creating a snapshot in API without a `ref`
