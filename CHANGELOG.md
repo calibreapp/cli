@@ -11,6 +11,7 @@
 - Improved error handling when trying to `get-snapshot-metrics` for a snapshot
   that does not exist
 - Fix undefined `ref` when creating a snapshot in API without a `ref`
+- Support node version >= 10.13.0 (the first version of 10.x that was considered LTS.)
 
 ### 2.4.0 - 2019-12-03
 
