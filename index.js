@@ -1,10 +1,4 @@
-const apiToken = require('./src/utils/token')()
-
-if (!apiToken) {
-  throw new Error(
-    'Use `calibre token set` or set CALIBRE_API_TOKEN as an environment variable with your API Token. See calibreapp.com/docs/api/tokens for help.'
-  )
-}
+require('./src/utils/token')()
 
 const Site = require('./src/api/site')
 const Snapshot = require('./src/api/snapshot')
