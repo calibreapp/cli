@@ -1,6 +1,8 @@
-if (!process.env.CALIBRE_API_TOKEN) {
+const apiToken = require('./src/utils/token')()
+
+if (!apiToken) {
   throw new Error(
-    'Please set CALIBRE_API_TOKEN as an environment variable. Create your token via the team API tokens page, or see calibreapp.com/docs/api/tokens for help.'
+    'Use `calibre token set` or set CALIBRE_API_TOKEN as an environment variable with your API Token. See calibreapp.com/docs/api/tokens for help.'
   )
 }
 
