@@ -1,6 +1,6 @@
 ## Requirements to run these examples
 
-- Node 8.3+
+- Node 10.13+
 - Install the dependencies by running `npm install` from within the `examples/nodejs` directory.
 - [A Calibre API token](https://calibreapp.com/docs/api/tokens)
 

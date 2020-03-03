@@ -7,6 +7,6 @@
   "description": "Calibre’s Node.JS examples",
   "license": "ISC",
   "dependencies": {
-    "calibre": "^2.0.0"
+    "calibre": "^3.0.0"
   }
 }
