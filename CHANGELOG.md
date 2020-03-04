@@ -1,3 +1,7 @@
+### 3.0.2 - 2020-03-05
+
+- Fix parsing of `to` and `from` arguments in CLI `get-pulse-metrics` command.
+
 ### 3.0.1 - 2020-03-04
 
 - Allow use of token store for node
