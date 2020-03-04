@@ -1,6 +1,6 @@
 const ora = require('ora')
 const subDays = require('date-fns/subDays')
-const parse = require('date-fns/parse')
+const parseISO = require('date-fns/parseISO')
 
 const { humaniseError } = require('../../utils/api-error')
 const { list } = require('../../api/time-series')
@@ -20,8 +20,8 @@ const main = async args => {
     to = new Date()
     from = subDays(new Date(), 30)
   } else {
-    if (args.to) to = parse(args.to)
-    if (args.from) from = parse(args.from)
+    if (args.to) to = parseISO(args.to)
+    if (args.from) from = parseISO(args.from)
   }
 
   const variables = {
