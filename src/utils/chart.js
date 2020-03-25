@@ -1,11 +1,11 @@
 const chalk = require('chalk')
-const { duration, filesize } = require('../utils/formatters')
+const { duration, filesize, milliunit } = require('../utils/formatters')
 
 const barSection = '■'
 const chartWidth = 80
 
 const bar = (value, maxValue) => {
-  const barLength = value * chartWidth / maxValue
+  const barLength = (value * chartWidth) / maxValue
   const wholeNumberPart = Math.floor(barLength)
   const emptyPart = chartWidth - wholeNumberPart
   let bar = chalk.blue(barSection).repeat(wholeNumberPart)
@@ -17,6 +17,7 @@ const bar = (value, maxValue) => {
 const formatValue = (value, formatter) => {
   if (formatter === 'duration') return duration(value)
   if (formatter === 'filesize') return filesize(value)
+  if (formatter === 'milliunit') return milliunit(value)
 }
 
 const chart = (data, formatter) => {

@@ -12,7 +12,7 @@ module.exports = timeSeries => {
     )
 
     const metrics = series.map(set => {
-      const values = set.values.filter(v => v)
+      const values = set.values.filter(v => v !== undefined && v !== null)
 
       const formattedMinValue = format({
         formatter: measurement.formatter,
