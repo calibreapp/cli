@@ -1,5 +1,5 @@
 const chalk = require('chalk')
-const { duration, filesize, milliunit } = require('../utils/formatters')
+const { format } = require('../utils/formatters')
 
 const barSection = '■'
 const chartWidth = 80
@@ -14,18 +14,15 @@ const bar = (value, maxValue) => {
   return bar + empty
 }
 
-const formatValue = (value, formatter) => {
-  if (formatter === 'duration') return duration(value)
-  if (formatter === 'filesize') return filesize(value)
-  if (formatter === 'milliunit') return milliunit(value)
-}
-
 const chart = (data, formatter) => {
   const maxValue = Math.max(...data.map(item => parseInt(item.value || 0)))
   return data
     .map(item => {
       const barText = bar(item.value || 0, maxValue)
-      return `${item.key}\n${barText} ${formatValue(item.value, formatter)}`
+      return `${item.key}\n${barText} ${format({
+        formatter,
+        value: item.value
+      })}`
     })
     .join('\n\n')
 }
