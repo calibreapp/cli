@@ -92,7 +92,7 @@ ${gradeTable(metrics)}
 
 ${chalk.bold.underline('Timing')}
 
-${chart(timingChartData(), 'duration')}
+${chart(timingChartData(), 'humanDuration')}
 
 ${assetCountData()}
 
