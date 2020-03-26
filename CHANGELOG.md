@@ -1,3 +1,7 @@
+### 3.1.0 - 2020-03-26
+
+- Add support for formatting `milliunit` measurements
+
 ### 3.0.2 - 2020-03-05
 
 - Fix parsing of `to` and `from` arguments in CLI `get-pulse-metrics` command.
