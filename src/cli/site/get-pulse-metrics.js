@@ -51,7 +51,7 @@ const main = async args => {
 
 module.exports = {
   command: 'get-pulse-metrics [options]',
-  describe: 'Get a recent timeline of metrics for a given page',
+  describe: 'Get timeseries metrics for a given site',
   builder: yargs => {
     yargs.options({
       site: options.site,
