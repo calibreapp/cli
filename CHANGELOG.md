@@ -1,3 +1,8 @@
+### 3.1.1 - 2020-04-23
+
+- Fix reference to `token set` in error message
+- Update get pulse metrics description
+
 ### 3.1.0 - 2020-03-26
 
 - Add support for formatting `milliunit` measurements
