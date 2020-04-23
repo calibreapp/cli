@@ -1,5 +1,5 @@
 const ora = require('ora')
-const { parse: json2csv } = require('json2csv')
+const { Parser: CSVParser } = require('json2csv')
 const { snapshot } = require('../../api/snapshot-metrics')
 const formatSnapshot = require('../../views/snapshot-metrics')
 const { options } = require('../../utils/cli')
@@ -49,7 +49,8 @@ const formatCSV = payload => {
     'hasDeviceEmulation',
     'hasBandwidthEmulation'
   ]
-  return json2csv({ data, fields })
+  const parser = new CSVParser({ fields })
+  return parser.parse(data)
 }
 
 const main = async args => {
