@@ -16,7 +16,6 @@ exports[`site delete-snapshot requires id 1`] = `
 Deletes a snapshot from a site
 
 Options:
-
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
   --id       The id of the snapshot                                   [required]

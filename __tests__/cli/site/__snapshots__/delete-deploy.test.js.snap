@@ -16,7 +16,6 @@ exports[`site delete-deploy requires uuid 1`] = `
 Deletes a deploy from a site
 
 Options:
-
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
   --uuid     The uuid of the deploy                                   [required]
