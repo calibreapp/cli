@@ -4,7 +4,7 @@ const { TestProfile } = require('calibre')
 
 const update = async () => {
   const profileParams = {
-    site: 'ben-testing',
+    site: 'calibre',
     uuid: 'a47e812c-853a-4167-969f-7dd143eb213d',
     name: 'Adblocker on',
     adblocker: true
