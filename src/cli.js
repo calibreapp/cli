@@ -38,5 +38,5 @@ module.exports = require('yargs')
     process.exit(1)
   })
   .epilogue(
-    `For more information on Calibre, see ${process.env.CALIBRE_HOST}.`
+    `For more information on Calibre, see https://calibreapp.com`
   ).argv
