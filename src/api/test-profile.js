@@ -107,7 +107,7 @@ const create = async ({
       device,
       connection,
       cookies,
-      jsIsDisabled: javascript,
+      jsIsDisabled: !javascript,
       adBlockerIsEnabled: adblocker
     }
   })
@@ -139,7 +139,7 @@ const update = async ({
       device,
       connection,
       cookies,
-      jsIsDisabled: javascript,
+      jsIsDisabled: !javascript,
       adBlockerIsEnabled: adblocker
     }
   })
