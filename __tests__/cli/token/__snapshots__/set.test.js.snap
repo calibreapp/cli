@@ -16,6 +16,7 @@ Commands:
   calibre token set <key>  Set the Calibre API token used for CLI commands
 
 Options:
+
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]"
 `;

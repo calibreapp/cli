@@ -13,6 +13,7 @@ exports[`snapshot metrics returns no snapshot error 1`] = `
 Get the metrics of a given snapshot
 
 Options:
+
   --help      Show help                                                [boolean]
   --version   Show version number                                      [boolean]
   --site      The identifying slug of a site                 [string] [required]
