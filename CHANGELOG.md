@@ -1,3 +1,8 @@
+### 3.2.0 - 2020-10-07
+
+- Fix `site create-test-profile` to default JavaScript execution to on
+- Fix more information link
+
 ### 3.1.1 - 2020-04-23
 
 - Fix reference to `token set` in error message
