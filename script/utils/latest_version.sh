@@ -4,10 +4,11 @@
 # echo -e "latest\n1.0.1\n1.2.1\n2.3.2-beta.2\n2.3.2-alpha.2\n3.1\n3.1-beta.1\n3.0" | ./latest_version.sh
 # => latest
 # => 1.0.1
-# => 2.3.2-beta.2
 # => 1.2.1
-# => 3.1-beta.1
 # => 2.3.2-alpha.2
+# => 2.3.2-beta.2
+# => 3.0
+# => 3.1-beta.1
 # => 3.1
 
 # echo -e "latest\n1.0.1\n1.2.1\n2.3.2-beta.2\n2.3.2-alpha.2\n3.1\n3.1-beta.1\n3.0" | ./latest_version.sh | tail -n 1
@@ -26,9 +27,7 @@ else
 fi
 
 version_weight () {
-  echo -e "$1" | tr ' ' "\n"  | sed -e 's:\+.*$::' | sed -e 's:^v::' | \
-    # Remove latest
-    sed -e 's/\<latest\>//g'
+  echo -e "$1" | tr 'latest' "0" | tr ' ' "\n"  | sed -e 's:\+.*$::' | sed -e 's:^v::' | \
     sed -re 's:^[0-9]+(\.[0-9]+)+$:&-stable:' | \
     sed -re 's:([^A-Za-z])dev\.?([^A-Za-z]|$):\1.10.\2:g' | \
     sed -re 's:([^A-Za-z])(alpha|a)\.?([^A-Za-z]|$):\1.20.\3:g' | \
