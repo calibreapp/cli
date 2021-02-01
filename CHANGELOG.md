@@ -1,4 +1,4 @@
-### 3.2.1 - 2020-10-07
+### 3.2.1 - 2021-02-02
 
 - Fix Timeseries API: Filter by Profile
 - Updated dependencies, inclusive of latest security patches
