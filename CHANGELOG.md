@@ -1,3 +1,8 @@
+### 3.2.1 - 2020-10-07
+
+- Fix Timeseries API: Filter by Profile
+- Updated dependencies, inclusive of latest security patches
+
 ### 3.2.0 - 2020-10-07
 
 - Fix `site create-test-profile` to default JavaScript execution to on
