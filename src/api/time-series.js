@@ -5,11 +5,12 @@ const TIME_SERIES_QUERY = `
     $site: String!
     $measurements: [MetricTag!]
     $pages: [String!]
+    $profiles: [String!]
     $from: String,
     $to: String
   ) {
     organisation {
-      timeSeries(site: $site, from: $from, to: $to, measurements: $measurements, pages: $pages) {
+      timeSeries(site: $site, from: $from, to: $to, measurements: $measurements, pages: $pages, profiles: $profiles) {
         times {
           name
           snapshot
@@ -53,12 +54,20 @@ const TIME_SERIES_QUERY = `
   }
 `
 
-const list = async ({ site, measurements = [], pages = [], from, to }) => {
+const list = async ({
+  site,
+  measurements = [],
+  pages = [],
+  profiles = [],
+  from,
+  to
+}) => {
   const response = await request({
     query: TIME_SERIES_QUERY,
     site,
     measurements,
     pages,
+    profiles,
     from,
     to
   })

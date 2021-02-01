@@ -1,6 +1,6 @@
 {
   "name": "calibre",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "engines": {
     "node": ">= 10.13.0"
   },
@@ -32,7 +32,7 @@
     "execa": "^4.0.0",
     "express": "^4.16.4",
     "jest": "^26.4.2",
-    "pkg": "4.3.7",
+    "pkg": "4.4.9",
     "prettier": "^2.0.5"
   },
   "scripts": {
@@ -64,9 +64,9 @@
       "src/**/*.js"
     ],
     "targets": [
-      "node10-linux-x64",
-      "node10-macos-x64",
-      "node10-win-x64"
+      "node14-linux-x64",
+      "node14-macos-x64",
+      "node14-win-x64"
     ]
   }
 }
