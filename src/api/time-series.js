@@ -19,6 +19,7 @@ const TIME_SERIES_QUERY = `
         series {
           name
           profile
+          page
           measurement
           values
         }
