@@ -1,3 +1,7 @@
+### 3.2.2 - 2021-04-16
+
+- Update Timeseries API: Return `page` for `series` data
+
 ### 3.2.1 - 2021-02-02
 
 - Fix Timeseries API: Filter by Profile
