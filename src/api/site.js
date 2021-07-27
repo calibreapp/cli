@@ -6,6 +6,11 @@ const CREATE_MUTATION = `
       name
       slug
 
+      team {
+        name
+        slug
+      }
+
       agentSettings {
         location {
           identifier
@@ -41,6 +46,11 @@ const LIST_QUERY = `
         name
         slug
         createdAt
+
+        team {
+          name
+          slug
+        }
       }
     }
   }
@@ -58,6 +68,7 @@ const DELETE_MUTATION = `
 const create = async ({
   name,
   location,
+  team,
   pages,
   testProfiles,
   agentSettings
@@ -74,6 +85,7 @@ const create = async ({
     attributes: {
       name,
       pages,
+      team,
       testProfiles,
       agentSettings: updatedAgentSettings
     }
