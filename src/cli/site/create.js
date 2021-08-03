@@ -36,6 +36,11 @@ const main = async function (args) {
       name: 'MotoG4, 3G connection',
       device: 'MotorolaMotoG4',
       connection: 'regular3G'
+    },
+    {
+      name: 'iPhone, 4G LTE',
+      device: 'iPhone8',
+      connection: 'LTE'
     }
   ]
 
