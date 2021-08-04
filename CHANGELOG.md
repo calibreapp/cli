@@ -1,3 +1,7 @@
+### 3.3.0 - 2021-08-04
+
+- Add `team` input to create site
+
 ### 3.2.2 - 2021-04-16
 
 - Update Timeseries API: Return `page` for `series` data
