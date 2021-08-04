@@ -4,7 +4,7 @@ const { URL } = require('url')
 const { create } = require('../../api/site')
 const { humaniseError } = require('../../utils/api-error')
 
-const main = async function(args) {
+const main = async function (args) {
   let spinner
 
   if (!args.json) {
@@ -13,7 +13,7 @@ const main = async function(args) {
     spinner.start()
   }
 
-  const { name, location, url, schedule, interval } = args
+  const { name, location, url, team, schedule, interval } = args
   const pages = [
     {
       url,
@@ -36,11 +36,22 @@ const main = async function(args) {
       name: 'MotoG4, 3G connection',
       device: 'MotorolaMotoG4',
       connection: 'regular3G'
+    },
+    {
+      name: 'iPhone, 4G LTE',
+      device: 'iPhone8',
+      connection: 'LTE'
     }
   ]
 
   try {
-    const site = await create({ name, pages, agentSettings, testProfiles })
+    const site = await create({
+      name,
+      team,
+      pages,
+      agentSettings,
+      testProfiles
+    })
 
     if (!args.json) {
       spinner.succeed(`${site.name} added to Calibre`)
@@ -64,6 +75,9 @@ module.exports = {
       })
       .option('location', {
         describe: 'Calibre will monitor from this location'
+      })
+      .option('team', {
+        describe: 'The identifying slug of the team'
       })
       .option('schedule', {
         describe:
