@@ -11,7 +11,7 @@ module.exports = require('yargs')
   .commandDir('./cli')
   .demandCommand()
   .recommendCommands()
-  .strict()
+  .strictCommands()
   .help('help')
   .updateStrings({
     'Commands:': chalk.grey('Commands:\n'),
