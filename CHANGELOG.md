@@ -1,3 +1,11 @@
+### 4.0.0 - 2021-08-17
+
+**Breaking Changes**
+
+- Replace `site get-pulse-metrics` with `site metrics`
+- Add `metric-list`
+- Drop support for Node 10.x
+
 ### 3.3.0 - 2021-08-04
 
 - Add `team` input to create site
