@@ -2,7 +2,7 @@
   "name": "calibre-nodejs-examples",
   "version": "1.0.1",
   "engines": {
-    "node": ">= 10.13.0"
+    "node": ">= 12.22.4"
   },
   "description": "Calibre’s Node.JS examples",
   "license": "ISC",
