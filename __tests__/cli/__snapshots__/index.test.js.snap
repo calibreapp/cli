@@ -9,6 +9,7 @@ Commands:
                            connection options
   calibre device-list      Print a list of Calibre’s test devices
   calibre location-list    Print a list of Calibre’s test locations
+  calibre metric-list      Print a list of Calibre’s metrics
   calibre request          Make a request to the Calibre GraphQL API
   calibre site <command>   Tasks related to sites
   calibre test <command>   Single page tests
@@ -26,5 +27,3 @@ Examples:
 
 For more information on Calibre, see https://calibreapp.com"
 `;
-
-exports[`calibre --version 1`] = `"3.3.0"`;

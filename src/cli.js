@@ -10,6 +10,8 @@ module.exports = require('yargs')
   .usage(`${chalk.bold('♤  calibre')} subcommand [options]`)
   .commandDir('./cli')
   .demandCommand()
+  .recommendCommands()
+  .strictCommands()
   .help('help')
   .updateStrings({
     'Commands:': chalk.grey('Commands:\n'),

@@ -47,7 +47,11 @@ ${set.name}
 
     return `
 ${chalk.blue.bold(measurement.label)}
-${metrics.join('\n')}
+${
+  metrics.length
+    ? metrics.join('\n')
+    : '\nThere is no data for this time period'
+}
 `
   })
 
