@@ -28,6 +28,7 @@ const main = async args => {
     site: args.site,
     pages: args.pages,
     measurements: args.metrics,
+    profiles: args.profiles,
     from,
     to
   }
