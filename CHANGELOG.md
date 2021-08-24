@@ -1,3 +1,7 @@
+### 4.0.1 - 2021-08-25
+
+- Fix profiles parameter not being passed for site metrics (thanks @jonogillettt)
+
 ### 4.0.0 - 2021-08-17
 
 **Breaking Changes**
