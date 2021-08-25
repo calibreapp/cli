@@ -1,0 +1,284 @@
+stackbitVersion: ~0.3.0
+dataDir: __tests__/fixtures
+ssgName: jekyll
+cmsName: git
+devCommand: 'Mayne Way Entertainment Are '
+models:
+  create_site_error:
+    type: data
+    label: Create Site Error
+    file: createSiteError.json
+    fields:
+      - type: list
+        name: errors
+        label: Errors
+        items:
+          type: object
+          fields:
+            - type: string
+              name: message
+              label: Message
+            - type: list
+              name: locations
+              label: Locations
+              items:
+                type: object
+                fields:
+                  - type: number
+                    name: line
+                    label: Line
+                    subtype: int
+                  - type: number
+                    name: column
+                    label: Column
+                    subtype: int
+            - type: list
+              name: problems
+              label: Problems
+              items:
+                type: object
+                fields:
+                  - type: string
+                    name: explanation
+                    label: Explanation
+            - type: object
+              name: extensions
+              label: Extensions
+              fields:
+                - type: list
+                  name: problems
+                  label: Problems
+                  items:
+                    type: object
+                    fields:
+                      - type: string
+                        name: explanation
+                        label: Explanation
+  fixture:
+    type: data
+    label: Fixture
+    fields:
+      - type: object
+        name: data
+        label: Data
+        fields:
+          - type: object
+            name: organisation
+            label: Organisation
+            fields:
+              - type: string
+                name: slug
+                label: Slug
+              - type: object
+                name: site
+                label: Site
+                fields:
+                  - type: string
+                    name: slug
+                    label: Slug
+                  - type: object
+                    name: snapshotsList
+                    label: Snapshots List
+                    fields:
+                      - type: list
+                        name: edges
+                        label: Edges
+                        items:
+                          type: object
+                          fields:
+                            - type: object
+                              name: node
+                              label: Node
+                              fields:
+                                - type: number
+                                  name: iid
+                                  label: Iid
+                                  subtype: int
+                                - type: string
+                                  name: htmlUrl
+                                  label: Html Url
+                                - type: datetime
+                                  name: createdAt
+                                  label: Created At
+                                - type: string
+                                  name: status
+                                  label: Status
+                      - type: object
+                        name: pageInfo
+                        label: Page Info
+                        fields:
+                          - type: string
+                            name: endCursor
+                            label: End Cursor
+                          - type: string
+                            name: startCursor
+                            label: Start Cursor
+                          - type: boolean
+                            name: hasPreviousPage
+                            label: Has Previous Page
+                          - type: boolean
+                            name: hasNextPage
+                            label: Has Next Page
+                  - type: object
+                    name: pagesList
+                    label: Pages List
+                    fields:
+                      - type: object
+                        name: pageInfo
+                        label: Page Info
+                        fields:
+                          - type: boolean
+                            name: hasPreviousPage
+                            label: Has Previous Page
+                          - type: boolean
+                            name: hasNextPage
+                            label: Has Next Page
+                          - type: string
+                            name: endCursor
+                            label: End Cursor
+                          - type: string
+                            name: startCursor
+                            label: Start Cursor
+                      - type: list
+                        name: edges
+                        label: Edges
+                        items:
+                          type: object
+                          fields:
+                            - type: object
+                              name: node
+                              label: Node
+                              fields:
+                                - type: string
+                                  name: uuid
+                                  label: Uuid
+                                - type: string
+                                  name: name
+                                  label: Name
+                                - type: boolean
+                                  name: canonical
+                                  label: Canonical
+                  - type: object
+                    name: deploys
+                    label: Deploys
+                    fields:
+                      - type: list
+                        name: edges
+                        label: Edges
+                        items:
+                          type: object
+                          fields:
+                            - type: object
+                              name: node
+                              label: Node
+                              fields:
+                                - type: string
+                                  name: __typename
+                                  label: Typename
+                                - type: string
+                                  name: uuid
+                                  label: Uuid
+                                - type: string
+                                  name: revision
+                                  label: Revision
+                                - type: string
+                                  name: repository
+                                  label: Repository
+                                - type: string
+                                  name: username
+                                  label: Username
+                                - type: datetime
+                                  name: createdAt
+                                  label: Created At
+                            - type: string
+                              name: __typename
+                              label: Typename
+                      - type: object
+                        name: pageInfo
+                        label: Page Info
+                        fields:
+                          - type: string
+                            name: endCursor
+                            label: End Cursor
+                          - type: string
+                            name: startCursor
+                            label: Start Cursor
+                          - type: boolean
+                            name: hasPreviousPage
+                            label: Has Previous Page
+                          - type: boolean
+                            name: hasNextPage
+                            label: Has Next Page
+          - type: object
+            name: deleteSnapshot
+            label: Delete Snapshot
+            fields:
+              - type: number
+                name: iid
+                label: Iid
+                subtype: int
+          - type: object
+            name: deleteDeploy
+            label: Delete Deploy
+            fields:
+              - type: string
+                name: uuid
+                label: Uuid
+  fixture_1:
+    type: data
+    label: Fixture 1
+    fields:
+      - type: string
+        name: uuid
+        label: Uuid
+      - type: string
+        name: url
+        label: Url
+      - type: string
+        name: formattedTestUrl
+        label: Formatted Test Url
+      - type: string
+        name: status
+        label: Status
+      - type: datetime
+        name: updatedAt
+        label: Updated At
+      - type: boolean
+        name: adBlockerIsEnabled
+        label: Ad Blocker Is Enabled
+      - type: object
+        name: runtimeError
+        label: Runtime Error
+        fields:
+          - type: string
+            name: code
+            label: Code
+          - type: string
+            name: message
+            label: Message
+      - type: list
+        name: metrics
+        label: Metrics
+        items:
+          type: object
+          fields:
+            - type: string
+              name: name
+              label: Name
+            - type: string
+              name: label
+              label: Label
+            - type: number
+              name: value
+              label: Value
+              subtype: int
+      - type: object
+        name: location
+        label: Location
+        fields:
+          - type: string
+            name: name
+            label: Name
+          - type: string
+            name: emoji
+            label: Emoji
