@@ -22,7 +22,7 @@ const formatCSV = payload => {
         MetricLabel: measurement.label,
         MetricValue: measurement.value,
         SnapshotSequenceId: payload.snapshot.sequenceId,
-        TestProfileId: testProfile.id,
+        TestProfileId: testProfile.uuid,
         TestProfileName: testProfile.name,
         DeviceName: testProfile.device && testProfile.device.title,
         BandwidthName: testProfile.bandwidth && testProfile.bandwidth.title,
