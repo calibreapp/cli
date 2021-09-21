@@ -10,7 +10,7 @@ const formatCSV = payload => {
 
   payload.snapshot.tests.forEach(test => {
     const testProfile = payload.testProfiles.find(
-      profile => profile.id === test.testProfile.id
+      profile => profile.uuid === test.testProfile.uuid
     )
 
     test.measurements.forEach(measurement => {
@@ -22,7 +22,7 @@ const formatCSV = payload => {
         MetricLabel: measurement.label,
         MetricValue: measurement.value,
         SnapshotSequenceId: payload.snapshot.sequenceId,
-        TestProfileId: testProfile.id,
+        TestProfileId: testProfile.uuid,
         TestProfileName: testProfile.name,
         DeviceName: testProfile.device && testProfile.device.title,
         BandwidthName: testProfile.bandwidth && testProfile.bandwidth.title,
