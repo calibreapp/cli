@@ -1,3 +1,7 @@
+### 4.0.2 - 2021-09-21
+
+- Fix get-snapshot-metrics CSV output (profile was not being set correctly)
+
 ### 4.0.1 - 2021-08-25
 
 - Fix `profiles` parameter not being passed for `site metrics` (thanks @jonogillettt).

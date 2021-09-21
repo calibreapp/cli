@@ -1,6 +1,6 @@
 {
   "name": "calibre",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "engines": {
     "node": ">= 12.22.4"
   },
