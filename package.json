@@ -16,7 +16,7 @@
     "configstore": "^5.0.0",
     "cookiefile": "^1.0.10",
     "date-fns": "^2.9.0",
-    "graphql-request": "^1.4.1",
+    "graphql-request": "^3.5.0",
     "humanize": "0.0.9",
     "json2csv": "^5.0.0",
     "listr": "^0.14.1",
