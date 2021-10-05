@@ -8,7 +8,7 @@ const create = async () => {
   const agentSettings = {
     location: 'Frankfurt', // location tag
     scheduleAnchor: 6,
-    scheduleInterval: 'every_x_hours' // options: off, daily, hourly, every_x_hours
+    scheduleInterval: 'every_x_hours' // options: off, daily, hourly, every_x_hours. default: off
   }
 
   const pages = [
