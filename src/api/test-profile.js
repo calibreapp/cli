@@ -7,13 +7,21 @@ const CREATE_MUTATION = `
       name
       jsIsDisabled
       adBlockerIsEnabled
+      hasDeviceEmulation
+      hasBandwidthEmulation
+      isMobile
+      position
 
       device {
+        tag
         title
       }
+
       bandwidth {
+        tag
         title
       }
+
       cookies {
         name
         value
@@ -22,6 +30,16 @@ const CREATE_MUTATION = `
         secure
         httpOnly
       }
+
+      headers {
+        name
+        value
+      }
+
+      blockedThirdParties {
+        name
+      }
+
       updatedAt
       createdAt
     }
@@ -37,16 +55,41 @@ const LIST_QUERY = `
           name
           jsIsDisabled
           adBlockerIsEnabled
+          hasDeviceEmulation
+          hasBandwidthEmulation
+          isMobile
+          position
 
           device {
+            tag
             title
           }
+
           bandwidth {
+            tag
             title
           }
+
           cookies {
             name
+            value
+            domain
+            path
+            secure
+            httpOnly
           }
+
+          headers {
+            name
+            value
+          }
+
+          blockedThirdParties {
+            name
+          }
+
+          updatedAt
+          createdAt
         }
       }
     }
@@ -60,13 +103,21 @@ const UPDATE_MUTATION = `
       name
       jsIsDisabled
       adBlockerIsEnabled
+      hasDeviceEmulation
+      hasBandwidthEmulation
+      isMobile
+      position
 
       device {
+        tag
         title
       }
+
       bandwidth {
+        tag
         title
       }
+
       cookies {
         name
         value
@@ -75,6 +126,16 @@ const UPDATE_MUTATION = `
         secure
         httpOnly
       }
+
+      headers {
+        name
+        value
+      }
+
+      blockedThirdParties {
+        name
+      }
+
       updatedAt
       createdAt
     }
@@ -127,8 +188,11 @@ const update = async ({
   device,
   connection,
   cookies,
+  headers,
+  blockedThirdParties,
   javascript,
-  adblocker
+  adblocker,
+  position
 }) => {
   const response = await request({
     query: UPDATE_MUTATION,
@@ -139,8 +203,11 @@ const update = async ({
       device,
       connection,
       cookies,
+      headers,
+      blockedThirdParties,
       jsIsDisabled: !javascript,
-      adBlockerIsEnabled: adblocker
+      adBlockerIsEnabled: adblocker,
+      position
     }
   })
   return response.updateTestProfile
