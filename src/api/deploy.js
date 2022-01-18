@@ -6,6 +6,8 @@ const CREATE_MUTATION = `
       uuid
       revision
       repository
+      url
+      username
       createdAt
     }
   }
@@ -40,6 +42,7 @@ const LIST_QUERY = `
               uuid
               revision
               repository
+              url
               username
               createdAt
             }
