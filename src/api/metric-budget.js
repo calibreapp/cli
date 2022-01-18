@@ -6,6 +6,9 @@ const CREATE_MUTATION = `
       uuid
       measurement
       value
+      status
+      changeThreshold
+
       budgets {
         page {
           uuid
@@ -36,6 +39,9 @@ const UPDATE_MUTATION = `
       uuid
       measurement
       value
+      status
+      changeThreshold
+
       budgets {
         page {
           uuid
@@ -73,6 +79,14 @@ const LIST_QUERY = `
               uuid
               measurement
               value
+              status
+              changeThreshold
+
+              metric {
+                name
+                value
+              }
+
               budgets {
                 page {
                   uuid
