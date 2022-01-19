@@ -4,6 +4,7 @@ const LIST_QUERY = `
   query {
     locations {
       name
+      shortName
       emoji
       tag
 

@@ -6,6 +6,8 @@ const CREATE_MUTATION = `
       uuid
       name
       url
+      canonical
+      position
     }
   }
 `
@@ -32,6 +34,7 @@ const LIST_QUERY = `
               name
               url
               canonical
+              position
             }
           }
         }
@@ -55,17 +58,20 @@ const UPDATE_MUTATION = `
       uuid
       name
       url
+      canonical
+      position
     }
   }
 `
 
-const create = async ({ site, name, url }) => {
+const create = async ({ site, name, url, position }) => {
   const response = await request({
     query: CREATE_MUTATION,
     site,
     attributes: {
       name,
-      url
+      url,
+      position
     }
   })
 
@@ -85,14 +91,15 @@ const destroy = async ({ site, uuid }) => {
   return response.deletePage
 }
 
-const update = async ({ site, uuid, name, url }) => {
+const update = async ({ site, uuid, name, url, position }) => {
   const response = await request({
     query: UPDATE_MUTATION,
     site,
     uuid,
     attributes: {
       name,
-      url
+      url,
+      position
     }
   })
 
