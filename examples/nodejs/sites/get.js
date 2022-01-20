@@ -3,7 +3,7 @@
 const { Site } = require('calibre')
 
 const getSite = async () => {
-  const slug = 'calibre' // site slug
+  const slug = 'calibre'
 
   // Get the site
   const site = await Site.get({
