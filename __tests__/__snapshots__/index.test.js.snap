@@ -44,7 +44,9 @@ Object {
   "Site": Object {
     "create": [Function],
     "destroy": [Function],
+    "get": [Function],
     "list": [Function],
+    "update": [Function],
   },
   "Snapshot": Object {
     "create": [Function],

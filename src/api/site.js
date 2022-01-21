@@ -65,6 +65,91 @@ const DELETE_MUTATION = `
   }
 `
 
+const GET_QUERY = `
+  query GetSite($slug: String!) {
+    organisation {
+      site(slug: $slug) {
+        slug
+        name
+        canonicalUrl
+        createdAt
+
+        team {
+          name
+          slug
+        }
+
+        authenticationSettings {
+          required
+          url
+          username
+          password
+          formSelector
+          usernameSelector
+          passwordSelector
+          warningMessage
+        }
+
+        headers {
+          name
+          value
+        }
+
+        cookies {
+          name
+          value
+          domain
+          path
+          secure
+          httpOnly
+        }
+      }
+    }
+  }
+`
+
+const UPDATE_MUTATION = `
+  mutation UpdateSiteSettings($slug: String!, $attributes: SiteSettingsInput!){
+    updateSiteSettings(site: $slug, attributes: $attributes) {
+      slug
+      name
+      canonicalUrl
+      createdAt
+
+      team {
+        name
+        slug
+      }
+
+      authenticationSettings {
+        required
+        url
+        username
+        password
+        formSelector
+        usernameSelector
+        passwordSelector
+        warningMessage
+      }
+
+      headers {
+        name
+        value
+      }
+
+
+      cookies {
+        name
+        value
+        domain
+        path
+        secure
+        httpOnly
+      }
+    }
+  }
+`
+
 const create = async ({
   name,
   location,
@@ -104,8 +189,40 @@ const destroy = async ({ slug }) => {
   return response.deleteSite
 }
 
+const get = async ({ slug }) => {
+  const response = await request({ query: GET_QUERY, slug })
+  return response.organisation.site
+}
+
+const update = async ({
+  slug,
+  name,
+  canonicalUrl,
+  team,
+  authenticationSettings,
+  cookies,
+  headers
+}) => {
+  const response = await request({
+    query: UPDATE_MUTATION,
+    slug,
+    attributes: {
+      name,
+      canonicalUrl,
+      team,
+      authenticationSettings,
+      cookies,
+      headers
+    }
+  })
+
+  return response.updateSiteSettings
+}
+
 module.exports = {
   create,
   list,
-  destroy
+  destroy,
+  get,
+  update
 }

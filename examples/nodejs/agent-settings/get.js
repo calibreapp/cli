@@ -5,7 +5,7 @@ const { AgentSettings } = require('calibre')
 const getAgentSettings = async () => {
   const site = 'calibre' // site slug
 
-  // Update the agent settings
+  // Get the agent settings
   const agentSettings = await AgentSettings.get({
     site
   })
