@@ -6,7 +6,7 @@ const updateSiteSettings = async () => {
   const slug = 'calibre'
   const name = 'Calibre Marketing Site'
 
-  // Update the site settings
+  // Rename the site
   const siteSettings = await Site.update({
     slug,
     name
