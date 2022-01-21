@@ -1,3 +1,8 @@
+### 4.2.0 - 2022-01-21
+
+- Add `Site.get` to get a given site
+- Add `Site.update` to update a given site
+
 ### 4.1.0 - 2022-01-19
 
 - Add missing fields for TestProfile queries (hasDeviceEmulation, hasBandwidthEmulation, isMobile, position, cookies, headers, blockedThirdParties, position)
