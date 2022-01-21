@@ -18,6 +18,10 @@ Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR
   - **[create.js](sites/create.js)** - Creates a site
   - **[delete.js](sites/delete.js)** - Deletes a given site
   - **[list.js](sites/list.js)** - Lists all sites
+  - **[get.js](sites/get.js)** - Get a given site
+  - **[update](sites/update.js)** - Updates the name for a given site
+  - **[update](sites/update-headers-cookies.js)** - Updates the headers and cookies for a given site
+  - **[update](sites/update-authentication-settings.js)** - Updates the authentication settings for a given site
 - **[deploys](deploys)**
   - **[create.js](deploys/create.js)** - Creates a deploy for a given site
   - **[delete.js](deploys/delete.js)** - Deletes a given deploy for a given site
