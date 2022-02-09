@@ -5,15 +5,15 @@
 
 ### 4.1.0 - 2022-01-19
 
-- Add missing fields for TestProfile queries (hasDeviceEmulation, hasBandwidthEmulation, isMobile, position, cookies, headers, blockedThirdParties, position)
-- Add missing fields Deploy queries (url, username)
-- Add missing field for Location queries (shortName)
-- Add missing fields for MetricBudget queries (status, changeThreshold, metric)
-- Add missing fields for Page queries (canonical, position)
+- Add missing fields for TestProfile queries (`hasDeviceEmulation`, `hasBandwidthEmulation`, `isMobile`, `position`, `cookies`, `headers`, `blockedThirdParties`)
+- Add missing fields Deploy queries (`url`, `username`)
+- Add missing field for Location queries (`shortName`)
+- Add missing fields for MetricBudget queries (`status`, `changeThreshold`, `metric`)
+- Add missing fields for Page queries (`canonical`, `position`)
 
 ### 4.0.2 - 2021-09-21
 
-- Fix get-snapshot-metrics CSV output (profile was not being set correctly)
+- Fix `get-snapshot-metrics` CSV output (profile was not being set correctly)
 
 ### 4.0.1 - 2021-08-25
 
