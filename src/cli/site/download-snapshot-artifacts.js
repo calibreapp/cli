@@ -53,11 +53,11 @@ const main = async args => {
     for (const test of response.snapshot.tests) {
       const { page, testProfile: profile } = test
       const pageDirectory = mkdirp(
-        directories.concat([`${page.name}-${page.uuid}`])
+        directories.concat([`${page.name.replace(path.sep, '')}-${page.uuid}`])
       )
 
       const profileDirectory = mkdirp(
-        [pageDirectory].concat([`${profile.name}-${profile.uuid}`])
+        [pageDirectory].concat([`${profile.name.replace(path.sep, '')}-${profile.uuid}`])
       )
       const testManifest = {
         page: {
