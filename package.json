@@ -1,9 +1,10 @@
 {
   "name": "calibre",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "engines": {
     "node": ">= 12.22.4"
   },
+  "type": "module",
   "description": "Calibre - Page speed performance testing with Google Lighthouse",
   "author": "calibreapp.com",
   "main": "index.js",
@@ -11,33 +12,34 @@
     "calibre": "./src/cli.js"
   },
   "dependencies": {
-    "chalk": "^4.0.0",
-    "columnify": "^1.5.4",
-    "configstore": "^5.0.0",
+    "chalk": "^5.0.1",
+    "columnify": "^1.6.0",
+    "configstore": "^6.0.0",
     "cookiefile": "^1.0.10",
     "date-fns": "^2.9.0",
-    "graphql-request": "^1.4.1",
+    "graphql": "^16.3.0",
+    "graphql-request": "^4.2.0",
     "humanize": "0.0.9",
     "json2csv": "^5.0.0",
     "listr": "^0.14.1",
-    "log-symbols": "^4.0.0",
-    "ora": "^5.1.0",
+    "log-symbols": "^5.1.0",
+    "ora": "^6.1.0",
     "stats-percentile": "^3.1.0",
     "update-notifier": "^5.0.0",
-    "yargs": "^17.1.1"
+    "yargs": "^17.4.0"
   },
   "devDependencies": {
     "eslint": "^8.6.0",
     "eslint-plugin-node": "^11.0.0",
-    "execa": "^5.0.0",
+    "execa": "^6.1.0",
     "express": "^4.16.4",
-    "jest": "^27.0.6",
+    "jest": "^27.5.1",
     "pkg": "5.5.2",
-    "prettier": "^2.0.5"
+    "prettier": "2.6.2"
   },
   "scripts": {
-    "ci": "CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
-    "test": "TZ=Etc/GMT jest --runInBand --no-colors",
+    "ci": "NODE_OPTIONS='--experimental-vm-modules' CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' TZ=Etc/GMT jest",
     "lint": "eslint .",
     "package": "pkg . --out-path=bin",
     "pre-publish": "echo //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN} > .npmrc"

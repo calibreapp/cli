@@ -1,4 +1,4 @@
-const { request } = require('./graphql')
+import { request } from './graphql'
 
 const TIME_SERIES_QUERY = `
   query TimeSeries(
@@ -77,6 +77,4 @@ const list = async ({
   return response.organisation.site.timeSeries
 }
 
-module.exports = {
-  list
-}
+export { list }

@@ -1,14 +1,14 @@
-const { URL } = require('url')
+import { URL } from 'url'
 
-const ora = require('ora')
-const { CookieMap } = require('cookiefile')
-const fs = require('fs')
+import ora from 'ora'
+import { CookieMap } from 'cookiefile'
+import fs from 'fs'
 
-const { create, waitForTest } = require('../../api/test')
-const formatTest = require('../../views/test')
-const { humaniseError } = require('../../utils/api-error')
+import { create, waitForTest } from '../../api/test'
+import formatTest from '../../views/test'
+import { humaniseError } from '../../utils/api-error'
 
-const main = async function(args) {
+const main = async function (args) {
   let spinner
   let cookies = []
   let headers = []
@@ -76,60 +76,60 @@ const main = async function(args) {
   }
 }
 
-module.exports = {
-  command: 'create <url> [options]',
-  describe: 'Run a test against any public URL',
-  builder: yargs => {
-    yargs
-      .option('device', {
-        describe: 'Sets the emulated device that the test will be run on'
-      })
-      .option('location', {
-        describe: 'The test will be run on a machine in this location'
-      })
-      .option('connection', {
-        describe: 'Sets the emulated connection speed for this test'
-      })
-      .option('json', {
-        describe: 'Return the test result as JSON'
-      })
-      .option('adblocker', {
-        describe: 'Turn adblocking on/off',
-        type: 'boolean',
-        default: false
-      })
-      .option('private', {
-        describe: 'Private tests are only accessible by logged in team members',
-        type: 'boolean',
-        default: false
-      })
-      .option('cookie-jar', {
-        describe: 'Uses a netscape formatted cookie jar file at this path'
-      })
-      .option('headers', {
-        describe:
-          "Stringify'd JSON HTTP Header key/value pairs or path to JSON file of HTTP Header key/value pairs "
-      })
-      .demandOption(
-        'location',
-        'Please provide the location your URL should be tested from'
-      )
-      .check(({ url, location, cookieJar }) => {
-        if (!url.length) return new Error('Please provide a URL')
+const command = 'create <url> [options]'
+const describe = 'Run a test against any public URL'
+const builder = yargs => {
+  yargs
+    .option('device', {
+      describe: 'Sets the emulated device that the test will be run on'
+    })
+    .option('location', {
+      describe: 'The test will be run on a machine in this location'
+    })
+    .option('connection', {
+      describe: 'Sets the emulated connection speed for this test'
+    })
+    .option('json', {
+      describe: 'Return the test result as JSON'
+    })
+    .option('adblocker', {
+      describe: 'Turn adblocking on/off',
+      type: 'boolean',
+      default: false
+    })
+    .option('private', {
+      describe: 'Private tests are only accessible by logged in team members',
+      type: 'boolean',
+      default: false
+    })
+    .option('cookie-jar', {
+      describe: 'Uses a netscape formatted cookie jar file at this path'
+    })
+    .option('headers', {
+      describe:
+        "Stringify'd JSON HTTP Header key/value pairs or path to JSON file of HTTP Header key/value pairs "
+    })
+    .demandOption(
+      'location',
+      'Please provide the location your URL should be tested from'
+    )
+    .check(({ url, location, cookieJar }) => {
+      if (!url.length) return new Error('Please provide a URL')
 
-        try {
-          new URL(url)
-        } catch (e) {
-          return new Error('Please enter a valid URL')
-        }
+      try {
+        new URL(url)
+      } catch (e) {
+        return new Error('Please enter a valid URL')
+      }
 
-        if (!location) return new Error('Please set --location')
+      if (!location) return new Error('Please set --location')
 
-        // Validate that the cookie-jar exists
-        if (cookieJar) new CookieMap(cookieJar)
+      // Validate that the cookie-jar exists
+      if (cookieJar) new CookieMap(cookieJar)
 
-        return true
-      })
-  },
-  handler: main
+      return true
+    })
 }
+const handler = main
+
+export { command, describe, builder, handler }

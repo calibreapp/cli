@@ -1,8 +1,8 @@
-const ora = require('ora')
-const { URL } = require('url')
+import ora from 'ora'
+import { URL } from 'url'
 
-const { create } = require('../../api/site')
-const { humaniseError } = require('../../utils/api-error')
+import { create } from '../../api/site'
+import { humaniseError } from '../../utils/api-error'
 
 const main = async function (args) {
   let spinner
@@ -65,54 +65,51 @@ const main = async function (args) {
   }
 }
 
-module.exports = {
-  command: 'create <name> [options]',
-  describe: 'Add a site for Calibre to monitor',
-  builder: yargs => {
-    yargs
-      .option('url', {
-        describe: 'The homepage URL for this site'
-      })
-      .option('location', {
-        describe: 'Calibre will monitor from this location'
-      })
-      .option('team', {
-        describe: 'The identifying slug of the team'
-      })
-      .option('schedule', {
-        describe:
-          'Schedule for automated snapshots. One of: hourly, daily, every_x_hours',
-        default: 'every_x_hours'
-      })
-      .option('interval', {
-        describe:
-          "Automated snapshot interval. UTC hour of day for 'daily', hour interval for 'every_x_hours'",
-        default: 6
-      })
-      .option('json', {
-        describe: 'Return the site attributes as JSON'
-      })
-      .demandOption(
-        'url',
-        'Please provide the URL of the homepage for this site'
-      )
-      .demandOption(
-        'location',
-        'Please provide the location your site should be tested from'
-      )
-      .check(({ url, location }) => {
-        if (!url.length) return new Error('Please provide a URL')
+const command = 'create <name> [options]'
+const describe = 'Add a site for Calibre to monitor'
+const builder = yargs => {
+  yargs
+    .option('url', {
+      describe: 'The homepage URL for this site'
+    })
+    .option('location', {
+      describe: 'Calibre will monitor from this location'
+    })
+    .option('team', {
+      describe: 'The identifying slug of the team'
+    })
+    .option('schedule', {
+      describe:
+        'Schedule for automated snapshots. One of: hourly, daily, every_x_hours',
+      default: 'every_x_hours'
+    })
+    .option('interval', {
+      describe:
+        "Automated snapshot interval. UTC hour of day for 'daily', hour interval for 'every_x_hours'",
+      default: 6
+    })
+    .option('json', {
+      describe: 'Return the site attributes as JSON'
+    })
+    .demandOption('url', 'Please provide the URL of the homepage for this site')
+    .demandOption(
+      'location',
+      'Please provide the location your site should be tested from'
+    )
+    .check(({ url, location }) => {
+      if (!url.length) return new Error('Please provide a URL')
 
-        try {
-          new URL(url)
-        } catch (e) {
-          return new Error('Please enter a valid URL')
-        }
+      try {
+        new URL(url)
+      } catch (e) {
+        return new Error('Please enter a valid URL')
+      }
 
-        if (!location) return new Error('Please set --location')
+      if (!location) return new Error('Please set --location')
 
-        return true
-      })
-  },
-  handler: main
+      return true
+    })
 }
+const handler = main
+
+export { command, describe, builder, handler }

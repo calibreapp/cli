@@ -1,7 +1,7 @@
-const columnify = require('columnify')
-const { gradeFormatter } = require('../utils/formatters')
+import columnify from 'columnify'
+import { gradeFormatter } from '../utils/formatters'
 
-const table = measurements => {
+const view = measurements => {
   const perfMetric = measurements.find(
     metric => metric.name === 'lighthouse-performance-score'
   )
@@ -63,4 +63,4 @@ const table = measurements => {
   })
 }
 
-module.exports = table
+export default view

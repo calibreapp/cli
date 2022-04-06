@@ -1,11 +1,11 @@
-const chalk = require('chalk')
-const dateFormat = require('date-fns/format')
+import chalk from 'chalk'
+import dateFormat from 'date-fns/format'
 
-const chart = require('../utils/chart')
-const gradeTable = require('../views/grade-table')
-const { filesize } = require('../utils/formatters')
+import chart from '../utils/chart'
+import gradeTable from '../views/grade-table'
+import { filesize } from '../utils/formatters'
 
-module.exports = test => {
+const view = test => {
   let intro = [chalk.underline.bold(test.url)]
 
   if (!test.device) intro.push('on Chrome Desktop')
@@ -77,7 +77,7 @@ ${chalk.bold.red(
 ${footer}
     `
   } else if (test.status === 'timeout') {
-    return `${header} 
+    return `${header}
 
 ${chalk.bold.red('The test took too long to complete.')}
 
@@ -101,3 +101,5 @@ ${pageSizeData()}
 ${footer}
   `
 }
+
+export default view

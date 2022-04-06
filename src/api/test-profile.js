@@ -1,4 +1,4 @@
-const { request } = require('./graphql')
+import { request } from './graphql'
 
 const CREATE_MUTATION = `
   mutation CreateTestProfile($site: String!, $attributes: TestProfileInput!) {
@@ -218,9 +218,4 @@ const destroy = async ({ site, uuid }) => {
   return response.deleteTestProfile
 }
 
-module.exports = {
-  create,
-  list,
-  update,
-  destroy
-}
+export { create, list, update, destroy }

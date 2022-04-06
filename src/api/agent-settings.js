@@ -1,4 +1,4 @@
-const { request } = require('./graphql')
+import { request } from './graphql'
 
 const UPDATE_MUTATION = `
   mutation UpdateAgentSettings($site: String!, $attributes: AgentSettingsInput!) {
@@ -61,7 +61,4 @@ const get = async ({ site }) => {
   return response.organisation.site.agentSettings
 }
 
-module.exports = {
-  get,
-  update
-}
+export { get, update }

@@ -1,6 +1,12 @@
-exports.command = 'test <command>'
-exports.desc = 'Single page tests'
-exports.builder = yargs => {
+
+const command = 'test <command>'
+const desc = 'Single page tests'
+const builder = yargs => {
   return yargs.commandDir('test')
 }
-exports.handler = () => {}
+const handler = () => { }
+
+export {
+  command, desc, builder, handler
+}
+

@@ -1,10 +1,10 @@
-const ora = require('ora')
+import ora from 'ora'
 
-const { create } = require('../../api/snapshot')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import { create } from '../../api/snapshot'
+import { humaniseError } from '../../utils/api-error'
+import { options } from '../../utils/cli'
 
-const main = async function(args) {
+const main = async function (args) {
   let spinner
 
   if (!args.json) {
@@ -26,15 +26,15 @@ const main = async function(args) {
   }
 }
 
-module.exports = {
-  command: 'create-snapshot [options]',
-  describe: 'Create a snapshot',
-  builder: yargs => {
-    yargs.options({
-      ref: { describe: 'Sets a reference to the snapshot' },
-      site: options.site,
-      json: options.json
-    })
-  },
-  handler: main
+const command = 'create-snapshot [options]'
+const describe = 'Create a snapshot'
+const builder = yargs => {
+  yargs.options({
+    ref: { describe: 'Sets a reference to the snapshot' },
+    site: options.site,
+    json: options.json
+  })
 }
+const handler = main
+
+export { command, describe, builder, handler }

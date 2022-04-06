@@ -1,4 +1,4 @@
-module.exports = value => {
+const toDuration = value => {
   if (!value) return '-'
 
   let unit = 'ms'
@@ -11,3 +11,5 @@ module.exports = value => {
 
   return `${ms} ${unit}`
 }
+
+export default toDuration

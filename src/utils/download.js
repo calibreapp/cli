@@ -1,6 +1,6 @@
-const https = require('https')
-const zlib = require('zlib')
-const fs = require('fs')
+import https from 'https'
+import zlib from 'zlib'
+import fs from 'fs'
 
 const download = (url, destination) => {
   if (fs.existsSync(destination)) return Promise.resolve()
@@ -19,4 +19,4 @@ const download = (url, destination) => {
   })
 }
 
-module.exports = download
+export default download

@@ -1,7 +1,7 @@
-const filesize = require('./filesize')
-const duration = require('./duration')
-const gradeFormatter = require('./grade-score')
-const milliunit = require('./milliunit')
+import filesize from './filesize'
+import duration from './duration'
+import gradeFormatter from './grade-score'
+import milliunit from './milliunit'
 
 const format = ({ formatter, value }) => {
   switch (formatter) {
@@ -16,10 +16,4 @@ const format = ({ formatter, value }) => {
   }
 }
 
-module.exports = {
-  format,
-  filesize,
-  duration,
-  gradeFormatter,
-  milliunit
-}
+export { format, filesize, duration, gradeFormatter, milliunit }

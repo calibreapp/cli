@@ -1,4 +1,4 @@
-const { request } = require('./graphql')
+import { request } from './graphql'
 
 const SNAPSHOT_METRICS_QUERY = `
   query GetSnapshotMetrics(
@@ -60,6 +60,4 @@ const snapshot = async ({ site, snapshotId }) => {
   return response.organisation.site
 }
 
-module.exports = {
-  snapshot
-}
+export { snapshot }

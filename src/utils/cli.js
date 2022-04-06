@@ -39,4 +39,4 @@ const options = {
   }
 }
 
-module.exports.options = options
+export { options }

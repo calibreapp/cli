@@ -1,8 +1,8 @@
-const { GraphQLClient } = require('graphql-request')
-const { handleError } = require('../utils/api-error')
+import { GraphQLClient } from 'graphql-request'
+import { handleError } from '../utils/api-error'
 
-const clientInfo = require('../utils/client-info')
-const retrieveToken = require('../utils/token')
+import { name, version } from '../utils/client-info'
+import retrieveToken from '../utils/token'
 
 const request = async ({ query, ...variables }) => {
   const host = process.env.CALIBRE_HOST || 'https://api.calibreapp.com'
@@ -10,8 +10,8 @@ const request = async ({ query, ...variables }) => {
   const token = retrieveToken()
   const headers = {
     Accept: 'application/json',
-    'X-Client-Name': clientInfo.name,
-    'X-Client-Version': clientInfo.version,
+    'X-Client-Name': name,
+    'X-Client-Version': version,
     'Content-Type': 'application/json',
     Authorization: `Token ${token}`
   }
@@ -24,6 +24,4 @@ const request = async ({ query, ...variables }) => {
   }
 }
 
-module.exports = {
-  request
-}
+export { request }

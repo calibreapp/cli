@@ -1,10 +1,10 @@
-const chalk = require('chalk')
-const ora = require('ora')
-const columnify = require('columnify')
-const dateFormat = require('date-fns/format')
+import chalk from 'chalk'
+import ora from 'ora'
+import columnify from 'columnify'
+import dateFormat from 'date-fns/format'
 
-const { list } = require('../../api/site')
-const { humaniseError } = require('../../utils/api-error')
+import { list } from '../../api/site'
+import { humaniseError } from '../../utils/api-error'
 
 const main = async args => {
   let index
@@ -31,7 +31,7 @@ const main = async args => {
     return {
       slug: chalk.grey(row.slug),
       name: row.name,
-      status: `${dateFormat(new Date( row.createdAt ), 'h:mma d-MMM-yyyy')}`
+      status: `${dateFormat(new Date(row.createdAt), 'h:mma d-MMM-yyyy')}`
     }
   })
 
@@ -44,13 +44,13 @@ const main = async args => {
   )
 }
 
-module.exports = {
-  command: 'list',
-  describe: 'Print a list of sites being tracked by Calibre',
-  handler: main,
-  builder: yargs => {
-    yargs.option('json', {
-      describe: 'Return the list of sites as JSON'
-    })
-  }
+const command = 'list'
+const describe = 'Print a list of sites being tracked by Calibre'
+const handler = main
+const builder = yargs => {
+  yargs.option('json', {
+    describe: 'Return the list of sites as JSON'
+  })
 }
+
+export { command, describe, builder, handler }

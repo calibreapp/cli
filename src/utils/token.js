@@ -1,5 +1,5 @@
-const Configstore = require('configstore')
-const pkg = require('../../package.json')
+import Configstore from 'configstore'
+import pkg from '../../package.json'
 const config = new Configstore(pkg.name)
 
 const retrieveToken = () => {
@@ -13,4 +13,4 @@ const retrieveToken = () => {
   return token
 }
 
-module.exports = retrieveToken
+export default retrieveToken

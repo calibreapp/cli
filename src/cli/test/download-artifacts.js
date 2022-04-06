@@ -1,11 +1,11 @@
-const path = require('path')
+import path from 'path'
 
-const listr = require('listr')
+import listr from 'listr'
 
-const download = require('../../utils/download')
-const mkdirp = require('../../utils/mkdirp')
-const { fetchArtifacts } = require('../../api/test')
-const { humaniseError } = require('../../utils/api-error')
+import download from '../../utils/download'
+import mkdirp from '../../utils/mkdirp'
+import { fetchArtifacts } from '../../api/test'
+import { humaniseError } from '../../utils/api-error'
 
 const main = async args => {
   try {
@@ -59,13 +59,13 @@ const main = async args => {
   }
 }
 
-module.exports = {
-  command: 'download-artifacts <uuid>',
-  describe: 'Downloads the artifacts of a test to ./test-artifacts/<uuid>',
-  handler: main,
-  builder: yargs => {
-    yargs.option('json', {
-      describe: 'Return the artifact URLS as JSON'
-    })
-  }
+const command = 'download-artifacts <uuid>'
+const describe = 'Downloads the artifacts of a test to ./test-artifacts/<uuid>'
+const handler = main
+const builder = yargs => {
+  yargs.option('json', {
+    describe: 'Return the artifact URLS as JSON'
+  })
 }
+
+export { command, describe, builder, handler }

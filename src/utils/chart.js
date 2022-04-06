@@ -1,5 +1,5 @@
-const chalk = require('chalk')
-const { format } = require('../utils/formatters')
+import chalk from 'chalk'
+import { format } from '../utils/formatters'
 
 const barSection = '■'
 const chartWidth = 80
@@ -27,4 +27,4 @@ const chart = (data, formatter) => {
     .join('\n\n')
 }
 
-module.exports = chart
+export default chart

@@ -1,6 +1,6 @@
-const pkg = require('../../package.json')
+import pkg from '../../package.json'
 
-module.exports = {
-  name: 'calibre-node',
-  version: pkg.version
-}
+const name = 'calibre-node'
+const version = pkg.version
+
+export { name, version }

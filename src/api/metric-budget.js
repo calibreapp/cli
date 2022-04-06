@@ -1,4 +1,4 @@
-const { request } = require('./graphql')
+import { request } from './graphql'
 
 const CREATE_MUTATION = `
   mutation CreateMetricBudget($organisation: String, $site: String!, $attributes: MetricBudgetInput!){
@@ -163,9 +163,4 @@ const list = async ({ site, metric, count, cursor }) => {
   }
 }
 
-module.exports = {
-  create,
-  destroy,
-  update,
-  list
-}
+export { create, destroy, update, list }

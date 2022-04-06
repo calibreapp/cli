@@ -1,10 +1,10 @@
-const ora = require('ora')
+import ora from 'ora'
 
-const { create } = require('../../api/deploy')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import { create } from '../../api/deploy'
+import { humaniseError } from '../../utils/api-error'
+import { options } from '../../utils/cli'
 
-const main = async function(args) {
+const main = async function (args) {
   let spinner
 
   if (!args.json) {
@@ -26,23 +26,24 @@ const main = async function(args) {
   }
 }
 
-module.exports = {
-  command: 'create-deploy [options]',
-  describe: 'Create a deploy',
-  builder: yargs => {
-    yargs.options({
-      revision: {
-        describe:
-          'The source control revision id of the code you are deploying (e.g. git hash or tag name)'
-      },
-      repository: {
-        describe:
-          'The base URL of the repository containing the source code being deployed (e.g. https://github.com/calibreapp/app)'
-      },
-      username: { describe: 'THe name of the user who deployed the code' },
-      site: options.site,
-      json: options.json
-    })
-  },
-  handler: main
+const command = 'create-deploy [options]'
+const describe = 'Create a deploy'
+const builder = yargs => {
+  yargs.options({
+    revision: {
+      describe:
+        'The source control revision id of the code you are deploying (e.g. git hash or tag name)'
+    },
+    repository: {
+      describe:
+        'The base URL of the repository containing the source code being deployed (e.g. https://github.com/calibreapp/app)'
+    },
+    username: { describe: 'THe name of the user who deployed the code' },
+    site: options.site,
+    json: options.json
+  })
 }
+
+const handler = main
+
+export { command, describe, builder, handler }

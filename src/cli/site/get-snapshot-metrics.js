@@ -1,9 +1,9 @@
-const ora = require('ora')
-const { Parser: CSVParser } = require('json2csv')
-const { snapshot } = require('../../api/snapshot-metrics')
-const formatSnapshot = require('../../views/snapshot-metrics')
-const { options } = require('../../utils/cli')
-const { humaniseError } = require('../../utils/api-error')
+import ora from 'ora'
+import { Parser as CSVParser } from 'json2csv'
+import { snapshot } from '../../api/snapshot-metrics'
+import formatSnapshot from '../../views/snapshot-metrics'
+import { options } from '../../utils/cli'
+import { humaniseError } from '../../utils/api-error'
 
 const formatCSV = payload => {
   let data = []
@@ -91,19 +91,19 @@ const main = async args => {
   }
 }
 
-module.exports = {
-  command: 'get-snapshot-metrics [options]',
-  describe: 'Get the metrics of a given snapshot',
-  builder: yargs => {
-    yargs.options({
-      site: options.site,
-      snapshot: {
-        demandOption: true,
-        describe: 'The identifying id of a snapshot'
-      },
-      json: options.json,
-      csv: options.csv
-    })
-  },
-  handler: main
+const command = 'get-snapshot-metrics [options]'
+const describe = 'Get the metrics of a given snapshot'
+const builder = yargs => {
+  yargs.options({
+    site: options.site,
+    snapshot: {
+      demandOption: true,
+      describe: 'The identifying id of a snapshot'
+    },
+    json: options.json,
+    csv: options.csv
+  })
 }
+const handler = main
+
+export { command, describe, builder, handler }

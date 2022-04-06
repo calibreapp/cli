@@ -1,10 +1,10 @@
-const chalk = require('chalk')
-const ora = require('ora')
-const columnify = require('columnify')
+import chalk from 'chalk'
+import ora from 'ora'
+import columnify from 'columnify'
 
-const { list } = require('../../api/page')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import { list } from '../../api/page'
+import { humaniseError } from '../../utils/api-error'
+import { options } from '../../utils/cli'
 
 const main = async args => {
   let index
@@ -46,23 +46,25 @@ const main = async args => {
   if (index.pageInfo.hasNextPage) {
     const lastPage = rows[rows.length - 1]
     console.log(
-      `To see pages after ${lastPage.name ||
-        lastPage.uuid}, run: calibre site pages --site=calibre --cursor=${
+      `To see pages after ${
+        lastPage.name || lastPage.uuid
+      }, run: calibre site pages --site=calibre --cursor=${
         index.pageInfo.endCursor
       }`
     )
   }
 }
-module.exports = {
-  command: 'pages [options]',
-  describe: 'Print a list of pages for a given site',
-  handler: main,
-  builder: yargs => {
-    yargs.options({
-      site: options.site,
-      count: options.count,
-      cursor: options.cursor,
-      json: options.json
-    })
-  }
+
+const command = 'pages [options]'
+const describe = 'Print a list of pages for a given site'
+const handler = main
+const builder = yargs => {
+  yargs.options({
+    site: options.site,
+    count: options.count,
+    cursor: options.cursor,
+    json: options.json
+  })
 }
+
+export { command, describe, handler, builder }

@@ -1,4 +1,4 @@
-const { request } = require('./graphql')
+import { request } from './graphql'
 
 const LIST_QUERY = `
   query {
@@ -28,6 +28,4 @@ const list = async () => {
   return response.metrics
 }
 
-module.exports = {
-  list
-}
+export { list }

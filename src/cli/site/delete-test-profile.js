@@ -1,10 +1,10 @@
-const ora = require('ora')
+import ora from 'ora'
 
-const { destroy } = require('../../api/test-profile')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import { destroy } from '../../api/test-profile'
+import { humaniseError } from '../../utils/api-error'
+import { options } from '../../utils/cli'
 
-const main = async function(args) {
+const main = async function (args) {
   let spinner
 
   if (!args.json) {
@@ -29,26 +29,26 @@ const main = async function(args) {
   }
 }
 
-module.exports = {
-  command: 'delete-test-profile [options]',
-  describe: 'Deletes a test profile from a site',
-  builder: yargs => {
-    yargs
-      .options({
-        uuid: { demandOption: true, describe: 'The UUID of the test profile' },
-        site: options.site,
-        confirm: {
-          describe: 'Confirm the deletion'
-        },
-        json: options.json
-      })
-      .check(({ confirm }) => {
-        if (process.stdout.isTTY && !confirm)
-          return new Error(
-            'Add the --confirm flag to confirm the immediate & irreversible deletion of this test profile.'
-          )
-        return true
-      })
-  },
-  handler: main
+const command = 'delete-test-profile [options]'
+const describe = 'Deletes a test profile from a site'
+const builder = yargs => {
+  yargs
+    .options({
+      uuid: { demandOption: true, describe: 'The UUID of the test profile' },
+      site: options.site,
+      confirm: {
+        describe: 'Confirm the deletion'
+      },
+      json: options.json
+    })
+    .check(({ confirm }) => {
+      if (process.stdout.isTTY && !confirm)
+        return new Error(
+          'Add the --confirm flag to confirm the immediate & irreversible deletion of this test profile.'
+        )
+      return true
+    })
 }
+const handler = main
+
+export { command, describe, builder, handler }

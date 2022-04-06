@@ -1,6 +1,13 @@
-exports.command = 'token <command>'
-exports.desc = 'Tasks related to tokens'
-exports.builder = yargs => {
-  return yargs.commandDir('token')
+import * as TokenSet from './token/set'
+import * as TokenRemove from './token/remove'
+
+const commands = [TokenSet, TokenRemove]
+
+const command = 'token <command>'
+const desc = 'Tasks related to tokens'
+const builder = yargs => {
+  return yargs.commands(commands)
 }
-exports.handler = () => {}
+const handler = () => {}
+
+export { command, desc, builder, handler, commands }
