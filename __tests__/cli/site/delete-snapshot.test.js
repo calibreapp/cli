@@ -1,9 +1,10 @@
-const {
+import {
   runCLI,
   setupIntegrationServer,
   teardownIntegrationServer
-} = require('../../utils')
-const deleteSnapshot = require('../../fixtures/deleteSnapshot.json')
+} from '../../utils'
+
+import deleteSnapshot from '../../fixtures/deleteSnapshot.json'
 
 describe('site delete-snapshot', () => {
   beforeAll(() => setupIntegrationServer(deleteSnapshot))

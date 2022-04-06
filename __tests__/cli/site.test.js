@@ -1,4 +1,4 @@
-const { runCLI } = require('../utils')
+import { runCLI } from '../utils'
 
 test('missing site argument', async () => {
   const out = await runCLI({ args: 'site pages', testForError: true })

@@ -1,4 +1,4 @@
-const { runCLI } = require('../../utils')
+import { runCLI } from '../../utils'
 
 test('missing token argument', async () => {
   const out = await runCLI({ args: 'token', testForError: true })

@@ -1,9 +1,10 @@
-const {
+import {
   runCLI,
   setupIntegrationServer,
   teardownIntegrationServer
-} = require('../../utils')
-const listPages = require('../../fixtures/listPages.json')
+} from '../../utils'
+
+import listPages from '../../fixtures/listPages.json'
 
 describe('site snapshots', () => {
   beforeAll(() => setupIntegrationServer(listPages))

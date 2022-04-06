@@ -1,4 +1,4 @@
-const execa = require('execa')
+import { execa } from 'execa'
 
 test('calibre --help', async () => {
   const { stdout } = await execa('calibre', ['--help'])

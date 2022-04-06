@@ -1,6 +1,6 @@
-const { humaniseError } = require('../../src/utils/api-error')
+import { humaniseError } from '../../src/utils/api-error'
 
-const erroredSite = require('../fixtures/createSiteError.json')
+import erroredSite from '../fixtures/createSiteError.json'
 
 describe('apiError', () => {
   it('graphql', () => {

@@ -1,9 +1,9 @@
-const formatTest = require('../../src/views/test')
+import formatTest from '../../src/views/test'
 
-const completedTest = require('../fixtures/completedTest.json')
-const erroredTest = require('../fixtures/erroredTest.json')
-const timeoutTest = require('../fixtures/timeoutTest.json')
-const incompleteTest = require('../fixtures/incompleteTest.json')
+import completedTest from '../fixtures/completedTest.json'
+import erroredTest from '../fixtures/erroredTest.json'
+import timeoutTest from '../fixtures/timeoutTest.json'
+import incompleteTest from '../fixtures/incompleteTest.json'
 
 describe('test', () => {
   it('completed', () => {
