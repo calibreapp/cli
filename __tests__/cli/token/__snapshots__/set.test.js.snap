@@ -8,12 +8,13 @@ exports[`missing token argument 1`] = `
  --- Command documentation
  calibre token <command>
 
-Tasks related to tokens
+Store or revoke a Calibre API token (Use instead of CALIBRE_API_TOKEN environmen
+t variable)
 
 Commands:
 
-  calibre token remove     Remove the Calibre API token used for CLI commands
   calibre token set <key>  Set the Calibre API token used for CLI commands
+  calibre token remove     Remove the Calibre API token used for CLI commands
 
 Options:
 

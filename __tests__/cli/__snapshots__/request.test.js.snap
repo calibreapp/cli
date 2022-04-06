@@ -18,8 +18,8 @@ Options:
   --variables  Pass query variables as named arguments
 
 Examples:
-  calibre request --query='query GetSite($slug: String!)
-  {organisation{site(slug: $slug){slug}}}' --slug=calibre"
+  calibre request --query='query GetSite($slug: String!) {organisation{site(sl
+  ug: $slug){slug}}}' --slug=calibre"
 `;
 
 exports[`request returns response 1`] = `

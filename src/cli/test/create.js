@@ -1,12 +1,14 @@
 import { URL } from 'url'
 
 import ora from 'ora'
-import { CookieMap } from 'cookiefile'
+import cookiefile from 'cookiefile'
 import fs from 'fs'
 
 import { create, waitForTest } from '../../api/test'
 import formatTest from '../../views/test'
 import { humaniseError } from '../../utils/api-error'
+
+const { CookieMap } = cookiefile
 
 const main = async function (args) {
   let spinner
