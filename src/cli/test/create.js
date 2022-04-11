@@ -4,9 +4,10 @@ import ora from 'ora'
 import cookiefile from 'cookiefile'
 import fs from 'fs'
 
-import { create, waitForTest } from '../../api/test'
-import formatTest from '../../views/test'
-import { humaniseError } from '../../utils/api-error'
+import { create, waitForTest } from '../../api/test.js'
+import formatTest from '../../views/test.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const { CookieMap } = cookiefile
 
@@ -51,6 +52,12 @@ const main = async function (args) {
   const isPrivate = args.private
 
   try {
+    new URL(args.url)
+  } catch (e) {
+    return new Error('Please enter a valid URL')
+  }
+
+  try {
     const { uuid } = await create({ ...args, cookies, headers, isPrivate })
 
     if (!args.json) {
@@ -80,58 +87,38 @@ const main = async function (args) {
 
 const command = 'create <url> [options]'
 const describe = 'Run a test against any public URL'
-const builder = yargs => {
-  yargs
-    .option('device', {
-      describe: 'Sets the emulated device that the test will be run on'
-    })
-    .option('location', {
-      describe: 'The test will be run on a machine in this location'
-    })
-    .option('connection', {
-      describe: 'Sets the emulated connection speed for this test'
-    })
-    .option('json', {
-      describe: 'Return the test result as JSON'
-    })
-    .option('adblocker', {
-      describe: 'Turn adblocking on/off',
-      type: 'boolean',
-      default: false
-    })
-    .option('private', {
-      describe: 'Private tests are only accessible by logged in team members',
-      type: 'boolean',
-      default: false
-    })
-    .option('cookie-jar', {
-      describe: 'Uses a netscape formatted cookie jar file at this path'
-    })
-    .option('headers', {
-      describe:
-        "Stringify'd JSON HTTP Header key/value pairs or path to JSON file of HTTP Header key/value pairs "
-    })
-    .demandOption(
-      'location',
-      'Please provide the location your URL should be tested from'
-    )
-    .check(({ url, location, cookieJar }) => {
-      if (!url.length) return new Error('Please provide a URL')
-
-      try {
-        new URL(url)
-      } catch (e) {
-        return new Error('Please enter a valid URL')
-      }
-
-      if (!location) return new Error('Please set --location')
-
-      // Validate that the cookie-jar exists
-      if (cookieJar) new CookieMap(cookieJar)
-
-      return true
-    })
+const builder = {
+  device: {
+    describe: 'Sets the emulated device that the test will be run on'
+  },
+  location: {
+    demandOption: true,
+    requiresArg: true,
+    describe: 'The test will be run on a machine in this location'
+  },
+  connection: {
+    describe: 'Sets the emulated connection speed for this test'
+  },
+  adblocker: {
+    describe: 'Turn adblocking on/off',
+    type: 'boolean',
+    default: false
+  },
+  private: {
+    describe: 'Private tests are only accessible by logged in team members',
+    type: 'boolean',
+    default: false
+  },
+  'cookie-jar': {
+    describe: 'Uses a netscape formatted cookie jar file at this path'
+  },
+  headers: {
+    describe:
+      "Stringify'd JSON HTTP Header key/value pairs or path to JSON file of HTTP Header key/value pairs "
+  },
+  json: options.json
 }
+
 const handler = main
 
 export { command, describe, builder, handler }

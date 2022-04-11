@@ -1,10 +1,10 @@
 import ora from 'ora'
 import cookiefile from 'cookiefile'
 
-import formatProfile from '../../views/test-profile'
-import { create } from '../../api/test-profile'
-import { humaniseError } from '../../utils/api-error'
-import { options } from '../../utils/cli'
+import formatProfile from '../../views/test-profile.js'
+import { create } from '../../api/test-profile.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const { CookieMap } = cookiefile
 
@@ -46,36 +46,28 @@ const main = async function (args) {
 
 const command = 'create-test-profile <name> [options]'
 const describe = 'Add a test profile to a site'
-const builder = yargs => {
-  yargs
-    .options({
-      device: {
-        describe: 'Sets the emulated device that the profile will be run on'
-      },
-      connection: {
-        describe: 'Sets the emulated connection speed this profile'
-      },
-      site: options.site,
-      json: options.json,
-      javascript: {
-        type: 'boolean',
-        describe: 'Turn JavaScript execution on/off',
-        default: true
-      },
-      adblocker: {
-        type: 'boolean',
-        describe: 'Turn adblocking on/off',
-        default: false
-      },
-      'cookie-jar': {
-        describe: 'Uses a netscape formatted cookie jar file at this path'
-      }
-    })
-    .check(({ cookieJar }) => {
-      // Validate that the cookie-jar exists
-      if (cookieJar) new CookieMap(cookieJar)
-      return true
-    })
+const builder = {
+  site: options.site,
+  device: {
+    describe: 'Sets the emulated device that the profile will be run on'
+  },
+  connection: {
+    describe: 'Sets the emulated connection speed this profile'
+  },
+  javascript: {
+    type: 'boolean',
+    describe: 'Turn JavaScript execution on/off',
+    default: true
+  },
+  adblocker: {
+    type: 'boolean',
+    describe: 'Turn adblocking on/off',
+    default: false
+  },
+  'cookie-jar': {
+    describe: 'Uses a netscape formatted cookie jar file at this path'
+  },
+  json: options.json
 }
 const handler = main
 

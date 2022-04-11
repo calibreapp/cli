@@ -3,10 +3,11 @@ import { URL } from 'url'
 import chalk from 'chalk'
 import ora from 'ora'
 import columnify from 'columnify'
-import dateFormat from 'date-fns/format'
+import { format as dateFormat } from 'date-fns'
 
-import { getList } from '../../api/test'
-import { humaniseError } from '../../utils/api-error'
+import { getList } from '../../api/test.js'
+import { options } from '../../utils/cli.js'
+import { humaniseError } from '../../utils/api-error.js'
 
 const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
@@ -63,10 +64,8 @@ const main = async args => {
 const command = 'list'
 const describe = 'Print a list of previously run tests'
 const handler = main
-const builder = yargs => {
-  yargs.option('json', {
-    describe: 'Return the list of tests as JSON'
-  })
+const builder = {
+  json: options.json
 }
 
 export { command, describe, builder, handler }

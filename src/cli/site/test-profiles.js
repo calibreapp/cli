@@ -2,9 +2,9 @@ import chalk from 'chalk'
 import ora from 'ora'
 import columnify from 'columnify'
 
-import { list } from '../../api/test-profile'
-import { humaniseError } from '../../utils/api-error'
-import { options } from '../../utils/cli'
+import { list } from '../../api/test-profile.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async args => {
   let index
@@ -52,11 +52,9 @@ const main = async args => {
 const command = 'test-profiles [options]'
 const describe = 'Print a list of test profiles for a given site'
 const handler = main
-const builder = yargs => {
-  yargs.options({
-    site: options.site,
-    json: options.json
-  })
+const builder = {
+  site: options.site,
+  json: options.json
 }
 
 export { command, describe, handler, builder }

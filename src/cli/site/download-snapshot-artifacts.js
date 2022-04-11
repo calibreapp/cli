@@ -3,11 +3,11 @@ import path from 'path'
 import chalk from 'chalk'
 import listr from 'listr'
 
-import download from '../../utils/download'
-import mkdirp from '../../utils/mkdirp'
-import { fetchArtifacts } from '../../api/snapshot'
-import { humaniseError } from '../../utils/api-error'
-import { options } from '../../utils/cli'
+import download from '../../utils/download.js'
+import mkdirp from '../../utils/mkdirp.js'
+import { fetchArtifacts } from '../../api/snapshot.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async args => {
   const directories = [
@@ -164,12 +164,14 @@ const main = async args => {
 const command = 'download-snapshot-artifacts [options]'
 const describe =
   'Downloads the artifacts of a snapshot to ./snapshot-artifacts/<id>'
-const builder = yargs => {
-  yargs.options({
-    id: { demandOption: true, describe: 'The id of the snapshot' },
-    site: options.site,
-    json: options.json
-  })
+const builder = {
+  site: options.site,
+  id: {
+    demandOption: true,
+    requiresArg: true,
+    describe: 'The id of the snapshot'
+  },
+  json: options.json
 }
 const handler = main
 

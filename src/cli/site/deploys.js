@@ -1,11 +1,11 @@
 import chalk from 'chalk'
 import ora from 'ora'
 import columnify from 'columnify'
-import dateFormat from 'date-fns/format'
+import { format as dateFormat } from 'date-fns'
 
-import { list } from '../../api/deploy'
-import { humaniseError } from '../../utils/api-error'
-import { options } from '../../utils/cli'
+import { list } from '../../api/deploy.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async args => {
   let index
@@ -63,13 +63,11 @@ const main = async args => {
 const command = 'deploys [options]'
 const describe = 'Print a list of deploys'
 const handler = main
-const builder = yargs => {
-  yargs.options({
-    site: options.site,
-    count: options.count,
-    cursor: options.cursor,
-    json: options.json
-  })
+const builder = {
+  site: options.site,
+  count: options.count,
+  cursor: options.cursor,
+  json: options.json
 }
 
 export { command, describe, handler, builder }

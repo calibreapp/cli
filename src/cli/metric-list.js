@@ -3,10 +3,9 @@ import ora from 'ora'
 import columnify from 'columnify'
 import logSymbols from 'log-symbols'
 
-import { list } from '../api/metric'
-import { humaniseError } from '../utils/api-error'
-import { options } from '../utils/cli'
-import { format } from '../utils/formatters'
+import { list } from '../api/metric.js'
+import { humaniseError } from '../utils/api-error.js'
+import { format } from '../utils/formatters/index.js'
 
 const main = async args => {
   let index
@@ -60,10 +59,10 @@ const main = async args => {
 const command = 'metric-list'
 const describe = 'Print a list of metrics'
 const handler = main
-const builder = yargs => {
-  yargs.options({
-    json: options.json
-  })
+const builder = {
+  json: {
+    describe: `${describe} as JSON`
+  }
 }
 
 export { command, describe, handler, builder }

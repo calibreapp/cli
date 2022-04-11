@@ -1,8 +1,9 @@
 import ora from 'ora'
 
-import { getTestByUuid } from '../../api/test'
-import formatTest from '../../views/test'
-import { humaniseError } from '../../utils/api-error'
+import { getTestByUuid } from '../../api/test.js'
+import formatTest from '../../views/test.js'
+import { options } from '../../utils/cli.js'
+import { humaniseError } from '../../utils/api-error.js'
 
 const main = async args => {
   let spinner
@@ -31,10 +32,8 @@ const main = async args => {
 const command = 'show <uuid>'
 const describe = 'Print the details of a given test'
 const handler = main
-const builder = yargs => {
-  yargs.option('json', {
-    describe: 'Return the test result as JSON'
-  })
+const builder = {
+  json: options.json
 }
 
 export { command, describe, builder, handler }

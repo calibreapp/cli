@@ -2,10 +2,11 @@ import path from 'path'
 
 import listr from 'listr'
 
-import download from '../../utils/download'
-import mkdirp from '../../utils/mkdirp'
-import { fetchArtifacts } from '../../api/test'
-import { humaniseError } from '../../utils/api-error'
+import download from '../../utils/download.js'
+import mkdirp from '../../utils/mkdirp.js'
+import { fetchArtifacts } from '../../api/test.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async args => {
   try {
@@ -62,10 +63,8 @@ const main = async args => {
 const command = 'download-artifacts <uuid>'
 const describe = 'Downloads the artifacts of a test to ./test-artifacts/<uuid>'
 const handler = main
-const builder = yargs => {
-  yargs.option('json', {
-    describe: 'Return the artifact URLS as JSON'
-  })
+const builder = {
+  json: options.json
 }
 
 export { command, describe, builder, handler }

@@ -1,7 +1,7 @@
-import * as TestCreate from './test/create'
-import * as TestDownloadArtifacts from './test/download-artifacts'
-import * as TestList from './test/list'
-import * as TestShow from './test/show'
+import * as TestCreate from './test/create.js'
+import * as TestDownloadArtifacts from './test/download-artifacts.js'
+import * as TestList from './test/list.js'
+import * as TestShow from './test/show.js'
 
 const commands = [TestCreate, TestDownloadArtifacts, TestList, TestShow]
 

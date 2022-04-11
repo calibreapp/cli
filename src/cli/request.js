@@ -1,7 +1,7 @@
 import ora from 'ora'
 
-import { request } from '../api/graphql'
-import { humaniseError } from '../utils/api-error'
+import { request } from '../api/graphql.js'
+import { humaniseError } from '../utils/api-error.js'
 
 const main = async args => {
   let spinner
@@ -24,21 +24,18 @@ const main = async args => {
 const command = 'request'
 const describe = 'Make a request to the Calibre GraphQL API'
 const handler = main
-const builder = yargs => {
-  yargs.options({
-    query: {
-      describe: 'GraphQL query to execute',
-      demandOption: true,
-      type: 'string',
-      requiresArg: true
-    },
-    variables: {
-      describe: 'Pass query variables as named arguments'
-    }
-  })
-  yargs.example(
-    "calibre request --query='query GetSite($slug: String!) {organisation{site(slug: $slug){slug}}}' --slug=calibre"
-  )
+const builder = {
+  query: {
+    describe: `GraphQL query to execute. e.g.:
+
+calibre request --query='query GetSite($slug: String!) {organisation{site(slug: $slug){slug}}}' --slug=calibre`,
+    demandOption: true,
+    type: 'string',
+    requiresArg: true
+  },
+  variables: {
+    describe: 'Pass query variables as named arguments'
+  }
 }
 
 export { command, describe, handler, builder }

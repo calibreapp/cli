@@ -2,8 +2,7 @@ import Configstore from 'configstore'
 import chalk from 'chalk'
 import logSymbols from 'log-symbols'
 
-import pkg from '../../../package.json'
-const config = new Configstore(pkg.name)
+const config = new Configstore('calibre')
 
 const main = async () => {
   if (config.get('token')) {
@@ -15,10 +14,9 @@ const main = async () => {
 }
 
 const command = 'remove'
-const describe = 'Remove the Calibre API token used for CLI commands'
+const describe =
+  'Remove the Calibre API token used for CLI commands. e.g.: calibre token remove'
 const handler = main
-const builder = yargs => {
-  yargs.example('calibre token remove')
-}
+const builder = {}
 
 export { command, describe, handler, builder }

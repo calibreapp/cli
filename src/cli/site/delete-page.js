@@ -1,8 +1,8 @@
 import ora from 'ora'
 
-import { destroy } from '../../api/page'
-import { humaniseError } from '../../utils/api-error'
-import { options } from '../../utils/cli'
+import { destroy } from '../../api/page.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async function (args) {
   let spinner
@@ -11,6 +11,12 @@ const main = async function (args) {
     spinner = ora('Connecting to Calibre')
     spinner.color = 'magenta'
     spinner.start()
+  }
+
+  if (process.stdout.isTTY && !args.confirm) {
+    return new Error(
+      'Add the --confirm flag to confirm the immediate & irreversible deletion of this page.'
+    )
   }
 
   try {
@@ -29,23 +35,17 @@ const main = async function (args) {
 
 const command = 'delete-page [options]'
 const describe = 'Deletes a page from a site'
-const builder = yargs => {
-  yargs
-    .options({
-      uuid: { demandOption: true, describe: 'The UUID of the page' },
-      site: options.site,
-      confirm: {
-        describe: 'Confirm the deletion'
-      },
-      json: options.json
-    })
-    .check(({ confirm }) => {
-      if (process.stdout.isTTY && !confirm)
-        return new Error(
-          'Add the --confirm flag to confirm the immediate & irreversible deletion of this page.'
-        )
-      return true
-    })
+const builder = {
+  site: options.site,
+  uuid: {
+    demandOption: true,
+    requiresArg: true,
+    describe: 'The UUID of the page'
+  },
+  confirm: {
+    describe: 'Confirm the deletion'
+  },
+  json: options.json
 }
 const handler = main
 

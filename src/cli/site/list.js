@@ -1,10 +1,11 @@
 import chalk from 'chalk'
 import ora from 'ora'
 import columnify from 'columnify'
-import dateFormat from 'date-fns/format'
+import { format as dateFormat } from 'date-fns'
 
-import { list } from '../../api/site'
-import { humaniseError } from '../../utils/api-error'
+import { list } from '../../api/site.js'
+import { options } from '../../utils/cli.js'
+import { humaniseError } from '../../utils/api-error.js'
 
 const main = async args => {
   let index
@@ -47,10 +48,8 @@ const main = async args => {
 const command = 'list'
 const describe = 'Print a list of sites being tracked by Calibre'
 const handler = main
-const builder = yargs => {
-  yargs.option('json', {
-    describe: 'Return the list of sites as JSON'
-  })
+const builder = {
+  json: options.json
 }
 
 export { command, describe, builder, handler }

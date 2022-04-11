@@ -1,5 +1,5 @@
-import * as TokenSet from './token/set'
-import * as TokenRemove from './token/remove'
+import * as TokenSet from './token/set.js'
+import * as TokenRemove from './token/remove.js'
 
 const commands = [TokenSet, TokenRemove]
 

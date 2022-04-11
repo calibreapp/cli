@@ -2,8 +2,8 @@ import chalk from 'chalk'
 import ora from 'ora'
 import columnify from 'columnify'
 
-import { list } from '../api/location'
-import { humaniseError } from '../utils/api-error'
+import { list } from '../api/location.js'
+import { humaniseError } from '../utils/api-error.js'
 
 const main = async args => {
   let index
@@ -47,10 +47,10 @@ const main = async args => {
 const command = 'location-list'
 const describe = 'Print a list of test locations'
 const handler = main
-const builder = yargs => {
-  yargs.option('json', {
-    describe: 'Return the list of locations as JSON'
-  })
+const builder = {
+  json: {
+    describe: `${describe} as JSON`
+  }
 }
 
 export { command, describe, handler, builder }

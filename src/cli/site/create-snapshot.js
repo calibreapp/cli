@@ -1,8 +1,8 @@
 import ora from 'ora'
 
-import { create } from '../../api/snapshot'
-import { humaniseError } from '../../utils/api-error'
-import { options } from '../../utils/cli'
+import { create } from '../../api/snapshot.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async function (args) {
   let spinner
@@ -28,12 +28,10 @@ const main = async function (args) {
 
 const command = 'create-snapshot [options]'
 const describe = 'Create a snapshot'
-const builder = yargs => {
-  yargs.options({
-    ref: { describe: 'Sets a reference to the snapshot' },
-    site: options.site,
-    json: options.json
-  })
+const builder = {
+  site: options.site,
+  ref: { describe: 'Sets a reference to the snapshot' },
+  json: options.json
 }
 const handler = main
 

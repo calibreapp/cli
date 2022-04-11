@@ -1,9 +1,9 @@
 import { URL } from 'url'
 import ora from 'ora'
 
-import { create } from '../../api/page'
-import { humaniseError } from '../../utils/api-error'
-import { options } from '../../utils/cli'
+import { create } from '../../api/page.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async function (args) {
   let spinner
@@ -12,6 +12,12 @@ const main = async function (args) {
     spinner = ora('Connecting to Calibre')
     spinner.color = 'magenta'
     spinner.start()
+  }
+
+  try {
+    new URL(args.url)
+  } catch (e) {
+    return new Error('Please enter a valid URL')
   }
 
   try {
@@ -30,24 +36,14 @@ const main = async function (args) {
 
 const command = 'create-page <name> [options]'
 const describe = 'Add a page to an existing site tracked by Calibre'
-const builder = yargs => {
-  yargs
-    .options({
-      url: { demandOption: true, describe: 'The name of the page' },
-      site: options.site,
-      json: options.json
-    })
-    .check(({ url }) => {
-      if (!url.length) return new Error('Please provide a URL')
-
-      try {
-        new URL(url)
-      } catch (e) {
-        return new Error('Please enter a valid URL')
-      }
-
-      return true
-    })
+const builder = {
+  site: options.site,
+  url: {
+    demandOption: true,
+    requiresArg: true,
+    describe: 'The name of the page'
+  },
+  json: options.json
 }
 const handler = main
 

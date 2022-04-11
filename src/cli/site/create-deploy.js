@@ -1,8 +1,8 @@
 import ora from 'ora'
 
-import { create } from '../../api/deploy'
-import { humaniseError } from '../../utils/api-error'
-import { options } from '../../utils/cli'
+import { create } from '../../api/deploy.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async function (args) {
   let spinner
@@ -28,20 +28,18 @@ const main = async function (args) {
 
 const command = 'create-deploy [options]'
 const describe = 'Create a deploy'
-const builder = yargs => {
-  yargs.options({
-    revision: {
-      describe:
-        'The source control revision id of the code you are deploying (e.g. git hash or tag name)'
-    },
-    repository: {
-      describe:
-        'The base URL of the repository containing the source code being deployed (e.g. https://github.com/calibreapp/app)'
-    },
-    username: { describe: 'THe name of the user who deployed the code' },
-    site: options.site,
-    json: options.json
-  })
+const builder = {
+  site: options.site,
+  revision: {
+    describe:
+      'The source control revision id of the code you are deploying (e.g. git hash or tag name)'
+  },
+  repository: {
+    describe:
+      'The base URL of the repository containing the source code being deployed (e.g. https://github.com/calibreapp/app)'
+  },
+  username: { describe: 'The name of the user who deployed the code' },
+  json: options.json
 }
 
 const handler = main
