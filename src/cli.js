@@ -1,14 +1,24 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --no-warnings --experimental-json-modules
 
-const updateNotifier = require('update-notifier')
-const chalk = require('chalk')
-const pkg = require('../package.json')
+/*
+  Node Support
+
+  --experimental-json-modules for JSON imports (for package.json below)`
+*/
+
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
+import updateNotifier from 'update-notifier'
+import chalk from 'chalk'
+import pkg from '../package.json'
 
 updateNotifier({ pkg }).notify()
 
-module.exports = require('yargs')
+import commands from './cli-commands.js'
+
+const cli = yargs(hideBin(process.argv))
   .usage(`${chalk.bold('♤  calibre')} subcommand [options]`)
-  .commandDir('./cli')
+  .commands(commands)
   .demandCommand()
   .recommendCommands()
   .strictCommands()
@@ -18,11 +28,7 @@ module.exports = require('yargs')
     'Options:': chalk.grey('Options:\n')
   })
   .version(pkg.version)
-  .recommendCommands()
-  .example(
-    '$0 test create https://calibreapp.com --location=Sydney --device=iPhone8 --connection=good3G',
-    'Run a test on calibreapp.com from Sydney emulating an iPhone 8 with a 3G connection'
-  )
+  .example('$0 site list', 'List the sites in your Calibre account')
   .fail((message, error, yargs) => {
     console.error(
       '\n\n',
@@ -40,3 +46,7 @@ module.exports = require('yargs')
     process.exit(1)
   })
   .epilogue(`For more information on Calibre, see https://calibreapp.com`).argv
+
+export default cli
+
+export { commands }
