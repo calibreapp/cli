@@ -1,4 +1,4 @@
-import { request } from './graphql'
+import { request } from './graphql.js'
 
 const SNAPSHOT_METRICS_QUERY = `
   query GetSnapshotMetrics(

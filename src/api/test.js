@@ -1,4 +1,4 @@
-import { request } from './graphql'
+import { request } from './graphql.js'
 
 const CREATE_MUTATION = `
   mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $headers: [HeaderInput!], $adBlockerIsEnabled: Boolean, $isPrivate: Boolean) {

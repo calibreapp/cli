@@ -1,4 +1,4 @@
-import { request } from './graphql'
+import { request } from './graphql.js'
 
 const CREATE_MUTATION = `
   mutation CreateSnapshot(

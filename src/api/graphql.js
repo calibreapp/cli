@@ -1,10 +1,12 @@
 import { GraphQLClient } from 'graphql-request'
-import { handleError } from '../utils/api-error'
+import { handleError } from '../utils/api-error.js'
 
-import { name, version } from '../utils/client-info'
-import retrieveToken from '../utils/token'
+import { getClientInfo } from '../utils/client-info.js'
+import retrieveToken from '../utils/token.js'
 
 const request = async ({ query, ...variables }) => {
+  const { name, version } = await getClientInfo()
+
   const host = process.env.CALIBRE_HOST || 'https://api.calibreapp.com'
   const endpoint = `${host}/graphql`
   const token = retrieveToken()
