@@ -1,16 +1,12 @@
-#!/usr/bin/env node --no-warnings --experimental-json-modules
-
-/*
-  Node Support
-
-  --experimental-json-modules for JSON imports (for package.json below)`
-*/
+#!/usr/bin/env node
 
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import updateNotifier from 'update-notifier'
 import chalk from 'chalk'
-import pkg from '../package.json'
+import { readPackage } from 'read-pkg'
+
+const pkg = await readPackage()
 
 updateNotifier({ pkg }).notify()
 
@@ -28,7 +24,12 @@ const cli = yargs(hideBin(process.argv))
     'Options:': chalk.grey('Options:\n')
   })
   .version(pkg.version)
+  .example(
+    '$0 token set <token>',
+    'Store Calibre API token in ~/.config/configstore/calibre.json'
+  )
   .example('$0 site list', 'List the sites in your Calibre account')
+  .example('$0 test create <url>', 'Create a single page test')
   .fail((message, error, yargs) => {
     console.error(
       '\n\n',
