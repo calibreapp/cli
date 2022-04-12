@@ -1,5 +1,5 @@
 import columnify from 'columnify'
-import { gradeFormatter } from '../utils/formatters'
+import { gradeFormatter } from '../utils/formatters/index.js'
 
 const view = measurements => {
   const perfMetric = measurements.find(

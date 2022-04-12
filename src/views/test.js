@@ -1,9 +1,9 @@
 import chalk from 'chalk'
-import dateFormat from 'date-fns/format'
+import { format as dateFormat } from 'date-fns'
 
-import chart from '../utils/chart'
-import gradeTable from '../views/grade-table'
-import { filesize } from '../utils/formatters'
+import chart from '../utils/chart.js'
+import gradeTable from '../views/grade-table.js'
+import { filesize } from '../utils/formatters/index.js'
 
 const view = test => {
   let intro = [chalk.underline.bold(test.url)]

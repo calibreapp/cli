@@ -1,6 +1,7 @@
 import chalk from 'chalk'
-import dateFormat from 'date-fns/format'
-import gradeTable from '../views/grade-table'
+import { format as dateFormat } from 'date-fns'
+
+import gradeTable from '../views/grade-table.js'
 
 const testTable = ({ test, testProfiles }) => {
   const testProfile = testProfiles.find(tp => tp.uuid == test.testProfile.uuid)

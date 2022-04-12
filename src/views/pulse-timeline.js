@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import percentile from 'stats-percentile'
 
-import { format } from '../utils/formatters'
+import { format } from '../utils/formatters/index.js'
 
 const view = timeSeries => {
   const page = timeSeries.pages.map(page => page.name).join(', ')

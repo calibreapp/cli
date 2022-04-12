@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import { format } from '../utils/formatters'
+import { format } from '../utils/formatters/index.js'
 
 const barSection = '■'
 const chartWidth = 80

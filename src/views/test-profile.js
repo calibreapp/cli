@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import dateFormat from 'date-fns/format'
+import { format as dateFormat } from 'date-fns'
 
 const cookies = cookies => {
   return cookies.length > 0

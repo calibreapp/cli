@@ -1,7 +1,7 @@
-import filesize from './filesize'
-import duration from './duration'
-import gradeFormatter from './grade-score'
-import milliunit from './milliunit'
+import filesize from './filesize.js'
+import duration from './duration.js'
+import gradeFormatter from './grade-score.js'
+import milliunit from './milliunit.js'
 
 const format = ({ formatter, value }) => {
   switch (formatter) {
