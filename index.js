@@ -1,35 +1,19 @@
-require('./src/utils/token')()
+import retrieveToken from './src/utils/token'
 
-const Site = require('./src/api/site')
-const Snapshot = require('./src/api/snapshot')
-const Test = require('./src/api/test')
-const TestProfile = require('./src/api/test-profile')
-const Agent = require('./src/api/location')
-const Page = require('./src/api/page')
-const Connection = require('./src/api/connection')
-const Device = require('./src/api/device')
-const SnapshotMetrics = require('./src/api/snapshot-metrics')
-const GraphQL = require('./src/api/graphql')
-const TimeSeries = require('./src/api/time-series')
-const Deploy = require('./src/api/deploy')
-const Integration = require('./src/api/integration')
-const MetricBudget = require('./src/api/metric-budget')
-const AgentSettings = require('./src/api/agent-settings')
+retrieveToken()
 
-module.exports = {
-  Site,
-  Snapshot,
-  Test,
-  TestProfile,
-  Agent,
-  Page,
-  Connection,
-  Device,
-  SnapshotMetrics,
-  GraphQL,
-  TimeSeries,
-  Deploy,
-  Integration,
-  MetricBudget,
-  AgentSettings
-}
+export * as Site from './src/api/site'
+export * as Snapshot from './src/api/snapshot'
+export * as Test from './src/api/test'
+export * as TestProfile from './src/api/test-profile'
+export * as Agent from './src/api/location'
+export * as Page from './src/api/page'
+export * as Connection from './src/api/connection'
+export * as Device from './src/api/device'
+export * as SnapshotMetrics from './src/api/snapshot-metrics'
+export * as GraphQL from './src/api/graphql'
+export * as TimeSeries from './src/api/time-series'
+export * as Deploy from './src/api/deploy'
+export * as Integration from './src/api/integration'
+export * as MetricBudget from './src/api/metric-budget'
+export * as AgentSettings from './src/api/agent-settings'
