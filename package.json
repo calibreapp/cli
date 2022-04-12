@@ -11,6 +11,11 @@
   "bin": {
     "calibre": "./src/cli.js"
   },
+  "exports": {
+    ".": "./index.js",
+    "./cli-commands": "./src/cli-commands.js",
+    "./cli-metadata": "./src/cli-metadata.js"
+  },
   "dependencies": {
     "chalk": "^5.0.1",
     "columnify": "^1.6.0",
@@ -27,15 +32,15 @@
     "read-pkg": "^7.1.0",
     "stats-percentile": "^3.1.0",
     "update-notifier": "^5.0.0",
-    "yargs": "^17.4.0"
+    "yargs": "^17.4.1"
   },
   "devDependencies": {
-    "eslint": "^8.6.0",
+    "eslint": "^8.13.0",
     "eslint-plugin-node": "^11.0.0",
     "execa": "^6.1.0",
     "express": "^4.16.4",
     "jest": "^27.5.1",
-    "pkg": "5.5.2",
+    "pkg": "5.6.0",
     "prettier": "2.6.2"
   },
   "scripts": {
