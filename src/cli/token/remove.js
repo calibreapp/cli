@@ -14,8 +14,7 @@ const main = async () => {
 }
 
 const command = 'remove'
-const describe =
-  'Remove the Calibre API token used for CLI commands. e.g.: calibre token remove'
+const describe = 'Remove the Calibre API token used for CLI commands'
 const handler = main
 const builder = {}
 

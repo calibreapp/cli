@@ -10,8 +10,7 @@ const main = async ({ key }) => {
 }
 
 const command = 'set <key>'
-const describe =
-  'Set the Calibre API token used for CLI commands. e.g.: calibre token set xxx123'
+const describe = 'Set the Calibre API token used for CLI commands'
 const handler = main
 const builder = {}
 

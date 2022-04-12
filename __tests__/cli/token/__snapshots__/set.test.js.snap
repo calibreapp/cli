@@ -5,7 +5,6 @@ exports[`missing token argument 1`] = `
 
  Not enough non-option arguments: got 0, need at least 1 
 
- --- Command documentation
  calibre token <command>
 
 Store or revoke a Calibre API token (Use instead of CALIBRE_API_TOKEN environmen

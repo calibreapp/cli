@@ -10,7 +10,6 @@ exports[`site delete-deploy requires uuid 1`] = `
 
  Missing required argument: uuid 
 
- --- Command documentation
  calibre site delete-deploy [options]
 
 Deletes a deploy from a site
@@ -19,8 +18,8 @@ Options:
 
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-  --uuid     The uuid of the deploy                                   [required]
   --site     The identifying slug of a site                  [string] [required]
+  --uuid     The uuid of the deploy                                   [required]
   --confirm  Confirm the deletion
-  --json     Return the output in JSON format"
+  --json     Output in JSON format"
 `;
