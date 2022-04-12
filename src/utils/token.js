@@ -1,6 +1,5 @@
 import Configstore from 'configstore'
-import pkg from '../../package.json'
-const config = new Configstore(pkg.name)
+const config = new Configstore('calibre')
 
 const retrieveToken = () => {
   const token = process.env.CALIBRE_API_TOKEN || config.get('token')
