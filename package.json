@@ -2,7 +2,7 @@
   "name": "calibre",
   "version": "5.0.0",
   "engines": {
-    "node": ">= 14.8.0"
+    "node": ">= 14.19.1"
   },
   "type": "module",
   "description": "Calibre - Page speed performance testing with Google Lighthouse",

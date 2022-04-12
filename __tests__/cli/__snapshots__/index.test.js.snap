@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`calibre --help 1`] = `
-"♤  calibre subcommand [options]
+"♠  calibre subcommand [options]
 
 Commands:
 
@@ -21,7 +21,10 @@ Options:
   --version  Show version number                                       [boolean]
 
 Examples:
-  calibre site list  List the sites in your Calibre account
+  calibre token set <token>  Store Calibre API token in ~/.config/configstore/ca
+                             libre.json
+  calibre site list          List the sites in your Calibre account
+  calibre test create <url>  Create a single page test
 
 For more information on Calibre, see https://calibreapp.com"
 `;
