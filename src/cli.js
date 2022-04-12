@@ -17,7 +17,7 @@ updateNotifier({ pkg }).notify()
 import commands from './cli-commands.js'
 
 const cli = yargs(hideBin(process.argv))
-  .usage(`${chalk.bold('♤  calibre')} subcommand [options]`)
+  .usage(`${chalk.bold('♠  calibre')} subcommand [options]`)
   .commands(commands)
   .demandCommand()
   .recommendCommands()
@@ -34,7 +34,6 @@ const cli = yargs(hideBin(process.argv))
       '\n\n',
       chalk.bold.red(message ? message : error),
       '\n\n',
-      chalk.bold('--- Command documentation\n'),
       yargs.help()
     )
 
