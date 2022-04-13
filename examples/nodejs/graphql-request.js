@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { GraphQL } = require('calibre')
+import { GraphQL } from 'calibre'
 
 const site = async () => {
   const query = `

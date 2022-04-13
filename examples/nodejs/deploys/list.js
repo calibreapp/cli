@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { Deploy } = require('calibre')
+import { Deploy } from 'calibre'
 
 const listDeploys = async () => {
   // Required

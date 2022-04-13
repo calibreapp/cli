@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { Snapshot } = require('calibre')
+import { Snapshot } from 'calibre'
 
 const createSnapshot = async () => {
   // Required

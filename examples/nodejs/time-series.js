@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 /*
-  calibre v2.0.0+ required
+  calibre v5.0.0+ required
 
   This example will fetch time series data for a given site for the past 7 days
   and group the data by test profile.
 */
 
-const { TimeSeries } = require('calibre')
+import { TimeSeries } from 'calibre'
 
 const main = async () => {
   const site = 'calibre'

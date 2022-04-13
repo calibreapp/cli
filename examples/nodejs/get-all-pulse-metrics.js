@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 /*
-  calibre v2.0.0+ required
-  
+  calibre v5.0.0+ required
+
   This example will fetch all sites from a given account,
   then, the 7 days worth of consistently-interactive for each site
 */
 
-const { Site, TimeSeries } = require('calibre')
+import { Site, TimeSeries } from 'calibre'
 
 const main = async () => {
   const sites = await Site.list()

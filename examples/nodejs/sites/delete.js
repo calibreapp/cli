@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { Site } = require('calibre')
+import { Site } from 'calibre'
 
 const deleteSite = async () => {
   // Required

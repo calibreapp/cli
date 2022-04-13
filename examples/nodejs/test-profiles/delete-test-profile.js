@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { TestProfile } = require('calibre')
+import { TestProfile } from 'calibre'
 
 const destroyProfile = async () => {
   const profileParams = {

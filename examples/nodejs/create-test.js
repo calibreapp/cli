@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { Test } = require('calibre')
+import { Test } from 'calibre'
 
 const createTest = async () => {
   // Required
@@ -29,7 +29,7 @@ const createTest = async () => {
   ]
 
   // Create the test
-  const { uuid } = await Test.create({
+  const { formattedTestUrl } = await Test.create({
     url,
     location,
     device,
@@ -39,9 +39,10 @@ const createTest = async () => {
     isPrivate
   })
 
-  console.log(`Test created, ID: ${uuid}`)
+  // Print the test URL
+  console.log(`Test created: ${formattedTestUrl}`)
 
-  // Wait for the test to be run
+  // Optionally wait for the test complete
   const results = await Test.waitForTest(uuid)
 
   // Output the formatted JSON response
