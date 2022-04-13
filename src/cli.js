@@ -42,11 +42,7 @@ const cli = yargs(hideBin(process.argv))
       console.error('\n\n', chalk.bold('--- Stack trace below'))
       throw error
     }
-
+    // eslint-disable-next-line no-process-exit
     process.exit(1)
   })
-  .epilogue(`For more information on Calibre, see https://calibreapp.com`).argv
-
-export default cli
-
-export { commands }
+  .epilogue('For more information on Calibre, see https://calibreapp.com').argv
