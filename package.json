@@ -40,14 +40,12 @@
     "execa": "^6.1.0",
     "express": "^4.16.4",
     "jest": "^27.5.1",
-    "pkg": "5.6.0",
     "prettier": "2.6.2"
   },
   "scripts": {
     "ci": "NODE_OPTIONS='--experimental-vm-modules' CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
     "test": "NODE_OPTIONS='--experimental-vm-modules' TZ=Etc/GMT jest",
     "lint": "eslint .",
-    "package": "pkg . --out-path=bin",
     "pre-publish": "echo //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN} > .npmrc"
   },
   "keywords": [
@@ -66,15 +64,5 @@
     "singleQuote": true,
     "trailingComma": "none",
     "arrowParens": "avoid"
-  },
-  "pkg": {
-    "scripts": [
-      "src/**/*.js"
-    ],
-    "targets": [
-      "node16-linux-x64",
-      "node16-macos-x64",
-      "node16-win-x64"
-    ]
   }
 }
