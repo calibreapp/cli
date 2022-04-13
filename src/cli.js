@@ -23,6 +23,7 @@ yargs(hideBin(process.argv))
     'Commands:': chalk.grey('Commands:\n'),
     'Options:': chalk.grey('Options:\n')
   })
+  .version(pkg.version)
   .example(
     '$0 token set <token>',
     'Store Calibre API token in ~/.config/configstore/calibre.json'
