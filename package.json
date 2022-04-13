@@ -2,7 +2,7 @@
   "name": "calibre",
   "version": "5.0.0-alpha.1",
   "engines": {
-    "node": ">= 14.19.1"
+    "node": ">= 14.18"
   },
   "type": "module",
   "description": "Calibre - Page speed performance testing with Google Lighthouse",
@@ -26,6 +26,7 @@
     "graphql-request": "^4.2.0",
     "humanize": "0.0.9",
     "json2csv": "^5.0.0",
+    "limiter": "2.0.1",
     "listr": "^0.14.1",
     "log-symbols": "^5.1.0",
     "ora": "^6.1.0",
