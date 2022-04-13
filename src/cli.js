@@ -12,7 +12,7 @@ updateNotifier({ pkg }).notify()
 
 import commands from './cli-commands.js'
 
-const cli = yargs(hideBin(process.argv))
+yargs(hideBin(process.argv))
   .usage(`${chalk.bold('♠  calibre')} subcommand [options]`)
   .commands(commands)
   .demandCommand()
@@ -23,7 +23,6 @@ const cli = yargs(hideBin(process.argv))
     'Commands:': chalk.grey('Commands:\n'),
     'Options:': chalk.grey('Options:\n')
   })
-  .version(pkg.version)
   .example(
     '$0 token set <token>',
     'Store Calibre API token in ~/.config/configstore/calibre.json'
