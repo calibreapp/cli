@@ -58,26 +58,29 @@ const main = async function (args) {
   }
 
   try {
-    const { uuid } = await create({ ...args, cookies, headers, isPrivate })
+    const { uuid, formattedTestUrl } = await create({
+      ...args,
+      cookies,
+      headers,
+      isPrivate
+    })
 
-    if (!args.json) {
-      spinner.succeed(`Test scheduled: ${uuid}`)
-
-      spinner = ora('Running test')
-      spinner.color = 'magenta'
-      spinner.start()
-    }
-
-    const response = await waitForTest(uuid)
-
-    if (args.json) return console.log(JSON.stringify(response, null, 2))
-
-    if (response.status === 'completed') {
-      spinner.succeed('Test complete')
+    if (!args.json && !args.waitForTest) {
+      spinner.succeed(`Test scheduled: ${formattedTestUrl}`)
     } else {
-      spinner.fail('Test complete')
+      const test = await waitForTest(uuid)
+
+      if (args.json) {
+        console.log(JSON.stringify(test, null, 2))
+      } else {
+        if (test.status == 'completed') {
+          spinner.succeed(`Test complete: ${formattedTestUrl}`)
+          console.log(formatTest(test))
+        } else {
+          spinner.fail('Test complete')
+        }
+      }
     }
-    console.log(formatTest(response))
   } catch (e) {
     if (args.json) return console.error(e)
     spinner.fail()
@@ -116,7 +119,12 @@ const builder = {
     describe:
       "Stringify'd JSON HTTP Header key/value pairs or path to JSON file of HTTP Header key/value pairs "
   },
-  json: options.json
+  json: options.json,
+  waitForTest: {
+    describe: 'Wait for test to complete before returning',
+    type: 'boolean',
+    default: false
+  }
 }
 
 const handler = main
