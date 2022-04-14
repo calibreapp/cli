@@ -1,15 +1,16 @@
 import { GraphQLClient } from 'graphql-request'
-
-// limiter is a common js package
-import * as limiter from 'limiter'
-const { RateLimiter } = limiter
+import pThrottle from 'p-throttle'
 
 import { handleError } from '../utils/api-error.js'
 
 import { getClientInfo } from '../utils/client-info.js'
 import retrieveToken from '../utils/token.js'
 
-const rateLimit = new RateLimiter({ tokensPerInterval: 10, interval: 1100 })
+const throttle = pThrottle({
+  limit: 10,
+  interval: 1100,
+  strict: true
+})
 
 const request = async ({ query, ...variables }) => {
   const { name, version } = await getClientInfo()
@@ -24,12 +25,16 @@ const request = async ({ query, ...variables }) => {
     'Content-Type': 'application/json',
     Authorization: `Token ${token}`
   }
-  const client = new GraphQLClient(endpoint, { headers })
+
+  const throttledRequest = throttle(async () => {
+    const client = new GraphQLClient(endpoint, { headers })
+    const response = await client.request(query, variables)
+
+    return response
+  })
 
   try {
-    await rateLimit.removeTokens(1)
-
-    return await client.request(query, variables)
+    return await throttledRequest()
   } catch (e) {
     return handleError(e)
   }
