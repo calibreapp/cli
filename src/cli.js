@@ -6,7 +6,7 @@ import updateNotifier from 'update-notifier'
 import chalk from 'chalk'
 import { readPackage } from 'read-pkg'
 
-const pkg = await readPackage()
+const pkg = await readPackage({ cwd: __dirname })
 
 updateNotifier({ pkg }).notify()
 
