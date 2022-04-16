@@ -1,12 +1,9 @@
-import { readPackage } from 'read-pkg'
-
-// In CLI mode we can use --experimental-json-modules
-// but we can’t guarantee node environments will have that flag.
-// Use `read-pkg` instead.
+import fs from 'node:fs'
 
 const getClientInfo = async () => {
-  // Find nearest package.json
-  const pkg = await readPackage()
+  const pkg = JSON.parse(
+    fs.readFileSync(new URL('../../package.json', import.meta.url), 'utf8')
+  )
 
   const name = 'calibre-node'
   const version = pkg.version

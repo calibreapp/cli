@@ -1,6 +1,6 @@
 {
   "name": "calibre",
-  "version": "5.0.0-alpha.3",
+  "version": "5.0.0-alpha.4",
   "engines": {
     "node": ">= 14.18"
   },
@@ -33,7 +33,6 @@
     "log-symbols": "^5.1.0",
     "ora": "^6.1.0",
     "p-throttle": "^5.0.0",
-    "read-pkg": "^7.1.0",
     "stats-percentile": "^3.1.0",
     "update-notifier": "^5.0.0",
     "yargs": "^17.4.1"
