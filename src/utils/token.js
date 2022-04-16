@@ -1,7 +1,7 @@
 import Configstore from 'configstore'
-const config = new Configstore('calibre')
 
 const retrieveToken = () => {
+  const config = new Configstore('calibre')
   const token = process.env.CALIBRE_API_TOKEN || config.get('token')
   if (!token) {
     throw new Error(
