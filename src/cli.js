@@ -24,7 +24,8 @@ yargs(hideBin(process.argv))
   .help('help')
   .updateStrings({
     'Commands:': chalk.grey('Commands:\n'),
-    'Options:': chalk.grey('Options:\n')
+    'Options:': chalk.grey('Options:\n'),
+    'Examples:': chalk.grey('Examples:\n')
   })
   .version(pkg.version)
   .example(
