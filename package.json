@@ -1,6 +1,6 @@
 {
   "name": "calibre",
-  "version": "5.0.0-alpha.1",
+  "version": "5.0.0-alpha.2",
   "engines": {
     "node": ">= 14.18"
   },
@@ -12,7 +12,10 @@
     "calibre": "./src/cli.js"
   },
   "exports": {
-    ".": "./index.js",
+    ".": {
+      "import": "./index.js",
+      "require": "./dist/index.cjs"
+    },
     "./cli-commands": "./src/cli-commands.js",
     "./cli-metadata": "./src/cli-metadata.js"
   },
@@ -36,17 +39,26 @@
     "yargs": "^17.4.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.0.3",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.2.0",
     "eslint": "^8.13.0",
     "eslint-plugin-node": "^11.0.0",
     "execa": "^6.1.0",
     "express": "^4.16.4",
     "jest": "^27.5.1",
-    "prettier": "2.6.2"
+    "prettier": "2.6.2",
+    "rollup": "^2.70.1",
+    "rollup-plugin-filesize": "^9.1.2"
   },
   "scripts": {
     "ci": "NODE_OPTIONS='--experimental-vm-modules' CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
     "test": "NODE_OPTIONS='--experimental-vm-modules' TZ=Etc/GMT jest",
     "lint": "eslint .",
+    "clean": "rm -rf dist/",
+    "build": "npm run clean && rollup --config rollup.config.mjs",
     "pre-publish": "echo //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN} > .npmrc"
   },
   "keywords": [
