@@ -1,6 +1,6 @@
 {
   "name": "calibre",
-  "version": "5.0.0-alpha.4",
+  "version": "5.0.0-alpha.5",
   "engines": {
     "node": ">= 14.18"
   },
@@ -50,6 +50,7 @@
     "jest": "^27.5.1",
     "prettier": "2.6.2",
     "rollup": "^2.70.1",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-filesize": "^9.1.2"
   },
   "scripts": {
