@@ -2,6 +2,7 @@ export default {
   testMatch: ['**/__tests__/**/*.test.js?(x)'],
   testEnvironment: 'node',
   setupFiles: ['./.jest-setup.js'],
+  modulePathIgnorePatterns: ['./dist'],
   // chalk appears to inline it's dependencies, but jest requires module resolution help
   // https://github.com/chalk/chalk/blob/main/package.json#L11-L17
   moduleNameMapper: {
