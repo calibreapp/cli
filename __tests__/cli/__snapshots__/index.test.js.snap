@@ -21,6 +21,7 @@ Options:
   --version  Show version number                                       [boolean]
 
 Examples:
+
   calibre token set <token>  Store Calibre API token in ~/.config/configstore/ca
                              libre.json
   calibre site list          List the sites in your Calibre account
