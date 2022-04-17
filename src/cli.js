@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import fs from 'node:fs'
+import fs from 'fs'
 
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'

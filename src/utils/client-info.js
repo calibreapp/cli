@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import fs from 'fs'
 
 const getClientInfo = async () => {
   const pkg = JSON.parse(
