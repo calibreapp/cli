@@ -16,8 +16,8 @@ export default {
   },
   external: ['@babel/runtime'],
   plugins: [
-    commonjs({ include: 'node_modules/**' }),
-    resolve({ preferBuiltins: true }),
+    resolve({ preferBuiltins: true, extensions: '.js' }),
+    commonjs(),
     json(),
     babel({
       babelHelpers: 'runtime',
