@@ -1,6 +1,6 @@
 {
   "name": "calibre",
-  "version": "5.0.0-alpha.5",
+  "version": "5.0.0-alpha.6",
   "engines": {
     "node": ">= 14.18"
   },
@@ -54,8 +54,8 @@
     "rollup-plugin-filesize": "^9.1.2"
   },
   "scripts": {
-    "ci": "NODE_OPTIONS='--experimental-vm-modules' CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
-    "test": "NODE_OPTIONS='--experimental-vm-modules' TZ=Etc/GMT jest",
+    "ci": "NODE_OPTIONS='--no-warnings --experimental-vm-modules' CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
+    "test": "NODE_OPTIONS='--no-warnings --experimental-vm-modules' TZ=Etc/GMT jest",
     "lint": "eslint .",
     "clean": "rm -rf dist/",
     "build": "npm run clean && rollup --config rollup.config.mjs",
