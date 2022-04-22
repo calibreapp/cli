@@ -11,6 +11,7 @@ module.exports = {
   },
   rules: {
     'no-console': 0,
+    'node/shebang': 0,
     semi: [2, 'never'],
     quotes: [2, 'single', 'avoid-escape'],
     complexity: 0,
