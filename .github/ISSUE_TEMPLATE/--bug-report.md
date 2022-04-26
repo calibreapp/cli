@@ -1,3 +1,12 @@
+---
+name: "\U0001F41B Bug report"
+about: 'Found an issue? File a bug report to help us improve Calibre’s CLI for everyone. '
+title: "[Bug] Bug description"
+labels: bug
+assignees: ''
+
+---
+
 > 👋🏻 Hi there! 
 >
 > ℹ️ This template will help you file a complete bug report for Calibre’s CLI, so one of the project maintainers can triage and respond to it promptly. Please fill relevant sections below and **delete the help notes before submitting**. 🙌🏻 
