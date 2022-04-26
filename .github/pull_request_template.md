@@ -10,7 +10,7 @@
 ## What does this PR introduce?
 
 > ℹ️ In a few bullet points or sentences, please describe the changes this Pull Request makes: what’s the scope of the changes? Why are you making them? What’s the impact? Are there any gotchas to pay attention to? You don’t have to copy-paste all commit messages, but provide enough information, so the person reviewing the work can understand its implications.
-> * **example:** This PR introduces a new chat provider: Chatwoot.
+> * **example:** This PR introduces better formatting for the `calibre --help` command. It now lists all available commands in the CLI, while previously it only outputted a limited set.
 
 ## Related issues
 
