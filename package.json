@@ -52,7 +52,8 @@
     "lint": "eslint .",
     "clean": "rm -rf dist/",
     "build": "npm run clean && esbuild index.js --bundle --platform=node --outfile=dist/index.cjs",
-    "pre-publish": "echo //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN} > .npmrc"
+    "pre-publish": "echo //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN} > .npmrc",
+    "generate-cli-md": "node ./generate-cli-md.js > CLI_COMMANDS.md"
   },
   "keywords": [
     "performance",

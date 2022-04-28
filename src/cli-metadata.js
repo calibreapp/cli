@@ -4,9 +4,11 @@ const getCommandMetaData = (commands = Commands) => {
   return commands.map(cmd => {
     const { command, describe, commands, builder } = cmd
     const subcommands =
-      commands?.map(c => {
-        return getCommandMetaData([c])
-      }) || []
+      commands
+        ?.map(c => {
+          return getCommandMetaData([c])
+        })
+        .flat() || []
 
     const options = typeof builder === 'function' ? {} : builder
 
