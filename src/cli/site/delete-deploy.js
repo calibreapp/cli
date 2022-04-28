@@ -1,16 +1,22 @@
-const ora = require('ora')
+import ora from 'ora'
 
-const { destroy } = require('../../api/deploy')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import { destroy } from '../../api/deploy.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
-const main = async function(args) {
+const main = async function (args) {
   let spinner
 
   if (!args.json) {
     spinner = ora('Connecting to Calibre')
     spinner.color = 'magenta'
     spinner.start()
+  }
+
+  if (process.stdout.isTTY && !args.confirm) {
+    return new Error(
+      'Add the --confirm flag to confirm the immediate & irreversible deletion of this deploy.'
+    )
   }
 
   try {
@@ -26,26 +32,20 @@ const main = async function(args) {
   }
 }
 
-module.exports = {
-  command: 'delete-deploy [options]',
-  describe: 'Deletes a deploy from a site',
-  builder: yargs => {
-    yargs
-      .options({
-        uuid: { demandOption: true, describe: 'The uuid of the deploy' },
-        site: options.site,
-        confirm: {
-          describe: 'Confirm the deletion'
-        },
-        json: options.json
-      })
-      .check(({ confirm }) => {
-        if (process.stdout.isTTY && !confirm)
-          return new Error(
-            'Add the --confirm flag to confirm the immediate & irreversible deletion of this deploy.'
-          )
-        return true
-      })
+const command = 'delete-deploy [options]'
+const describe = 'Deletes a deploy from a site'
+const builder = {
+  site: options.site,
+  uuid: {
+    demandOption: true,
+    requiresArg: true,
+    describe: 'The uuid of the deploy'
   },
-  handler: main
+  confirm: {
+    describe: 'Confirm the deletion'
+  },
+  json: options.json
 }
+const handler = main
+
+export { command, describe, builder, handler }

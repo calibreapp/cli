@@ -1,9 +1,10 @@
-const { request } = require('./graphql')
+import { request } from './graphql.js'
 
 const CREATE_MUTATION = `
   mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $headers: [HeaderInput!], $adBlockerIsEnabled: Boolean, $isPrivate: Boolean) {
     createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies, headers: $headers, adBlockerIsEnabled: $adBlockerIsEnabled, isPrivate: $isPrivate) {
       uuid
+      formattedTestUrl
     }
   }
 `
@@ -139,10 +140,4 @@ const fetchArtifacts = async uuid => {
   return response.organisation.singlePageTest
 }
 
-module.exports = {
-  create,
-  getList,
-  getTestByUuid,
-  waitForTest,
-  fetchArtifacts
-}
+export { create, getList, getTestByUuid, waitForTest, fetchArtifacts }

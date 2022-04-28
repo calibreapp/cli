@@ -1,20 +1,17 @@
-const Configstore = require('configstore')
-const chalk = require('chalk')
-const logSymbols = require('log-symbols')
+import Configstore from 'configstore'
+import chalk from 'chalk'
+import logSymbols from 'log-symbols'
 
-const pkg = require('../../../package.json')
-const config = new Configstore(pkg.name)
+const config = new Configstore('calibre')
 
 const main = async ({ key }) => {
   config.set('token', key)
   console.log(`${chalk.bold.green(`${logSymbols.success} Token saved!`)}\n`)
 }
 
-module.exports = {
-  command: 'set <key>',
-  describe: 'Set the Calibre API token used for CLI commands',
-  handler: main,
-  builder: yargs => {
-    yargs.example('calibre token set xxx123')
-  }
-}
+const command = 'set <key>'
+const describe = 'Set the Calibre API token used for CLI commands'
+const handler = main
+const builder = {}
+
+export { command, describe, handler, builder }

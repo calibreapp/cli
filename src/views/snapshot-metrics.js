@@ -1,6 +1,7 @@
-const chalk = require('chalk')
-const dateFormat = require('date-fns/format')
-const gradeTable = require('../views/grade-table')
+import chalk from 'chalk'
+import { format as dateFormat } from 'date-fns'
+
+import gradeTable from '../views/grade-table.js'
 
 const testTable = ({ test, testProfiles }) => {
   const testProfile = testProfiles.find(tp => tp.uuid == test.testProfile.uuid)
@@ -13,7 +14,7 @@ ${gradeTable(test.measurements)}
   `
 }
 
-module.exports = ({ snapshot, testProfiles }) => {
+const view = ({ snapshot, testProfiles }) => {
   let intro = [
     chalk.bold(`Snapshot #${snapshot.iid}`),
     chalk.grey(dateFormat(new Date(snapshot.createdAt), 'h:mma d-MMM-yyyy'))
@@ -34,3 +35,5 @@ To view all captured metrics of this test, re-run this command with the ${chalk.
 
   `
 }
+
+export default view

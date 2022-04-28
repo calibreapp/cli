@@ -1,3 +1,4 @@
 coverage
 # Preventing the node/no-missing-require errors from there
 examples
+dist

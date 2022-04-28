@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { MetricBudget } = require('calibre')
+import { MetricBudget } from 'calibre'
 
 const deleteMetricBudget = async () => {
   const site = 'calibre' // site slug

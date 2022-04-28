@@ -13,3 +13,4 @@ cookie-jar
 *.csv
 *.tgz
 *.json
+.github

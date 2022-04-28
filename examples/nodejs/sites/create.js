@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
-const { Site } = require('calibre')
+import { Site } from 'calibre'
 
 const create = async () => {
-  const name = 'Calibre'
+  const name = 'Calibre API TEST'
+  const teamName = 'calibre'
 
   const agentSettings = {
     location: 'Frankfurt', // location tag
@@ -51,6 +52,7 @@ const create = async () => {
   try {
     const site = await Site.create({
       name,
+      team: teamName,
       agentSettings,
       pages,
       testProfiles

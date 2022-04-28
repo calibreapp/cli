@@ -1,9 +1,9 @@
-const chalk = require('chalk')
-const ora = require('ora')
-const columnify = require('columnify')
+import chalk from 'chalk'
+import ora from 'ora'
+import columnify from 'columnify'
 
-const { list } = require('../api/connection')
-const { humaniseError } = require('../utils/api-error')
+import { list } from '../api/connection.js'
+import { humaniseError } from '../utils/api-error.js'
 
 const main = async args => {
   let index
@@ -41,13 +41,13 @@ const main = async args => {
   )
 }
 
-module.exports = {
-  command: 'connection-list',
-  describe: 'Print a list of Calibre’s prebaked emulated connection options',
-  handler: main,
-  builder: yargs => {
-    yargs.option('json', {
-      describe: 'Return the list of devices as JSON'
-    })
+const command = 'connection-list'
+const describe = 'Print a list of connection speeds'
+const handler = main
+const builder = {
+  json: {
+    describe: `${describe} as JSON`
   }
 }
+
+export { command, describe, handler, builder }

@@ -1,11 +1,11 @@
-const chalk = require('chalk')
-const ora = require('ora')
-const columnify = require('columnify')
-const dateFormat = require('date-fns/format')
+import chalk from 'chalk'
+import ora from 'ora'
+import columnify from 'columnify'
+import { format as dateFormat } from 'date-fns'
 
-const { list } = require('../../api/snapshot')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import { list } from '../../api/snapshot.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
@@ -54,24 +54,23 @@ const main = async args => {
   if (index.pageInfo.hasNextPage) {
     const lastSnapshot = rows[rows.length - 1]
     console.log(
-      `To see snapshots after ${lastSnapshot.ref ||
-        lastSnapshot.id}, run: calibre site snapshots --site=calibre --cursor=${
+      `To see snapshots after ${
+        lastSnapshot.ref || lastSnapshot.id
+      }, run: calibre site snapshots --site=calibre --cursor=${
         index.pageInfo.endCursor
       }`
     )
   }
 }
 
-module.exports = {
-  command: 'snapshots [options]',
-  describe: 'Print a list of snapshots',
-  handler: main,
-  builder: yargs => {
-    yargs.options({
-      site: options.site,
-      count: options.count,
-      cursor: options.cursor,
-      json: options.json
-    })
-  }
+const command = 'snapshots [options]'
+const describe = 'Print a list of snapshots'
+const handler = main
+const builder = {
+  site: options.site,
+  count: options.count,
+  cursor: options.cursor,
+  json: options.json
 }
+
+export { command, describe, handler, builder }

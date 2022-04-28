@@ -1,44 +1,112 @@
 ![Calibre CLI - Automate your performance system](https://user-images.githubusercontent.com/924/54003204-7c294700-41a5-11e9-911e-c4d603fb619f.png)
 
-[![Build status](https://badge.buildkite.com/5e41ea8c42fa868fc2c41c063e742d5350de1daabd99acd636.svg)](https://buildkite.com/calibre/terminal-cli)
 [![NPM package](https://img.shields.io/npm/v/calibre.svg)](https://www.npmjs.com/package/calibre)
 
-## Installation
+# Calibre’s Node.js API and Command Line Client (CLI)
 
-To get the latest version, run this command:
+This repository contains [Calibre’s](https://calibreapp.com/) APIs you can use to fetch and manage your monitoring data. The Command Line Client (CLI) is designed for simple tasks right from your terminal. We recommend using the Node.js API for more complex tasks and automation.
 
-```
+> ℹ️ **Please note:** Using the APIs requires an active Calibre account (in trial or on a paid plan).
+
+## 🖇 Table of Contents
+
+1. [Installation](#-installation)
+2. [Authentication](#-authentication)
+3. [Features](#-features)
+4. [Usage](#-usage)
+5. [Package Exports](#-package-exports)
+6. [Script Examples](#-script-examples)
+7. [Resources](#-resources)
+
+## 📥 Installation
+
+To install the latest version globally, run this command:
+
+```bash
 npm install -g calibre
 ```
 
-**Other installation options**
+or save it directly to your project:
 
-* [Install a standalone binary](https://calibreapp.com/docs/api/binaries) Mac, Windows or Linux.
-* Run the command directly with npx: `npx calibre --help`
-
-## Features
-
-* **Manage your performance system with a single command**: `calibre`.
-* **Single page tests**. Create one-off, sharable Calibre tests for fast feedback: `calibre test create <url> --location=Frankfurt --device=iPhone6`
-* **Deployments**. Track performance, best practices, accessibility and SEO between deploys
-* **CI/CD/Automation**. Every command has a --json flag for machine readable output: `calibre test <url> --location=Sydney --json`
-* **Scriptable**. All API methods are exported to the Calibre NPM package
-
-## Authentication
-
-Authentication is handled via an environment variable: `CALIBRE_API_TOKEN`. Create your token via the team API tokens page.
-
-## Usage
-
+```bash
+npm install calibre --save
 ```
+
+The `calibre` package is built to support **all current Node.js LTS releases**.
+
+## 🔐 Authentication
+
+To authenticate to Calibre and use the APIs, **you will need to create or use an existing API Token**. Learn about the [types of API Tokens and how to create them here](https://calibreapp.com/docs/account-and-billing/manage-api-tokens).
+
+Once you have an API Token, you can [store it locally](https://calibreapp.com/docs/automation/tokens#store-a-token-locally):
+
+```bash
+calibre token set <your token>
+```
+
+Or alternately, set [`CALIBRE_API_TOKEN` environment variable](https://calibreapp.com/docs/automation/tokens#store-a-token-as-an-environment-variable).
+
+## 💡 Features
+
+- **Manage performance with a single command**. Retrieve all speed data and manage the test environment and settings.
+- **Run [Single Page Tests](https://calibreapp.com/docs/automation/single-page-tests)**. Create one-off tests privately or share them with your team.
+- **Monitor speed across your release process**. Track performance between deploys and mark them on your charts.
+- **Use Calibre within CI/CD**. Every command has a `--json` flag for machine-readable output.
+- **Script any action**. We export all API methods to the Calibre `npm` package..
+
+## 🛠 Usage
+
+To see a full list of available commands, subcommands and options run:
+
+```bash
 $ calibre --help
+$ calibre <command> --help
 ```
 
-## Examples
+or [see all commands](CLI_COMMANDS.md) in this repository.
 
-* [Bash examples](examples/bash)
-* [Node.JS examples](examples/nodejs)
+In Node, you can use the either ES Modules or CommonJS versions accordingly:
 
-### Node client
+```javascript
+// ES Modules
+import { Site } from 'calibre'
+await Site.list()
+```
 
-The Calibre package exports a node API that can be used to automate your performance system however you’d like to. Check the examples/nodejs directory for reference.
+```javascript
+// CommonJS
+const { Site } = require('calibre')
+await Site.list()
+```
+
+## 📤 Package exports
+
+In addition to the named default exports shown above, the `calibre` package also exports CLI related metadata, which is used to generate CLI documentation.
+
+### CLI Commands
+
+Each CLI command is a Node module that exports `command`, `describe`, `handler` and `builder`. You can import all CLI commands from `calibre/cli-commands` (see [`src/cli.js`](https://github.com/calibreapp/cli/blob/main/src/cli.js) for reference).
+
+```javascript
+import Commands from 'calibre/cli-commands'
+```
+
+### CLI Metadata
+
+You can import command metadata (used to generate CLI documentation) from the `calibre/cli-metadata` export:
+
+```javascript
+import { getCommandMetaData } from 'calibre/cli-metadata'
+console.log(JSON.stringify(getCommandMetaData(), null, 2))
+```
+
+## 🖥 Script Examples
+
+We prepared a handful of examples for common actions you might want to perform:
+
+- [Node.js examples](examples/nodejs)
+- [Bash examples](examples/bash)
+
+## 📚 Resources
+
+Find code examples and more information for the [CLI](https://calibreapp.com/docs/automation/cli) and [Node.js API](https://calibreapp.com/docs/automation/node) in our documentation.

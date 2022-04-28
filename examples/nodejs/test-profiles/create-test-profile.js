@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { TestProfile } = require('calibre')
+import { TestProfile } from "calibre";
 
 const create = async () => {
   const profileParams = {

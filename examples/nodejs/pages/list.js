@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { Page } = require('calibre')
+import { Page } from 'calibre'
 
 const main = async () => {
   try {

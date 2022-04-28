@@ -1,17 +1,23 @@
-const { URL } = require('url')
-const ora = require('ora')
+import { URL } from 'url'
+import ora from 'ora'
 
-const { create } = require('../../api/page')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import { create } from '../../api/page.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
-const main = async function(args) {
+const main = async function (args) {
   let spinner
 
   if (!args.json) {
     spinner = ora('Connecting to Calibre')
     spinner.color = 'magenta'
     spinner.start()
+  }
+
+  try {
+    new URL(args.url)
+  } catch (e) {
+    return new Error('Please enter a valid URL')
   }
 
   try {
@@ -28,27 +34,17 @@ const main = async function(args) {
   }
 }
 
-module.exports = {
-  command: 'create-page <name> [options]',
-  describe: 'Add a page to an existing site tracked by Calibre',
-  builder: yargs => {
-    yargs
-      .options({
-        url: { demandOption: true, describe: 'The name of the page' },
-        site: options.site,
-        json: options.json
-      })
-      .check(({ url }) => {
-        if (!url.length) return new Error('Please provide a URL')
-
-        try {
-          new URL(url)
-        } catch (e) {
-          return new Error('Please enter a valid URL')
-        }
-
-        return true
-      })
+const command = 'create-page <name> [options]'
+const describe = 'Add a page to an existing site tracked by Calibre'
+const builder = {
+  site: options.site,
+  url: {
+    demandOption: true,
+    requiresArg: true,
+    describe: 'The name of the page'
   },
-  handler: main
+  json: options.json
 }
+const handler = main
+
+export { command, describe, builder, handler }

@@ -1,16 +1,22 @@
-const ora = require('ora')
+import ora from 'ora'
 
-const { destroy } = require('../../api/site')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import { destroy } from '../../api/site.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
-const main = async function(args) {
+const main = async function (args) {
   let spinner
 
   if (!args.json) {
     spinner = ora('Connecting to Calibre')
     spinner.color = 'magenta'
     spinner.start()
+  }
+
+  if (process.stdout.isTTY && !args.confirm) {
+    return new Error(
+      'Add the --confirm flag to confirm the immediate & irreversible deletion of this test profile.'
+    )
   }
 
   try {
@@ -26,24 +32,15 @@ const main = async function(args) {
   }
 }
 
-module.exports = {
-  command: 'delete <slug> [options]',
-  describe: 'Deletes a site',
-  builder: yargs => {
-    yargs
-      .options({
-        confirm: {
-          describe: 'Confirm the deletion'
-        },
-        json: options.json
-      })
-      .check(({ confirm }) => {
-        if (process.stdout.isTTY && !confirm)
-          return new Error(
-            'Add the --confirm flag to confirm the immediate & irreversible deletion of this test profile.'
-          )
-        return true
-      })
+const command = 'delete <slug> [options]'
+const describe = 'Deletes a site'
+const builder = {
+  confirm: {
+    describe: 'Confirm the deletion'
   },
-  handler: main
+  json: options.json
 }
+
+const handler = main
+
+export { command, describe, builder, handler }

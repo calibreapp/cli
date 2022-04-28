@@ -1,10 +1,10 @@
-const chalk = require('chalk')
-const ora = require('ora')
-const columnify = require('columnify')
+import chalk from 'chalk'
+import ora from 'ora'
+import columnify from 'columnify'
 
-const { list } = require('../../api/test-profile')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import { list } from '../../api/test-profile.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async args => {
   let index
@@ -49,14 +49,12 @@ const main = async args => {
   )
 }
 
-module.exports = {
-  command: 'test-profiles [options]',
-  describe: 'Print a list of test profiles for a given site',
-  handler: main,
-  builder: yargs => {
-    yargs.options({
-      site: options.site,
-      json: options.json
-    })
-  }
+const command = 'test-profiles [options]'
+const describe = 'Print a list of test profiles for a given site'
+const handler = main
+const builder = {
+  site: options.site,
+  json: options.json
 }
+
+export { command, describe, handler, builder }

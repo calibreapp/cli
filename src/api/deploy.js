@@ -1,4 +1,4 @@
-const { request } = require('./graphql')
+import { request } from './graphql.js'
 
 const CREATE_MUTATION = `
   mutation CreateDeploy($organisation: String, $site: String!, $attributes: DeployInput!){
@@ -90,8 +90,4 @@ const list = async ({ site, count = 25, cursor }) => {
   }
 }
 
-module.exports = {
-  create,
-  destroy,
-  list
-}
+export { create, destroy, list }

@@ -1,5 +1,5 @@
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
 // Returns a string of the created directory path
 /*
@@ -18,4 +18,4 @@ const mkdirp = directories => {
   return path.join(...directories)
 }
 
-module.exports = mkdirp
+export default mkdirp

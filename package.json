@@ -1,46 +1,59 @@
 {
   "name": "calibre",
-  "version": "4.2.0",
+  "version": "5.0.0-alpha.8",
   "engines": {
-    "node": ">= 12.22.4"
+    "node": ">= 14.18"
   },
+  "type": "module",
   "description": "Calibre - Page speed performance testing with Google Lighthouse",
   "author": "calibreapp.com",
-  "main": "index.js",
+  "main": "dist/index.js",
   "bin": {
     "calibre": "./src/cli.js"
   },
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./cli-commands": "./src/cli-commands.js",
+    "./cli-metadata": "./src/cli-metadata.js"
+  },
   "dependencies": {
-    "chalk": "^4.0.0",
-    "columnify": "^1.5.4",
-    "configstore": "^5.0.0",
+    "chalk": "^5.0.1",
+    "columnify": "^1.6.0",
+    "configstore": "^6.0.0",
     "cookiefile": "^1.0.10",
     "date-fns": "^2.9.0",
-    "graphql-request": "^1.4.1",
+    "graphql": "^16.3.0",
+    "graphql-request": "^4.2.0",
     "humanize": "0.0.9",
     "json2csv": "^5.0.0",
     "listr": "^0.14.1",
-    "log-symbols": "^4.0.0",
-    "ora": "^5.1.0",
+    "log-symbols": "^5.1.0",
+    "ora": "^6.1.0",
+    "p-throttle": "^5.0.0",
     "stats-percentile": "^3.1.0",
     "update-notifier": "^5.0.0",
-    "yargs": "^17.1.1"
+    "yargs": "^17.4.1"
   },
   "devDependencies": {
-    "eslint": "^8.6.0",
+    "esbuild": "^0.14.37",
+    "eslint": "^8.13.0",
     "eslint-plugin-node": "^11.0.0",
-    "execa": "^5.0.0",
+    "execa": "^6.1.0",
     "express": "^4.16.4",
-    "jest": "^27.0.6",
-    "pkg": "5.5.2",
-    "prettier": "^2.0.5"
+    "jest": "^27.5.1",
+    "prettier": "2.6.2"
   },
   "scripts": {
-    "ci": "CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
-    "test": "TZ=Etc/GMT jest --runInBand --no-colors",
+    "ci": "NODE_OPTIONS='--no-warnings --experimental-vm-modules' CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
+    "test": "NODE_OPTIONS='--no-warnings --experimental-vm-modules' TZ=Etc/GMT jest",
     "lint": "eslint .",
-    "package": "pkg . --out-path=bin",
-    "pre-publish": "echo //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN} > .npmrc"
+    "clean": "rm -rf dist/",
+    "build": "npm run clean && esbuild index.js --bundle --platform=node --outfile=dist/index.cjs",
+    "pre-publish": "echo //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN} > .npmrc",
+    "generate-cli-md": "node ./generate-cli-md.js > CLI_COMMANDS.md"
   },
   "keywords": [
     "performance",
@@ -58,15 +71,5 @@
     "singleQuote": true,
     "trailingComma": "none",
     "arrowParens": "avoid"
-  },
-  "pkg": {
-    "scripts": [
-      "src/**/*.js"
-    ],
-    "targets": [
-      "node14-linux-x64",
-      "node14-macos-x64",
-      "node14-win-x64"
-    ]
   }
 }

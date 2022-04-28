@@ -1,12 +1,14 @@
-const ora = require('ora')
-const { CookieMap } = require('cookiefile')
+import ora from 'ora'
+import cookiefile from 'cookiefile'
 
-const formatProfile = require('../../views/test-profile')
-const { update } = require('../../api/test-profile')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import formatProfile from '../../views/test-profile.js'
+import { update } from '../../api/test-profile.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
-const main = async function(args) {
+const { CookieMap } = cookiefile
+
+const main = async function (args) {
   let spinner
   let cookies = []
 
@@ -43,41 +45,36 @@ const main = async function(args) {
     throw new Error(humaniseError(e))
   }
 }
-
-module.exports = {
-  command: 'update-test-profile [options]',
-  describe: 'Update a test profile. Only updates attributes sent.',
-  builder: yargs => {
-    yargs
-      .options({
-        uuid: { demandOption: true, describe: 'The UUID of the test profile' },
-        device: {
-          describe: 'Sets the emulated device that the profile will be run on'
-        },
-        connection: {
-          describe: 'Sets the emulated connection speed this profile'
-        },
-        site: options.site,
-        json: options.json,
-        javascript: {
-          type: 'boolean',
-          describe: 'Turn JavaScript execution on/off',
-          default: true
-        },
-        adblocker: {
-          type: 'boolean',
-          describe: 'Turn adblocking on/off',
-          default: false
-        },
-        'cookie-jar': {
-          describe: 'Uses a netscape formatted cookie jar file at this path'
-        }
-      })
-      .check(({ cookieJar }) => {
-        // Validate that the cookie-jar exists
-        if (cookieJar) new CookieMap(cookieJar)
-        return true
-      })
+const command = 'update-test-profile [options]'
+const describe = 'Update a test profile. Only updates attributes sent.'
+const builder = {
+  uuid: {
+    demandOption: true,
+    requiresArg: true,
+    describe: 'The UUID of the test profile'
   },
-  handler: main
+  device: {
+    describe: 'Sets the emulated device that the profile will be run on'
+  },
+  connection: {
+    describe: 'Sets the emulated connection speed this profile'
+  },
+  site: options.site,
+  json: options.json,
+  javascript: {
+    type: 'boolean',
+    describe: 'Turn JavaScript execution on/off',
+    default: true
+  },
+  adblocker: {
+    type: 'boolean',
+    describe: 'Turn adblocking on/off',
+    default: false
+  },
+  'cookie-jar': {
+    describe: 'Uses a netscape formatted cookie jar file at this path'
+  }
 }
+
+const handler = main
+export { command, describe, builder, handler }

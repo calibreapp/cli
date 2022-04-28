@@ -1,5 +1,5 @@
-const chalk = require('chalk')
-const dateFormat = require('date-fns/format')
+import chalk from 'chalk'
+import { format as dateFormat } from 'date-fns'
 
 const cookies = cookies => {
   return cookies.length > 0
@@ -26,7 +26,7 @@ const cookies = cookies => {
     : ''
 }
 
-module.exports = profile => {
+const view = profile => {
   return `
 ${chalk.bold.cyan(`⬢ ${profile.name}`)} (${profile.uuid})
 ${chalk.grey(
@@ -44,3 +44,5 @@ ${profile.adBlockerIsEnabled ? '• Adblocker Enabled' : ''}
 ${cookies(profile.cookies)}
   `
 }
+
+export default view

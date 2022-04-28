@@ -1,12 +1,13 @@
-const { URL } = require('url')
+import { URL } from 'url'
 
-const chalk = require('chalk')
-const ora = require('ora')
-const columnify = require('columnify')
-const dateFormat = require('date-fns/format')
+import chalk from 'chalk'
+import ora from 'ora'
+import columnify from 'columnify'
+import { format as dateFormat } from 'date-fns'
 
-const { getList } = require('../../api/test')
-const { humaniseError } = require('../../utils/api-error')
+import { getList } from '../../api/test.js'
+import { options } from '../../utils/cli.js'
+import { humaniseError } from '../../utils/api-error.js'
 
 const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
@@ -60,13 +61,11 @@ const main = async args => {
   )
 }
 
-module.exports = {
-  command: 'list',
-  describe: 'Print a list of previously run tests',
-  handler: main,
-  builder: yargs => {
-    yargs.option('json', {
-      describe: 'Return the list of tests as JSON'
-    })
-  }
+const command = 'list'
+const describe = 'Print a list of previously run tests'
+const handler = main
+const builder = {
+  json: options.json
 }
+
+export { command, describe, builder, handler }

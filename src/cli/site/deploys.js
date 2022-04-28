@@ -1,11 +1,11 @@
-const chalk = require('chalk')
-const ora = require('ora')
-const columnify = require('columnify')
-const dateFormat = require('date-fns/format')
+import chalk from 'chalk'
+import ora from 'ora'
+import columnify from 'columnify'
+import { format as dateFormat } from 'date-fns'
 
-const { list } = require('../../api/deploy')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import { list } from '../../api/deploy.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async args => {
   let index
@@ -51,24 +51,23 @@ const main = async args => {
   if (index.pageInfo.hasNextPage) {
     const lastDeploy = index.deploys[index.deploys.length - 1]
     console.log(
-      `To see deploys after ${lastDeploy.revision ||
-        lastDeploy.id}, run: calibre site deploys --site=calibre --cursor=${
+      `To see deploys after ${
+        lastDeploy.revision || lastDeploy.id
+      }, run: calibre site deploys --site=calibre --cursor=${
         index.pageInfo.endCursor
       }`
     )
   }
 }
 
-module.exports = {
-  command: 'deploys [options]',
-  describe: 'Print a list of deploys',
-  handler: main,
-  builder: yargs => {
-    yargs.options({
-      site: options.site,
-      count: options.count,
-      cursor: options.cursor,
-      json: options.json
-    })
-  }
+const command = 'deploys [options]'
+const describe = 'Print a list of deploys'
+const handler = main
+const builder = {
+  site: options.site,
+  count: options.count,
+  cursor: options.cursor,
+  json: options.json
 }
+
+export { command, describe, handler, builder }

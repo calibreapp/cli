@@ -1,11 +1,11 @@
-const ora = require('ora')
-const subDays = require('date-fns/subDays')
-const parseISO = require('date-fns/parseISO')
+import ora from 'ora'
+import { subDays } from 'date-fns'
+import { parseISO } from 'date-fns'
 
-const { humaniseError } = require('../../utils/api-error')
-const { list } = require('../../api/time-series')
-const formatPulseTimeline = require('../../views/pulse-timeline')
-const { options } = require('../../utils/cli')
+import { humaniseError } from '../../utils/api-error.js'
+import { list } from '../../api/time-series.js'
+import formatPulseTimeline from '../../views/pulse-timeline.js'
+import { options } from '../../utils/cli.js'
 
 const main = async args => {
   let spinner
@@ -49,25 +49,22 @@ const main = async args => {
     throw new Error(humaniseError(e))
   }
 }
-
-module.exports = {
-  command: 'metrics [options]',
-  describe: 'Get timeseries metrics for a given site',
-  builder: yargs => {
-    yargs.options({
-      site: options.site,
-      pages: options.pages,
-      profiles: options.profiles,
-      metrics: options.metrics,
-      json: options.json,
-      csv: options.csv,
-      from: options.from,
-      to: options.to,
-      '30-day': {
-        describe:
-          'Get the last 30 days of metrics (without this flag, the to and from values will be used)'
-      }
-    })
-  },
-  handler: main
+const command = 'metrics [options]'
+const describe = 'Get timeseries metrics for a given site'
+const builder = {
+  site: options.site,
+  pages: options.pages,
+  profiles: options.profiles,
+  metrics: options.metrics,
+  json: options.json,
+  csv: options.csv,
+  from: options.from,
+  to: options.to,
+  '30-day': {
+    describe:
+      'Get the last 30 days of metrics (without this flag, the to and from values will be used)'
+  }
 }
+const handler = main
+
+export { command, describe, builder, handler }

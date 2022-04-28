@@ -21,7 +21,7 @@ const humaniseError = apiError => {
   }
 }
 
-module.exports = {
+export {
   handleError,
   humaniseError
 }

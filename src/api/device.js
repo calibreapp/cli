@@ -1,4 +1,4 @@
-const { request } = require('./graphql')
+import { request } from './graphql.js'
 
 const LIST_QUERY = `
   query{
@@ -15,6 +15,4 @@ const list = async () => {
   return response.__type.enumValues
 }
 
-module.exports = {
-  list
-}
+export { list }

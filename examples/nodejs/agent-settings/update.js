@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { AgentSettings } = require('calibre')
+import { AgentSettings } from 'calibre'
 
 const updateAgentSettings = async () => {
   const site = 'calibre' // site slug

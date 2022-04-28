@@ -1,9 +1,9 @@
-const chalk = require('chalk')
-const percentile = require('stats-percentile')
+import chalk from 'chalk'
+import percentile from 'stats-percentile'
 
-const { format } = require('../utils/formatters')
+import { format } from '../utils/formatters/index.js'
 
-module.exports = timeSeries => {
+const view = timeSeries => {
   const page = timeSeries.pages.map(page => page.name).join(', ')
 
   const metrics = timeSeries.measurements.map(measurement => {
@@ -61,3 +61,5 @@ ${timeSeries.length ? 'There is no data for this time period' : ''}
 ${metrics.join('\n')}
 `
 }
+
+export default view

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { Integration } = require('calibre')
+import { Integration } from 'calibre'
 
 const listIntegrations = async () => {
   const site = 'calibre' // site slug

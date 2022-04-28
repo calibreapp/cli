@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
-// Node 10+ required for this demo (because of `for await`)
-
-const { Page } = require('calibre')
+import { Page } from 'calibre'
 
 // This example imports from an array pages to a preexisting site called `calibre`
 const siteSlug = 'calibre'

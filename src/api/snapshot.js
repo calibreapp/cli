@@ -1,4 +1,4 @@
-const { request } = require('./graphql')
+import { request } from './graphql.js'
 
 const CREATE_MUTATION = `
   mutation CreateSnapshot(
@@ -123,9 +123,4 @@ const fetchArtifacts = async ({ site, id }) => {
   return response.organisation.site
 }
 
-module.exports = {
-  create,
-  destroy,
-  list,
-  fetchArtifacts
-}
+export { create, destroy, list, fetchArtifacts }

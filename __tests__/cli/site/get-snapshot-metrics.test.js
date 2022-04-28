@@ -1,9 +1,10 @@
-const {
+import {
   runCLI,
   setupIntegrationServer,
   teardownIntegrationServer
-} = require('../../utils')
-const snapshotMetrics = require('../../fixtures/snapshotMetrics-no-snapshot.json')
+} from '../../utils'
+
+import snapshotMetrics from '../../fixtures/snapshotMetrics-no-snapshot.json'
 
 describe('snapshot metrics', () => {
   beforeAll(() => setupIntegrationServer(snapshotMetrics))

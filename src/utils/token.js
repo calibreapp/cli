@@ -1,8 +1,7 @@
-const Configstore = require('configstore')
-const pkg = require('../../package.json')
-const config = new Configstore(pkg.name)
+import Configstore from 'configstore'
 
 const retrieveToken = () => {
+  const config = new Configstore('calibre')
   const token = process.env.CALIBRE_API_TOKEN || config.get('token')
   if (!token) {
     throw new Error(
@@ -13,4 +12,4 @@ const retrieveToken = () => {
   return token
 }
 
-module.exports = retrieveToken
+export default retrieveToken

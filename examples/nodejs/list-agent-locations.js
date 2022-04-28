@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { Agent } = require('calibre')
+import { Agent } from 'calibre'
 
 const listTestLocations = async () => {
   // Fetch the locations

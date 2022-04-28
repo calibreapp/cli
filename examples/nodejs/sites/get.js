@@ -1,17 +1,13 @@
 #!/usr/bin/env node
 
-const { Site } = require('calibre')
+import { Site } from 'calibre'
 
-const getSite = async () => {
-  const slug = 'calibre'
+const slug = 'calibre'
 
-  // Get the site
-  const site = await Site.get({
-    slug
-  })
+// Get the site
+const site = await Site.get({
+  slug
+})
 
-  // Output the formatted JSON response
-  console.log(JSON.stringify(site, null, 2))
-}
-
-getSite()
+// Output the formatted JSON response
+console.log(JSON.stringify(site, null, 2))

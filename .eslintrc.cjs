@@ -2,19 +2,16 @@ module.exports = {
   plugins: ['node'],
   extends: ['eslint:recommended', 'plugin:node/recommended'],
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'script',
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true
-    }
+    ecmaVersion: 'latest',
+    sourceType: 'module'
   },
   env: {
-    es6: true,
     node: true,
     jest: true
   },
   rules: {
     'no-console': 0,
+    'node/shebang': 0,
     semi: [2, 'never'],
     quotes: [2, 'single', 'avoid-escape'],
     complexity: 0,

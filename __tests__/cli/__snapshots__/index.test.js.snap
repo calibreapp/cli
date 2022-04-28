@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`calibre --help 1`] = `
-"♤  calibre subcommand [options]
+"♠  calibre subcommand [options]
 
 Commands:
 
-  calibre connection-list  Print a list of Calibre’s prebaked emulated
-                           connection options
-  calibre device-list      Print a list of Calibre’s test devices
-  calibre location-list    Print a list of Calibre’s test locations
-  calibre metric-list      Print a list of Calibre’s metrics
-  calibre request          Make a request to the Calibre GraphQL API
-  calibre site <command>   Tasks related to sites
+  calibre site <command>   Site management commands
   calibre test <command>   Single page tests
-  calibre token <command>  Tasks related to tokens
+  calibre connection-list  Print a list of connection speeds
+  calibre device-list      Print a list of test devices
+  calibre location-list    Print a list of test locations
+  calibre metric-list      Print a list of metrics
+  calibre token <command>  Store or revoke a Calibre API token (Use instead of C
+                           ALIBRE_API_TOKEN environment variable)
+  calibre request          Make a request to the Calibre GraphQL API
 
 Options:
 
@@ -21,9 +21,11 @@ Options:
   --version  Show version number                                       [boolean]
 
 Examples:
-  calibre test create                       Run a test on calibreapp.com from
-  https://calibreapp.com --location=Sydney  Sydney emulating an iPhone 8 with a
-  --device=iPhone8 --connection=good3G      3G connection
+
+  calibre token set <token>  Store Calibre API token in ~/.config/configstore/ca
+                             libre.json
+  calibre site list          List the sites in your Calibre account
+  calibre test create <url>  Create a single page test
 
 For more information on Calibre, see https://calibreapp.com"
 `;

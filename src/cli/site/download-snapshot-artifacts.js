@@ -1,13 +1,13 @@
-const fs = require('fs')
-const path = require('path')
-const chalk = require('chalk')
-const listr = require('listr')
+import fs from 'fs'
+import path from 'path'
+import chalk from 'chalk'
+import listr from 'listr'
 
-const download = require('../../utils/download')
-const mkdirp = require('../../utils/mkdirp')
-const { fetchArtifacts } = require('../../api/snapshot')
-const { humaniseError } = require('../../utils/api-error')
-const { options } = require('../../utils/cli')
+import download from '../../utils/download.js'
+import mkdirp from '../../utils/mkdirp.js'
+import { fetchArtifacts } from '../../api/snapshot.js'
+import { humaniseError } from '../../utils/api-error.js'
+import { options } from '../../utils/cli.js'
 
 const main = async args => {
   const directories = [
@@ -71,9 +71,7 @@ const main = async args => {
       }
 
       tasks.push({
-        title: `Downloading artifacts (Page: ${page.name}) (Test Profile: ${
-          profile.name
-        })`,
+        title: `Downloading artifacts (Page: ${page.name}) (Test Profile: ${profile.name})`,
 
         task: () => {
           const subtasks = [
@@ -163,16 +161,18 @@ const main = async args => {
   }
 }
 
-module.exports = {
-  command: 'download-snapshot-artifacts [options]',
-  describe:
-    'Downloads the artifacts of a snapshot to ./snapshot-artifacts/<id>',
-  builder: yargs => {
-    yargs.options({
-      id: { demandOption: true, describe: 'The id of the snapshot' },
-      site: options.site,
-      json: options.json
-    })
+const command = 'download-snapshot-artifacts [options]'
+const describe =
+  'Downloads the artifacts of a snapshot to ./snapshot-artifacts/<id>'
+const builder = {
+  site: options.site,
+  id: {
+    demandOption: true,
+    requiresArg: true,
+    describe: 'The id of the snapshot'
   },
-  handler: main
+  json: options.json
 }
+const handler = main
+
+export { command, describe, builder, handler }

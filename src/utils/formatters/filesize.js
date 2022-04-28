@@ -1,3 +1,5 @@
-const humanize = require('humanize')
+import humanize from 'humanize'
 
-module.exports = bytes => humanize.filesize(bytes)
+const toFilesize = bytes => humanize.filesize(bytes)
+
+export default toFilesize

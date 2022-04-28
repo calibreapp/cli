@@ -1,9 +1,10 @@
-const {
+import {
   runCLI,
   setupIntegrationServer,
   teardownIntegrationServer
-} = require('../../utils')
-const deleteDeploy = require('../../fixtures/deleteDeploy.json')
+} from '../../utils'
+
+import deleteDeploy from '../../fixtures/deleteDeploy.json'
 
 describe('site delete-deploy', () => {
   beforeAll(() => setupIntegrationServer(deleteDeploy))

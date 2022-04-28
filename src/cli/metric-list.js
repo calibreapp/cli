@@ -1,12 +1,11 @@
-const chalk = require('chalk')
-const ora = require('ora')
-const columnify = require('columnify')
-const logSymbols = require('log-symbols')
+import chalk from 'chalk'
+import ora from 'ora'
+import columnify from 'columnify'
+import logSymbols from 'log-symbols'
 
-const { list } = require('../api/metric')
-const { humaniseError } = require('../utils/api-error')
-const { options } = require('../utils/cli')
-const { format } = require('../utils/formatters')
+import { list } from '../api/metric.js'
+import { humaniseError } from '../utils/api-error.js'
+import { format } from '../utils/formatters/index.js'
 
 const main = async args => {
   let index
@@ -57,13 +56,13 @@ const main = async args => {
   )
 }
 
-module.exports = {
-  command: 'metric-list',
-  describe: 'Print a list of Calibre’s metrics',
-  handler: main,
-  builder: yargs => {
-    yargs.options({
-      json: options.json
-    })
+const command = 'metric-list'
+const describe = 'Print a list of metrics'
+const handler = main
+const builder = {
+  json: {
+    describe: `${describe} as JSON`
   }
 }
+
+export { command, describe, handler, builder }

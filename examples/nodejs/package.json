@@ -1,12 +1,13 @@
 {
   "name": "calibre-nodejs-examples",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "engines": {
-    "node": ">= 12.22.4"
+    "node": ">= 14.19.1"
   },
   "description": "Calibre’s Node.JS examples",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
-    "calibre": "^3.0.0"
+    "calibre": "file:../.."
   }
 }

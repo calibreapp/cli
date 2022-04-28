@@ -1,8 +1,15 @@
-const { GraphQLClient } = require('graphql-request')
-const { handleError } = require('../utils/api-error')
+import { GraphQLClient } from 'graphql-request'
+import pThrottle from 'p-throttle'
 
-const clientInfo = require('../utils/client-info')
-const retrieveToken = require('../utils/token')
+import { handleError } from '../utils/api-error.js'
+
+import retrieveToken from '../utils/token.js'
+
+const throttle = pThrottle({
+  limit: 10,
+  interval: 1100,
+  strict: true
+})
 
 const request = async ({ query, ...variables }) => {
   const host = process.env.CALIBRE_HOST || 'https://api.calibreapp.com'
@@ -10,20 +17,22 @@ const request = async ({ query, ...variables }) => {
   const token = retrieveToken()
   const headers = {
     Accept: 'application/json',
-    'X-Client-Name': clientInfo.name,
-    'X-Client-Version': clientInfo.version,
     'Content-Type': 'application/json',
     Authorization: `Token ${token}`
   }
-  const client = new GraphQLClient(endpoint, { headers })
+
+  const throttledRequest = throttle(async () => {
+    const client = new GraphQLClient(endpoint, { headers })
+    const response = await client.request(query, variables)
+
+    return response
+  })
 
   try {
-    return await client.request(query, variables)
+    return await throttledRequest()
   } catch (e) {
     return handleError(e)
   }
 }
 
-module.exports = {
-  request
-}
+export { request }

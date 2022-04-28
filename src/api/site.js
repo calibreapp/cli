@@ -1,4 +1,4 @@
-const { request } = require('./graphql')
+import { request } from './graphql.js'
 
 const CREATE_MUTATION = `
   mutation CreateSite($attributes: SiteInput!){
@@ -219,10 +219,4 @@ const update = async ({
   return response.updateSiteSettings
 }
 
-module.exports = {
-  create,
-  list,
-  destroy,
-  get,
-  update
-}
+export { create, list, destroy, get, update }

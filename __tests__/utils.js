@@ -1,9 +1,9 @@
-const express = require('express')
-const { command } = require('execa')
+import express from 'express'
+import { execaCommand } from 'execa'
 
 const runCLI = async ({ args = '', testForError = false }) => {
   try {
-    const { stdout, stderr } = await command(`calibre ${args}`, {
+    const { stdout, stderr } = await execaCommand(`calibre ${args}`, {
       shell: true
     })
     if (testForError) return stderr
@@ -22,10 +22,9 @@ const setupIntegrationServer = (
   app.post('/graphql', (req, res) => {
     res.status(200).send(mockResponse)
   })
-  server = app.listen(5678, () => true)
+  server = app.listen(5678, () => Promise.resolve(true))
 }
-const teardownIntegrationServer = () => server.close(() => true)
+const teardownIntegrationServer = () =>
+  server.close(() => Promise.resolve(true))
 
-exports.setupIntegrationServer = setupIntegrationServer
-exports.teardownIntegrationServer = teardownIntegrationServer
-exports.runCLI = runCLI
+export { runCLI, setupIntegrationServer, teardownIntegrationServer }
