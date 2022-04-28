@@ -3,6 +3,7 @@
 [![NPM package](https://img.shields.io/npm/v/calibre.svg)](https://www.npmjs.com/package/calibre)
 
 # Calibre’s Node.js API and Command Line Client (CLI)
+
 This repository contains [Calibre’s](https://calibreapp.com/) APIs you can use to fetch and manage your monitoring data. The Command Line Client (CLI) is designed for simple tasks right from your terminal. We recommend using the Node.js API for more complex tasks and automation.
 
 > ℹ️ **Please note:** Using the APIs requires an active Calibre account (in trial or on a paid plan).
@@ -31,7 +32,7 @@ or save it directly to your project:
 npm install calibre --save
 ```
 
-The `calibre` package is built to support for **all current Node.js LTS releases**.
+The `calibre` package is built to support **all current Node.js LTS releases**.
 
 ## 🔐 Authentication
 
@@ -43,7 +44,7 @@ Once you have an API Token, you can [store it locally](https://calibreapp.com/do
 calibre token set <your token>
 ```
 
-Or [as an environment variable](https://calibreapp.com/docs/automation/tokens#store-a-token-as-an-environment-variable).
+Or alternately, set [`CALIBRE_API_TOKEN` environment variable](https://calibreapp.com/docs/automation/tokens#store-a-token-as-an-environment-variable).
 
 ## 💡 Features
 
@@ -54,6 +55,7 @@ Or [as an environment variable](https://calibreapp.com/docs/automation/tokens#st
 - **Script any action**. We export all API methods to the Calibre `npm` package..
 
 ## 🛠 Usage
+
 To see a full list of available commands, subcommands and options run:
 
 ```bash
@@ -61,7 +63,7 @@ $ calibre --help
 $ calibre <command> --help
 ```
 
-or [see all commands](commands.md) in this repository.
+or [see all commands](CLI_COMMANDS.md) in this repository.
 
 In Node, you can use the either ES Modules or CommonJS versions accordingly:
 
@@ -79,7 +81,7 @@ await Site.list()
 
 ## 📤 Package exports
 
-In addition to the named default exports shown above, the `calibre` package also exports CLI related metadata, which we can use to generate CLI documentation.
+In addition to the named default exports shown above, the `calibre` package also exports CLI related metadata, which is used to generate CLI documentation.
 
 ### CLI Commands
 
@@ -99,10 +101,11 @@ console.log(JSON.stringify(getCommandMetaData(), null, 2))
 ```
 
 ## 🖥 Script Examples
+
 We prepared a handful of examples for common actions you might want to perform:
 
-- [Bash examples](examples/bash)
 - [Node.js examples](examples/nodejs)
+- [Bash examples](examples/bash)
 
 ## 📚 Resources
 
