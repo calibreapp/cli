@@ -1,8 +1,8 @@
-![Calibre CLI - Automate your performance system](https://user-images.githubusercontent.com/924/54003204-7c294700-41a5-11e9-911e-c4d603fb619f.png)
+# Calibre’s Node.js API and Command Line Client (CLI)
 
 [![NPM package](https://img.shields.io/npm/v/calibre.svg)](https://www.npmjs.com/package/calibre)
-
-# Calibre’s Node.js API and Command Line Client (CLI)
+![Node version support](https://img.shields.io/node/v/calibre)
+[![License](https://img.shields.io/github/license/calibreapp/cli)](https://github.com/calibreapp/cli/blob/main/LICENSE)
 
 This repository contains [Calibre’s](https://calibreapp.com/) APIs you can use to fetch and manage your monitoring data. The Command Line Client (CLI) is designed for simple tasks right from your terminal. We recommend using the Node.js API for more complex tasks and automation.
 
@@ -17,6 +17,7 @@ This repository contains [Calibre’s](https://calibreapp.com/) APIs you can use
 5. [Package Exports](#-package-exports)
 6. [Script Examples](#-script-examples)
 7. [Resources](#-resources)
+8. [License](#-license)
 
 ## 📥 Installation
 
@@ -110,3 +111,6 @@ We prepared a handful of examples for common actions you might want to perform:
 ## 📚 Resources
 
 Find code examples and more information for the [CLI](https://calibreapp.com/docs/automation/cli) and [Node.js API](https://calibreapp.com/docs/automation/node) in our documentation.
+
+## 💼 License
+This project is [MIT licensed](LICENSE).
