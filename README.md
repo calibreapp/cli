@@ -1,8 +1,8 @@
 # Calibre’s Node.js API and Command Line Client (CLI)
 
-[![NPM package](https://img.shields.io/npm/v/calibre.svg)](https://www.npmjs.com/package/calibre)
-![Node version support](https://img.shields.io/node/v/calibre)
-[![License](https://img.shields.io/github/license/calibreapp/cli)](https://github.com/calibreapp/cli/blob/main/LICENSE)
+[![NPM package](https://img.shields.io/npm/v/calibre?color=informational)](https://www.npmjs.com/package/calibre)
+![Node version support](https://img.shields.io/node/v/calibre?color=informational)
+[![License](https://img.shields.io/github/license/calibreapp/cli?color=informational)](https://github.com/calibreapp/cli/blob/main/LICENSE)
 
 This repository contains [Calibre’s](https://calibreapp.com/) APIs you can use to fetch and manage your monitoring data. The Command Line Client (CLI) is designed for simple tasks right from your terminal. We recommend using the Node.js API for more complex tasks and automation.
 
