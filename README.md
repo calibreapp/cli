@@ -16,8 +16,9 @@ This repository contains [Calibre’s](https://calibreapp.com/) APIs you can use
 4. [Usage](#-usage)
 5. [Package Exports](#-package-exports)
 6. [Script Examples](#-script-examples)
-7. [Resources](#-resources)
-8. [License](#-license)
+7. [Contributing](#-contributing)
+8. [Resources](#-resources)
+9. [License](#-license)
 
 ## 📥 Installation
 
@@ -100,6 +101,10 @@ You can import command metadata (used to generate CLI documentation) from the `c
 import { getCommandMetaData } from 'calibre/cli-metadata'
 console.log(JSON.stringify(getCommandMetaData(), null, 2))
 ```
+
+## 🙌🏻 Contributing
+
+Happy to hear you’re interested in contributing to Calibre’s APIs! Please find our contribution guidelines [here](CONTRIBUTING.md).
 
 ## 🖥 Script Examples
 
