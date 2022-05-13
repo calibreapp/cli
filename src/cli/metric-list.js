@@ -6,7 +6,7 @@ import logSymbols from 'log-symbols'
 import { list } from '../api/metric.js'
 import { humaniseError } from '../utils/api-error.js'
 import { format } from '../utils/formatters/index.js'
-import { options } from '/utils/cli.js'
+import { options } from '../utils/cli.js'
 
 const main = async args => {
   let index
