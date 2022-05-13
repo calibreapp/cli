@@ -61,7 +61,7 @@ const main = async args => {
 }
 
 const command = 'download-artifacts <uuid>'
-const describe = 'Downloads the artifacts of a test to ./test-artifacts/<uuid>'
+const describe = 'Download the artifacts of a test to ./test-artifacts/<uuid>. Includes: lighthouse.json, render progress screenshots, render progress MP4 video, HAR file (request log) and all other metrics and data available through the Calibre interface.'
 const handler = main
 const builder = {
   json: options.json

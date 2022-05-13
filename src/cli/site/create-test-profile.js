@@ -45,27 +45,27 @@ const main = async function (args) {
 }
 
 const command = 'create-test-profile <name> [options]'
-const describe = 'Add a test profile to a site'
+const describe = 'Add a Test Profile to a Site.'
 const builder = {
   site: options.site,
   device: {
-    describe: 'Sets the emulated device that the profile will be run on'
+    describe: 'Choose the emulated test device.'
   },
   connection: {
-    describe: 'Sets the emulated connection speed this profile'
+    describe: 'Choose the emulated network connection speed.'
   },
   javascript: {
     type: 'boolean',
-    describe: 'Turn JavaScript execution on/off',
+    describe: 'Turn JavaScript execution on or off.',
     default: true
   },
   adblocker: {
     type: 'boolean',
-    describe: 'Turn adblocking on/off',
+    describe: 'Turn adblocking on or off.',
     default: false
   },
   'cookie-jar': {
-    describe: 'Uses a netscape formatted cookie jar file at this path'
+    describe: 'Set cookies by specifying a path to a Netscape formatted cookie jar file.'
   },
   json: options.json
 }

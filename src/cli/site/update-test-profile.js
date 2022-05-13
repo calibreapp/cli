@@ -31,7 +31,7 @@ const main = async function (args) {
     const response = await update({ ...args, cookies })
     if (!args.json) {
       spinner.succeed(
-        `Test profile updated: ${response.name} (${response.uuid})`
+        `Test Profile updated: ${response.name} (${response.uuid})`
       )
       console.log(formatProfile(response))
     }
@@ -46,33 +46,33 @@ const main = async function (args) {
   }
 }
 const command = 'update-test-profile [options]'
-const describe = 'Update a test profile. Only updates attributes sent.'
+const describe = 'Update Test Profile settings. Only changes specified attributes.'
 const builder = {
   uuid: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The UUID of the test profile'
+    describe: 'The UUID of the Test Profile.'
   },
   device: {
-    describe: 'Sets the emulated device that the profile will be run on'
+    describe: 'Set the emulated device.'
   },
   connection: {
-    describe: 'Sets the emulated connection speed this profile'
+    describe: 'Set the emulated network connection speed.'
   },
   site: options.site,
   json: options.json,
   javascript: {
     type: 'boolean',
-    describe: 'Turn JavaScript execution on/off',
+    describe: 'Turn JavaScript execution on or off',
     default: true
   },
   adblocker: {
     type: 'boolean',
-    describe: 'Turn adblocking on/off',
+    describe: 'Turn adblocking on or off.',
     default: false
   },
   'cookie-jar': {
-    describe: 'Uses a netscape formatted cookie jar file at this path'
+    describe: 'Set cookies by specifying a path to a Netscape formatted cookie jar file.'
   }
 }
 

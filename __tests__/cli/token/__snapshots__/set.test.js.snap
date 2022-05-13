@@ -7,13 +7,15 @@ exports[`missing token argument 1`] = `
 
  calibre token <command>
 
-Store or revoke a Calibre API token (Use instead of CALIBRE_API_TOKEN environmen
-t variable)
+Use the token command to store or revoke a Calibre API token. You can also save
+your token with the CALIBRE_API_TOKEN environment variable.
 
 Commands:
 
-  calibre token set <key>  Set the Calibre API token used for CLI commands
-  calibre token remove     Remove the Calibre API token used for CLI commands
+  calibre token set <token>  Store your API Token to use the CLI (saved in ~/.co
+                             nfig/configstore/calibre.json).
+  calibre token remove       Remove the saved API Token used for CLI commands (f
+                             rom ~/.config/configstore/calibre.json).
 
 Options:
 

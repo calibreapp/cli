@@ -15,7 +15,7 @@ const main = async function (args) {
 
   if (process.stdout.isTTY && !args.confirm) {
     return new Error(
-      'Add the --confirm flag to confirm the immediate & irreversible deletion of this test profile.'
+      'Add the --confirm flag to confirm the immediate and irreversible deletion of this Site.'
     )
   }
 
@@ -33,10 +33,10 @@ const main = async function (args) {
 }
 
 const command = 'delete <slug> [options]'
-const describe = 'Deletes a site'
+const describe = 'Delete a selected Site.'
 const builder = {
   confirm: {
-    describe: 'Confirm the deletion'
+    describe: 'Use this flag to confirm the deletion of the selected Site.'
   },
   json: options.json
 }

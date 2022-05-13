@@ -15,7 +15,7 @@ const main = async function (args) {
 
   if (process.stdout.isTTY && !args.confirm) {
     return new Error(
-      'Add the --confirm flag to confirm the immediate & irreversible deletion of this page.'
+      'Add the --confirm flag to confirm the immediate and irreversible deletion of this Page.'
     )
   }
 
@@ -34,16 +34,16 @@ const main = async function (args) {
 }
 
 const command = 'delete-page [options]'
-const describe = 'Deletes a page from a site'
+const describe = 'Delete a Page from a selected Site.'
 const builder = {
   site: options.site,
   uuid: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The UUID of the page'
+    describe: 'The UUID of the Page.'
   },
   confirm: {
-    describe: 'Confirm the deletion'
+    describe: 'Use this flag to confirm the deletion of the selected Page.'
   },
   json: options.json
 }

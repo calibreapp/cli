@@ -12,14 +12,16 @@ exports[`site delete-deploy requires uuid 1`] = `
 
  calibre site delete-deploy [options]
 
-Deletes a deploy from a site
+Delete a deploy from a selected Site.
 
 Options:
 
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-  --site     The identifying slug of a site                  [string] [required]
-  --uuid     The uuid of the deploy                                   [required]
-  --confirm  Confirm the deletion
-  --json     Output in JSON format"
+  --site     A unique slug identifying each Site. You can find it in Site Settin
+             gs → General or by using the calibre site list command.
+                                                             [string] [required]
+  --uuid     The UUID of the deploy.                                  [required]
+  --confirm  Use this flag to confirm the deletion of the selected deploy.
+  --json     Outputs the results of the command in JSON format."
 `;

@@ -9,14 +9,16 @@ exports[`snapshot metrics returns no snapshot error 1`] = `
 
  calibre site get-snapshot-metrics [options]
 
-Get the metrics of a given snapshot
+Get all metrics of a given Snapshot.
 
 Options:
 
   --help      Show help                                                [boolean]
   --version   Show version number                                      [boolean]
-  --site      The identifying slug of a site                 [string] [required]
-  --snapshot  The identifying id of a snapshot                        [required]
-  --json      Output in JSON format
-  --csv       Output in CSV format"
+  --site      A unique slug identifying each Site. You can find it in Site Setti
+              ngs → General or by using the calibre site list command.
+                                                             [string] [required]
+  --snapshot  The id of a Snapshot.                                   [required]
+  --json      Outputs the results of the command in JSON format.
+  --csv       Outputs the results of the command in CSV format."
 `;

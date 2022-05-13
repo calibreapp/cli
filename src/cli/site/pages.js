@@ -56,7 +56,7 @@ const main = async args => {
 }
 
 const command = 'pages [options]'
-const describe = 'Print a list of pages for a given site'
+const describe = 'List Pages for a selected Site.'
 const handler = main
 const builder = {
   site: options.site,

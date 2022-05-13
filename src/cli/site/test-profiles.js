@@ -50,7 +50,7 @@ const main = async args => {
 }
 
 const command = 'test-profiles [options]'
-const describe = 'Print a list of test profiles for a given site'
+const describe = 'List all Test Profiles for a Site.'
 const handler = main
 const builder = {
   site: options.site,

@@ -15,7 +15,7 @@ const main = async function (args) {
 
   if (process.stdout.isTTY && !args.confirm) {
     return new Error(
-      'Add the --confirm flag to confirm the immediate & irreversible deletion of this test profile.'
+      'Add the --confirm flag to confirm the immediate and irreversible deletion of this Test Profile.'
     )
   }
 
@@ -36,16 +36,16 @@ const main = async function (args) {
 }
 
 const command = 'delete-test-profile [options]'
-const describe = 'Deletes a test profile from a site'
+const describe = 'Delete a Test Profile from a Site.'
 const builder = {
   site: options.site,
   uuid: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The UUID of the test profile'
+    describe: 'The UUID of the Test Profile.'
   },
   confirm: {
-    describe: 'Confirm the deletion'
+    describe: 'Use this flag to confirm the deletion of the selected Test Profile.'
   },
   json: options.json
 }

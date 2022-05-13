@@ -65,7 +65,7 @@ $ calibre --help
 $ calibre <command> --help
 ```
 
-or [see all commands](CLI_COMMANDS.md) in this repository.
+or [see all commands](CLI_COMMANDS.md) in this repository or [Calibre’s documentation](https://calibreapp.com/docs/automation/cli-commands).
 
 In Node, you can use the either ES Modules or CommonJS versions accordingly:
 

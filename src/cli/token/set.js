@@ -4,13 +4,13 @@ import logSymbols from 'log-symbols'
 
 const config = new Configstore('calibre')
 
-const main = async ({ key }) => {
-  config.set('token', key)
-  console.log(`${chalk.bold.green(`${logSymbols.success} Token saved!`)}\n`)
+const main = async ({ token }) => {
+  config.set('token', token)
+  console.log(`${chalk.bold.green(`${logSymbols.success} API Token saved!`)}\n`)
 }
 
-const command = 'set <key>'
-const describe = 'Set the Calibre API token used for CLI commands'
+const command = 'set <token>'
+const describe = 'Store your API Token to use the CLI (saved in ~/.config/configstore/calibre.json).'
 const handler = main
 const builder = {}
 

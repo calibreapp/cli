@@ -35,13 +35,13 @@ const main = async function (args) {
 }
 
 const command = 'create-page <name> [options]'
-const describe = 'Add a page to an existing site tracked by Calibre'
+const describe = 'Add a Page to an existing Site tracked by Calibre.'
 const builder = {
   site: options.site,
   url: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The name of the page'
+    describe: 'The name of the Page.'
   },
   json: options.json
 }

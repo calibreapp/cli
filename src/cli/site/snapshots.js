@@ -64,7 +64,7 @@ const main = async args => {
 }
 
 const command = 'snapshots [options]'
-const describe = 'Print a list of snapshots'
+const describe = 'List selected Snapshots for a Site.'
 const handler = main
 const builder = {
   site: options.site,

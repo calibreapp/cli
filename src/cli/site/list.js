@@ -46,7 +46,7 @@ const main = async args => {
 }
 
 const command = 'list'
-const describe = 'Print a list of sites being tracked by Calibre'
+const describe = 'List all Sites you are tracking in Calibre.'
 const handler = main
 const builder = {
   json: options.json

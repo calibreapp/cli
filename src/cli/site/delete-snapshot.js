@@ -15,7 +15,7 @@ const main = async function (args) {
 
   if (process.stdout.isTTY && !args.confirm) {
     return new Error(
-      'Add the --confirm flag to confirm the immediate & irreversible deletion of this snapshot.'
+      'Add the --confirm flag to confirm the immediate and irreversible deletion of this Snapshot.'
     )
   }
 
@@ -33,16 +33,16 @@ const main = async function (args) {
 }
 
 const command = 'delete-snapshot [options]'
-const describe = 'Deletes a snapshot from a site'
+const describe = 'Delete a Snapshot from a selected Site.'
 const builder = {
   site: options.site,
   id: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The id of the snapshot'
+    describe: 'The id of the Snapshot.'
   },
   confirm: {
-    describe: 'Confirm the deletion'
+    describe: 'Use this flag to confirm the deletion of the selected Snapshot.'
   },
   json: options.json
 }

@@ -41,7 +41,7 @@ const commands = [
 ]
 
 const command = 'site <command>'
-const desc = 'Site management commands'
+const desc = 'Use the site command to manage your Sites, Pages, Test Profiles, Deploys, Snapshots and download the monitoring data.'
 const builder = yargs => {
   return yargs.commands(commands)
 }

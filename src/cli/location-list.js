@@ -4,6 +4,7 @@ import columnify from 'columnify'
 
 import { list } from '../api/location.js'
 import { humaniseError } from '../utils/api-error.js'
+import { options } from '../utils/cli.js'
 
 const main = async args => {
   let index
@@ -45,12 +46,10 @@ const main = async args => {
 }
 
 const command = 'location-list'
-const describe = 'Print a list of test locations'
+const describe = 'List all available test locations.'
 const handler = main
 const builder = {
-  json: {
-    describe: `${describe} as JSON`
-  }
+  json: options.json
 }
 
 export { command, describe, handler, builder }

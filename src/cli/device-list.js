@@ -4,6 +4,7 @@ import columnify from 'columnify'
 
 import { list } from '../api/device.js'
 import { humaniseError } from '../utils/api-error.js'
+import { options } from '../utils/cli.js'
 
 const main = async args => {
   let index
@@ -42,12 +43,10 @@ const main = async args => {
 }
 
 const command = 'device-list'
-const describe = 'Print a list of test devices'
+const describe = 'List all available test devices.'
 const handler = main
 const builder = {
-  json: {
-    describe: `${describe} as JSON`
-  }
+  json: options.json
 }
 
 export { command, describe, handler, builder }

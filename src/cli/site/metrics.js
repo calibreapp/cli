@@ -50,7 +50,7 @@ const main = async args => {
   }
 }
 const command = 'metrics [options]'
-const describe = 'Get timeseries metrics for a given site'
+const describe = 'Get time-series metrics for a selected Site.'
 const builder = {
   site: options.site,
   pages: options.pages,
@@ -62,7 +62,7 @@ const builder = {
   to: options.to,
   '30-day': {
     describe:
-      'Get the last 30 days of metrics (without this flag, the to and from values will be used)'
+      'Get the last 30 days of metrics. Without this flag, CLI will use the to and from values.'
   }
 }
 const handler = main

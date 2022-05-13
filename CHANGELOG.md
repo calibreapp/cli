@@ -1,3 +1,13 @@
+# 5.01 (2022-05-13)
+## 🚩 Commands and flags
+* Adds a new command: `calibre team list` to list all Teams depending on API Token in use.
+
+## 🛠 Core
+* Updates all command and flag descriptions for clarity and accuracy.
+
+## 📖 Documentation
+* updates `README.md` to include link to Calibre’s documentation page for all CLI commands
+
 # 5.0.0 (2022-04-29)
 
 ## 💥 Breaking changes

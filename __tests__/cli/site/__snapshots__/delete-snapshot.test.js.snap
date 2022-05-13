@@ -12,14 +12,16 @@ exports[`site delete-snapshot requires id 1`] = `
 
  calibre site delete-snapshot [options]
 
-Deletes a snapshot from a site
+Delete a Snapshot from a selected Site.
 
 Options:
 
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-  --site     The identifying slug of a site                  [string] [required]
-  --id       The id of the snapshot                                   [required]
-  --confirm  Confirm the deletion
-  --json     Output in JSON format"
+  --site     A unique slug identifying each Site. You can find it in Site Settin
+             gs → General or by using the calibre site list command.
+                                                             [string] [required]
+  --id       The id of the Snapshot.                                  [required]
+  --confirm  Use this flag to confirm the deletion of the selected Snapshot.
+  --json     Outputs the results of the command in JSON format."
 `;

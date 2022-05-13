@@ -7,18 +7,14 @@ exports[`request missing query argument 1`] = `
 
  calibre request
 
-Make a request to the Calibre GraphQL API
+Use the request command to make a request to the Calibre GraphQL API.
 
 Options:
 
   --help       Show help                                               [boolean]
   --version    Show version number                                     [boolean]
-  --query      GraphQL query to execute. e.g.:
-
-               calibre request --query='query G
-               etSite($slug: String!) {organisation{site(slug: $slug){slug}}}' -
-               -slug=calibre                                 [string] [required]
-  --variables  Pass query variables as named arguments"
+  --query      Pass a GraphQL query to execute.              [string] [required]
+  --variables  Pass query variables as named arguments."
 `;
 
 exports[`request returns response 1`] = `

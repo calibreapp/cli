@@ -22,19 +22,18 @@ const main = async args => {
 }
 
 const command = 'request'
-const describe = 'Make a request to the Calibre GraphQL API'
+const describe =
+  'Use the request command to make a request to the Calibre GraphQL API.'
 const handler = main
 const builder = {
   query: {
-    describe: `GraphQL query to execute. e.g.:
-
-calibre request --query='query GetSite($slug: String!) {organisation{site(slug: $slug){slug}}}' --slug=calibre`,
+    describe: 'Pass a GraphQL query to execute.',
     demandOption: true,
     type: 'string',
     requiresArg: true
   },
   variables: {
-    describe: 'Pass query variables as named arguments'
+    describe: 'Pass query variables as named arguments.'
   }
 }
 

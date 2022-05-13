@@ -6,7 +6,7 @@ import * as TestShow from './test/show.js'
 const commands = [TestCreate, TestDownloadArtifacts, TestList, TestShow]
 
 const command = 'test <command>'
-const desc = 'Single page tests'
+const desc = 'Use the test command to run Single Page Tests: public or private tests for a single Page tested from a single device. This command also supports viewing all Single Page Tests and retrieving their artifacts.'
 const builder = yargs => {
   return yargs.commands(commands)
 }

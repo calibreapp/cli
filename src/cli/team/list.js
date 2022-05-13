@@ -2,9 +2,9 @@ import chalk from 'chalk'
 import ora from 'ora'
 import columnify from 'columnify'
 
-import { list } from '../api/connection.js'
-import { humaniseError } from '../utils/api-error.js'
-import { options } from '../utils/cli.js'
+import { list } from '../../api/team.js'
+import { options } from '../../utils/cli.js'
+import { humaniseError } from '../../utils/api-error.js'
 
 const main = async args => {
   let index
@@ -25,11 +25,13 @@ const main = async args => {
   }
 
   spinner.stop()
-  console.log(`${chalk.bold(index.length)} emulated connection speeds`)
+  console.log(`${chalk.bold(index.length)} sites`)
 
   const rows = index.map(row => {
     return {
-      identifier: chalk.cyan(row.name)
+      slug: chalk.grey(row.slug),
+      name: row.name,
+      description: row.description
     }
   })
 
@@ -42,11 +44,12 @@ const main = async args => {
   )
 }
 
-const command = 'connection-list'
-const describe = 'List all available network connection speeds.'
+const command = 'list'
+const describe =
+  'List Teams based on API Token access. For Admin Tokens, this will list all teams or as specified based on your settings. For Personal Access Tokens, this will list Teams that you have access to.'
 const handler = main
 const builder = {
   json: options.json
 }
 
-export { command, describe, handler, builder }
+export { command, describe, builder, handler }
