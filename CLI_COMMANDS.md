@@ -235,6 +235,15 @@ Flags:
   * `--json`: Outputs the results of the command in JSON format.
 
 
+### calibre team list
+
+List Teams based on API Token access. For Admin Tokens, this will list all teams or as specified based on your settings. For Personal Access Tokens, this will list Teams that you have access to.
+
+Flags:
+ 
+  * `--json`: Outputs the results of the command in JSON format.
+
+
 ### calibre test create <url> [options]
 
 Run a Single Page Test against any public URL.

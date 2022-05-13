@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`team list lists all teams 1`] = `
+"2 sites
+SLUG        | NAME     | DESCRIPTION     
+calibre     | Calibre  | Default team    
+engineering | Monitors | Engineering team"
+`;

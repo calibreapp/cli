@@ -1,0 +1,18 @@
+{
+  "data": {
+    "organisation": {
+      "teams": [
+        {
+          "name": "Calibre",
+          "description": "Default team",
+          "slug": "calibre"
+        },
+        {
+          "name": "Monitors",
+          "description": "Engineering team",
+          "slug": "engineering"
+        }
+      ]
+    }
+  }
+}
