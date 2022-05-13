@@ -13,10 +13,13 @@ Options:
 
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-  --site     The identifying slug of a site                  [string] [required]
-  --count    The number of records to return, maximum: 500         [default: 25]
+  --site     A unique slug identifying each Site. You can find it in Site Settin
+             gs → General or by using the calibre site list command.
+                                                             [string] [required]
+  --count    The number of items to return (default: 25, maximum: 500).
+                                                                   [default: 25]
   --cursor   The cursor to fetch records after
-  --json     Output in JSON format"
+  --json     Outputs the results of the command in JSON format."
 `;
 
 exports[`missing site argument value 1`] = `
@@ -32,8 +35,11 @@ Options:
 
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-  --site     The identifying slug of a site                  [string] [required]
-  --count    The number of records to return, maximum: 500         [default: 25]
+  --site     A unique slug identifying each Site. You can find it in Site Settin
+             gs → General or by using the calibre site list command.
+                                                             [string] [required]
+  --count    The number of items to return (default: 25, maximum: 500).
+                                                                   [default: 25]
   --cursor   The cursor to fetch records after
-  --json     Output in JSON format"
+  --json     Outputs the results of the command in JSON format."
 `;

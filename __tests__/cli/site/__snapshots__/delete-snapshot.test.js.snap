@@ -18,8 +18,10 @@ Options:
 
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-  --site     The identifying slug of a site                  [string] [required]
+  --site     A unique slug identifying each Site. You can find it in Site Settin
+             gs → General or by using the calibre site list command.
+                                                             [string] [required]
   --id       The id of the snapshot                                   [required]
   --confirm  Confirm the deletion
-  --json     Output in JSON format"
+  --json     Outputs the results of the command in JSON format."
 `;
