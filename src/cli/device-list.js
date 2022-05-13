@@ -4,7 +4,7 @@ import columnify from 'columnify'
 
 import { list } from '../api/device.js'
 import { humaniseError } from '../utils/api-error.js'
-import { options } from '../utils/cli'
+import { options } from '../utils/cli.js'
 
 const main = async args => {
   let index
