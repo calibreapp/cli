@@ -9,14 +9,19 @@ ${describe || ''}
 }
 
 const formatOptions = options => {
-  return `Options:
- ${Object.keys(options).map(key => {
+  const optionKeys = Object.keys(options)
+  if (!optionKeys.length) {
+    return ''
+  } else {
+    return `Flags:
+ ${optionKeys.map(key => {
    const { describe, default: defaultValue, type } = options[key]
    return `
-  * \`${key}\`: ${describe}${
+  * \`--${key}\`: ${describe}${
      defaultValue ? ` (default: \`${defaultValue}\`)` : ''
    }${type ? ` (${type})` : ''}`
  })}`
+  }
 }
 
 const template = command => {
@@ -41,8 +46,6 @@ const template = command => {
 }
 
 const commands = getCommandMetaData()
-
-// console.log(JSON.stringify(commands, null, 2))
 
 let output = ''
 

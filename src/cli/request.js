@@ -22,11 +22,12 @@ const main = async args => {
 }
 
 const command = 'request'
-const describe = 'Use the request command to make a request to the Calibre GraphQL API.'
+const describe =
+  'Use the request command to make a request to the Calibre GraphQL API.'
 const handler = main
 const builder = {
   query: {
-    describe: `Pass a GraphQL query to execute.`,
+    describe: 'Pass a GraphQL query to execute.',
     demandOption: true,
     type: 'string',
     requiresArg: true

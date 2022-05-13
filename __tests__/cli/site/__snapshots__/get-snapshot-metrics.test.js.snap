@@ -15,8 +15,10 @@ Options:
 
   --help      Show help                                                [boolean]
   --version   Show version number                                      [boolean]
-  --site      The identifying slug of a site                 [string] [required]
+  --site      A unique slug identifying each Site. You can find it in Site Setti
+              ngs → General or by using the calibre site list command.
+                                                             [string] [required]
   --snapshot  The identifying id of a snapshot                        [required]
-  --json      Output in JSON format
-  --csv       Output in CSV format"
+  --json      Outputs the results of the command in JSON format.
+  --csv       Outputs the results of the command in CSV format."
 `;
