@@ -5,7 +5,7 @@ const commands = [TokenSet, TokenRemove]
 
 const command = 'token <command>'
 const desc =
-  'Store or revoke a Calibre API token (Use instead of CALIBRE_API_TOKEN environment variable)'
+  'Use the token command to store or revoke a Calibre API token. You can also save your token with the CALIBRE_API_TOKEN environment variable.'
 const builder = yargs => {
   return yargs.commands(commands)
 }

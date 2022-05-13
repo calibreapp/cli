@@ -4,6 +4,7 @@ import columnify from 'columnify'
 
 import { list } from '../api/connection.js'
 import { humaniseError } from '../utils/api-error.js'
+import { options } from '../utils/cli'
 
 const main = async args => {
   let index
@@ -42,12 +43,10 @@ const main = async args => {
 }
 
 const command = 'connection-list'
-const describe = 'Print a list of connection speeds'
+const describe = 'List all available network connection speeds.'
 const handler = main
 const builder = {
-  json: {
-    describe: `${describe} as JSON`
-  }
+  json: options.json
 }
 
 export { command, describe, handler, builder }

@@ -6,6 +6,7 @@ import logSymbols from 'log-symbols'
 import { list } from '../api/metric.js'
 import { humaniseError } from '../utils/api-error.js'
 import { format } from '../utils/formatters/index.js'
+import { options } from '/utils/cli'
 
 const main = async args => {
   let index
@@ -57,12 +58,10 @@ const main = async args => {
 }
 
 const command = 'metric-list'
-const describe = 'Print a list of metrics'
+const describe = 'List all available web performance metrics.'
 const handler = main
 const builder = {
-  json: {
-    describe: `${describe} as JSON`
-  }
+  json: options.json
 }
 
 export { command, describe, handler, builder }
