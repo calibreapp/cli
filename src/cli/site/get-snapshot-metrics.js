@@ -93,13 +93,13 @@ const main = async args => {
 }
 
 const command = 'get-snapshot-metrics [options]'
-const describe = 'Get the metrics of a given snapshot'
+const describe = 'Get all metrics of a given Snapshot.'
 const builder = {
   site: options.site,
   snapshot: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The identifying id of a snapshot'
+    describe: 'The id of a Snapshot.'
   },
   json: options.json,
   csv: options.csv

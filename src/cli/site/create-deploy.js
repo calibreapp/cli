@@ -27,18 +27,18 @@ const main = async function (args) {
 }
 
 const command = 'create-deploy [options]'
-const describe = 'Create a deploy'
+const describe = 'Create a deployment.'
 const builder = {
   site: options.site,
   revision: {
     describe:
-      'The source control revision id of the code you are deploying (e.g. git hash or tag name)'
+      'The source control revision id of the code you are deploying. It could be a git hash or a tag name.'
   },
   repository: {
     describe:
-      'The base URL of the repository containing the source code being deployed (e.g. https://github.com/calibreapp/app)'
+      'The base URL of the repository containing the source code being deployed (e.g. https://github.com/calibreapp/app).'
   },
-  username: { describe: 'The name of the user who deployed the code' },
+  username: { describe: 'The username of who deployed the code.' },
   json: options.json
 }
 

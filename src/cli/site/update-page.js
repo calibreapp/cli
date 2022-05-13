@@ -37,15 +37,15 @@ const main = async function (args) {
 }
 
 const command = 'update-page [options]'
-const describe = 'Update the name and/or URL of a page'
+const describe = 'Update the name or URL of a Page.'
 const builder = {
   uuid: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The UUID of the page'
+    describe: 'The UUID of the Page.'
   },
-  name: { describe: 'The name of the page' },
-  url: { describe: 'The URL of the page' },
+  name: { describe: 'Update the name of the Page.' },
+  url: { describe: 'Update the URL of the Page.' },
   site: options.site,
   json: options.json
 }

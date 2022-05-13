@@ -163,13 +163,13 @@ const main = async args => {
 
 const command = 'download-snapshot-artifacts [options]'
 const describe =
-  'Downloads the artifacts of a snapshot to ./snapshot-artifacts/<id>'
+  'Download the artifacts of a Snapshot to ./snapshot-artifacts/<id>. Includes: lighthouse.json, render progress screenshots, render progress MP4 video, HAR file (request log) and all other metrics and data available through the Calibre interface.'
 const builder = {
   site: options.site,
   id: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The id of the snapshot'
+    describe: 'The id of the Snapshot.'
   },
   json: options.json
 }

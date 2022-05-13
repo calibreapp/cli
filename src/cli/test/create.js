@@ -92,15 +92,15 @@ const command = 'create <url> [options]'
 const describe = 'Run a Single Page Test against any public URL.'
 const builder = {
   device: {
-    describe: 'Set the emulated test device.'
+    describe: 'Choose the emulated test device.'
   },
   location: {
     demandOption: true,
     requiresArg: true,
-    describe: 'Set the location for the test.'
+    describe: 'Choose the location for the test.'
   },
   connection: {
-    describe: 'Set the emulated network connection speed.'
+    describe: 'Choose the emulated network connection speed.'
   },
   adblocker: {
     describe: 'Turn adblocking on or off.',

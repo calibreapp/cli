@@ -15,7 +15,7 @@ const main = async function (args) {
 
   if (process.stdout.isTTY && !args.confirm) {
     return new Error(
-      'Add the --confirm flag to confirm the immediate & irreversible deletion of this deploy.'
+      'Add the --confirm flag to confirm the immediate and irreversible deletion of this deploy.'
     )
   }
 
@@ -33,16 +33,16 @@ const main = async function (args) {
 }
 
 const command = 'delete-deploy [options]'
-const describe = 'Deletes a deploy from a site'
+const describe = 'Delete a deploy from a selected Site.'
 const builder = {
   site: options.site,
   uuid: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The uuid of the deploy'
+    describe: 'The UUID of the deploy.'
   },
   confirm: {
-    describe: 'Confirm the deletion'
+    describe: 'Use this flag to confirm the deletion of the selected deploy.'
   },
   json: options.json
 }

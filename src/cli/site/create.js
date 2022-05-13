@@ -74,29 +74,29 @@ const main = async function (args) {
 }
 
 const command = 'create <name> [options]'
-const describe = 'Add a site for Calibre to monitor'
+const describe = 'Add a Site for Calibre to monitor.'
 const builder = {
   url: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The homepage URL of the site'
+    describe: 'The URL of the Site.'
   },
   location: {
     demandOption: true,
     requiresArg: true,
-    describe: 'Calibre will monitor from this location'
+    describe: 'Choose the location for the test.'
   },
   team: {
-    describe: 'The identifying slug of the team'
+    describe: 'The identifying slug of the Team.'
   },
   schedule: {
     describe:
-      'Schedule for automated snapshots. One of: hourly, daily, every_x_hours',
+      'Set the schedule for automated Snapshots. Available options: hourly, daily, every_x_hours.',
     default: 'every_x_hours'
   },
   interval: {
     describe:
-      "Automated snapshot interval. UTC hour of day for 'daily', hour interval for 'every_x_hours'",
+      'Set the Snapshot interval. Provide UTC hour (between 0 and 23) for daily Snapshots and numeric hour interval for every_x_hours option (between 1 and 168 hours).',
     default: 6
   },
   json: options.json

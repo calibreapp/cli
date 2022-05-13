@@ -61,7 +61,7 @@ const main = async args => {
 }
 
 const command = 'deploys [options]'
-const describe = 'Print a list of deploys'
+const describe = 'List all deployments for a Site.'
 const handler = main
 const builder = {
   site: options.site,

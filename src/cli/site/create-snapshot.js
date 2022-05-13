@@ -27,10 +27,10 @@ const main = async function (args) {
 }
 
 const command = 'create-snapshot [options]'
-const describe = 'Create a snapshot'
+const describe = 'Create a Snapshot.'
 const builder = {
   site: options.site,
-  ref: { describe: 'Sets a reference to the snapshot' },
+  ref: { describe: 'Set a reference to the Snapshot.' },
   json: options.json
 }
 const handler = main
