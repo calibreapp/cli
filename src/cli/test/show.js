@@ -30,7 +30,7 @@ const main = async args => {
 }
 
 const command = 'show <uuid>'
-const describe = 'Print the details of a given test'
+const describe = 'See the results of a Single Page Test (also as outputted by the test create command).'
 const handler = main
 const builder = {
   json: options.json

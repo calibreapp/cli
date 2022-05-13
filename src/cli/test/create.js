@@ -89,39 +89,39 @@ const main = async function (args) {
 }
 
 const command = 'create <url> [options]'
-const describe = 'Run a test against any public URL'
+const describe = 'Run a Single Page Test against any public URL.'
 const builder = {
   device: {
-    describe: 'Sets the emulated device that the test will be run on'
+    describe: 'Set the emulated test device.'
   },
   location: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The test will be run on a machine in this location'
+    describe: 'Set the location for the test.'
   },
   connection: {
-    describe: 'Sets the emulated connection speed for this test'
+    describe: 'Set the emulated network connection speed.'
   },
   adblocker: {
-    describe: 'Turn adblocking on/off',
+    describe: 'Turn adblocking on or off.',
     type: 'boolean',
     default: false
   },
   private: {
-    describe: 'Private tests are only accessible by logged in team members',
+    describe: 'Make the results of a test private (only accessible by members of your Calibre organisation).',
     type: 'boolean',
     default: false
   },
   'cookie-jar': {
-    describe: 'Uses a netscape formatted cookie jar file at this path'
+    describe: 'Set cookies by specifying a path to a Netscape formatted cookie jar file.'
   },
   headers: {
     describe:
-      "Stringify'd JSON HTTP Header key/value pairs or path to JSON file of HTTP Header key/value pairs "
+      'Set HTTP headers by providing a path to a JSON file or a valid JSON key-value pairs.'
   },
   json: options.json,
   waitForTest: {
-    describe: 'Wait for test to complete before returning',
+    describe: 'Wait for the test to complete before showing the results (default: test result link is shown immediately).',
     type: 'boolean',
     default: false
   }
