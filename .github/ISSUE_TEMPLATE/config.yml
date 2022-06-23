@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: CLI Commands Guide
+    url: https://calibreapp.com/docs/automation/cli-commands
+    about: Need a hand with available commands? Check this reference page. 
+  - name: Customer Support
+    url: mailto:support@calibreapp.com
+    about: Are you a customer? Our technical support team can help you tailor CLI to your needs.
