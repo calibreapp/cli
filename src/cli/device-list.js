@@ -29,7 +29,12 @@ const main = async args => {
 
   const rows = index.map(row => {
     return {
-      identifier: chalk.cyan(row.name)
+      identifier: chalk.cyan(row.tag),
+      name: row.title,
+      type: row.type,
+      'screen width': row.screenWidth,
+      'screen height': row.screenHeight,
+      status: row.isDeprecated ? 'Deprecated' : 'Active'
     }
   })
 
