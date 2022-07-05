@@ -44,7 +44,7 @@
     "execa": "^6.1.0",
     "express": "^4.16.4",
     "jest": "^27.5.1",
-    "prettier": "2.6.2"
+    "prettier": "2.7.1"
   },
   "scripts": {
     "ci": "NODE_OPTIONS='--no-warnings --experimental-vm-modules' CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
