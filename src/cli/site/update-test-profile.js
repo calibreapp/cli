@@ -46,7 +46,8 @@ const main = async function (args) {
   }
 }
 const command = 'update-test-profile [options]'
-const describe = 'Update Test Profile settings. Only changes specified attributes.'
+const describe =
+  'Update Test Profile settings. Only changes specified attributes.'
 const builder = {
   uuid: {
     demandOption: true,
@@ -72,7 +73,8 @@ const builder = {
     default: false
   },
   'cookie-jar': {
-    describe: 'Set cookies by specifying a path to a Netscape formatted cookie jar file.'
+    describe:
+      'Set cookies by specifying a path to a Netscape formatted cookie jar file.'
   }
 }
 

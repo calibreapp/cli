@@ -2,17 +2,20 @@ import { request } from './graphql.js'
 
 const LIST_QUERY = `
   query{
-    __type(name: "DeviceTag") {
-      enumValues {
-        name
-      }
+    emulatedDevices {
+      tag
+      title
+      screenWidth
+      screenHeight
+      type
+      isDiscontinued
     }
   }
 `
 
 const list = async () => {
   const response = await request({ query: LIST_QUERY })
-  return response.__type.enumValues
+  return response.emulatedDevices
 }
 
 export { list }

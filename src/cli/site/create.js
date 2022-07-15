@@ -38,17 +38,18 @@ const main = async function (args) {
   const testProfiles = [
     {
       name: 'Chrome Desktop',
+      device: 'Desktop',
       connection: 'cable'
     },
     {
-      name: 'MotoG4, 3G connection',
-      device: 'MotorolaMotoG4',
-      connection: 'regular3G'
+      name: 'iPhone, 4G LTE',
+      device: 'iPhone12',
+      connection: 'LTE'
     },
     {
-      name: 'iPhone, 4G LTE',
-      device: 'iPhone8',
-      connection: 'LTE'
+      name: 'Motorola Moto G Power, 3G connection',
+      device: 'MotorolaMotoGPower',
+      connection: 'regular3G'
     }
   ]
 

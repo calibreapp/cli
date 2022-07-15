@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
-import { TestProfile } from "calibre";
+import { TestProfile } from 'calibre'
 
 const create = async () => {
   const profileParams = {
     site: 'calibre',
     name: 'Chrome Desktop',
+    device: 'Desktop',
+    connection: 'cable',
     cookies: [
       {
         name: 'app.sid',

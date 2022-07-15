@@ -42,7 +42,7 @@ ${profile.jsIsDisabled ? '• Javascript Disabled' : ''}
 ${profile.adBlockerIsEnabled ? '• Adblocker Enabled' : ''}
 
 ${cookies(profile.cookies)}
-  `
+  `.trim()
 }
 
 export default view

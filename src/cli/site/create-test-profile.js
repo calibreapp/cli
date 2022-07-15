@@ -49,7 +49,8 @@ const describe = 'Add a Test Profile to a Site.'
 const builder = {
   site: options.site,
   device: {
-    describe: 'Choose the emulated test device.'
+    describe: 'Choose the emulated test device.',
+    default: 'Desktop'
   },
   connection: {
     describe: 'Choose the emulated network connection speed.'
@@ -65,7 +66,8 @@ const builder = {
     default: false
   },
   'cookie-jar': {
-    describe: 'Set cookies by specifying a path to a Netscape formatted cookie jar file.'
+    describe:
+      'Set cookies by specifying a path to a Netscape formatted cookie jar file.'
   },
   json: options.json
 }
