@@ -9,7 +9,7 @@ const createTest = async () => {
 
   // Optional
   const device = 'iPhone12'
-  const connection = 'good3G'
+  const connection = 'LTE'
   const isPrivate = false
   const cookies = [
     {
