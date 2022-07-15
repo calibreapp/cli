@@ -5,7 +5,7 @@ set -e
 # The URL that we will test
 URL=https://calibreapp.com/cli
 TEST_LOCATION=Sydney # To get a list of possible test locations, run `calibre location-list`
-TEST_DEVICE=iPhone8 # To get a list of possible devices, run `calibre device-list`
+TEST_DEVICE=iPhone12 # To get a list of possible devices, run `calibre device-list`
 TEST_CONNECTION=good3G # To get a list of possible connection speeds, run `calibre connection-list`
 
 echo "+++ Running test for $URL (Location: $TEST_LOCATION) (Device: $TEST_DEVICE) (Connection: $TEST_CONNECTION)"

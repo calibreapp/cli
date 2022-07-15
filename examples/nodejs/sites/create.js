@@ -31,6 +31,8 @@ const create = async () => {
   const testProfiles = [
     {
       name: 'Chrome Desktop',
+      device: 'Desktop',
+      connection: 'cable',
       cookies: [
         {
           name: 'app.sid',
@@ -43,9 +45,9 @@ const create = async () => {
       ]
     },
     {
-      name: 'iPhone 8, 3G',
-      device: 'iPhone8',
-      connection: 'good3G'
+      name: 'iPhone 12, 3G',
+      device: 'iPhone12',
+      connection: 'LTE'
     }
   ]
 

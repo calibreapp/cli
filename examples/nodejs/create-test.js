@@ -8,7 +8,7 @@ const createTest = async () => {
   const location = 'Sydney'
 
   // Optional
-  const device = 'iPhone8'
+  const device = 'iPhone12'
   const connection = 'good3G'
   const isPrivate = false
   const cookies = [
