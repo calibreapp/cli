@@ -34,7 +34,7 @@ const main = async args => {
       type: row.type,
       'screen width': row.screenWidth,
       'screen height': row.screenHeight,
-      status: row.isDeprecated ? 'Deprecated' : 'Active'
+      status: row.isDiscontinued ? 'Discontinued' : 'Current'
     }
   })
 

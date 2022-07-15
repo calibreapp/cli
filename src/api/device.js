@@ -8,7 +8,7 @@ const LIST_QUERY = `
       screenWidth
       screenHeight
       type
-      isDeprecated
+      isDiscontinued
     }
   }
 `
