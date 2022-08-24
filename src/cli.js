@@ -1,4 +1,4 @@
-#!/usr/bin/env -S NODE_NO_WARNINGS=1 node
+#!/usr/bin/env NODE_NO_WARNINGS=1 node
 
 import fs from 'fs'
 
