@@ -1,4 +1,4 @@
-#!/usr/bin/env NODE_NO_WARNINGS=1 node
+#!/usr/bin/env node
 
 import fs from 'fs'
 
@@ -17,6 +17,7 @@ import commands from './cli-commands.js'
 
 yargs(hideBin(process.argv))
   .usage(`${chalk.bold('♠  calibre')} subcommand [options]`)
+  .scriptName('calibre')
   .commands(commands)
   .demandCommand()
   .recommendCommands()
