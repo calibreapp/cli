@@ -199,7 +199,7 @@ Add a Test Profile to a Site.
 Flags:
  
   * `--site`: A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command. (string),
-  * `--device`: Choose the emulated test device.,
+  * `--device`: Choose the emulated test device. (default: `Desktop`),
   * `--connection`: Choose the emulated network connection speed.,
   * `--javascript`: Turn JavaScript execution on or off. (default: `true`) (boolean),
   * `--adblocker`: Turn adblocking on or off. (boolean),
