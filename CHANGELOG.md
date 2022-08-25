@@ -1,3 +1,9 @@
+# 5.0.3 (2022-08-25)
+
+## 🛠 Core
+
+- Fixed Windows support
+
 # 5.0.2 (2022-07-15)
 
 ## 🚩 Commands and flags
