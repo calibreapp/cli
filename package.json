@@ -47,8 +47,8 @@
     "prettier": "2.7.1"
   },
   "scripts": {
-    "ci": "NODE_OPTIONS='--no-warnings --experimental-vm-modules' CI=true TZ=Etc/GMT jest --coverage --runInBand --no-colors",
-    "test": "NODE_OPTIONS='--no-warnings --experimental-vm-modules' TZ=Etc/GMT jest",
+    "ci": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --runInBand --no-colors --verbose=false",
+    "test": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --verbose=false",
     "lint": "eslint .",
     "clean": "rm -rf dist/",
     "build": "npm run clean && esbuild index.js --bundle --platform=node --outfile=dist/index.cjs",
