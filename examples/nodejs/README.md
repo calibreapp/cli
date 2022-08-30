@@ -16,6 +16,7 @@ Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR
 - **[graphql-request](graphql-request.js)** - Make a request to the Calibre GraphQL API
 - **[sites](sites)**
   - **[create.js](sites/create.js)** - Creates a site
+  - **[create-site-webhook-results.js](sites/create-site-webhook-results.js)** - Creates a site & posts snapshot results to webhook URL
   - **[delete.js](sites/delete.js)** - Deletes a given site
   - **[list.js](sites/list.js)** - Lists all sites
   - **[get.js](sites/get.js)** - Get a given site
