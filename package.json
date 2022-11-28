@@ -44,7 +44,7 @@
     "execa": "^6.1.0",
     "express": "^4.16.4",
     "jest": "^27.5.1",
-    "prettier": "2.7.1"
+    "prettier": "2.8.0"
   },
   "scripts": {
     "ci": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --runInBand --no-colors --verbose=false",
