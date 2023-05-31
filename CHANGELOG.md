@@ -1,3 +1,9 @@
+# 5.0.4 (2023-05-31)
+
+## 🛠 Core
+
+- Add Brotli decompression support for report JSON downloads
+
 # 5.0.3 (2022-08-25)
 
 ## 🛠 Core
