@@ -1,3 +1,9 @@
+# 6.0.0 (2023-08-01)
+
+## 🚩 Commands and flags
+
+- Adds a new command: `calibre site create-pull-request-review` to compare a preview deployment for a Site already monitored by Calibre.
+
 # 5.0.4 (2023-05-31)
 
 ## 🛠 Core
