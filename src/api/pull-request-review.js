@@ -9,6 +9,29 @@ const CREATE_MUTATION = `
   }
 `
 
+const LIST_QUERY = `
+  query ListPages(
+    $site: String!
+    $count: Int!
+    $cursor: String
+  ) {
+    organisation {
+      site(slug: $site) {
+        pullRequestReviews {
+          edges {
+            node {
+              uuid
+              name
+              url
+              status
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 const GET_PR_REVIEW_BY_UUID = `
   query GetPullRequestReviewByUuid($site: String!, $uuid: String!) {
     organisation {
@@ -36,6 +59,15 @@ const create = async ({ site, name, url, sha }) => {
   return response.createPullRequestReview
 }
 
+const list = async ({ site }) => {
+  const response = await request({ query: LIST_QUERY, site })
+  return {
+    pullRequestReviews: response.organisation.site.pullRequestReviews.edges.map(
+      edge => edge.node
+    )
+  }
+}
+
 const getPRReviewByUuid = async (site, uuid) => {
   const response = await request({
     query: GET_PR_REVIEW_BY_UUID,
@@ -57,4 +89,4 @@ const waitForReviewCompletion = async (site, uuid) => {
   }
 }
 
-export { create, waitForReviewCompletion }
+export { create, list, waitForReviewCompletion }
