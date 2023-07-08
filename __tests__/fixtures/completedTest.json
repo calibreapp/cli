@@ -9,6 +9,7 @@
     "code": "NO_ERROR",
     "message": ""
   },
+  "markdown": "# Markdown title\t\tBody\t\t* List item 1\t\t* List item 2\t\t",
   "metrics": [
     {
       "name": "json_body_size_in_bytes",

@@ -1,8 +1,9 @@
-import marked from 'marked'
+import { marked } from 'marked'
 import markedTerminal from 'marked-terminal'
 
 const view = test => {
   marked.setOptions({
+    headerIds: false,
     renderer: new markedTerminal({
       emoji: true,
       tab: 2

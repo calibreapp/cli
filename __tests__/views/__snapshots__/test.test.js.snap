@@ -1,41 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test completed 1`] = `
+"[35m[4m[1m# Markdown title		Body		* List item 1		* List item 2[22m[24m[39m
+
 "
-https://calibreapp.com on Chrome Desktop
-🇺🇸  North Virginia, USA
-
-5:09AM 26-Apr-2019
-
-Overall scores
-
-CATEGORY            | SCORE
-Performance         |   100
-Best Practices      |    93
-Accessibility       |    76
-SEO                 |   100
-Progressive Web App |    68
-
-Timing
-
-Time to First Byte
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 41 ms
-
-Response time
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 64 ms
-
-First Contentful Paint
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 191 ms
-
-Time to Interactive
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 1.32 sec
-
-Number of requests: 44
-
-Total Page transferred: 764.17 KB
-
-View the full report https://calibreapp.com/tests/b3baaa1/1fe9862
-  "
 `;
 
 exports[`test errored 1`] = `
@@ -52,41 +20,9 @@ View the full report https://calibreapp.com/tests/b3baaa1/1fe9862
 `;
 
 exports[`test incomplete 1`] = `
+"[0mTest in progress[0m
+
 "
-https://calibreapp.com on Chrome Desktop
-🇺🇸  North Virginia, USA
-
-5:09AM 26-Apr-2019
-
-Overall scores
-
-CATEGORY            | SCORE
-Performance         |   N/A
-Best Practices      |    93
-Accessibility       |    76
-SEO                 |   100
-Progressive Web App |    68
-
-Timing
-
-Time to First Byte
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 41 ms
-
-Response time
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 64 ms
-
-First Contentful Paint
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 191 ms
-
-Time to Interactive
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 1.32 sec
-
-Asset count metric not available.
-
-Page size in bytes metric not available.
-
-View the full report https://calibreapp.com/tests/b3baaa1/1fe9862
-  "
 `;
 
 exports[`test timeout 1`] = `
