@@ -2,7 +2,8 @@
 
 ## 🚩 Commands and flags
 
-- Adds a new command: `calibre site create-pull-request-review` to compare a preview deployment for a Site already monitored by Calibre.
+- Adds new command: `calibre site create-pull-request-review` to compare a preview deployment for a Site already monitored by Calibre.
+- Adds new command: `calibre site pull-request-reviews` to list Pull Request reviews.
 
 # 5.0.4 (2023-05-31)
 
