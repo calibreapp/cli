@@ -10,7 +10,7 @@ const CREATE_MUTATION = `
 `
 
 const LIST_QUERY = `
-  query ListPages(
+  query ListPullRequestReviews(
     $site: String!
     $count: Int!
     $cursor: String
