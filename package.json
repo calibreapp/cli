@@ -50,7 +50,7 @@
   },
   "scripts": {
     "ci": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --runInBand --no-colors --verbose=false",
-    "test": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --verbose=false",
+    "test": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --no-colors --verbose=false",
     "lint": "eslint .",
     "clean": "rm -rf dist/",
     "build": "npm run clean && esbuild index.js --bundle --platform=node --outfile=dist/index.cjs",
