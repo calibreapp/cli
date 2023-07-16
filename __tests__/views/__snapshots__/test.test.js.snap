@@ -47,16 +47,9 @@ exports[`test completed 1`] = `
 `;
 
 exports[`test errored 1`] = `
+"[32m[1m## Error markdown here[22m[39m
+
 "
-https://calibreapp.com on Chrome Desktop
-🇺🇸  North Virginia, USA
-
-5:09AM 26-Apr-2019
-
-Calibre was unable to load the page. Please make sure the page URL and site authentication settings are correct.
-
-View the full report https://calibreapp.com/tests/b3baaa1/1fe9862
-    "
 `;
 
 exports[`test incomplete 1`] = `
@@ -66,13 +59,7 @@ exports[`test incomplete 1`] = `
 `;
 
 exports[`test timeout 1`] = `
+"[32m[1m## Timeout markdown here[22m[39m
+
 "
-https://calibreapp.com on Chrome Desktop
-🇺🇸  North Virginia, USA
-
-5:09AM 26-Apr-2019
-
-The test took too long to complete.
-
-View the full report https://calibreapp.com/tests/b3baaa1/1fe9862"
 `;
