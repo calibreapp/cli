@@ -16,7 +16,7 @@ const main = async function (args) {
   let cookies = []
   let headers = []
 
-  if (!args.json) {
+  if (!args.json && !args.markdown) {
     spinner = ora('Connecting to Calibre')
     spinner.color = 'magenta'
     spinner.start()
@@ -65,13 +65,15 @@ const main = async function (args) {
       isPrivate
     })
 
-    if (!args.json && !args.waitForTest) {
+    if (!args.json && !args.markdown && !args.waitForTest) {
       spinner.succeed(`Test scheduled: ${formattedTestUrl}`)
     } else {
       const test = await waitForTest(uuid)
 
       if (args.json) {
         console.log(JSON.stringify(test, null, 2))
+      } else if (args.markdown) {
+        console.log(test.markdown)
       } else {
         if (test.status == 'completed') {
           spinner.succeed(`Test complete: ${formattedTestUrl}`)
@@ -108,20 +110,24 @@ const builder = {
     default: false
   },
   private: {
-    describe: 'Make the results of a test private (only accessible by members of your Calibre organisation).',
+    describe:
+      'Make the results of a test private (only accessible by members of your Calibre organisation).',
     type: 'boolean',
     default: false
   },
   'cookie-jar': {
-    describe: 'Set cookies by specifying a path to a Netscape formatted cookie jar file.'
+    describe:
+      'Set cookies by specifying a path to a Netscape formatted cookie jar file.'
   },
   headers: {
     describe:
       'Set HTTP headers by providing a path to a JSON file or a valid JSON key-value pairs.'
   },
   json: options.json,
+  markdown: options.markdown,
   waitForTest: {
-    describe: 'Wait for the test to complete before showing the results (default: test result link is shown immediately).',
+    describe:
+      'Wait for the test to complete before showing the results (default: test result link is shown immediately).',
     type: 'boolean',
     default: false
   }
