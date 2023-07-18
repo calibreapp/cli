@@ -8,7 +8,7 @@ import { humaniseError } from '../../utils/api-error.js'
 const main = async args => {
   let spinner
 
-  if (!args.json) {
+  if (!args.json && !args.markdown) {
     spinner = ora('Connecting to Calibre')
     spinner.color = 'magenta'
     spinner.start()
@@ -19,7 +19,12 @@ const main = async args => {
   try {
     const response = await getTestByUuid(args.uuid)
 
-    if (args.json) return console.log(JSON.stringify(response, null, 2))
+    if (args.json) {
+      return console.log(JSON.stringify(response, null, 2))
+    }
+    if (args.markdown) {
+      return console.log(response.markdown)
+    }
 
     spinner.stop()
     console.log(formatTest(response))
@@ -30,10 +35,12 @@ const main = async args => {
 }
 
 const command = 'show <uuid>'
-const describe = 'See the results of a Single Page Test (also as outputted by the test create command).'
+const describe =
+  'See the results of a Single Page Test (also as outputted by the test create command).'
 const handler = main
 const builder = {
-  json: options.json
+  json: options.json,
+  markdown: options.markdown
 }
 
 export { command, describe, builder, handler }
