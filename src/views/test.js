@@ -5,6 +5,8 @@ const view = test => {
   marked.setOptions({
     headerIds: false,
     mangle: false,
+    link: '#3057f4',
+
     renderer: new markedTerminal({
       emoji: true,
       tab: 2
