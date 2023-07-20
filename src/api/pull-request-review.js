@@ -1,10 +1,11 @@
 import { request } from './graphql.js'
 
 const CREATE_MUTATION = `
-  mutation CreatePullRequestReview($site: String!, $attributes: PullRequestReviewInput!){
-    createPullRequestReview(site: $site, attributes: $attributes) {
-      uuid
+  mutation StartPullRequestReview($site: String!, $attributes: PullRequestReviewInput!){
+    startPullRequestReview(site: $site, attributes: $attributes) {
+      title
       status
+      branch
     }
   }
 `
@@ -12,81 +13,78 @@ const CREATE_MUTATION = `
 const LIST_QUERY = `
   query ListPullRequestReviews(
     $site: String!
-    $count: Int!
-    $cursor: String
   ) {
     organisation {
       site(slug: $site) {
         pullRequestReviews {
-          edges {
-            node {
-              uuid
-              name
-              url
-              status
-            }
-          }
-        }
-      }
-    }
-  }
-`
-
-const GET_PR_REVIEW_BY_UUID = `
-  query GetPullRequestReviewByUuid($site: String!, $uuid: String!) {
-    organisation {
-      site(slug: $slug) {
-        pullRequestReviews(uuid: $uuid) {
-          uuid
+          title
           status
+          branch
+          sha
+          createdAt
         }
       }
     }
   }
 `
 
-const create = async ({ site, name, url, sha }) => {
+const GET_PR_REVIEW_BY_BRANCH = `
+  query GetPullRequestReviewByBranch($site: String!, $branch: String) {
+    organisation {
+      site(slug: $site) {
+        pullRequestReviews(branch: $branch) {
+          branch
+          status
+          markdownReport
+        }
+      }
+    }
+  }
+`
+
+const create = async ({ site, title, url, branch, sha, config }) => {
   const response = await request({
     query: CREATE_MUTATION,
     site,
     attributes: {
-      name,
+      title,
       url,
-      sha
+      branch,
+      sha,
+      config
     }
   })
-
-  return response.createPullRequestReview
+  console.log(response)
+  return response.startPullRequestReview
 }
 
 const list = async ({ site }) => {
   const response = await request({ query: LIST_QUERY, site })
-  return {
-    pullRequestReviews: response.organisation.site.pullRequestReviews.edges.map(
-      edge => edge.node
-    )
-  }
+
+  return response.organisation.site.pullRequestReviews
 }
 
-const getPRReviewByUuid = async (site, uuid) => {
+const getPRReviewByBranch = async (site, branch) => {
   const response = await request({
-    query: GET_PR_REVIEW_BY_UUID,
+    query: GET_PR_REVIEW_BY_BRANCH,
     site,
-    uuid
+    branch
   })
 
-  return response.pullRequestReview
+  return response.organisation.site.pullRequestReviews
 }
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time))
-const waitForReviewCompletion = async (site, uuid) => {
+const waitForReviewCompletion = async (site, branch) => {
   // eslint-disable-next-line no-constant-condition
   while (true) {
     await delay(5000)
-    const review = await getPRReviewByUuid(site, uuid)
-    if (['completed', 'errored', 'timeout'].includes(review.status))
+    const [review] = await getPRReviewByBranch(site, branch)
+
+    if (['completed', 'errored', 'timeout'].includes(review?.status)) {
       return review
+    }
   }
 }
 
-export { create, list, waitForReviewCompletion }
+export { create, list, waitForReviewCompletion, getPRReviewByBranch }

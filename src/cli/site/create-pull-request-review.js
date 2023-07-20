@@ -1,3 +1,4 @@
+import { promises as fs } from 'fs'
 import ora from 'ora'
 
 import {
@@ -10,27 +11,35 @@ import { options } from '../../utils/cli.js'
 const main = async function (args) {
   let spinner
 
-  if (!args.json) {
-    spinner = ora('Connecting to Calibre')
+  if (!args.json || !args.markdown) {
+    const spinner = ora('Connecting to Calibre')
     spinner.color = 'magenta'
     spinner.start()
   }
 
+  if (args.configPath) {
+    args.config = await fs.readFile(args.configPath, 'utf8')
+  }
+
   try {
     const response = await create(args)
-    if (!args.json && !args.waitForResult) {
-      spinner.succeed(`Pull Request Review created: ${response.uuid}`)
-    } else {
-      const review = await waitForReviewCompletion(args.site, response.uuid)
 
-      if (review.status == 'completed') {
-        spinner.succeed(`Pull Request Review completed: ${review.uuid}`)
-        // Print markdown report, JSON or whatever happens here
-      }
+    if (args.json && !args.waitForResult) {
+      return console.log(JSON.stringify(response, null, 2))
     }
 
-    // Return result
-    if (args.json) return console.log(JSON.stringify(response, null, 2))
+    if (args.markdown && !args.waitForResult) {
+      return console.log(response.markdownReport)
+    }
+
+    if (args.waitForResult) {
+      spinner.succeed(`Pull Request Review queued (${response.branch})`)
+    } else if (!args.json) {
+      const review = await waitForReviewCompletion(args.site, response.branch)
+
+      // TODO: Convert markdown to terminal output
+      console.log(review.markdownReport)
+    }
   } catch (e) {
     if (args.json) return console.error(e)
     spinner.fail()
@@ -41,7 +50,7 @@ const main = async function (args) {
 const command = 'create-pull-request-review [options]'
 const describe = 'Create a Pull Request Review of a preview deployment.'
 const builder = {
-  name: {
+  title: {
     describe: 'e.g. "My Pull Request"'
   },
   site: options.site,
@@ -51,9 +60,18 @@ const builder = {
     describe:
       'The base URL of the preview deployment (e.g. https://my-pull-request-123.example.com).'
   },
+  branch: {
+    describe:
+      'The branch of the preview deployment. e.g. "my-pull-request-123".',
+    demandOption: true,
+    requiresArg: true
+  },
   sha: {
     describe:
       'The source control revision of the deployed code. e.g.: 9c72279, '
+  },
+  configPath: {
+    describe: 'Path to a Calibre YAML config file.'
   },
   waitForResult: {
     describe: 'Wait for PR to be evaluated before returning.',
@@ -61,7 +79,8 @@ const builder = {
     default: false
   },
 
-  json: options.json
+  json: options.json,
+  markdown: options.markdown
 }
 
 const handler = main

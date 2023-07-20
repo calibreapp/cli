@@ -19,6 +19,7 @@ import * as SiteUpdateTestProfile from './site/update-test-profile.js'
 import * as SiteDeleteTestProfile from './site/delete-test-profile.js'
 import * as SiteCreatePullRequestReview from './site/create-pull-request-review.js'
 import * as SiteListPullRequestReviews from './site/pull-request-reviews.js'
+import * as SitePullRequest from './site/pull-request-review.js'
 
 const commands = [
   SiteCreate,
@@ -41,7 +42,8 @@ const commands = [
   SiteUpdateTestProfile,
   SiteDeleteTestProfile,
   SiteCreatePullRequestReview,
-  SiteListPullRequestReviews
+  SiteListPullRequestReviews,
+  SitePullRequest
 ]
 
 const command = 'site <command>'

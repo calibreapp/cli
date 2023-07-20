@@ -1,4 +1,3 @@
-import chalk from 'chalk'
 import ora from 'ora'
 import columnify from 'columnify'
 
@@ -7,7 +6,7 @@ import { humaniseError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
 const main = async args => {
-  let index
+  let pullRequestReviews
   let spinner
   if (!args.json) {
     spinner = ora('Connecting to Calibre')
@@ -16,8 +15,9 @@ const main = async args => {
   }
 
   try {
-    index = await list(args)
-    if (args.json) return console.log(JSON.stringify(index, null, 2))
+    pullRequestReviews = await list(args)
+    if (args.json)
+      return console.log(JSON.stringify(pullRequestReviews, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
     spinner.fail()
@@ -25,12 +25,13 @@ const main = async args => {
   }
 
   spinner.stop()
-  const rows = index.pullRequestReviews.map(row => {
+  const rows = pullRequestReviews.map(row => {
     return {
-      uuid: chalk.grey(row.uuid),
-      name: row.name,
-      url: row.url,
-      status: row.status
+      title: row.title,
+      branch: row.branch,
+      sha: row.sha,
+      status: row.status,
+      created: row.created_at
     }
   })
 
