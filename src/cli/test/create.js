@@ -73,7 +73,7 @@ const main = async function (args) {
       if (args.json) {
         console.log(JSON.stringify(test, null, 2))
       } else if (args.markdown) {
-        console.log(test.markdown)
+        console.log(test.markdownReport)
       } else {
         if (test.status == 'completed') {
           spinner.succeed(`Test complete: ${formattedTestUrl}`)

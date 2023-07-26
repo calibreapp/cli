@@ -13,7 +13,7 @@ const view = test => {
     })
   })
 
-  return marked(test.markdown)
+  return marked(test.markdownReport)
 }
 
 export default view

@@ -23,7 +23,7 @@ const main = async args => {
       return console.log(JSON.stringify(response, null, 2))
     }
     if (args.markdown) {
-      return console.log(response.markdown)
+      return console.log(response.markdownReport)
     }
 
     spinner.stop()

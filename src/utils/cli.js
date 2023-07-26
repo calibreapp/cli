@@ -1,12 +1,14 @@
 const options = {
   site: {
     demandOption: true,
-    describe: 'A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command.',
+    describe:
+      'A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command.',
     type: 'string',
     requiresArg: true
   },
   json: { describe: 'Outputs the results of the command in JSON format.' },
   csv: { describe: 'Outputs the results of the command in CSV format.' },
+  markdown: { describe: 'Outputs the results of the command in Markdown.' },
   from: {
     describe:
       'The start date to retrieve data from in the Year-Month-Day format (default: 7 days ago).'
