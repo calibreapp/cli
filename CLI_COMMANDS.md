@@ -258,6 +258,7 @@ Flags:
   * `--cookie-jar`: Set cookies by specifying a path to a Netscape formatted cookie jar file.,
   * `--headers`: Set HTTP headers by providing a path to a JSON file or a valid JSON key-value pairs.,
   * `--json`: Outputs the results of the command in JSON format.,
+  * `--markdown`: Outputs the results of the command in Markdown.,
   * `--waitForTest`: Wait for the test to complete before showing the results (default: test result link is shown immediately). (boolean)
 
 
@@ -285,7 +286,8 @@ See the results of a Single Page Test (also as outputted by the test create comm
 
 Flags:
  
-  * `--json`: Outputs the results of the command in JSON format.
+  * `--json`: Outputs the results of the command in JSON format.,
+  * `--markdown`: Outputs the results of the command in Markdown.
 
 
 ### calibre connection-list

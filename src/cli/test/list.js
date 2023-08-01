@@ -40,8 +40,8 @@ const main = async args => {
       uuid: chalk.grey(row.uuid),
       url: formattedTestUrl,
       device: row.device ? row.device.title : 'Desktop',
-      connection: row.bandwidth ? row.bandwidth.title : 'Not Throttled',
-      location: `${row.location.emoji}  ${row.location.shortName}`,
+      connection: row.connection ? row.connection.title : 'Not Throttled',
+      location: row.location.shortName,
       status: `${titleize(row.status)} ${dateFormat(
         new Date(row.updatedAt),
         'h:mma d-MMM-yyyy'
