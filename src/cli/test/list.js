@@ -41,7 +41,7 @@ const main = async args => {
       url: formattedTestUrl,
       device: row.device ? row.device.title : 'Desktop',
       connection: row.bandwidth ? row.bandwidth.title : 'Not Throttled',
-      location: `${row.location.emoji}  ${row.location.shortName}`,
+      location: row.location.shortName,
       status: `${titleize(row.status)} ${dateFormat(
         new Date(row.updatedAt),
         'h:mma d-MMM-yyyy'
