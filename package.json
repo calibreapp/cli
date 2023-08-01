@@ -39,13 +39,13 @@
     "yargs": "^17.4.1"
   },
   "devDependencies": {
-    "esbuild": "^0.17.5",
+    "esbuild": "^0.18.13",
     "eslint": "^8.13.0",
     "eslint-plugin-node": "^11.0.0",
     "execa": "^7.1.1",
     "express": "^4.16.4",
     "jest": "^27.5.1",
-    "prettier": "2.8.8"
+    "prettier": "3.0.0"
   },
   "scripts": {
     "ci": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --runInBand --no-colors --verbose=false",
