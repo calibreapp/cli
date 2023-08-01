@@ -1,4 +1,4 @@
-# 6.0.0 (2023-08-01)
+# 5.1.0 (Unreleased)
 
 ## 🚩 Commands and flags
 
