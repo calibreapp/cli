@@ -9,6 +9,7 @@
     "code": "INTERSTITIAL_ERROR",
     "message": "Calibre was unable to load the page. Please make sure the page URL and site authentication settings are correct."
   },
+  "markdownReport": "## Timeout markdown here",
   "metrics": [
     {
       "name": "json_body_size_in_bytes",

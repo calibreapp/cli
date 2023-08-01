@@ -51,7 +51,7 @@ const GET_BY_UUID = `
         adBlockerIsEnabled
         isPrivate
         runtimeError: artifact(name: TEST_ARTIFACT_RUNTIME_ERROR)
-
+        markdownReport
 
         metrics: measurements {
           name

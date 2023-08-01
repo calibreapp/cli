@@ -30,7 +30,6 @@ const main = async args => {
   const rows = index.map(row => {
     return {
       identifier: chalk.cyan(row.tag),
-      flag: row.emoji,
       name: row.name,
       'ipv4 address': row.agents.map(a => a.ipv4).join(', ')
     }

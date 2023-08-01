@@ -9,6 +9,7 @@
     "code": "NO_ERROR",
     "message": ""
   },
+  "markdownReport": "Test in progress",
   "metrics": [
     {
       "name": "json_body_size_in_bytes",

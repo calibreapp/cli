@@ -11,6 +11,7 @@ const options = {
     describe: 'Outputs the results of the command in Markdown format.'
   },
   csv: { describe: 'Outputs the results of the command in CSV format.' },
+  markdown: { describe: 'Outputs the results of the command in Markdown.' },
   from: {
     describe:
       'The start date to retrieve data from in the Year-Month-Day format (default: 7 days ago).'
