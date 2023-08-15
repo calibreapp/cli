@@ -31,7 +31,7 @@ const main = async args => {
       branch: row.branch,
       sha: row.sha,
       status: row.status,
-      created: row.created_at
+      created: row.createdAt
     }
   })
 
