@@ -1,6 +1,7 @@
 import ora from 'ora'
 
 import { getPRReviewByBranch } from '../../api/pull-request-review.js'
+import formatTest from '../../views/markdown.js'
 import { options } from '../../utils/cli.js'
 import { humaniseError } from '../../utils/api-error.js'
 
@@ -16,12 +17,12 @@ const main = async args => {
   }
 
   try {
-    const response = await getPRReviewByBranch(args.site, args.branch)
+    const [response] = await getPRReviewByBranch(args.site, args.branch)
 
     if (args.json) return console.log(JSON.stringify(response, null, 2))
 
     spinner.stop()
-    console.log(response)
+    console.log(formatTest(response.markdownReport))
   } catch (e) {
     spinner.fail()
     throw new Error(humaniseError(e))

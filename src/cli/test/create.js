@@ -5,7 +5,7 @@ import cookiefile from 'cookiefile'
 import fs from 'fs'
 
 import { create, waitForTest } from '../../api/test.js'
-import formatTest from '../../views/test.js'
+import formatTest from '../../views/markdown.js'
 import { humaniseError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
