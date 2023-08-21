@@ -42,7 +42,7 @@
     "esbuild": "^0.18.13",
     "eslint": "^8.13.0",
     "eslint-plugin-node": "^11.0.0",
-    "execa": "^7.1.1",
+    "execa": "^8.0.1",
     "express": "^4.16.4",
     "jest": "^27.5.1",
     "prettier": "3.0.0"
