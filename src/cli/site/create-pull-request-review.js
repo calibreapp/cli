@@ -7,14 +7,27 @@ import {
 } from '../../api/pull-request-review.js'
 import { humaniseError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
+import formatMarkdownResult from '../../views/markdown.js'
+
+const print = function (args, pullRequestReviewResponse) {
+  if (args.json && !args.waitForResult) {
+    return console.log(JSON.stringify(pullRequestReviewResponse, null, 2))
+  }
+
+  if (args.markdown && !args.waitForResult) {
+    return console.log(pullRequestReviewResponse.markdownReport)
+  }
+
+  return console.log(
+    formatMarkdownResult(pullRequestReviewResponse.markdownReport)
+  )
+}
 
 const main = async function (args) {
   let spinner
 
-  if (!args.json || !args.markdown) {
-    const spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
+  if (!args.json && !args.markdown) {
+    spinner = ora('Connecting to Calibre').start()
   }
 
   if (args.configPath) {
@@ -24,33 +37,27 @@ const main = async function (args) {
   try {
     const response = await create(args)
 
-    // If JSON and not waiting for result, return immediately
-    if (args.json && !args.waitForResult) {
-      return console.log(JSON.stringify(response, null, 2))
-    }
-
-    // If markdown and not waiting for result, return immediately
-    if (args.markdown && !args.waitForResult) {
-      return console.log(response.markdownReport)
-    }
-
-    // If waiting for result, wait for completion, then return. Otherwise, return immediately.
-    if (args.waitForResult) {
-      if (!args.json && !args.markdown) {
-        spinner.succeed(`Pull Request Review queued (${response.branch})`)
+    if (!args.waitForResult) {
+      return print(args, response)
+    } else {
+      if (spinner) {
+        spinner.succeed(`Pull Request Review queued: ${args.branch}`)
+        spinner = ora('Waiting for Pull Request Review to complete').start()
       }
 
-      const review = await waitForReviewCompletion(args.site, response.branch)
+      const completedResponse = await waitForReviewCompletion(
+        args.site,
+        args.branch
+      )
 
-      if (args.json) return console.log(JSON.stringify(review, null, 2))
-      if (args.markdown) return console.log(review.markdownReport)
+      if (spinner) {
+        spinner.succeed('Pull Request Review completed')
+      }
 
-      console.log(review.markdownReport)
-    } else {
-      console.log(response.markdownReport)
+      return print(args, completedResponse)
     }
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json || args.markdown) return console.error(e)
     spinner.fail()
     throw new Error(humaniseError(e))
   }
@@ -60,14 +67,16 @@ const command = 'create-pull-request-review [options]'
 const describe = 'Create a Pull Request Review of a preview deployment.'
 const builder = {
   title: {
-    describe: 'e.g. "My Pull Request"'
+    describe: 'e.g. "My Pull Request"',
+    demandOption: true,
+    requiresArg: true
   },
   site: options.site,
   url: {
-    demandOption: true,
-    requiresArg: true,
     describe:
-      'The base URL of the preview deployment (e.g. https://my-pull-request-123.example.com).'
+      'The base URL of the preview deployment (e.g. https://my-pull-request-123.example.com).',
+    demandOption: true,
+    requiresArg: true
   },
   branch: {
     describe:
@@ -76,7 +85,10 @@ const builder = {
     requiresArg: true
   },
   sha: {
-    describe: 'The source control revision of the deployed code. e.g.: 9c72279.'
+    describe:
+      'The source control revision of the deployed code. e.g.: 9c72279.',
+    demandOption: true,
+    requiresArg: true
   },
   configPath: {
     describe: 'Path to a Calibre YAML config file.'
