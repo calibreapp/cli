@@ -24,21 +24,30 @@ const main = async function (args) {
   try {
     const response = await create(args)
 
+    // If JSON and not waiting for result, return immediately
     if (args.json && !args.waitForResult) {
       return console.log(JSON.stringify(response, null, 2))
     }
 
+    // If markdown and not waiting for result, return immediately
     if (args.markdown && !args.waitForResult) {
       return console.log(response.markdownReport)
     }
 
+    // If waiting for result, wait for completion, then return. Otherwise, return immediately.
     if (args.waitForResult) {
-      spinner.succeed(`Pull Request Review queued (${response.branch})`)
-    } else if (!args.json) {
+      if (!args.json && !args.markdown) {
+        spinner.succeed(`Pull Request Review queued (${response.branch})`)
+      }
+
       const review = await waitForReviewCompletion(args.site, response.branch)
 
-      // TODO: Convert markdown to terminal output
+      if (args.json) return console.log(JSON.stringify(review, null, 2))
+      if (args.markdown) return console.log(review.markdownReport)
+
       console.log(review.markdownReport)
+    } else {
+      console.log(response.markdownReport)
     }
   } catch (e) {
     if (args.json) return console.error(e)
@@ -67,8 +76,7 @@ const builder = {
     requiresArg: true
   },
   sha: {
-    describe:
-      'The source control revision of the deployed code. e.g.: 9c72279, '
+    describe: 'The source control revision of the deployed code. e.g.: 9c72279.'
   },
   configPath: {
     describe: 'Path to a Calibre YAML config file.'
