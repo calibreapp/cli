@@ -54,7 +54,7 @@ const create = async ({ site, title, url, branch, sha, config }) => {
       config
     }
   })
-  console.log(response)
+
   return response.startPullRequestReview
 }
 
