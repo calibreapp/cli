@@ -1,5 +1,6 @@
 import ora from 'ora'
 import columnify from 'columnify'
+import { format as dateFormat } from 'date-fns'
 
 import { list } from '../../api/pull-request-review.js'
 import { humaniseError } from '../../utils/api-error.js'
@@ -31,7 +32,7 @@ const main = async args => {
       branch: row.branch,
       sha: row.sha,
       status: row.status,
-      created: row.createdAt
+      created: dateFormat(new Date(row.createdAt), 'h:mma d-MMM-yyyy')
     }
   })
 
@@ -39,7 +40,14 @@ const main = async args => {
     columnify(rows, {
       columnSplitter: ' | ',
       truncate: true,
-      maxLineWidth: 'auto'
+      config: {
+        title: {
+          maxWidth: 40
+        },
+        sha: {
+          maxWidth: 8
+        }
+      }
     })
   )
 }
