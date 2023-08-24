@@ -6,6 +6,7 @@ const CREATE_MUTATION = `
       title
       status
       branch
+      markdownReport
     }
   }
 `
@@ -33,8 +34,9 @@ const GET_PR_REVIEW_BY_BRANCH = `
     organisation {
       site(slug: $site) {
         pullRequestReviews(branch: $branch) {
-          branch
+          title
           status
+          branch
           markdownReport
         }
       }
