@@ -13,9 +13,7 @@ const main = async function (args) {
   let cookies = []
 
   if (!args.json) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
+    spinner = ora('Connecting to Calibre').start()
   }
 
   if (args.cookieJar) {

@@ -8,9 +8,7 @@ const main = async function (args) {
   let spinner
 
   if (!args.json) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
+    spinner = ora('Connecting to Calibre').start()
   }
 
   if (process.stdout.isTTY && !args.confirm) {
@@ -45,7 +43,8 @@ const builder = {
     describe: 'The UUID of the Test Profile.'
   },
   confirm: {
-    describe: 'Use this flag to confirm the deletion of the selected Test Profile.'
+    describe:
+      'Use this flag to confirm the deletion of the selected Test Profile.'
   },
   json: options.json
 }

@@ -17,9 +17,7 @@ const main = async function (args) {
   let headers = []
 
   if (!args.json && !args.markdown) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
+    spinner = ora('Connecting to Calibre').start()
   }
 
   if (args.cookieJar) {
@@ -84,7 +82,7 @@ const main = async function (args) {
       }
     }
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json || args.markdown) return console.error(e)
     spinner.fail()
     throw new Error(humaniseError(e))
   }

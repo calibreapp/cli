@@ -9,9 +9,7 @@ const main = async function (args) {
   let spinner
 
   if (!args.json) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
+    spinner = ora('Connecting to Calibre').start()
   }
 
   if (args.url) {

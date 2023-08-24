@@ -57,9 +57,7 @@ const formatCSV = payload => {
 const main = async args => {
   let spinner
   if (!args.json && !args.csv) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
+    spinner = ora('Connecting to Calibre').start()
   }
 
   try {

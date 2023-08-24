@@ -9,10 +9,7 @@ const main = async args => {
   let spinner
 
   if (!args.json && !args.markdown) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
-
+    spinner = ora('Connecting to Calibre').start()
     spinner.text = 'Downloading test results'
   }
 
