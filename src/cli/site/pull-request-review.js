@@ -27,8 +27,7 @@ const main = async args => {
 }
 
 const command = 'pull-request-review <branch>'
-const describe =
-  'See the results of a Single Page Test (also as outputted by the test create command).'
+const describe = 'See the results of a Pull Request Review.'
 const handler = main
 const builder = {
   site: options.site,
