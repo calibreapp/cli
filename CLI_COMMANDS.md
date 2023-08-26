@@ -235,6 +235,43 @@ Flags:
   * `--json`: Outputs the results of the command in JSON format.
 
 
+### calibre site create-pull-request-review [options]
+
+Create a Pull Request Review of a preview deployment.
+
+Flags:
+ 
+  * `--title`: e.g. "My Pull Request",
+  * `--site`: A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command. (string),
+  * `--url`: The base URL of the preview deployment (e.g. https://my-pull-request-123.example.com).,
+  * `--branch`: The branch of the preview deployment. e.g. "my-pull-request-123".,
+  * `--sha`: The source control revision of the deployed code. e.g.: 9c72279.,
+  * `--configPath`: Path to a Calibre YAML config file.,
+  * `--waitForResult`: Wait for PR to be evaluated before returning. (boolean),
+  * `--json`: Outputs the results of the command in JSON format.,
+  * `--markdown`: Outputs the results of the command in Markdown format.
+
+
+### calibre site pull-request-reviews [options]
+
+List Pull Request reviews for a selected Site.
+
+Flags:
+ 
+  * `--site`: A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command. (string),
+  * `--json`: Outputs the results of the command in JSON format.
+
+
+### calibre site pull-request-review <branch>
+
+See the results of a Pull Request Review.
+
+Flags:
+ 
+  * `--site`: A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command. (string),
+  * `--json`: Outputs the results of the command in JSON format.
+
+
 ### calibre team list
 
 List Teams based on API Token access. For Admin Tokens, this will list all teams or as specified based on your settings. For Personal Access Tokens, this will list Teams that you have access to.
@@ -258,7 +295,7 @@ Flags:
   * `--cookie-jar`: Set cookies by specifying a path to a Netscape formatted cookie jar file.,
   * `--headers`: Set HTTP headers by providing a path to a JSON file or a valid JSON key-value pairs.,
   * `--json`: Outputs the results of the command in JSON format.,
-  * `--markdown`: Outputs the results of the command in Markdown.,
+  * `--markdown`: Outputs the results of the command in Markdown format.,
   * `--waitForTest`: Wait for the test to complete before showing the results (default: test result link is shown immediately). (boolean)
 
 
@@ -287,7 +324,7 @@ See the results of a Single Page Test (also as outputted by the test create comm
 Flags:
  
   * `--json`: Outputs the results of the command in JSON format.,
-  * `--markdown`: Outputs the results of the command in Markdown.
+  * `--markdown`: Outputs the results of the command in Markdown format.
 
 
 ### calibre connection-list
