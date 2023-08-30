@@ -1,5 +1,5 @@
 import ora from 'ora'
-import { Parser as CSVParser } from 'json2csv'
+import { AsyncParser } from '@json2csv/node'
 
 import { snapshot } from '../../api/snapshot-metrics.js'
 import formatSnapshot from '../../views/snapshot-metrics.js'
@@ -50,8 +50,12 @@ const formatCSV = payload => {
     'hasDeviceEmulation',
     'hasBandwidthEmulation'
   ]
-  const parser = new CSVParser({ fields })
-  return parser.parse(data)
+  
+  const parser = new AsyncParser({
+    fields,
+  }, {}, {})
+
+  return parser.parse(data).promise()
 }
 
 const main = async args => {
@@ -70,7 +74,7 @@ const main = async args => {
     if (!payload.snapshot.tests.length) throw new Error('No data found')
 
     if (args.json) return console.log(JSON.stringify(payload, null, 2))
-    if (args.csv) return console.log(formatCSV(payload))
+    if (args.csv) return console.log(await formatCSV(payload))
 
     spinner.stop()
 

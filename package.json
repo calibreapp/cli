@@ -20,6 +20,7 @@
     "./cli-metadata": "./src/cli-metadata.js"
   },
   "dependencies": {
+    "@json2csv/node": "^7.0.3",
     "chalk": "^5.0.1",
     "columnify": "^1.6.0",
     "configstore": "^6.0.0",
@@ -27,7 +28,6 @@
     "date-fns": "^2.9.0",
     "graphql-request": "^6.1.0",
     "humanize": "0.0.9",
-    "json2csv": "^5.0.0",
     "listr": "^0.14.1",
     "log-symbols": "^5.1.0",
     "marked": "^5.1.1",
