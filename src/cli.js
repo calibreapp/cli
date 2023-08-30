@@ -4,7 +4,7 @@ import fs from 'fs'
 
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import updateNotifier from 'update-notifier'
+import updateNotifier from 'simple-update-notifier'
 import chalk from 'chalk'
 
 const pkg = JSON.parse(

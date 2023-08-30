@@ -34,8 +34,8 @@
     "marked-terminal": "^5.2.0",
     "ora": "^7.0.0",
     "p-throttle": "^5.0.0",
+    "simple-update-notifier": "^2.0.0",
     "stats-percentile": "^3.1.0",
-    "update-notifier": "^6.0.2",
     "yargs": "^17.4.1"
   },
   "devDependencies": {
