@@ -11,7 +11,7 @@ const pkg = JSON.parse(
   fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')
 )
 
-updateNotifier({ pkg }).notify()
+updateNotifier({ pkg })
 
 import commands from './cli-commands.js'
 
