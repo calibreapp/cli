@@ -62,7 +62,7 @@
     "test",
     "lighthouse"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/calibreapp/cli.git"
