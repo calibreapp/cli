@@ -56,7 +56,6 @@ const main = async function (args) {
   }
 
   if (args.webhookUrl) {
-    console.log(args.webhookUrl)
     try {
       new URL(args.webhookUrl)
     } catch (e) {
