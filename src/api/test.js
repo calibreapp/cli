@@ -1,8 +1,8 @@
 import { request } from './graphql.js'
 
 const CREATE_MUTATION = `
-  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $headers: [HeaderInput!], $adBlockerIsEnabled: Boolean, $isPrivate: Boolean) {
-    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies, headers: $headers, adBlockerIsEnabled: $adBlockerIsEnabled, isPrivate: $isPrivate) {
+  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $headers: [HeaderInput!], $adBlockerIsEnabled: Boolean, $isPrivate: Boolean, $webhookUrl: URL, $webhookSecret: String) {
+    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies, headers: $headers, adBlockerIsEnabled: $adBlockerIsEnabled, isPrivate: $isPrivate, webhookUrl: $webhookUrl, webhookSecret: $webhookSecret) {
       uuid
       formattedTestUrl
     }
