@@ -290,6 +290,8 @@ Flags:
   * `--device`: Choose the emulated test device.,
   * `--location`: Choose the location for the test.,
   * `--connection`: Choose the emulated network connection speed.,
+  * `--webhookUrl`: Test result JSON will be POSTed to this URL.,
+  * `--webhookSecret`: Secret used to sign the webhook payload. Secret can be validated using `Calibre-HMAC-SHA256-Signature` HTTP header. See https://calibreapp.com/docs/integrations/webhooks#webhook-security-and-verification for more information.,
   * `--adblocker`: Turn adblocking on or off. (boolean),
   * `--private`: Make the results of a test private (only accessible by members of your Calibre organisation). (boolean),
   * `--cookie-jar`: Set cookies by specifying a path to a Netscape formatted cookie jar file.,
