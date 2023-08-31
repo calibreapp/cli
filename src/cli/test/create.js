@@ -55,6 +55,15 @@ const main = async function (args) {
     return new Error('Please enter a valid URL')
   }
 
+  if (args.webhookUrl) {
+    console.log(args.webhookUrl)
+    try {
+      new URL(args.webhookUrl)
+    } catch (e) {
+      return new Error('Please enter a valid webhook URL')
+    }
+  }
+
   try {
     const { uuid, formattedTestUrl } = await create({
       ...args,
@@ -101,6 +110,13 @@ const builder = {
   },
   connection: {
     describe: 'Choose the emulated network connection speed.'
+  },
+  webhookUrl: {
+    describe: 'Test result JSON will be POSTed to this URL.'
+  },
+  webhookSecret: {
+    describe:
+      'Secret used to sign the webhook payload. Secret can be validated using `Calibre-HMAC-SHA256-Signature` HTTP header. See https://calibreapp.com/docs/integrations/webhooks#webhook-security-and-verification for more information.'
   },
   adblocker: {
     describe: 'Turn adblocking on or off.',

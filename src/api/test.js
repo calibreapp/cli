@@ -99,7 +99,9 @@ const create = async ({
   cookies,
   headers,
   adblocker,
-  isPrivate
+  isPrivate,
+  webhookUrl,
+  webhookSecret
 }) => {
   const response = await request({
     query: CREATE_MUTATION,
@@ -110,7 +112,9 @@ const create = async ({
     cookies,
     headers,
     adBlockerIsEnabled: adblocker,
-    isPrivate
+    isPrivate,
+    webhookUrl,
+    webhookSecret
   })
   return response.createTest
 }
