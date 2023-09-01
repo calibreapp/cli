@@ -51,7 +51,7 @@ const main = async args => {
 }
 
 const command = 'pull-request-reviews [options]'
-const describe = 'List Pull Request reviews for a selected Site.'
+const describe = 'List Pull Request Reviews for a selected Site.'
 const handler = main
 const builder = {
   site: options.site,
