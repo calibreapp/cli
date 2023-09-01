@@ -111,7 +111,7 @@ const builder = {
     describe: 'Choose the emulated network connection speed.'
   },
   webhookUrl: {
-    describe: 'Test result JSON will be POSTed to this URL.'
+    describe: 'Test result JSON will be sent to this URL using HTTP POST.'
   },
   webhookSecret: {
     describe:
