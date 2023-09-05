@@ -6,7 +6,14 @@
 - Adds new command: `calibre site pull-request-reviews` to list Pull Request Reviews.
 - Adds new command: `calibre site pull-request-review` to retrieve and display an existing Pull Request Review.
 - Updates output of `calibre test show` and `calibre test create --waitForTest` to return a new Single Page Test report.
+- Adds `--webhookUrl` and `--webhookSecret` flags to `calibre test create`. You can use these flags to POST the results of a Single Page Test to a desired URL with HMAC secret.
 - Adds a new `--markdown` flag to `calibre test show` and `calibre test create`. You can use `--markdown` to generate a Single Page Test report.
+
+## 🧹 Housekeeping
+
+- Updates dependencies in response to latest security patches.
+- Swapped dependency `update-notifier` for `simple-update-notifier``, which has better smaller and less risky package supply chain.
+- Swapped dependency `json2csv` (now deprecated) for same authors new package that is maintained.
 
 # 5.0.4 (2023-05-31)
 
