@@ -80,7 +80,7 @@ const builder = {
   },
   branch: {
     describe:
-      'The branch of the preview deployment. e.g. "my-pull-request-123".',
+      'The branch of the preview deployment. e.g.: "my-pull-request-123".',
     demandOption: true,
     requiresArg: true
   },
