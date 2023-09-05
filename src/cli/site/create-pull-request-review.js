@@ -74,7 +74,7 @@ const builder = {
   site: options.site,
   url: {
     describe:
-      'The base URL of the preview deployment (e.g. https://my-pull-request-123.example.com).',
+      'The base URL of the preview deployment (e.g.: https://my-pull-request-123.example.com).',
     demandOption: true,
     requiresArg: true
   },
