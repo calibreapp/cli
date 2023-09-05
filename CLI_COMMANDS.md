@@ -243,18 +243,18 @@ Flags:
  
   * `--title`: e.g. "My Pull Request",
   * `--site`: A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command. (string),
-  * `--url`: The base URL of the preview deployment (e.g. https://my-pull-request-123.example.com).,
-  * `--branch`: The branch of the preview deployment. e.g. "my-pull-request-123".,
+  * `--url`: The base URL of the preview deployment (e.g.: https://my-pull-request-123.example.com).,
+  * `--branch`: The branch of the preview deployment. e.g.: "my-pull-request-123".,
   * `--sha`: The source control revision of the deployed code. e.g.: 9c72279.,
   * `--configPath`: Path to a Calibre YAML config file.,
-  * `--waitForResult`: Wait for PR to be evaluated before returning. (boolean),
+  * `--waitForResult`: Wait for pull request to be evaluated before returning. (boolean),
   * `--json`: Outputs the results of the command in JSON format.,
   * `--markdown`: Outputs the results of the command in Markdown format.
 
 
 ### calibre site pull-request-reviews [options]
 
-List Pull Request reviews for a selected Site.
+List Pull Request Reviews for a selected Site.
 
 Flags:
  
@@ -290,7 +290,7 @@ Flags:
   * `--device`: Choose the emulated test device.,
   * `--location`: Choose the location for the test.,
   * `--connection`: Choose the emulated network connection speed.,
-  * `--webhookUrl`: Test result JSON will be POSTed to this URL.,
+  * `--webhookUrl`: Test result JSON will be sent to this URL using HTTP POST.,
   * `--webhookSecret`: Secret used to sign the webhook payload. Secret can be validated using `Calibre-HMAC-SHA256-Signature` HTTP header. See https://calibreapp.com/docs/integrations/webhooks#webhook-security-and-verification for more information.,
   * `--adblocker`: Turn adblocking on or off. (boolean),
   * `--private`: Make the results of a test private (only accessible by members of your Calibre organisation). (boolean),
