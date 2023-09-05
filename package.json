@@ -39,7 +39,7 @@
     "yargs": "^17.4.1"
   },
   "devDependencies": {
-    "esbuild": "^0.18.13",
+    "esbuild": "^0.19.2",
     "eslint": "^8.48.0",
     "eslint-plugin-node": "^11.0.0",
     "execa": "^8.0.1",
