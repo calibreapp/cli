@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display pull request review displays help 1`] = `
+"calibre site pull-request-review <branch>
+
+See the results of a Pull Request Review.
+
+Options:
+
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+  --site     A unique slug identifying each Site. You can find it in Site Settin
+             gs → General or by using the calibre site list command.
+                                                             [string] [required]
+  --json     Outputs the results of the command in JSON format."
+`;
+
+exports[`display pull request review displays review 1`] = `
+"# Markdown here
+
+"
+`;
+
+exports[`display pull request review displays review json 1`] = `
+"{
+  \\"title\\": \\"My Pull Request\\",
+  \\"status\\": \\"completed\\",
+  \\"branch\\": \\"author/branch-name\\",
+  \\"markdownReport\\": \\"# Markdown here\\"
+}"
+`;
+
+exports[`display pull request review displays review markdown 1`] = `
+"# Markdown here
+
+"
+`;

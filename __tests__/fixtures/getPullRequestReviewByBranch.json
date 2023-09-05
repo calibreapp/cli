@@ -1,0 +1,16 @@
+{
+  "data": {
+    "organisation": {
+      "site": {
+        "pullRequestReviews": [
+          {
+            "title": "My Pull Request",
+            "status": "completed",
+            "branch": "author/branch-name",
+            "markdownReport": "# Markdown here"
+          }
+        ]
+      }
+    }
+  }
+}

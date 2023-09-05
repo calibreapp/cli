@@ -4,14 +4,14 @@ import fs from 'fs'
 
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import updateNotifier from 'update-notifier'
+import updateNotifier from 'simple-update-notifier'
 import chalk from 'chalk'
 
 const pkg = JSON.parse(
   fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')
 )
 
-updateNotifier({ pkg }).notify()
+updateNotifier({ pkg })
 
 import commands from './cli-commands.js'
 

@@ -17,6 +17,9 @@ import * as SiteListTestProfiles from './site/test-profiles.js'
 import * as SiteCreateTestProfile from './site/create-test-profile.js'
 import * as SiteUpdateTestProfile from './site/update-test-profile.js'
 import * as SiteDeleteTestProfile from './site/delete-test-profile.js'
+import * as SiteCreatePullRequestReview from './site/create-pull-request-review.js'
+import * as SiteListPullRequestReviews from './site/pull-request-reviews.js'
+import * as SitePullRequest from './site/pull-request-review.js'
 
 const commands = [
   SiteCreate,
@@ -37,11 +40,15 @@ const commands = [
   SiteListTestProfiles,
   SiteCreateTestProfile,
   SiteUpdateTestProfile,
-  SiteDeleteTestProfile
+  SiteDeleteTestProfile,
+  SiteCreatePullRequestReview,
+  SiteListPullRequestReviews,
+  SitePullRequest
 ]
 
 const command = 'site <command>'
-const desc = 'Use the site command to manage your Sites, Pages, Test Profiles, Deploys, Snapshots and download the monitoring data.'
+const desc =
+  'Use the site command to manage your Sites, Pages, Test Profiles, Pull Request Reviews, Deploys, Snapshots, and download monitoring data.'
 const builder = yargs => {
   return yargs.commands(commands)
 }

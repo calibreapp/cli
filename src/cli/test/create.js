@@ -5,7 +5,7 @@ import cookiefile from 'cookiefile'
 import fs from 'fs'
 
 import { create, waitForTest } from '../../api/test.js'
-import formatTest from '../../views/test.js'
+import formatTest from '../../views/markdown.js'
 import { humaniseError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
@@ -17,9 +17,7 @@ const main = async function (args) {
   let headers = []
 
   if (!args.json && !args.markdown) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
+    spinner = ora('Connecting to Calibre').start()
   }
 
   if (args.cookieJar) {
@@ -57,6 +55,14 @@ const main = async function (args) {
     return new Error('Please enter a valid URL')
   }
 
+  if (args.webhookUrl) {
+    try {
+      new URL(args.webhookUrl)
+    } catch (e) {
+      return new Error('Please enter a valid webhook URL')
+    }
+  }
+
   try {
     const { uuid, formattedTestUrl } = await create({
       ...args,
@@ -84,7 +90,7 @@ const main = async function (args) {
       }
     }
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json || args.markdown) return console.error(e)
     spinner.fail()
     throw new Error(humaniseError(e))
   }
@@ -103,6 +109,13 @@ const builder = {
   },
   connection: {
     describe: 'Choose the emulated network connection speed.'
+  },
+  webhookUrl: {
+    describe: 'Test result JSON will be sent to this URL using HTTP POST.'
+  },
+  webhookSecret: {
+    describe:
+      'Secret used to sign the webhook payload. Secret can be validated using `Calibre-HMAC-SHA256-Signature` HTTP header. See https://calibreapp.com/docs/integrations/webhooks#webhook-security-and-verification for more information.'
   },
   adblocker: {
     describe: 'Turn adblocking on or off.',

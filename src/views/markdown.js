@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import { marked } from 'marked'
 import markedTerminal from 'marked-terminal'
 
-const view = test => {
+const view = markdownReport => {
   marked.setOptions({
     headerIds: false,
     mangle: false,
@@ -22,7 +22,7 @@ const view = test => {
     })
   })
 
-  return marked(test.markdownReport)
+  return marked(markdownReport)
 }
 
 export default view

@@ -10,9 +10,7 @@ import { options } from '../../utils/cli.js'
 const main = async args => {
   let spinner
   if (!args.json && !args.csv) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
+    spinner = ora('Connecting to Calibre').start()
   }
 
   let to, from

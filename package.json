@@ -20,6 +20,7 @@
     "./cli-metadata": "./src/cli-metadata.js"
   },
   "dependencies": {
+    "@json2csv/node": "^7.0.3",
     "chalk": "^5.0.1",
     "columnify": "^1.6.0",
     "configstore": "^6.0.0",
@@ -27,25 +28,24 @@
     "date-fns": "^2.9.0",
     "graphql-request": "^6.1.0",
     "humanize": "0.0.9",
-    "json2csv": "^5.0.0",
     "listr": "^0.14.1",
     "log-symbols": "^5.1.0",
     "marked": "^5.1.1",
     "marked-terminal": "^5.2.0",
-    "ora": "^7.0.0",
+    "ora": "^7.0.1",
     "p-throttle": "^5.0.0",
+    "simple-update-notifier": "^2.0.0",
     "stats-percentile": "^3.1.0",
-    "update-notifier": "^6.0.2",
     "yargs": "^17.4.1"
   },
   "devDependencies": {
     "esbuild": "^0.18.13",
-    "eslint": "^8.13.0",
+    "eslint": "^8.48.0",
     "eslint-plugin-node": "^11.0.0",
-    "execa": "^7.1.1",
+    "execa": "^8.0.1",
     "express": "^4.16.4",
     "jest": "^27.5.1",
-    "prettier": "3.0.0"
+    "prettier": "3.0.3"
   },
   "scripts": {
     "ci": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --runInBand --no-colors --verbose=false",
@@ -62,7 +62,7 @@
     "test",
     "lighthouse"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/calibreapp/cli.git"

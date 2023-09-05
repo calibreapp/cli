@@ -15,9 +15,7 @@ const main = async args => {
   let index
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
+    spinner = ora('Connecting to Calibre').start()
   }
 
   try {
@@ -62,7 +60,8 @@ const main = async args => {
 }
 
 const command = 'list'
-const describe = 'List all previously run Single Page Tests (includes UUID, URL, device, connection, test location and status).'
+const describe =
+  'List all previously run Single Page Tests (includes UUID, URL, device, connection, test location and status).'
 const handler = main
 const builder = {
   json: options.json

@@ -6,8 +6,8 @@ exports[`calibre --help 1`] = `
 Commands:
 
   calibre site <command>   Use the site command to manage your Sites, Pages, Tes
-                           t Profiles, Deploys, Snapshots and download the monit
-                           oring data.
+                           t Profiles, Pull Request Reviews, Deploys, Snapshots,
+                            and download monitoring data.
   calibre team <command>   Use the team command to manage Teams.
   calibre test <command>   Use the test command to run Single Page Tests: public
                             or private tests for a single Page tested from a sin

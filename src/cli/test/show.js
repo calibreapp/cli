@@ -1,7 +1,7 @@
 import ora from 'ora'
 
 import { getTestByUuid } from '../../api/test.js'
-import formatTest from '../../views/test.js'
+import formatTest from '../../views/markdown.js'
 import { options } from '../../utils/cli.js'
 import { humaniseError } from '../../utils/api-error.js'
 
@@ -9,10 +9,7 @@ const main = async args => {
   let spinner
 
   if (!args.json && !args.markdown) {
-    spinner = ora('Connecting to Calibre')
-    spinner.color = 'magenta'
-    spinner.start()
-
+    spinner = ora('Connecting to Calibre').start()
     spinner.text = 'Downloading test results'
   }
 
@@ -27,7 +24,7 @@ const main = async args => {
     }
 
     spinner.stop()
-    console.log(formatTest(response))
+    console.log(formatTest(response.markdownReport))
   } catch (e) {
     spinner.fail()
     throw new Error(humaniseError(e))
