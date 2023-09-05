@@ -3,7 +3,7 @@
 exports[`list pull request reviews displays help 1`] = `
 "calibre site pull-request-reviews [options]
 
-List Pull Request reviews for a selected Site.
+List Pull Request Reviews for a selected Site.
 
 Options:
 
