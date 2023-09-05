@@ -11,3 +11,9 @@ updates:
       interval: weekly
       time: '14:00'
     open-pull-requests-limit: 10
+  - package-ecosystem: npm
+    directory: '/examples/nodejs'
+    schedule:
+      interval: weekly
+      time: '14:00'
+    open-pull-requests-limit: 10
