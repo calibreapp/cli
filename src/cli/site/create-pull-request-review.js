@@ -94,7 +94,7 @@ const builder = {
     describe: 'Path to a Calibre YAML config file.'
   },
   waitForResult: {
-    describe: 'Wait for PR to be evaluated before returning.',
+    describe: 'Wait for pull request to be evaluated before returning.',
     type: 'boolean',
     default: false
   },
