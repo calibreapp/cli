@@ -38,6 +38,12 @@ const main = async function (args) {
     const response = await create(args)
 
     if (!args.waitForResult) {
+      spinner.succeed(`Pull Request Review queued: ${args.branch}.`)
+
+      console.log(
+        `View progress by running \`calibre site pull-request-review ${args.branch} --site=${args.site}\``
+      )
+
       return print(args, response)
     } else {
       if (spinner) {
@@ -54,7 +60,14 @@ const main = async function (args) {
         spinner.succeed('Pull Request Review completed')
       }
 
-      return print(args, completedResponse)
+      print(args, completedResponse)
+
+      if (
+        args.failOnUnmetBudget &&
+        completedResponse.metricBudgetStatus === 'unmet'
+      ) {
+        throw new Error('Pull Request Review failed due to unmet budget')
+      }
     }
   } catch (e) {
     if (args.json || args.markdown) return console.error(e)
@@ -95,6 +108,12 @@ const builder = {
   },
   waitForResult: {
     describe: 'Wait for pull request to be evaluated before returning.',
+    type: 'boolean',
+    default: false
+  },
+  failOnUnmetBudget: {
+    describe:
+      'Return command failure if any budget is exceeded. Helpful for CI/CD. (Requires --waitForResult to also be set.)',
     type: 'boolean',
     default: false
   },

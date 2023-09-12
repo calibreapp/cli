@@ -38,6 +38,7 @@ const GET_PR_REVIEW_BY_BRANCH = `
           status
           branch
           markdownReport
+          metricBudgetStatus
         }
       }
     }
