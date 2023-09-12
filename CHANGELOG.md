@@ -12,7 +12,7 @@
 ## 🧹 Housekeeping
 
 - Updates dependencies in response to latest security patches.
-- Swapped dependency `update-notifier` for `simple-update-notifier``, which has better smaller and less risky package supply chain.
+- Swapped dependency `update-notifier` for `simple-update-notifier`, which has better smaller and less risky package supply chain.
 - Swapped dependency `json2csv` (now deprecated) for same authors new package that is maintained.
 
 # 5.0.4 (2023-05-31)

@@ -248,6 +248,7 @@ Flags:
   * `--sha`: The source control revision of the deployed code. e.g.: 9c72279.,
   * `--configPath`: Path to a Calibre YAML config file.,
   * `--waitForResult`: Wait for pull request to be evaluated before returning. (boolean),
+  * `--failOnUnmetBudget`: Return a command failure if any existing budget is exceeded. (Requires --waitForResult to be set.) (boolean),
   * `--json`: Outputs the results of the command in JSON format.,
   * `--markdown`: Outputs the results of the command in Markdown format.
 

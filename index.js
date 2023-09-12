@@ -5,6 +5,7 @@ retrieveToken()
 export * as Site from './src/api/site.js'
 export * as Snapshot from './src/api/snapshot.js'
 export * as Test from './src/api/test.js'
+export * as PullRequestReview from './src/api/pull-request-review.js'
 export * as TestProfile from './src/api/test-profile.js'
 export * as Agent from './src/api/location.js'
 export * as Page from './src/api/page.js'
