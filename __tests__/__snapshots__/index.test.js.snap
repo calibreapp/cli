@@ -41,6 +41,12 @@ Object {
     "list": [Function],
     "update": [Function],
   },
+  "PullRequestReview": Object {
+    "create": [Function],
+    "getPRReviewByBranch": [Function],
+    "list": [Function],
+    "waitForReviewCompletion": [Function],
+  },
   "Site": Object {
     "create": [Function],
     "destroy": [Function],
