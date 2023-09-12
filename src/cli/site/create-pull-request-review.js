@@ -113,7 +113,7 @@ const builder = {
   },
   failOnUnmetBudget: {
     describe:
-      'Return command failure if any budget is exceeded. Helpful for CI/CD. (Requires --waitForResult to also be set.)',
+      'Return a command failure if any existing budget is exceeded. (Requires --waitForResult to be set.)',
     type: 'boolean',
     default: false
   },
