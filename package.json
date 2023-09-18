@@ -30,7 +30,7 @@
     "humanize": "0.0.9",
     "listr": "^0.14.1",
     "log-symbols": "^5.1.0",
-    "marked": "^5.1.1",
+    "marked": "^9.0.2",
     "marked-terminal": "^5.2.0",
     "ora": "^7.0.1",
     "p-throttle": "^5.0.0",
