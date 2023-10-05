@@ -1,3 +1,13 @@
+# 5.1.1 (2023-10-05)
+
+## 🚩 Commands and flags
+
+- Adds `--markdown` output flag to `calibre site pull-request-review` command.
+
+## 🧹 Housekeeping
+
+- Updates dependencies in response to latest dependabot updates. 
+
 # 5.1.0 (2023-08-19)
 
 ## 🚩 Commands and flags
