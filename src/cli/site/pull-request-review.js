@@ -8,7 +8,7 @@ import { humaniseError } from '../../utils/api-error.js'
 const main = async args => {
   let spinner
 
-  if (!args.json) {
+  if (!args.json && !args.markdown) {
     spinner = ora('Connecting to Calibre').start()
     spinner.text = 'Fetching Pull Request Review'
   }
@@ -17,6 +17,7 @@ const main = async args => {
     const [response] = await getPRReviewByBranch(args.site, args.branch)
 
     if (args.json) return console.log(JSON.stringify(response, null, 2))
+    if (args.markdown) return console.log(response.markdownReport)
 
     spinner.stop()
     console.log(formatTest(response.markdownReport))
@@ -31,7 +32,8 @@ const describe = 'See the results of a Pull Request Review.'
 const handler = main
 const builder = {
   site: options.site,
-  json: options.json
+  json: options.json,
+  markdown: options.markdown
 }
 
 export { command, describe, builder, handler }
