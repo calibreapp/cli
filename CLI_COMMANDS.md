@@ -270,7 +270,8 @@ See the results of a Pull Request Review.
 Flags:
  
   * `--site`: A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command. (string),
-  * `--json`: Outputs the results of the command in JSON format.
+  * `--json`: Outputs the results of the command in JSON format.,
+  * `--markdown`: Outputs the results of the command in Markdown format.
 
 
 ### calibre team list
