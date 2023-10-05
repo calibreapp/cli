@@ -7,12 +7,13 @@ See the results of a Pull Request Review.
 
 Options:
 
-  --help     Show help                                                 [boolean]
-  --version  Show version number                                       [boolean]
-  --site     A unique slug identifying each Site. You can find it in Site Settin
-             gs → General or by using the calibre site list command.
+  --help      Show help                                                [boolean]
+  --version   Show version number                                      [boolean]
+  --site      A unique slug identifying each Site. You can find it in Site Setti
+              ngs → General or by using the calibre site list command.
                                                              [string] [required]
-  --json     Outputs the results of the command in JSON format."
+  --json      Outputs the results of the command in JSON format.
+  --markdown  Outputs the results of the command in Markdown format."
 `;
 
 exports[`display pull request review displays review 1`] = `
@@ -30,8 +31,4 @@ exports[`display pull request review displays review json 1`] = `
 }"
 `;
 
-exports[`display pull request review displays review markdown 1`] = `
-"# Markdown here
-
-"
-`;
+exports[`display pull request review displays review markdown 1`] = `"# Markdown here"`;
