@@ -39,7 +39,7 @@ const builder = {
   url: {
     demandOption: true,
     requiresArg: true,
-    describe: 'The name of the Page.'
+    describe: 'The URL of the Page.'
   },
   json: options.json
 }
