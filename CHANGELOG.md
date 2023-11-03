@@ -1,3 +1,13 @@
+# 5.1.2 (2023-11-03)
+
+## 🐛 Bug fixes
+
+- Fixes markdown output for `calibre test create`
+
+## 🧹 Housekeeping
+
+- Updates dependencies in response to latest dependabot updates.
+
 # 5.1.1 (2023-10-05)
 
 ## 🚩 Commands and flags
@@ -6,7 +16,7 @@
 
 ## 🧹 Housekeeping
 
-- Updates dependencies in response to latest dependabot updates. 
+- Updates dependencies in response to latest dependabot updates.
 
 # 5.1.0 (2023-08-19)
 
