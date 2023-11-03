@@ -24,18 +24,18 @@ Second Test Pull Request | author/my-branch-2 | 78f9a44… | completed | 7:31AM 
 exports[`list pull request reviews lists pull request reviews as json 1`] = `
 "[
   {
-    \\"title\\": \\"First Test Pull Request\\",
-    \\"status\\": \\"completed\\",
-    \\"branch\\": \\"author/my-branch\\",
-    \\"sha\\": \\"241ccbb0d2c396c9413adb816fa3ca212aff00da\\",
-    \\"createdAt\\": \\"2023-08-22T06:48:03Z\\"
+    "title": "First Test Pull Request",
+    "status": "completed",
+    "branch": "author/my-branch",
+    "sha": "241ccbb0d2c396c9413adb816fa3ca212aff00da",
+    "createdAt": "2023-08-22T06:48:03Z"
   },
   {
-    \\"title\\": \\"Second Test Pull Request\\",
-    \\"status\\": \\"completed\\",
-    \\"branch\\": \\"author/my-branch-2\\",
-    \\"sha\\": \\"78f9a442d4f952b612e2d9627b43a61cd5c7e044\\",
-    \\"createdAt\\": \\"2023-08-15T07:31:48Z\\"
+    "title": "Second Test Pull Request",
+    "status": "completed",
+    "branch": "author/my-branch-2",
+    "sha": "78f9a442d4f952b612e2d9627b43a61cd5c7e044",
+    "createdAt": "2023-08-15T07:31:48Z"
   }
 ]"
 `;

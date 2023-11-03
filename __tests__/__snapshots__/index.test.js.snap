@@ -1,82 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index should be able to resolve the same dependencies 1`] = `
-Object {
-  "Agent": Object {
+{
+  "Agent": {
     "list": [Function],
   },
-  "AgentSettings": Object {
+  "AgentSettings": {
     "get": [Function],
     "update": [Function],
   },
-  "Connection": Object {
+  "Connection": {
     "list": [Function],
   },
-  "Deploy": Object {
+  "Deploy": {
     "create": [Function],
     "destroy": [Function],
     "list": [Function],
   },
-  "Device": Object {
+  "Device": {
     "list": [Function],
   },
-  "GraphQL": Object {
+  "GraphQL": {
     "request": [Function],
   },
-  "Integration": Object {
+  "Integration": {
     "create": [Function],
     "destroy": [Function],
     "list": [Function],
     "update": [Function],
   },
-  "MetricBudget": Object {
+  "MetricBudget": {
     "create": [Function],
     "destroy": [Function],
     "list": [Function],
     "update": [Function],
   },
-  "Page": Object {
+  "Page": {
     "create": [Function],
     "destroy": [Function],
     "list": [Function],
     "update": [Function],
   },
-  "PullRequestReview": Object {
+  "PullRequestReview": {
     "create": [Function],
     "getPRReviewByBranch": [Function],
     "list": [Function],
     "waitForReviewCompletion": [Function],
   },
-  "Site": Object {
+  "Site": {
     "create": [Function],
     "destroy": [Function],
     "get": [Function],
     "list": [Function],
     "update": [Function],
   },
-  "Snapshot": Object {
+  "Snapshot": {
     "create": [Function],
     "destroy": [Function],
     "fetchArtifacts": [Function],
     "list": [Function],
   },
-  "SnapshotMetrics": Object {
+  "SnapshotMetrics": {
     "snapshot": [Function],
   },
-  "Test": Object {
+  "Test": {
     "create": [Function],
     "fetchArtifacts": [Function],
     "getList": [Function],
     "getTestByUuid": [Function],
     "waitForTest": [Function],
   },
-  "TestProfile": Object {
+  "TestProfile": {
     "create": [Function],
     "destroy": [Function],
     "list": [Function],
     "update": [Function],
   },
-  "TimeSeries": Object {
+  "TimeSeries": {
     "list": [Function],
   },
 }

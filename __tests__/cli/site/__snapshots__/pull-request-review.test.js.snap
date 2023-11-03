@@ -24,10 +24,10 @@ exports[`display pull request review displays review 1`] = `
 
 exports[`display pull request review displays review json 1`] = `
 "{
-  \\"title\\": \\"My Pull Request\\",
-  \\"status\\": \\"completed\\",
-  \\"branch\\": \\"author/branch-name\\",
-  \\"markdownReport\\": \\"# Markdown here\\"
+  "title": "My Pull Request",
+  "status": "completed",
+  "branch": "author/branch-name",
+  "markdownReport": "# Markdown here"
 }"
 `;
 
