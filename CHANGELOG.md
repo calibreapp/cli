@@ -2,7 +2,7 @@
 
 ## 🐛 Bug fixes
 
-- Fixes markdown output for `calibre test create`
+- Fixes markdown output for `calibre test create` (#634).
 
 ## 🧹 Housekeeping
 
