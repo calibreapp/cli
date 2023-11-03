@@ -83,7 +83,7 @@ const main = async function (args) {
       } else {
         if (test.status == 'completed') {
           spinner.succeed(`Test complete: ${formattedTestUrl}`)
-          console.log(formatTest(test))
+          console.log(formatTest(test.markdownReport))
         } else {
           spinner.fail('Test complete')
         }
