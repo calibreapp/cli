@@ -30,8 +30,8 @@
     "humanize": "0.0.9",
     "listr": "^0.14.1",
     "log-symbols": "^6.0.0",
-    "marked": "^5.1.1",
-    "marked-terminal": "^5.2.0",
+    "marked": "^9.1.5",
+    "marked-terminal": "^6.0.0",
     "ora": "^7.0.1",
     "p-throttle": "^5.0.0",
     "simple-update-notifier": "^2.0.0",
@@ -39,13 +39,16 @@
     "yargs": "^17.4.1"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.7",
     "esbuild": "^0.19.2",
     "eslint": "^8.48.0",
     "eslint-plugin-node": "^11.0.0",
     "execa": "^8.0.1",
     "express": "^4.16.4",
-    "jest": "^27.5.1",
-    "prettier": "3.0.3"
+    "jest": "^29.7.0",
+    "prettier": "3.0.3",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.2.2"
   },
   "scripts": {
     "ci": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --runInBand --no-colors --verbose=false",
