@@ -33,7 +33,7 @@ const builder = {
     requiresArg: true
   },
   variables: {
-    describe: 'Pass query variables as named arguments.'
+    describe: 'Pass query variables as named arguments. e.g.: `calibre request --query "$(cat query.gql)" --foo="example" --bar="example"`'
   }
 }
 
