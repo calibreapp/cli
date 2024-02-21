@@ -10,11 +10,11 @@ import { options } from '../../utils/cli.js'
 import formatMarkdownResult from '../../views/markdown.js'
 
 const print = function (args, pullRequestReviewResponse) {
-  if (args.json && !args.waitForResult) {
+  if (args.json) {
     return console.log(JSON.stringify(pullRequestReviewResponse, null, 2))
   }
 
-  if (args.markdown && !args.waitForResult) {
+  if (args.markdown) {
     return console.log(pullRequestReviewResponse.markdownReport)
   }
 
