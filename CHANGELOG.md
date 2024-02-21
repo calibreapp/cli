@@ -1,3 +1,13 @@
+# 5.1.3 (2024-02-21)
+
+## 🐛 Bug fixes
+
+- Fixes markdown output for `calibre site create-pull-request-review` (#671).
+
+## 🧹 Housekeeping
+
+- Updates dependencies in response to latest dependabot updates.
+
 # 5.1.2 (2023-11-03)
 
 ## 🐛 Bug fixes
