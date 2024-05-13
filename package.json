@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.7",
-    "esbuild": "^0.20.0",
+    "esbuild": "^0.21.2",
     "eslint": "^8.48.0",
     "eslint-plugin-node": "^11.0.0",
     "execa": "^8.0.1",
