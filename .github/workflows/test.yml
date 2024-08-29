@@ -3,7 +3,7 @@ name: Test Node.js
 on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -20,10 +20,21 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build --if-present
+  lint:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # ESlint no longer supports Node.js 16.x, and 22.x outputs punycode warnings
+        node-version: [18.x, 20.x]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: npm link
-      - run: |
-          # ESLint is broken on Node.js 16.x
-          # ESLint throws punycode errors on 22.x
-          if [[ "${{ matrix.node-version }}" == "18.x" || "${{ matrix.node-version }}" == "20.x" ]]; then
-            npm run lint
-          fi
+      - run: npm run lint
