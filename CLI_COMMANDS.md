@@ -118,7 +118,7 @@ Add a Page to an existing Site tracked by Calibre.
 Flags:
  
   * `--site`: A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command. (string),
-  * `--url`: The name of the Page.,
+  * `--url`: The URL of the Page.,
   * `--json`: Outputs the results of the command in JSON format.
 
 
@@ -384,5 +384,5 @@ Use the request command to make a request to the Calibre GraphQL API.
 Flags:
  
   * `--query`: Pass a GraphQL query to execute. (string),
-  * `--variables`: Pass query variables as named arguments.
+  * `--variables`: Pass query variables as named arguments. e.g.: `calibre request --query "$(cat query.gql)" --foo="example" --bar="example"`
 
