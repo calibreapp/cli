@@ -1,3 +1,9 @@
+# 5.2.0 (2024-08-29)
+
+## 🧹 Housekeeping
+
+- Removes usage of deprecated API fields that will be removed January 2025.
+
 # 5.1.3 (2024-02-21)
 
 ## 🐛 Bug fixes
