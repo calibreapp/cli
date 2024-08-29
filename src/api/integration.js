@@ -4,7 +4,7 @@ const CREATE_MUTATION = `
   mutation CreateIntegration($organisation: String, $site: String!, $attributes: IntegrationInput!){
     createIntegration(organisation: $organisation, site: $site, attributes: $attributes) {
       uuid
-      destination
+      provider
       events
       url
       secret
@@ -25,7 +25,7 @@ const UPDATE_MUTATION = `
   mutation UpdateIntegration($site:String!, $uuid: String!, $attributes: IntegrationInput!){
     updateIntegration(site: $site, uuid: $uuid, attributes: $attributes) {
       uuid
-      destination
+      provider
       events
       url
       secret
@@ -52,7 +52,7 @@ const LIST_QUERY = `
           edges {
             node {
               uuid
-              destination
+              provider
               events
               url
               secret
@@ -65,19 +65,12 @@ const LIST_QUERY = `
   }
 `
 
-const create = async ({
-  site,
-  destination,
-  url,
-  events,
-  secret,
-  isDisabled
-}) => {
+const create = async ({ site, provider, url, events, secret, isDisabled }) => {
   const response = await request({
     query: CREATE_MUTATION,
     site,
     attributes: {
-      destination,
+      provider,
       url,
       events,
       secret,
@@ -99,7 +92,7 @@ const destroy = async ({ site, uuid }) => {
 const update = async ({
   site,
   uuid,
-  destination,
+  provider,
   url,
   events,
   secret,
@@ -110,7 +103,7 @@ const update = async ({
     site,
     uuid,
     attributes: {
-      destination,
+      provider,
       url,
       events,
       secret,

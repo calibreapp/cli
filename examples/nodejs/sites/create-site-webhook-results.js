@@ -25,7 +25,7 @@ const createSiteWithWebhookCallback = async () => {
 
     const integration = await Integration.create({
       site: site.slug,
-      destination: 'webhook',
+      provider: 'webhook',
       events: ['new_snapshot'],
       url: WEBHOOK_URL
     })
