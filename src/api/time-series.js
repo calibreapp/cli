@@ -30,7 +30,6 @@ const TIME_SERIES_QUERY = `
             uuid
             name
             url
-            canonical
           }
 
           testProfiles {
@@ -43,7 +42,7 @@ const TIME_SERIES_QUERY = `
             isMobile
           }
 
-          measurements {
+          metrics {
             name
             label
             formatter
@@ -74,6 +73,7 @@ const list = async ({
     from,
     to
   })
+
   return response.organisation.site.timeSeries
 }
 

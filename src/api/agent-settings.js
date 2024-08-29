@@ -2,19 +2,22 @@ import { request } from './graphql.js'
 
 const UPDATE_MUTATION = `
   mutation UpdateAgentSettings($site: String!, $attributes: AgentSettingsInput!) {
-    updateAgentSettings(site: $site, attributes: $attributes) {
-      location {
-        identifier
-        name
-        shortName
-        emoji
-        tag
-        agents {
-          ipv4
+    updateAgentSettings(site: $site, attributes: $attributes) {    
+      agentSettings {
+        location {
+          identifier
+          name
+          shortName
+          emoji
+          tag
+          agents {
+            ipv4
+          }
         }
+          
+        scheduleAnchor
+        scheduleInterval
       }
-      scheduleAnchor
-      scheduleInterval
     }
   }
 

@@ -1,10 +1,9 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import chalk from 'chalk'
 import listr from 'listr'
 
 import download from '../../utils/download.js'
-import mkdirp from '../../utils/mkdirp.js'
 import { fetchArtifacts } from '../../api/snapshot.js'
 import { humaniseError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
@@ -38,7 +37,8 @@ const main = async args => {
           rootPath
         )}`,
         task: () => {
-          mkdirp(directories)
+          // eslint-disable-next-line security/detect-non-literal-fs-filename
+          fs.mkdirSync(directories.join(path.sep), { recursive: true })
           return Promise.resolve()
         }
       },
@@ -52,13 +52,16 @@ const main = async args => {
 
     for (const test of response.snapshot.tests) {
       const { page, testProfile: profile } = test
-      const pageDirectory = mkdirp(
-        directories.concat([`${page.name.replace(path.sep, '')}-${page.uuid}`])
-      )
+      const profileDirectoryPath = directories
+        .concat(`${page.name.replace(path.sep, '')}-${page.uuid}`)
+        .concat([`${profile.name.replace(path.sep, '')}-${profile.uuid}`])
+        .join(path.sep)
 
-      const profileDirectory = mkdirp(
-        [pageDirectory].concat([`${profile.name.replace(path.sep, '')}-${profile.uuid}`])
-      )
+      // eslint-disable-next-line security/detect-non-literal-fs-filename
+      const profileDirectory = fs.mkdirSync(profileDirectoryPath, {
+        recursive: true
+      })
+
       const testManifest = {
         page: {
           uuid: page.uuid,
@@ -147,6 +150,7 @@ const main = async args => {
       title: 'Saving manifest file',
       task: () => {
         const manifestPath = path.join(...directories, 'manifest.json')
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
         return fs.writeFile(manifestPath, JSON.stringify(manifest), error => {
           if (error) throw error
         })

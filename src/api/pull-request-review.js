@@ -79,7 +79,6 @@ const getPRReviewByBranch = async (site, branch) => {
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time))
 const waitForReviewCompletion = async (site, branch) => {
-  // eslint-disable-next-line no-constant-condition
   while (true) {
     await delay(5000)
     const [review] = await getPRReviewByBranch(site, branch)

@@ -3,9 +3,11 @@ import zlib from 'zlib'
 import fs from 'fs'
 
 const download = (url, destination) => {
+  // eslint-disable-next-line security/detect-non-literal-fs-filename
   if (fs.existsSync(destination)) return Promise.resolve()
 
   return new Promise(resolve => {
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
     const file = fs.createWriteStream(destination)
     https.get(url, response => {
       if (response.headers['content-encoding'] == 'gzip') {

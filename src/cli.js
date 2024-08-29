@@ -8,6 +8,7 @@ import updateNotifier from 'simple-update-notifier'
 import chalk from 'chalk'
 
 const pkg = JSON.parse(
+  // eslint-disable-next-line security/detect-non-literal-fs-filename
   fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')
 )
 
@@ -47,7 +48,7 @@ yargs(hideBin(process.argv))
       console.error('\n\n', chalk.bold('--- Stack trace below'))
       throw error
     }
-    // eslint-disable-next-line no-process-exit
+    // eslint-disable-next-line n/no-process-exit
     process.exit(1)
   })
   .epilogue('For more information on Calibre, see https://calibreapp.com').argv
