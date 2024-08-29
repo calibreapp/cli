@@ -6,7 +6,6 @@ const CREATE_MUTATION = `
       uuid
       name
       url
-      canonical
       position
     }
   }
@@ -33,7 +32,6 @@ const LIST_QUERY = `
               uuid
               name
               url
-              canonical
               position
             }
           }
@@ -58,7 +56,6 @@ const UPDATE_MUTATION = `
       uuid
       name
       url
-      canonical
       position
     }
   }
