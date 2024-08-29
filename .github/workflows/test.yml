@@ -27,7 +27,7 @@ jobs:
       fail-fast: false
       matrix:
         # ESlint no longer supports Node.js 16.x, and 22.x outputs punycode warnings
-        node-version: [18.x, 20.x]
+        node-version: [18.x, 20.x, 22.x]
         os: [ubuntu-latest, windows-latest, macos-latest]
     timeout-minutes: 5
     steps:
