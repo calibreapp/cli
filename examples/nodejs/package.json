@@ -2,7 +2,7 @@
   "name": "calibre-nodejs-examples",
   "version": "2.0.0",
   "engines": {
-    "node": ">= 14.19.1"
+    "node": ">= 18"
   },
   "description": "Calibre’s Node.JS examples",
   "type": "module",

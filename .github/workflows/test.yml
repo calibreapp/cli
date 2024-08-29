@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [16.x, 18.x, 20.x, 22.x]
+        node-version: [18.x, 20.x, 22.x]
         os: [ubuntu-latest, windows-latest, macos-latest]
     timeout-minutes: 5
     steps:
@@ -20,22 +20,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build --if-present
-  lint:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-      matrix:
-        # ESlint no longer supports Node.js 16.x
-        node-version: [18.x, 20.x, 22.x]
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
       - run: npm link
       - run: npm run lint
