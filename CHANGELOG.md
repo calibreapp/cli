@@ -1,8 +1,13 @@
 # 5.2.0 (2024-08-29)
 
+## 🛠 Core
+
+- Removes usage of Calibre deprecated API fields that will be removed January 2025.
+- Update package to require node 18.x or higher.
+
 ## 🧹 Housekeeping
 
-- Removes usage of deprecated API fields that will be removed January 2025.
+- Update eslint to latest, fix linting issues.
 
 # 5.1.3 (2024-02-21)
 
