@@ -33,7 +33,8 @@ const main = async function (args) {
   if (args.headers) {
     try {
       headers = JSON.parse(args.headers)
-    } catch (e) {
+    } catch {
+      // eslint-disable-next-line security/detect-non-literal-fs-filename
       headers = fs.readFileSync(args.headers, 'utf-8')
       headers = JSON.parse(headers)
     }
@@ -42,6 +43,7 @@ const main = async function (args) {
       const name = Object.keys(header)[0]
       return {
         name,
+        // eslint-disable-next-line security/detect-object-injection
         value: header[name]
       }
     })
@@ -51,14 +53,14 @@ const main = async function (args) {
 
   try {
     new URL(args.url)
-  } catch (e) {
+  } catch {
     return new Error('Please enter a valid URL')
   }
 
   if (args.webhookUrl) {
     try {
       new URL(args.webhookUrl)
-    } catch (e) {
+    } catch {
       return new Error('Please enter a valid webhook URL')
     }
   }

@@ -31,6 +31,7 @@ const main = async function (args) {
   }
 
   if (args.configPath) {
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
     args.config = await fs.readFile(args.configPath, 'utf8')
   }
 

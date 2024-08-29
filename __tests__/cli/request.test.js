@@ -17,8 +17,8 @@ describe('request', () => {
 
   test('returns response', async () => {
     const slug = 'calibre'
-    // eslint-disable-next-line no-useless-escape
-    const query = 'query GetSite($slug: String!) {organisation{site(slug: $slug){slug}}}'
+    const query =
+      'query GetSite($slug: String!) {organisation{site(slug: $slug){slug}}}'
     const args = `request --slug=${slug} --query="${query}"`
 
     const out = await runCLI({

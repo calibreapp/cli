@@ -15,11 +15,12 @@ const formatOptions = options => {
   } else {
     return `Flags:
  ${optionKeys.map(key => {
+   // eslint-disable-next-line security/detect-object-injection
    const { describe, default: defaultValue, type } = options[key]
    return `
   * \`--${key}\`: ${describe}${
-     defaultValue ? ` (default: \`${defaultValue}\`)` : ''
-   }${type ? ` (${type})` : ''}`
+    defaultValue ? ` (default: \`${defaultValue}\`)` : ''
+  }${type ? ` (${type})` : ''}`
  })}`
   }
 }

@@ -1,9 +1,9 @@
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 
 import listr from 'listr'
 
 import download from '../../utils/download.js'
-import mkdirp from '../../utils/mkdirp.js'
 import { fetchArtifacts } from '../../api/test.js'
 import { humaniseError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
@@ -14,8 +14,12 @@ const main = async args => {
 
     if (args.json) return console.log(JSON.stringify(response, null, 2))
 
-    const directories = [process.cwd(), 'test-artifacts', args.uuid]
-    const directory = mkdirp(directories)
+    const directories = [process.cwd(), 'test-artifacts', args.uuid].join(
+      path.sep
+    )
+
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
+    const directory = fs.mkdirSync(directories, { recursive: true })
 
     const tasks = new listr(
       [
@@ -61,7 +65,8 @@ const main = async args => {
 }
 
 const command = 'download-artifacts <uuid>'
-const describe = 'Download the artifacts of a test to ./test-artifacts/<uuid>. Includes: lighthouse.json, render progress screenshots, render progress MP4 video, HAR file (request log) and all other metrics and data available through the Calibre interface.'
+const describe =
+  'Download the artifacts of a test to ./test-artifacts/<uuid>. Includes: lighthouse.json, render progress screenshots, render progress MP4 video, HAR file (request log) and all other metrics and data available through the Calibre interface.'
 const handler = main
 const builder = {
   json: options.json

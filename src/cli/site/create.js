@@ -16,7 +16,7 @@ const main = async function (args) {
 
   try {
     new URL(url)
-  } catch (e) {
+  } catch {
     return new Error('Please enter a valid URL')
   }
 
