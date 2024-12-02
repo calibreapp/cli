@@ -33,7 +33,7 @@
     "marked": "^14.1.4",
     "marked-terminal": "^7.0.0",
     "ora": "^8.0.1",
-    "p-throttle": "^6.1.0",
+    "p-throttle": "^7.0.0",
     "simple-update-notifier": "^2.0.0",
     "stats-percentile": "^3.1.0",
     "yargs": "^17.4.1"
