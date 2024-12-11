@@ -61,7 +61,7 @@ const main = async args => {
 
 const command = 'list'
 const describe =
-  'List all previously run Single Page Tests (includes UUID, URL, device, connection, test location and status).'
+  'List recent Single Page Tests (includes UUID, URL, device, connection, test location and status).'
 const handler = main
 const builder = {
   json: options.json
