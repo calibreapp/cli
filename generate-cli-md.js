@@ -16,10 +16,18 @@ const formatOptions = options => {
     return `Flags:
  ${optionKeys.map(key => {
    // eslint-disable-next-line security/detect-object-injection
-   const { describe, default: defaultValue, type } = options[key]
+   const {
+     describe,
+     default: defaultValue,
+     defaultDescription,
+     type
+     // eslint-disable-next-line security/detect-object-injection
+   } = options[key]
    return `
   * \`--${key}\`: ${describe}${
-    defaultValue ? ` (default: \`${defaultValue}\`)` : ''
+    defaultValue
+      ? ` (${defaultDescription ? defaultDescription : 'default'}: \`${defaultValue}\`)`
+      : ''
   }${type ? ` (${type})` : ''}`
  })}`
   }

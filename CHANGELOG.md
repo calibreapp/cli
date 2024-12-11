@@ -1,3 +1,13 @@
+# 6.0.0 (2024-12-11)
+
+## 🛠 Core
+
+- Introduces `--expiresAt` flag to `calibre test create`. You can use this flag to set an expiry date for the test. After the expiry date, the test will be automatically deleted. **Default expiration is 1 year from creation date**.
+
+## 🧹 Housekeeping
+
+- Updates dependencies in response to latest dependabot updates and security patches.
+
 # 5.2.0 (2024-08-29)
 
 ## 🛠 Core
