@@ -296,6 +296,7 @@ Flags:
   * `--webhookSecret`: Secret used to sign the webhook payload. Secret can be validated using `Calibre-HMAC-SHA256-Signature` HTTP header. See https://calibreapp.com/docs/integrations/webhooks#webhook-security-and-verification for more information.,
   * `--adblocker`: Turn adblocking on or off. (boolean),
   * `--private`: Make the results of a test private (only accessible by members of your Calibre organisation). (boolean),
+  * `--expiresAt`: Set a future UTC date time string (ISO8601). After this date, the test will be automatically deleted. (Min=24 hrs, Max=2 years) e.g.: 2025-12-31T23:59:59Z (Default: Expires 1 year from creation date.: `2025-12-11T09:55:39.255Z`) (string),
   * `--cookie-jar`: Set cookies by specifying a path to a Netscape formatted cookie jar file.,
   * `--headers`: Set HTTP headers by providing a path to a JSON file or a valid JSON key-value pairs.,
   * `--json`: Outputs the results of the command in JSON format.,
@@ -314,7 +315,7 @@ Flags:
 
 ### calibre test list
 
-List all previously run Single Page Tests (includes UUID, URL, device, connection, test location and status).
+List recent Single Page Tests (includes UUID, URL, device, connection, test location and status).
 
 Flags:
  

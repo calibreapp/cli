@@ -1,3 +1,14 @@
+# 6.0.0 (2024-12-11)
+
+## 🛠 Core
+
+- Tests created with `calibre test create` or `Test.create` now expire after 1 year. Once expired, the test will be deleted. You can set a custom expiry date with the `--expiresAt` flag.
+- Adds `--expiresAt` flag to `calibre test create`. You can use this flag to set an expiry date for the test. After the expiry date, the test will be automatically deleted.
+
+## 🧹 Housekeeping
+
+- Updates dependencies in response to latest dependabot updates and security patches.
+
 # 5.2.0 (2024-08-29)
 
 ## 🛠 Core

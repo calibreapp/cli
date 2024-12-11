@@ -1,8 +1,8 @@
 import { request } from './graphql.js'
 
 const CREATE_MUTATION = `
-  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $headers: [HeaderInput!], $adBlockerIsEnabled: Boolean, $isPrivate: Boolean, $webhookUrl: URL, $webhookSecret: String) {
-    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies, headers: $headers, adBlockerIsEnabled: $adBlockerIsEnabled, isPrivate: $isPrivate, webhookUrl: $webhookUrl, webhookSecret: $webhookSecret) {
+  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $headers: [HeaderInput!], $adBlockerIsEnabled: Boolean, $isPrivate: Boolean, $webhookUrl: URL, $webhookSecret: String, $expiresAt: ISO8601DateTime) {
+    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies, headers: $headers, adBlockerIsEnabled: $adBlockerIsEnabled, isPrivate: $isPrivate, webhookUrl: $webhookUrl, webhookSecret: $webhookSecret, expiresAt: $expiresAt) {
       uuid
       formattedTestUrl
     }
@@ -101,7 +101,9 @@ const create = async ({
   adblocker,
   isPrivate,
   webhookUrl,
-  webhookSecret
+  webhookSecret,
+  // Expire in 1 year
+  expiresAt = new Date(Date.now() + 31556952000).toISOString()
 }) => {
   const response = await request({
     query: CREATE_MUTATION,
@@ -114,7 +116,8 @@ const create = async ({
     adBlockerIsEnabled: adblocker,
     isPrivate,
     webhookUrl,
-    webhookSecret
+    webhookSecret,
+    expiresAt
   })
   return response.createTest
 }
