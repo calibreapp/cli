@@ -102,7 +102,8 @@ const create = async ({
   isPrivate,
   webhookUrl,
   webhookSecret,
-  expiresAt
+  // Expire in 1 year
+  expiresAt = new Date(Date.now() + 31556952000).toISOString()
 }) => {
   const response = await request({
     query: CREATE_MUTATION,
