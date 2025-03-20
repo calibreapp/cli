@@ -31,9 +31,13 @@ const CREATE_MUTATION = `
         uuid
       }
 
-      pages {
-        name
-        uuid
+      pagesList {
+        edges {
+          node {
+            name
+            uuid
+          }
+        }
       }
     }
   }
