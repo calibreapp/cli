@@ -7,7 +7,6 @@ const CREATE_MUTATION = `
       measurement
       value
       status
-      changeThreshold
 
       budgets {
         page {
@@ -40,7 +39,6 @@ const UPDATE_MUTATION = `
       measurement
       value
       status
-      changeThreshold
 
       budgets {
         page {
@@ -80,7 +78,6 @@ const LIST_QUERY = `
               measurement
               value
               status
-              changeThreshold
 
               metric {
                 name
