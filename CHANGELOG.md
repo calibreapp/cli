@@ -8,7 +8,7 @@
 
 - Update `calibre site create` internal query.
 - Update & fix metric budget list example (`examples/nodejs/metric-budgets/list.js`).
-- Remove `changeThreshold` field from Metric Budget API responses, which has been deprecated.
+- Remove `changeThreshold` field from Metric Budget API responses, which has been deprecated (Closes #792).
 - Update dependencies in response to latest dependabot updates and security patches.
 
 # 6.0.0 (2024-12-11)
