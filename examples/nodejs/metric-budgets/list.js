@@ -2,22 +2,29 @@
 
 import { MetricBudget } from 'calibre'
 
+// Returns a list of metric budgets for a site, including:
+// - The budget threshold value, e.g. 2500
+// - Budget status, e.g. "met", "unmet", "at_risk"
+// - Metric, e.g. "largestContentfulPaint"
+// - Each page and test profile associated with the budget, with:
+//   - Last observed value
+//   - Whether the budget is within the threshold
 const listMetricBudgets = async () => {
   const site = 'calibre' // site slug
-  const count = 20 // number of metric budgets to return, maximum 500
+  const count = 1 // number of metric budgets to return (maximum=5)
+  const metric = 'largestContentfulPaint' // specify a metric (default=budgets for all metrics are returned)
 
-  // Optional
-  const metric = 'consistently-interactive' // pass a metric to limit results
+  try {
+    const metricBudgets = await MetricBudget.list({
+      site,
+      metric,
+      count
+    })
 
-  // List the metric budgets
-  const metricBudgets = await MetricBudget.list({
-    site,
-    metric,
-    count
-  })
-
-  // Output the formatted JSON response
-  console.log(JSON.stringify(metricBudgets, null, 2))
+    console.log(JSON.stringify(metricBudgets, null, 2))
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 listMetricBudgets()
