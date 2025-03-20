@@ -1,3 +1,16 @@
+# 6.1.0 (2024-12-11)
+
+## 🐛 Bug fixes
+
+- Fix plain text output for `calibre site metrics` command.
+
+## 🧹 Housekeeping
+
+- Update `calibre site create` internal query.
+- Update & fix metric budget list example (`examples/nodejs/metric-budgets/list.js`).
+- Remove `changeThreshold` field from Metric Budget API responses, which has been deprecated.
+- Update dependencies in response to latest dependabot updates and security patches.
+
 # 6.0.0 (2024-12-11)
 
 ## 🛠 Core
