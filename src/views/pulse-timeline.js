@@ -6,7 +6,7 @@ import { format } from '../utils/formatters/index.js'
 const view = timeSeries => {
   const page = timeSeries.pages.map(page => page.name).join(', ')
 
-  const metrics = timeSeries.measurements.map(measurement => {
+  const metrics = timeSeries.metrics.map(measurement => {
     const series = timeSeries.series.filter(
       series => series.measurement === measurement.name
     )
