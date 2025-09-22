@@ -32,7 +32,7 @@
     "log-symbols": "^7.0.0",
     "marked": "^15.0.7",
     "marked-terminal": "^7.0.0",
-    "ora": "^8.0.1",
+    "ora": "^9.0.0",
     "p-throttle": "^8.0.0",
     "simple-update-notifier": "^2.0.0",
     "stats-percentile": "^3.1.0",
