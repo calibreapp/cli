@@ -2,7 +2,7 @@
   "name": "calibre",
   "version": "6.1.0",
   "engines": {
-    "node": ">= 18"
+    "node": ">= 20"
   },
   "type": "module",
   "description": "Calibre - Page speed performance testing with Google Lighthouse",
@@ -21,18 +21,18 @@
   },
   "dependencies": {
     "@json2csv/node": "^7.0.3",
-    "chalk": "^5.0.1",
+    "chalk": "^5.6.2",
     "columnify": "^1.6.0",
-    "configstore": "^7.0.0",
+    "configstore": "^7.1.0",
     "cookiefile": "^1.0.10",
     "date-fns": "^4.1.0",
     "graphql-request": "^7.1.0",
     "humanize": "0.0.9",
     "listr": "^0.14.1",
     "log-symbols": "^7.0.0",
-    "marked": "^15.0.7",
-    "marked-terminal": "^7.0.0",
-    "ora": "^8.0.1",
+    "marked": "^16.3.0",
+    "marked-terminal": "^7.3.0",
+    "ora": "^9.0.0",
     "p-throttle": "^8.0.0",
     "simple-update-notifier": "^2.0.0",
     "stats-percentile": "^3.1.0",
@@ -40,16 +40,16 @@
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "esbuild": "^0.25.0",
-    "eslint": "^9.9.1",
+    "esbuild": "^0.25.10",
+    "eslint": "^9.36.0",
     "eslint-plugin-jest": "^29.0.1",
-    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-security": "^3.0.1",
     "execa": "^9.3.1",
     "express": "^5.1.0",
     "jest": "^30.0.3",
     "prettier": "3.6.2",
-    "ts-jest": "^29.1.1",
+    "ts-jest": "^29.4.4",
     "typescript": "^5.2.2"
   },
   "scripts": {
