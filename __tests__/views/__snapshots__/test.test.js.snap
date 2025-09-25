@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`test completed 1`] = `
 "Performance report for your page. Learn more about Calibre's Single Page Tests ↗ (https://calibreapp.com/docs/automation/single-page-tests)

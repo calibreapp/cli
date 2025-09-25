@@ -7,8 +7,8 @@ import {
 import deleteDeploy from '../../fixtures/deleteDeploy.json'
 
 describe('site delete-deploy', () => {
-  beforeAll(() => setupIntegrationServer(deleteDeploy))
-  afterAll(() => teardownIntegrationServer())
+  beforeAll(async () => await setupIntegrationServer(deleteDeploy))
+  afterAll(async () => await teardownIntegrationServer())
 
   test('requires uuid', async () => {
     const out = await runCLI({

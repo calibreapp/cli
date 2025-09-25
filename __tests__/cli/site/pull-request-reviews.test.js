@@ -7,8 +7,8 @@ import {
 import listPullRequestReviews from '../../fixtures/listPullRequestReviews.json'
 
 describe('list pull request reviews', () => {
-  beforeAll(() => setupIntegrationServer(listPullRequestReviews))
-  afterAll(() => teardownIntegrationServer())
+  beforeAll(async () => await setupIntegrationServer(listPullRequestReviews))
+  afterAll(async () => await teardownIntegrationServer())
 
   test('displays help', async () => {
     const out = await runCLI({

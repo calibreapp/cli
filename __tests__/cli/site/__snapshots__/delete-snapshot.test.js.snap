@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`site delete-snapshot deletes snapshot 1`] = `
 "- Connecting to Calibre
-✔ Snapshot deleted: 14"
+[32m✔[39m Snapshot deleted: 14"
 `;
 
 exports[`site delete-snapshot requires id 1`] = `

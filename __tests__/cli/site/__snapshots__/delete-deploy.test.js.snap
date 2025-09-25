@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`site delete-deploy deletes deploy 1`] = `
 "- Connecting to Calibre
-✔ Deploy deleted: 8c68b9f6-b5bf-49bc-abd7-896db6338818"
+[32m✔[39m Deploy deleted: 8c68b9f6-b5bf-49bc-abd7-896db6338818"
 `;
 
 exports[`site delete-deploy requires uuid 1`] = `
