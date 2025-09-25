@@ -7,8 +7,8 @@ import {
 import snapshotMetrics from '../../fixtures/snapshotMetrics-no-snapshot.json'
 
 describe('snapshot metrics', () => {
-  beforeAll(() => setupIntegrationServer(snapshotMetrics))
-  afterAll(() => teardownIntegrationServer())
+  beforeAll(async () => await setupIntegrationServer(snapshotMetrics))
+  afterAll(async () => await teardownIntegrationServer())
 
   test('returns no snapshot error', async () => {
     const out = await runCLI({

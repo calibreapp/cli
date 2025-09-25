@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`display pull request review displays help 1`] = `
 "calibre site pull-request-review <branch>
@@ -9,8 +9,8 @@ Options:
 
   --help      Show help                                                [boolean]
   --version   Show version number                                      [boolean]
-  --site      A unique slug identifying each Site. You can find it in Site Setti
-              ngs → General or by using the calibre site list command.
+  --site      A unique slug identifying each Site. You can find it in Site
+              Settings → General or by using the calibre site list command.
                                                              [string] [required]
   --json      Outputs the results of the command in JSON format.
   --markdown  Outputs the results of the command in Markdown format."

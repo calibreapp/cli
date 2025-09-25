@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`missing token argument 1`] = `
 "
@@ -12,10 +12,10 @@ your token with the CALIBRE_API_TOKEN environment variable.
 
 Commands:
 
-  calibre token set <token>  Store your API Token to use the CLI (saved in ~/.co
-                             nfig/configstore/calibre.json).
-  calibre token remove       Remove the saved API Token used for CLI commands (f
-                             rom ~/.config/configstore/calibre.json).
+  calibre token set <token>  Store your API Token to use the CLI (saved in
+                             ~/.config/configstore/calibre.json).
+  calibre token remove       Remove the saved API Token used for CLI commands
+                             (from ~/.config/configstore/calibre.json).
 
 Options:
 

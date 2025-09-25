@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`request missing query argument 1`] = `
 "
@@ -14,8 +14,8 @@ Options:
   --help       Show help                                               [boolean]
   --version    Show version number                                     [boolean]
   --query      Pass a GraphQL query to execute.              [string] [required]
-  --variables  Pass query variables as named arguments. e.g.: \`calibre request -
-               -query "$(cat query.gql)" --foo="example" --bar="example"\`"
+  --variables  Pass query variables as named arguments. e.g.: \`calibre request
+               --query "$(cat query.gql)" --foo="example" --bar="example"\`"
 `;
 
 exports[`request returns response 1`] = `
