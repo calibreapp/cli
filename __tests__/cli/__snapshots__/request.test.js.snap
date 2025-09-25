@@ -14,8 +14,8 @@ Options:
   --help       Show help                                               [boolean]
   --version    Show version number                                     [boolean]
   --query      Pass a GraphQL query to execute.              [string] [required]
-  --variables  Pass query variables as named arguments. e.g.: \`calibre request -
-               -query "$(cat query.gql)" --foo="example" --bar="example"\`"
+  --variables  Pass query variables as named arguments. e.g.: \`calibre request
+               --query "$(cat query.gql)" --foo="example" --bar="example"\`"
 `;
 
 exports[`request returns response 1`] = `

@@ -26,17 +26,17 @@
     "configstore": "^7.1.0",
     "cookiefile": "^1.0.10",
     "date-fns": "^4.1.0",
-    "graphql-request": "^7.1.0",
+    "graphql-request": "^7.2.0",
     "humanize": "0.0.9",
-    "listr": "^0.14.1",
-    "log-symbols": "^7.0.0",
+    "listr": "^0.14.3",
+    "log-symbols": "^7.0.1",
     "marked": "^15.0.12",
     "marked-terminal": "^7.3.0",
     "ora": "^9.0.0",
     "p-throttle": "^8.0.0",
     "simple-update-notifier": "^2.0.0",
-    "stats-percentile": "^3.1.0",
-    "yargs": "^17.4.1"
+    "stats-percentile": "^3.3.0",
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",

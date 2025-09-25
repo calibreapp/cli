@@ -13,8 +13,8 @@ Options:
 
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-  --site     A unique slug identifying each Site. You can find it in Site Settin
-             gs → General or by using the calibre site list command.
+  --site     A unique slug identifying each Site. You can find it in Site
+             Settings → General or by using the calibre site list command.
                                                              [string] [required]
   --count    The number of items to return (default: 25, maximum: 500).
                                                                    [default: 25]
@@ -35,8 +35,8 @@ Options:
 
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-  --site     A unique slug identifying each Site. You can find it in Site Settin
-             gs → General or by using the calibre site list command.
+  --site     A unique slug identifying each Site. You can find it in Site
+             Settings → General or by using the calibre site list command.
                                                              [string] [required]
   --count    The number of items to return (default: 25, maximum: 500).
                                                                    [default: 25]
