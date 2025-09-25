@@ -7,8 +7,8 @@ import {
 import deleteSnapshot from '../../fixtures/deleteSnapshot.json'
 
 describe('site delete-snapshot', () => {
-  beforeAll(() => setupIntegrationServer(deleteSnapshot))
-  afterAll(() => teardownIntegrationServer())
+  beforeAll(async () => await setupIntegrationServer(deleteSnapshot))
+  afterAll(async () => await teardownIntegrationServer())
 
   test('requires id', async () => {
     const out = await runCLI({

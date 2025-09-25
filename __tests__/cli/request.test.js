@@ -7,8 +7,8 @@ import {
 import site from '../fixtures/site.json'
 
 describe('request', () => {
-  beforeAll(() => setupIntegrationServer(site))
-  afterAll(() => teardownIntegrationServer())
+  beforeAll(async () => await setupIntegrationServer(site))
+  afterAll(async () => await teardownIntegrationServer())
 
   test('missing query argument', async () => {
     const out = await runCLI({ args: 'request', testForError: true })

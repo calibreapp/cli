@@ -7,8 +7,8 @@ import {
 import listPages from '../../fixtures/listPages.json'
 
 describe('site snapshots', () => {
-  beforeAll(() => setupIntegrationServer(listPages))
-  afterAll(() => teardownIntegrationServer())
+  beforeAll(async () => await setupIntegrationServer(listPages))
+  afterAll(async () => await teardownIntegrationServer())
 
   test('lists all snapshots', async () => {
     const out = await runCLI({

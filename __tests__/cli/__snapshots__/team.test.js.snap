@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`missing subcommand 1`] = `
 "
@@ -11,10 +11,10 @@ Use the team command to manage Teams.
 
 Commands:
 
-  calibre team list  List Teams based on API Token access. For Admin Tokens, thi
-                     s will list all teams or as specified based on your setting
-                     s. For Personal Access Tokens, this will list Teams that yo
-                     u have access to.
+  calibre team list  List Teams based on API Token access. For Admin Tokens,
+                     this will list all teams or as specified based on your
+                     settings. For Personal Access Tokens, this will list Teams
+                     that you have access to.
 
 Options:
 

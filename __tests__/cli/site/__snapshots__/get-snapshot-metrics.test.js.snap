@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`snapshot metrics returns no snapshot error 1`] = `
 "- Connecting to Calibre
-✖ Connecting to Calibre
+[31m✖[39m Connecting to Calibre
 
 
  Error: Snapshot not found 
@@ -15,8 +15,8 @@ Options:
 
   --help      Show help                                                [boolean]
   --version   Show version number                                      [boolean]
-  --site      A unique slug identifying each Site. You can find it in Site Setti
-              ngs → General or by using the calibre site list command.
+  --site      A unique slug identifying each Site. You can find it in Site
+              Settings → General or by using the calibre site list command.
                                                              [string] [required]
   --snapshot  The id of a Snapshot.                                   [required]
   --json      Outputs the results of the command in JSON format.

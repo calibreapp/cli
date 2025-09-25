@@ -7,8 +7,8 @@ import {
 import getPullRequestReviewByBranch from '../../fixtures/getPullRequestReviewByBranch.json'
 
 describe('display pull request review', () => {
-  beforeAll(() => setupIntegrationServer(getPullRequestReviewByBranch))
-  afterAll(() => teardownIntegrationServer())
+  beforeAll(async () => await setupIntegrationServer(getPullRequestReviewByBranch))
+  afterAll(async () => await teardownIntegrationServer())
 
   test('displays help', async () => {
     const out = await runCLI({
