@@ -1,11 +1,11 @@
-# 6.2.0 (2024-10-01)
+# 6.2.0 (2025-10-01)
 
 ## 🧹 Housekeeping
 
 - Update minimum Node.js version to 20+.
 - Update dependencies in response to latest dependabot updates and security patches.
 
-# 6.1.0 (2024-03-20)
+# 6.1.0 (2025-03-20)
 
 ## 🐛 Bug fixes
 
