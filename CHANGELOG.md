@@ -1,3 +1,9 @@
+# 6.2.1 (2025-10-20)
+
+## 🐛 Bug fixes
+
+- Remove `--no-warnings` flag from CLI shebang to improve Node.js compatibility.
+
 # 6.2.0 (2025-10-01)
 
 ## 🧹 Housekeeping
