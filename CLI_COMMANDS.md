@@ -202,7 +202,6 @@ Flags:
   * `--device`: Choose the emulated test device. (default: `Desktop`),
   * `--connection`: Choose the emulated network connection speed.,
   * `--javascript`: Turn JavaScript execution on or off. (default: `true`) (boolean),
-  * `--adblocker`: Turn adblocking on or off. (boolean),
   * `--cookie-jar`: Set cookies by specifying a path to a Netscape formatted cookie jar file.,
   * `--json`: Outputs the results of the command in JSON format.
 
@@ -219,7 +218,6 @@ Flags:
   * `--site`: A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command. (string),
   * `--json`: Outputs the results of the command in JSON format.,
   * `--javascript`: Turn JavaScript execution on or off (default: `true`) (boolean),
-  * `--adblocker`: Turn adblocking on or off. (boolean),
   * `--cookie-jar`: Set cookies by specifying a path to a Netscape formatted cookie jar file.
 
 
@@ -294,11 +292,11 @@ Flags:
   * `--connection`: Choose the emulated network connection speed.,
   * `--webhookUrl`: Test result JSON will be sent to this URL using HTTP POST.,
   * `--webhookSecret`: Secret used to sign the webhook payload. Secret can be validated using `Calibre-HMAC-SHA256-Signature` HTTP header. See https://calibreapp.com/docs/integrations/webhooks#webhook-security-and-verification for more information.,
-  * `--adblocker`: Turn adblocking on or off. (boolean),
   * `--private`: Make the results of a test private (only accessible by members of your Calibre organisation). (boolean),
-  * `--expiresAt`: Set a future UTC date time string (ISO8601). After this date, the test will be automatically deleted. (Min=24 hrs, Max=2 years) e.g.: 2025-12-31T23:59:59Z (Default: Expires 1 year from creation date.: `2026-09-25T14:11:14.450Z`) (string),
+  * `--expiresAt`: Set a future UTC date time string (ISO8601). After this date, the test will be automatically deleted. (Min=24 hrs, Max=2 years) e.g.: 2025-12-31T23:59:59Z (Default: Expires 1 year from creation date.: `2026-12-10T08:38:38.825Z`) (string),
   * `--cookie-jar`: Set cookies by specifying a path to a Netscape formatted cookie jar file.,
   * `--headers`: Set HTTP headers by providing a path to a JSON file or a valid JSON key-value pairs.,
+  * `--blocked-hosts`: Block hosts by providing a comma-separated list, a path to a JSON file, or a valid JSON array. Supports wildcards (e.g., "*.example.com").,
   * `--json`: Outputs the results of the command in JSON format.,
   * `--markdown`: Outputs the results of the command in Markdown format.,
   * `--waitForTest`: Wait for the test to complete before showing the results (default: test result link is shown immediately). (boolean)
