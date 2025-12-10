@@ -1,4 +1,6 @@
 name: Test Node.js
+permissions:
+  contents: read
 
 on: [push]
 
