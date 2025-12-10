@@ -43,7 +43,6 @@ const SNAPSHOT_METRICS_QUERY = `
           }
           isMobile
           jsIsDisabled
-          adBlockerIsEnabled
           hasDeviceEmulation
           hasBandwidthEmulation
         }

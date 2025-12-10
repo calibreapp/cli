@@ -6,7 +6,6 @@ const CREATE_MUTATION = `
       uuid
       name
       jsIsDisabled
-      adBlockerIsEnabled
       hasDeviceEmulation
       hasBandwidthEmulation
       isMobile
@@ -54,7 +53,6 @@ const LIST_QUERY = `
           uuid
           name
           jsIsDisabled
-          adBlockerIsEnabled
           hasDeviceEmulation
           hasBandwidthEmulation
           isMobile
@@ -102,7 +100,6 @@ const UPDATE_MUTATION = `
       uuid
       name
       jsIsDisabled
-      adBlockerIsEnabled
       hasDeviceEmulation
       hasBandwidthEmulation
       isMobile
@@ -157,8 +154,7 @@ const create = async ({
   device,
   connection,
   cookies,
-  javascript,
-  adblocker
+  javascript
 }) => {
   const response = await request({
     query: CREATE_MUTATION,
@@ -168,8 +164,7 @@ const create = async ({
       device,
       connection,
       cookies,
-      jsIsDisabled: !javascript,
-      adBlockerIsEnabled: adblocker
+      jsIsDisabled: !javascript
     }
   })
 
@@ -191,7 +186,6 @@ const update = async ({
   headers,
   blockedThirdParties,
   javascript,
-  adblocker,
   position
 }) => {
   const response = await request({
@@ -206,7 +200,6 @@ const update = async ({
       headers,
       blockedThirdParties,
       jsIsDisabled: !javascript,
-      adBlockerIsEnabled: adblocker,
       position
     }
   })

@@ -39,7 +39,6 @@ ${chalk.grey(
 ${profile.device ? `• ${profile.device.title}` : ''}
 ${profile.bandwidth ? `• ${profile.bandwidth.title}` : ''}
 ${profile.jsIsDisabled ? '• Javascript Disabled' : ''}
-${profile.adBlockerIsEnabled ? '• Adblocker Enabled' : ''}
 
 ${cookies(profile.cookies)}
   `.trim()

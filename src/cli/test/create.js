@@ -147,11 +147,6 @@ const builder = {
     describe:
       'Secret used to sign the webhook payload. Secret can be validated using `Calibre-HMAC-SHA256-Signature` HTTP header. See https://calibreapp.com/docs/integrations/webhooks#webhook-security-and-verification for more information.'
   },
-  adblocker: {
-    describe: 'Turn adblocking on or off.',
-    type: 'boolean',
-    default: false
-  },
   private: {
     describe:
       'Make the results of a test private (only accessible by members of your Calibre organisation).',

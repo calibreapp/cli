@@ -36,7 +36,6 @@ const TIME_SERIES_QUERY = `
             uuid
             name
             jsIsDisabled
-            adBlockerIsEnabled
             hasDeviceEmulation
             hasBandwidthEmulation
             isMobile

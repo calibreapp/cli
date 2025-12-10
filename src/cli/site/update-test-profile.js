@@ -65,11 +65,6 @@ const builder = {
     describe: 'Turn JavaScript execution on or off',
     default: true
   },
-  adblocker: {
-    type: 'boolean',
-    describe: 'Turn adblocking on or off.',
-    default: false
-  },
   'cookie-jar': {
     describe:
       'Set cookies by specifying a path to a Netscape formatted cookie jar file.'
