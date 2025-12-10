@@ -27,15 +27,21 @@ const createTest = async () => {
       value: 'My Custom User Agent'
     }
   ]
+  const blockedHosts = [
+    '*.google-analytics.com',
+    '*.facebook.com',
+    'ads.example.com'
+  ]
 
   // Create the test
-  const { formattedTestUrl } = await Test.create({
+  const { formattedTestUrl, uuid } = await Test.create({
     url,
     location,
     device,
     connection,
     cookies,
     headers,
+    blockedHosts,
     isPrivate
   })
 
