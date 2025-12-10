@@ -20,7 +20,7 @@ describe('test create with blockedHosts', () => {
   test('should accept comma-separated blocked hosts', async () => {
     const out = await runCLI({
       args:
-        'test create https://example.com --location=Sydney --blocked-hosts="*.google-analytics.com,*.facebook.com"'
+        'test create https://example.com --location=Sydney --blockedHosts="*.google-analytics.com,*.facebook.com"'
     })
     expect(out).toMatchSnapshot()
   })
@@ -28,7 +28,7 @@ describe('test create with blockedHosts', () => {
   test('should accept JSON array for blocked hosts', async () => {
     const out = await runCLI({
       args:
-        'test create https://example.com --location=Sydney --blocked-hosts=\'["*.google-analytics.com","*.facebook.com"]\''
+        'test create https://example.com --location=Sydney --blockedHosts=\'["*.google-analytics.com","*.facebook.com"]\''
     })
     expect(out).toMatchSnapshot()
   })

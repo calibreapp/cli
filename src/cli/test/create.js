@@ -168,7 +168,7 @@ const builder = {
     describe:
       'Set HTTP headers by providing a path to a JSON file or a valid JSON key-value pairs.'
   },
-  'blocked-hosts': {
+  blockedHosts: {
     describe:
       'Block hosts by providing a comma-separated list, a path to a JSON file, or a valid JSON array. Supports wildcards (e.g., "*.example.com").'
   },
