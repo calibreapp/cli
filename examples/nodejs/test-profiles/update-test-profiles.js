@@ -6,8 +6,10 @@ const update = async () => {
   const profileParams = {
     site: 'calibre',
     uuid: 'a47e812c-853a-4167-969f-7dd143eb213d',
-    name: 'Adblocker on',
-    adblocker: true
+    name: 'Desktop Profile',
+    javascript: true,
+    device: 'Desktop',
+    connection: 'Cable'
   }
 
   try {

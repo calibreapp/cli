@@ -4,7 +4,6 @@
   "formattedTestUrl": "https://calibreapp.com/tests/b3baaa1/1fe9862",
   "status": "errored",
   "updatedAt": "2019-04-26T05:09:26Z",
-  "adBlockerIsEnabled": false,
   "runtimeError": {
     "code": "INTERSTITIAL_ERROR",
     "message": "Calibre was unable to load the page. Please make sure the page URL and site authentication settings are correct."

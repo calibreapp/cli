@@ -33,7 +33,6 @@ const main = async args => {
       device: row.device ? row.device.title : 'Desktop',
       connection: row.bandwidth ? row.bandwidth.title : 'Not Throttled',
       'javascript disabled': row.jsIsDisabled ? 'Yes' : 'No',
-      'adblocker enabled': row.adBlockerIsEnabled ? 'Yes' : 'No',
       cookies: row.cookies.map(cookie => cookie.name).join(', ') || 'None'
     }
   })

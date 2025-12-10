@@ -15,6 +15,7 @@ const main = async function (args) {
   let spinner
   let cookies = []
   let headers = []
+  let blockedHosts = []
 
   if (!args.json && !args.markdown) {
     spinner = ora('Connecting to Calibre').start()
@@ -49,6 +50,22 @@ const main = async function (args) {
     })
   }
 
+  if (args.blockedHosts) {
+    try {
+      blockedHosts = JSON.parse(args.blockedHosts)
+    } catch {
+      try {
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
+        blockedHosts = fs.readFileSync(args.blockedHosts, 'utf-8')
+        blockedHosts = JSON.parse(blockedHosts)
+      } catch {
+        blockedHosts = args.blockedHosts.split(',').map(host => host.trim())
+      }
+    }
+
+    blockedHosts = [].concat(blockedHosts)
+  }
+
   const isPrivate = args.private
 
   try {
@@ -80,6 +97,7 @@ const main = async function (args) {
       ...args,
       cookies,
       headers,
+      blockedHosts,
       isPrivate
     })
 
@@ -129,11 +147,6 @@ const builder = {
     describe:
       'Secret used to sign the webhook payload. Secret can be validated using `Calibre-HMAC-SHA256-Signature` HTTP header. See https://calibreapp.com/docs/integrations/webhooks#webhook-security-and-verification for more information.'
   },
-  adblocker: {
-    describe: 'Turn adblocking on or off.',
-    type: 'boolean',
-    default: false
-  },
   private: {
     describe:
       'Make the results of a test private (only accessible by members of your Calibre organisation).',
@@ -154,6 +167,10 @@ const builder = {
   headers: {
     describe:
       'Set HTTP headers by providing a path to a JSON file or a valid JSON key-value pairs.'
+  },
+  blockedHosts: {
+    describe:
+      'Block hosts by providing a comma-separated list, a path to a JSON file, or a valid JSON array. Supports wildcards (e.g., "*.example.com").'
   },
   json: options.json,
   markdown: options.markdown,

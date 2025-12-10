@@ -1,8 +1,8 @@
 import { request } from './graphql.js'
 
 const CREATE_MUTATION = `
-  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $headers: [HeaderInput!], $adBlockerIsEnabled: Boolean, $isPrivate: Boolean, $webhookUrl: URL, $webhookSecret: String, $expiresAt: ISO8601DateTime) {
-    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies, headers: $headers, adBlockerIsEnabled: $adBlockerIsEnabled, isPrivate: $isPrivate, webhookUrl: $webhookUrl, webhookSecret: $webhookSecret, expiresAt: $expiresAt) {
+  mutation CreateSinglePageTest($url: URL!, $location: LocationTag!, $device: DeviceTag, $connection: ConnectionTag, $cookies: [CookieInput!], $headers: [HeaderInput!], $isPrivate: Boolean, $webhookUrl: URL, $webhookSecret: String, $expiresAt: ISO8601DateTime, $blockedHosts: [String!]) {
+    createTest(url: $url, location: $location, device: $device, connection: $connection, cookies: $cookies, headers: $headers, isPrivate: $isPrivate, webhookUrl: $webhookUrl, webhookSecret: $webhookSecret, expiresAt: $expiresAt, blockedHosts: $blockedHosts) {
       uuid
       formattedTestUrl
     }
@@ -16,7 +16,6 @@ const LIST_QUERY = `
         uuid
         url
         formattedTestUrl
-        adBlockerIsEnabled
         isPrivate
 
         device {
@@ -48,7 +47,6 @@ const GET_BY_UUID = `
         formattedTestUrl
         status
         updatedAt
-        adBlockerIsEnabled
         isPrivate
         runtimeError: artifact(name: TEST_ARTIFACT_RUNTIME_ERROR)
         markdownReport
@@ -98,10 +96,10 @@ const create = async ({
   connection,
   cookies,
   headers,
-  adblocker,
   isPrivate,
   webhookUrl,
   webhookSecret,
+  blockedHosts,
   // Expire in 1 year
   expiresAt = new Date(Date.now() + 31556952000).toISOString()
 }) => {
@@ -113,11 +111,11 @@ const create = async ({
     connection,
     cookies,
     headers,
-    adBlockerIsEnabled: adblocker,
     isPrivate,
     webhookUrl,
     webhookSecret,
-    expiresAt
+    expiresAt,
+    blockedHosts
   })
   return response.createTest
 }

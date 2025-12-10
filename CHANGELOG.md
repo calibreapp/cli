@@ -1,3 +1,19 @@
+# 6.3.0 (2025-12-10)
+
+## 🚩 Commands and flags
+
+- Added support for host blocking to `calibre test create` command via new `--blockedHosts` flag. Supports wildcard patterns (e.g., `*.google-analytics.com`), comma-separated lists, JSON arrays, or file paths.
+- Removed adblocking support from Single Page Tests, Test Profiles & Synthetic Test Results. Adblocking support was deprecated March 25' (https://calibreapp.com/changelog/archive/2025/03-host-blocking), and removed December 25'.
+- Removed `--adblocker` flag from `calibre test create`, `calibre site create-test-profile`, and `calibre site update-test-profile` commands.
+
+## 🛠 Core
+
+- Updated Node.js example (`examples/nodejs/create-test.js`) to demonstrate `blockedHosts` usage with wildcard patterns.
+
+## 🧹 Housekeeping
+
+- Update dependencies in response to latest dependabot updates and security patches.
+
 # 6.2.1 (2025-10-20)
 
 ## 🐛 Bug fixes

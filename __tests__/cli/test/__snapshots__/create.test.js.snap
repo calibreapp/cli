@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`test create with blockedHosts should accept JSON array for blocked hosts 1`] = `""`;
+
+exports[`test create with blockedHosts should accept comma-separated blocked hosts 1`] = `""`;
+
+exports[`test create with blockedHosts should work without blocked hosts 1`] = `""`;
