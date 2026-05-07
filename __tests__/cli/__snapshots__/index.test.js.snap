@@ -27,6 +27,8 @@ Commands:
                                with the CALIBRE_API_TOKEN environment variable.
   calibre request              Use the request command to make a request to the
                                Calibre GraphQL API.
+  calibre metric-list          List available web performance metrics. Returns
+                               synthetic metrics by default.
 
 Options:
 

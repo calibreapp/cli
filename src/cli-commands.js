@@ -7,8 +7,8 @@ import * as Rum from './cli/rum.js'
 import * as Team from './cli/team.js'
 import * as Test from './cli/test.js'
 import * as Token from './cli/token.js'
+import * as MetricList from './cli/metric-list.js'
 
-import * as MetricList from './cli/synthetic/metric-list.js'
 import * as Connections from './cli/synthetic/connections.js'
 import * as Devices from './cli/synthetic/devices.js'
 import * as Locations from './cli/synthetic/locations.js'
@@ -45,16 +45,6 @@ const deprecatedCommands = [
       'synthetic locations',
       Locations.handler
     )
-  },
-  {
-    command: 'metric-list',
-    describe: false,
-    builder: MetricList.builder,
-    handler: deprecatedHandler(
-      'metric-list',
-      'synthetic metric-list',
-      MetricList.handler
-    )
   }
 ]
 
@@ -68,6 +58,7 @@ const commands = [
   Team,
   Token,
   Request,
+  MetricList,
   ...deprecatedCommands
 ]
 

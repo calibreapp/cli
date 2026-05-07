@@ -15,7 +15,6 @@ import * as DeleteTestProfile from './synthetic/delete-test-profile.js'
 import * as PullRequestReviews from './synthetic/pull-request-reviews.js'
 import * as CreatePullRequestReview from './synthetic/create-pull-request-review.js'
 import * as PullRequestReview from './synthetic/pull-request-review.js'
-import * as MetricList from './synthetic/metric-list.js'
 import * as Connections from './synthetic/connections.js'
 import * as Devices from './synthetic/devices.js'
 import * as Locations from './synthetic/locations.js'
@@ -38,7 +37,6 @@ const commands = [
   PullRequestReviews,
   CreatePullRequestReview,
   PullRequestReview,
-  MetricList,
   Connections,
   Devices,
   Locations

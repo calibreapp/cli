@@ -31,7 +31,7 @@ const main = async args => {
     return {
       identifier: chalk.cyan(row.value),
       name: row.label,
-      category: row.category.label,
+      category: row.category?.label || '—',
       good: `${row.budgetThreshold === 'GreaterThan' ? '<' : '>'} ${format({
         formatter: row.formatter,
         value: row.goodStop
@@ -56,7 +56,7 @@ const main = async args => {
 }
 
 const command = 'metric-list'
-const describe = 'List all available web performance metrics.'
+const describe = 'List available web performance metrics. Returns synthetic metrics by default.'
 const handler = main
 const builder = {
   json: options.json,

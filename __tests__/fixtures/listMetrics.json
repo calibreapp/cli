@@ -1,0 +1,40 @@
+{
+  "data": {
+    "metrics": [
+      {
+        "__typename": "Metric",
+        "name": "first-contentful-paint",
+        "value": "first-contentful-paint",
+        "label": "First Contentful Paint",
+        "shortLabel": "FCP",
+        "budgetThreshold": "LessThan",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/first-contentful-paint",
+        "goodStop": 1800,
+        "poorStop": 3000,
+        "recommended": true,
+        "category": {
+          "name": "performance",
+          "label": "Performance"
+        }
+      },
+      {
+        "__typename": "Metric",
+        "name": "largest-contentful-paint",
+        "value": "largest-contentful-paint",
+        "label": "Largest Contentful Paint",
+        "shortLabel": "LCP",
+        "budgetThreshold": "LessThan",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/largest-contentful-paint",
+        "goodStop": 2500,
+        "poorStop": 4000,
+        "recommended": true,
+        "category": {
+          "name": "performance",
+          "label": "Performance"
+        }
+      }
+    ]
+  }
+}
