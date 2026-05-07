@@ -59,7 +59,12 @@ const command = 'metric-list'
 const describe = 'List all available web performance metrics.'
 const handler = main
 const builder = {
-  json: options.json
+  json: options.json,
+  type: {
+    describe: 'Filter metrics by data source.',
+    choices: ['synthetic', 'crux', 'rum'],
+    type: 'string'
+  }
 }
 
 export { command, describe, handler, builder }

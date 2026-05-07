@@ -1,15 +1,14 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`snapshot metrics returns no snapshot error 1`] = `
-"- Connecting to Calibre
+"[calibre:deprecated] "site get-snapshot-metrics" has moved to "synthetic get-snapshot-metrics"
+- Connecting to Calibre
 [31m✖[39m Connecting to Calibre
 
 
  Error: Snapshot not found 
 
  calibre site get-snapshot-metrics [options]
-
-Get all metrics of a given Snapshot.
 
 Options:
 

@@ -3,8 +3,6 @@
 exports[`display pull request review displays help 1`] = `
 "calibre site pull-request-review <branch>
 
-See the results of a Pull Request Review.
-
 Options:
 
   --help      Show help                                                [boolean]
