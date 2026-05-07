@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`site delete-snapshot deletes snapshot 1`] = `
-"- Connecting to Calibre
+"[calibre:deprecated] "site delete-snapshot" has moved to "synthetic delete-snapshot"
+- Connecting to Calibre
 [32m✔[39m Snapshot deleted: 14"
 `;
 
@@ -11,8 +12,6 @@ exports[`site delete-snapshot requires id 1`] = `
  Missing required argument: id 
 
  calibre site delete-snapshot [options]
-
-Delete a Snapshot from a selected Site.
 
 Options:
 

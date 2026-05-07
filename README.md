@@ -50,11 +50,14 @@ Or alternately, set [`CALIBRE_API_TOKEN` environment variable](https://calibreap
 
 ## 💡 Features
 
-- **Manage performance with a single command**. Retrieve all speed data and manage the test environment and settings.
+- **Three data sources**. Synthetic (Lighthouse testing), Chrome UX Report (CrUX), and Real User Metrics (RUM).
+- **Manage performance with a single command**. Retrieve all speed data and manage your Synthetic testing settings.
 - **Run [Single Page Tests](https://calibreapp.com/docs/automation/single-page-tests)**. Create one-off tests privately or share them with your team.
-- **Monitor speed across your release process**. Track performance between deploys and mark them on your charts.
+- **Monitor speed across deploys**. Track performance between deploys and mark them on your charts.
+- **Real User Metrics**. View live visitor data, page-level breakdowns, and historical trends.
+- **Chrome UX Report data**. Access origin-level and URL-specific CrUX data directly from the CLI.
 - **Use Calibre within CI/CD**. Every command has a `--json` flag for machine-readable output.
-- **Script any action**. We export all API methods to the Calibre `npm` package..
+- **Script any action**. We export all API methods to the Calibre `npm` package.
 
 ## 🛠 Usage
 
@@ -65,14 +68,35 @@ $ calibre --help
 $ calibre <command> --help
 ```
 
+You can start using the CLI right away with the commands listed above, or start with:
+
+```bash
+# List all your sites
+$ calibre site list
+
+# Get a summary of your RUM data for a site
+$ calibre rum summary --site my-site
+
+# List pages or page groupings for a site
+$ calibre rum pages --site my-site
+
+# Get a summary of your CrUX data for a site
+$ calibre crux summary --site my-site
+
+# Manage your Synthetic testing settings for a site using synthetic sub-commands
+$ calibre synthetic
+```
+
 or [see all commands](CLI_COMMANDS.md) in this repository or [Calibre’s documentation](https://calibreapp.com/docs/automation/cli-commands).
 
 In Node, you can use the either ES Modules or CommonJS versions accordingly:
 
 ```javascript
 // ES Modules
-import { Site } from 'calibre'
+import { Site, Crux, Rum } from 'calibre'
 await Site.list()
+await Crux.summary({ site: 'my-site' })
+await Rum.summary({ site: 'my-site' })
 ```
 
 ```javascript
@@ -118,4 +142,5 @@ We prepared a handful of examples for common actions you might want to perform:
 Find code examples and more information for the [CLI](https://calibreapp.com/docs/automation/cli) and [Node.js API](https://calibreapp.com/docs/automation/node) in our documentation.
 
 ## 💼 License
+
 This project is [MIT licensed](LICENSE).

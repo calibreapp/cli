@@ -55,6 +55,12 @@ const LIST_QUERY = `
           name
           slug
         }
+
+        monitoringStatus {
+          synthetic
+          crux
+          rum
+        }
       }
     }
   }

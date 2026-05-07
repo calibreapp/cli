@@ -27,18 +27,24 @@ const main = async args => {
   console.log(`${chalk.bold(index.length)} sites`)
 
   const rows = index.map(row => {
+    const statuses = []
+    if (row.monitoringStatus) {
+      if (row.monitoringStatus.synthetic === null) statuses.push(chalk.green('synthetic'))
+      if (row.monitoringStatus.crux === null) statuses.push(chalk.green('crux'))
+      if (row.monitoringStatus.rum === null) statuses.push(chalk.green('rum'))
+    }
+
     return {
       slug: chalk.grey(row.slug),
       name: row.name,
-      status: `${dateFormat(new Date(row.createdAt), 'h:mma d-MMM-yyyy')}`
+      monitoring: statuses.join(' ') || chalk.grey('—'),
+      created: dateFormat(new Date(row.createdAt), 'h:mma d-MMM-yyyy')
     }
   })
 
   console.log(
     columnify(rows, {
-      columnSplitter: ' | ',
-      truncate: true,
-      maxLineWidth: 'auto'
+      columnSplitter: ' | '
     })
   )
 }

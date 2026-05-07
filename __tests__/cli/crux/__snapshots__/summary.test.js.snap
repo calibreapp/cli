@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`crux summary displays crux summary 1`] = `
+"Form factors: desktop 4500.0% | phone 5000.0% | tablet 500.0%
+
+METRIC                    | P75     
+Largest Contentful Paint  | 2.10 sec
+Cumulative Layout Shift   | 0.05    
+Interaction to Next Paint | 180 ms  
+Time to First Byte        | 800 ms  "
+`;

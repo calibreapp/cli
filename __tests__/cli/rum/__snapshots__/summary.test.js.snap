@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`rum summary displays rum summary 1`] = `
+"Live visitors: 342 | Countries: 28 | Sessions: 12450
+
+
+METRIC                    | P75     
+Largest Contentful Paint  | 2.10 sec
+Cumulative Layout Shift   | 0.05    
+Interaction to Next Paint | 180 ms  
+First Contentful Paint    | 1.80 sec
+Time to First Byte        | 800 ms  
+Round Trip Time           | 50 ms   "
+`;
