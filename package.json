@@ -1,11 +1,11 @@
 {
   "name": "calibre",
-  "version": "6.3.0",
+  "version": "7.0.0",
   "engines": {
     "node": ">= 20"
   },
   "type": "module",
-  "description": "Calibre - Page speed performance testing with Google Lighthouse",
+  "description": "Performance monitoring with Synthetic testing, Chrome UX Report, and Real User Metrics",
   "author": "calibreapp.com",
   "main": "dist/index.js",
   "bin": {
@@ -65,7 +65,11 @@
     "performance",
     "testing",
     "test",
-    "lighthouse"
+    "lighthouse",
+    "rum",
+    "crux",
+    "web-vitals",
+    "real-user-monitoring"
   ],
   "license": "MIT",
   "repository": {
