@@ -62,23 +62,18 @@ const RUM_METRICS_QUERY = `
   }
 `
 
-const QUERIES = {
-  synthetic: LIST_QUERY,
-  crux: CRUX_METRICS_QUERY,
-  rum: RUM_METRICS_QUERY
-}
+const TYPES = new Map([
+  ['synthetic', { query: LIST_QUERY, extract: r => r.metrics }],
+  ['crux', { query: CRUX_METRICS_QUERY, extract: r => r.cruxMetrics }],
+  ['rum', { query: RUM_METRICS_QUERY, extract: r => r.rumMetrics }]
+])
 
-const RESPONSE_KEYS = {
-  synthetic: 'metrics',
-  crux: 'cruxMetrics',
-  rum: 'rumMetrics'
-}
+const DEFAULT_TYPE = { query: LIST_QUERY, extract: r => r.metrics }
 
 const list = async ({ type } = {}) => {
-  const query = QUERIES[type] || LIST_QUERY
-  const responseKey = RESPONSE_KEYS[type] || 'metrics'
+  const { query, extract } = TYPES.get(type) || DEFAULT_TYPE
   const response = await request({ query })
-  return response[responseKey]
+  return extract(response)
 }
 
 export { list }
