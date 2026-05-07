@@ -44,6 +44,14 @@ Each example can be run by executing it as a script, eg: `CALIBRE_API_TOKEN=YOUR
 - **[agent-settings](agent-settings)**
   - **[get](agent-settings/get.js)** - Get the agent settings for a given site
   - **[update](agent-settings/update.js)** - Updates the agent settings for a given site
+- **[crux](crux)**
+  - **[summary.js](crux/summary.js)** - Fetches Chrome UX Report summary for a site
+  - **[history.js](crux/history.js)** - Fetches Chrome UX Report historical trends
+  - **[urls.js](crux/urls.js)** - Lists CrUX monitored URLs
+- **[rum](rum)**
+  - **[summary.js](rum/summary.js)** - Fetches RUM dashboard summary for a site
+  - **[pages.js](rum/pages.js)** - Fetches RUM page-level breakdown
+  - **[config.js](rum/config.js)** - Fetches RUM configuration for a site
 
 ### Writing your own, or looking for help?
 

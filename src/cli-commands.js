@@ -1,23 +1,65 @@
-import * as ConnectionList from './cli/connection-list.js'
-import * as DeviceList from './cli/device-list.js'
-import * as LocationList from './cli/location-list.js'
-import * as MetricList from './cli/metric-list.js'
 import * as Request from './cli/request.js'
 import * as Site from './cli/site.js'
+import * as Synthetic from './cli/synthetic.js'
+import * as Deploy from './cli/deploy.js'
+import * as Crux from './cli/crux.js'
+import * as Rum from './cli/rum.js'
 import * as Team from './cli/team.js'
 import * as Test from './cli/test.js'
 import * as Token from './cli/token.js'
+import * as MetricList from './cli/metric-list.js'
+
+import * as Connections from './cli/synthetic/connections.js'
+import * as Devices from './cli/synthetic/devices.js'
+import * as Locations from './cli/synthetic/locations.js'
+
+import { deprecatedHandler } from './utils/deprecation.js'
+
+const deprecatedCommands = [
+  {
+    command: 'connection-list',
+    describe: false,
+    builder: Connections.builder,
+    handler: deprecatedHandler(
+      'connection-list',
+      'synthetic connections',
+      Connections.handler
+    )
+  },
+  {
+    command: 'device-list',
+    describe: false,
+    builder: Devices.builder,
+    handler: deprecatedHandler(
+      'device-list',
+      'synthetic devices',
+      Devices.handler
+    )
+  },
+  {
+    command: 'location-list',
+    describe: false,
+    builder: Locations.builder,
+    handler: deprecatedHandler(
+      'location-list',
+      'synthetic locations',
+      Locations.handler
+    )
+  }
+]
 
 const commands = [
   Site,
-  Team,
+  Synthetic,
+  Deploy,
+  Crux,
+  Rum,
   Test,
-  ConnectionList,
-  DeviceList,
-  LocationList,
-  MetricList,
+  Team,
   Token,
-  Request
+  Request,
+  MetricList,
+  ...deprecatedCommands
 ]
 
 export default commands

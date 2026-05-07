@@ -1,3 +1,157 @@
+# 7.0.0 (2026-05-07)
+
+## ⚠️ Major release with breaking changes
+
+This is a major release that restructures the CLI command hierarchy to namespace **Synthetic** commands under `calibre synthetic`, and introduces **CrUX** `calibre crux`, and **RUM** `calibre rum` subcommands.
+
+All existing functionality remains available, but some commands have moved to new locations. Deprecated aliases with warnings are provided for all moved commands to ensure a smooth transition.
+
+### Command Restructuring
+
+- All synthetic monitoring commands are moved from `calibre site <command>` to `calibre synthetic <command>`
+- New top-level `calibre rum <command>` for Real User Metrics data
+- New top-level `calibre crux <command>` for Chrome User Experience Report data
+- Site settings and config commands remain under `calibre site`
+- Deploys have been elevated to a top-level `calibre deploy <command>`, renaming `calibre site *-deploy` commands to `calibre deploy <command>`
+- Synthetic `connection-list`, `device-list`, and `location-list` commands are now `calibre synthetic connections`, `calibre synthetic devices`, and `calibre synthetic locations` respectively
+
+#### Unchanged
+
+These commands remain exactly where they are:
+
+- `calibre metrics-list`
+- `calibre site list`
+- `calibre site create`
+- `calibre site delete`
+- `calibre test create`
+- `calibre test list`
+- `calibre test show`
+- `calibre test download-artifacts`
+- `calibre team list`
+- `calibre token set`
+- `calibre token remove`
+- `calibre request`
+
+---
+
+## 🚩 New Commands
+
+### `calibre rum` — Real User Metrics
+
+Real User Session performance data collected from visitors on your website via the Calibre RUM snippet. Provides live visitor counts, aggregate web vitals, UX ratings, page-level breakdowns, and historical trends.
+
+#### `calibre rum summary`
+
+Display the RUM dashboard overview: live visitors, aggregate metrics, and UX ratings.
+
+```
+calibre rum summary --site=<slug> [options]
+```
+
+| Flag              | Description                                                             |
+| ----------------- | ----------------------------------------------------------------------- |
+| `--site`          | **(required)** The site slug                                            |
+| `--metrics`       | Metrics to query (space-separated). Default: `lcp cls inp ttfb fcp rtt` |
+| `--duration`      | Number of days to aggregate. Default: `7`                               |
+| `--date-bin`      | Time granularity: `day` or `month`. Default: `day`                      |
+| `--country`       | Filter by country code(s) (space-separated, e.g. `AU US`)               |
+| `--device`        | Filter by device type: `desktop`, `mobile`, `tablet`                    |
+| `--connection`    | Filter by connection type                                               |
+| `--path`          | Filter by URL path(s) (space-separated)                                 |
+| `--page-grouping` | Filter by page grouping UUID(s) (space-separated)                       |
+| `--json`          | Output as JSON                                                          |
+
+### Other RUM commands:
+
+- `calibre rum history` - Display RUM historical trends over time
+- `calibre rum pages` - Display page-level RUM metrics breakdown, sortable and paginated
+- `calibre rum config` - Display the RUM configuration for a site
+
+---
+
+### `calibre crux` — Chrome User Experience Report
+
+Field performance data sourced from real Chrome users (the Chrome User Experience Report). Provides origin-level and URL-level Core Web Vitals with historical trends.
+
+- `calibre crux summary` - Display origin-level CrUX aggregate metrics and Core Web Vitals assessment for a site.
+- `calibre crux history` - Display historical CrUX trends for a site with collection period data.
+- `calibre crux urls` - List all CrUX-monitored URLs for a site
+- `calibre crux url` - Display detailed CrUX data for a specific monitored URL, including metrics and history
+
+---
+
+## 🚩 Enhancements
+
+### `calibre site list`
+
+Now shows monitoring status for each site indicating which data sources are active:
+
+- **Synthetic** — scheduled Lighthouse tests
+- **CrUX** — Chrome User Experience Report data
+- **RUM** — Real User Metrics collection
+
+The table output includes a new "Monitoring" column. JSON output includes a `monitoringStatus` object with `synthetic`, `crux`, and `rum`, which are null or report monitoring status warnings.
+
+### `calibre metric-list`
+
+Now accepts a `--type` flag to filter metrics by data source:
+
+```
+calibre metric-list                    # Defaults to synthetic metrics
+calibre metric-list --type=synthetic   # Synthetic metrics only
+calibre metric-list --type=crux        # CrUX metrics only
+calibre metric-list --type=rum         # RUM metrics only
+```
+
+As always, running `calibre --help` will show the full list of available commands and options. For more details on all commands, see [Calibre’s documentation](https://calibreapp.com/docs/automation/cli-commands).
+
+---
+
+## 🛠 Core
+
+### Node.js API
+
+New programmatic exports:
+
+```javascript
+import { Crux, Rum } from 'calibre'
+
+// CrUX
+const summary = await Crux.summary({ site: 'my-site', formFactor: 'PHONE' })
+const history = await Crux.history({
+  site: 'my-site',
+  timePeriod: 'SIX_MONTHS'
+})
+const urls = await Crux.urls({ site: 'my-site' })
+const urlDetail = await Crux.url({ site: 'my-site', uuid: '...' })
+
+// RUM
+const dashboard = await Rum.summary({
+  site: 'my-site',
+  metrics: ['lcp', 'cls', 'inp'],
+  duration: 7
+})
+const rumHistory = await Rum.history({
+  site: 'my-site',
+  metrics: ['lcp', 'cls', 'inp'],
+  duration: 30
+})
+const rumPages = await Rum.pages({
+  site: 'my-site',
+  metrics: ['lcp', 'cls', 'inp'],
+  sortBy: 'lcp',
+  limit: 50
+})
+const rumConfig = await Rum.config({ site: 'my-site' })
+```
+
+---
+
+## 📖 Documentation
+
+- Updated `examples/bash/` with examples for `crux`, `rum`, `deploy`, and `synthetic` commands.
+- Updated `examples/nodejs/` with examples for CrUX and RUM programmatic API usage.
+
 # 6.3.0 (2025-12-10)
 
 ## 🚩 Commands and flags

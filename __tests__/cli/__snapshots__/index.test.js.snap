@@ -5,23 +5,30 @@ exports[`calibre --help 1`] = `
 
 Commands:
 
-  calibre site <command>   Use the site command to manage your Sites, Pages,
-                           Test Profiles, Pull Request Reviews, Deploys,
-                           Snapshots, and download monitoring data.
-  calibre team <command>   Use the team command to manage Teams.
-  calibre test <command>   Use the test command to run Single Page Tests: public
-                           or private tests for a single Page tested from a
-                           single device. This command also supports viewing all
-                           Single Page Tests and retrieving their artifacts.
-  calibre connection-list  List all available network connection speeds.
-  calibre device-list      List all available test devices.
-  calibre location-list    List all available test locations.
-  calibre metric-list      List all available web performance metrics.
-  calibre token <command>  Use the token command to store or revoke a Calibre
-                           API token. You can also save your token with the
-                           CALIBRE_API_TOKEN environment variable.
-  calibre request          Use the request command to make a request to the
-                           Calibre GraphQL API.
+  calibre site <command>       Manage your Sites.
+  calibre synthetic <command>  Synthetic monitoring — manage scheduled
+                               Lighthouse tests, Pages, Test Profiles,
+                               Snapshots, and Pull Request Reviews.
+  calibre deploy <command>     Manage deployment markers — annotate your
+                               performance charts across Synthetic, CrUX, and
+                               RUM data.
+  calibre crux <command>       Chrome UX Report (CrUX) — real-world performance
+                               data from Chrome users.
+  calibre rum <command>        Real User Metrics (RUM) — field performance data
+                               from your real users.
+  calibre test <command>       Use the test command to run Single Page Tests:
+                               public or private tests for a single Page tested
+                               from a single device. This command also supports
+                               viewing all Single Page Tests and retrieving
+                               their artifacts.
+  calibre team <command>       Use the team command to manage Teams.
+  calibre token <command>      Use the token command to store or revoke a
+                               Calibre API token. You can also save your token
+                               with the CALIBRE_API_TOKEN environment variable.
+  calibre request              Use the request command to make a request to the
+                               Calibre GraphQL API.
+  calibre metric-list          List available web performance metrics. Returns
+                               synthetic metrics by default.
 
 Options:
 

@@ -7,5 +7,13 @@
 
 Each example is an executable script, eg: `./examples/bash/create-test.sh`.
 
+### Available examples
+
+- **[create-test.sh](create-test.sh)** - Creates a one-off test for a given URL
+- **[get-agent-ip-address.sh](get-agent-ip-address.sh)** - Gets the IP address of a Calibre test agent
+- **[crux-summary.sh](crux-summary.sh)** - Fetches Chrome UX Report summary and Core Web Vitals assessment
+- **[rum-pages.sh](rum-pages.sh)** - Fetches RUM page-level breakdown
+- **[deploy-create.sh](deploy-create.sh)** - Creates a deploy marker from current git revision
+
 If you spot something note quite right, or have a question, please log a [new issue](https://github.com/calibreapp/cli/issues) or contact Calibre support.
 If you’ve built or adapated an example for your usecase, be sure to share it in a [new issue](https://github.com/calibreapp/cli/issues) ✌️

@@ -1,0 +1,52 @@
+{
+  "data": {
+    "organisation": {
+      "site": {
+        "cruxCvwAssessment": "good",
+        "cruxFormFactorDensity": {
+          "desktop": 45,
+          "phone": 50,
+          "tablet": 5
+        },
+        "cruxAggregateMetrics": [
+          {
+            "name": "cruxLargestContentfulPaint",
+            "value": 2100,
+            "grading": "good",
+            "metric": {
+              "label": "Largest Contentful Paint",
+              "formatter": "humanDuration"
+            }
+          },
+          {
+            "name": "cruxCumulativeLayoutShift",
+            "value": 0.05,
+            "grading": "good",
+            "metric": {
+              "label": "Cumulative Layout Shift",
+              "formatter": "unitless"
+            }
+          },
+          {
+            "name": "cruxInteractionToNextPaint",
+            "value": 180,
+            "grading": "good",
+            "metric": {
+              "label": "Interaction to Next Paint",
+              "formatter": "humanDuration"
+            }
+          },
+          {
+            "name": "cruxTimeToFirstByte",
+            "value": 800,
+            "grading": "average",
+            "metric": {
+              "label": "Time to First Byte",
+              "formatter": "humanDuration"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

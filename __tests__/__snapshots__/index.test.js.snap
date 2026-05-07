@@ -12,6 +12,12 @@ exports[`Index should be able to resolve the same dependencies 1`] = `
   "Connection": {
     "list": [Function],
   },
+  "Crux": {
+    "history": [Function],
+    "summary": [Function],
+    "url": [Function],
+    "urls": [Function],
+  },
   "Deploy": {
     "create": [Function],
     "destroy": [Function],
@@ -46,6 +52,12 @@ exports[`Index should be able to resolve the same dependencies 1`] = `
     "getPRReviewByBranch": [Function],
     "list": [Function],
     "waitForReviewCompletion": [Function],
+  },
+  "Rum": {
+    "config": [Function],
+    "history": [Function],
+    "pages": [Function],
+    "summary": [Function],
   },
   "Site": {
     "create": [Function],

@@ -7,8 +7,6 @@ exports[`missing site argument 1`] = `
 
  calibre site pages [options]
 
-List Pages for a selected Site.
-
 Options:
 
   --help     Show help                                                 [boolean]
@@ -28,8 +26,6 @@ exports[`missing site argument value 1`] = `
  Not enough arguments following: site 
 
  calibre site pages [options]
-
-List Pages for a selected Site.
 
 Options:
 
