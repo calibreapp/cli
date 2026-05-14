@@ -21,6 +21,10 @@ export default [
     rules: {
       'no-console': 0,
       'n/shebang': 0,
+      'n/no-unsupported-features/node-builtins': [
+        'error',
+        { ignores: ['util.styleText'] }
+      ],
       semi: [2, 'never'],
       quotes: [2, 'single', 'avoid-escape'],
       complexity: 0,

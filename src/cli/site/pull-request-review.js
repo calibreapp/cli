@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 
 import { getPRReviewByBranch } from '../../api/pull-request-review.js'
 import formatTest from '../../views/markdown.js'
@@ -9,8 +9,8 @@ const main = async args => {
   let spinner
 
   if (!args.json && !args.markdown) {
-    spinner = ora('Connecting to Calibre').start()
-    spinner.text = 'Fetching Pull Request Review'
+    spinner = createSpinner('Connecting to Calibre').start()
+    spinner.update({ text: 'Fetching Pull Request Review' })
   }
 
   try {
@@ -22,7 +22,7 @@ const main = async args => {
     spinner.stop()
     console.log(formatTest(response.markdownReport))
   } catch (e) {
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 }

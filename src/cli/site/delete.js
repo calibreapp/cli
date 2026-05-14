@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 
 import { destroy } from '../../api/site.js'
 import { humaniseError } from '../../utils/api-error.js'
@@ -8,7 +8,7 @@ const main = async function (args) {
   let spinner
 
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   if (process.stdout.isTTY && !args.confirm) {
@@ -19,13 +19,13 @@ const main = async function (args) {
 
   try {
     const response = await destroy(args)
-    if (!args.json) spinner.succeed(`Site deleted: ${response.name}`)
+    if (!args.json) spinner.success({ text: `Site deleted: ${response.name}` })
 
     // Return result
     if (args.json) return console.log(JSON.stringify(response, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 }

@@ -1,4 +1,4 @@
-import chalk from 'chalk'
+import { styleText } from 'node:util'
 
 const formatGrading = grading => {
   if (!grading) return '—'
@@ -6,21 +6,21 @@ const formatGrading = grading => {
   switch (grading) {
     case 'good':
     case 'GOOD':
-      return chalk.green('Good')
+      return styleText('green', 'Good')
     case 'average':
     case 'needs-improvement':
     case 'NEEDS_IMPROVEMENT':
-      return chalk.yellow('Needs Improvement')
+      return styleText('yellow', 'Needs Improvement')
     case 'poor':
     case 'POOR':
-      return chalk.red('Poor')
+      return styleText('red', 'Poor')
     case 'pass':
-      return chalk.green('Pass')
+      return styleText('green', 'Pass')
     case 'fail':
-      return chalk.red('Fail')
+      return styleText('red', 'Fail')
     case 'ungraded':
     case 'not_assessed':
-      return chalk.grey('—')
+      return styleText('gray', '—')
     default:
       return grading
   }
@@ -34,14 +34,14 @@ const colorByGrading = (value, grading) => {
   switch (grading) {
     case 'good':
     case 'GOOD':
-      return chalk.green(display)
+      return styleText('green', display)
     case 'average':
     case 'needs-improvement':
     case 'NEEDS_IMPROVEMENT':
-      return chalk.yellow(display)
+      return styleText('yellow', display)
     case 'poor':
     case 'POOR':
-      return chalk.red(display)
+      return styleText('red', display)
     default:
       return display
   }

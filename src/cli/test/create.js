@@ -1,6 +1,6 @@
 import { URL } from 'url'
 
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import cookiefile from 'cookiefile'
 import fs from 'fs'
 
@@ -18,7 +18,7 @@ const main = async function (args) {
   let blockedHosts = []
 
   if (!args.json && !args.markdown) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   if (args.cookieJar) {
@@ -102,7 +102,7 @@ const main = async function (args) {
     })
 
     if (!args.json && !args.markdown && !args.waitForTest) {
-      spinner.succeed(`Test scheduled: ${formattedTestUrl}`)
+      spinner.success({ text: `Test scheduled: ${formattedTestUrl}` })
     } else {
       const test = await waitForTest(uuid)
 
@@ -112,16 +112,16 @@ const main = async function (args) {
         console.log(test.markdownReport)
       } else {
         if (test.status == 'completed') {
-          spinner.succeed(`Test complete: ${formattedTestUrl}`)
+          spinner.success({ text: `Test complete: ${formattedTestUrl}` })
           console.log(formatTest(test.markdownReport))
         } else {
-          spinner.fail('Test complete')
+          spinner.stop()
         }
       }
     }
   } catch (e) {
     if (args.json || args.markdown) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 }

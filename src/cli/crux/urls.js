@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { urls } from '../../api/crux.js'
@@ -12,7 +12,7 @@ const main = async args => {
   let result
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -20,7 +20,7 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
@@ -29,13 +29,11 @@ const main = async args => {
     !result.cruxUrlsList.edges ||
     result.cruxUrlsList.edges.length === 0
   ) {
-    spinner.fail(
-      'No CrUX URL data available for this site. CrUX requires sufficient Chrome user traffic.'
-    )
+    spinner.stop()
     return
   }
 
-  spinner.succeed(`${result.cruxUrlsList.edges.length} CrUX URLs`)
+  spinner.success({ text: `${result.cruxUrlsList.edges.length} CrUX URLs` })
 
   const rows = result.cruxUrlsList.edges.map(({ node }) => {
     const row = {

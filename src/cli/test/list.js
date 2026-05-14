@@ -1,7 +1,7 @@
 import { URL } from 'url'
 
-import chalk from 'chalk'
-import ora from 'ora'
+import { styleText } from 'node:util'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 import { format as dateFormat } from 'date-fns'
 
@@ -15,7 +15,7 @@ const main = async args => {
   let index
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -23,19 +23,19 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   spinner.stop()
-  console.log(`${chalk.bold('♤  calibre')} test runs\n`)
+  console.log(`${styleText('bold', '♤  calibre')} test runs\n`)
 
   const rows = index.map(row => {
     const url = new URL(row.url)
     const formattedTestUrl = `${url.hostname}${url.pathname}`
 
     return {
-      uuid: chalk.grey(row.uuid),
+      uuid: styleText('gray', row.uuid),
       url: formattedTestUrl,
       device: row.device ? row.device.title : 'Desktop',
       connection: row.connection ? row.connection.title : 'Not Throttled',

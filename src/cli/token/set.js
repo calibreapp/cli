@@ -1,12 +1,11 @@
 import Configstore from 'configstore'
-import chalk from 'chalk'
-import logSymbols from 'log-symbols'
+import { styleText } from 'node:util'
 
 const config = new Configstore('calibre')
 
 const main = async ({ token }) => {
   config.set('token', token)
-  console.log(`${chalk.bold.green(`${logSymbols.success} API Token saved!`)}\n`)
+  console.log(`${styleText(['bold', 'green'], '\u2714 API Token saved!')}\n`)
 }
 
 const command = 'set <token>'

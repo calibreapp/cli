@@ -2,7 +2,7 @@
   "name": "calibre",
   "version": "8.0.0",
   "engines": {
-    "node": ">= 22"
+    "node": ">= 22.13.0"
   },
   "type": "module",
   "description": "Performance monitoring with Synthetic testing, Chrome UX Report, and Real User Metrics",
@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@json2csv/node": "^7.0.3",
-    "chalk": "^5.6.2",
     "columnify": "^1.6.0",
     "configstore": "^8.0.0",
     "cookiefile": "^1.0.10",
@@ -29,10 +28,9 @@
     "graphql-request": "^7.4.0",
     "humanize": "0.0.9",
     "listr": "^0.14.3",
-    "log-symbols": "^7.0.1",
     "marked": "^15.0.12",
     "marked-terminal": "^7.3.0",
-    "ora": "^9.4.0",
+    "nanospinner": "^1.2.2",
     "p-throttle": "^8.0.0",
     "simple-update-notifier": "^2.0.0",
     "stats-percentile": "^3.3.0",

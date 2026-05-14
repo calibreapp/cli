@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { pages } from '../../api/rum.js'
@@ -12,7 +12,7 @@ const main = async args => {
   let result
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -20,18 +20,16 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   if (!result.aggregate || result.aggregate.length === 0) {
-    spinner.fail(
-      'No RUM page data available. Check that RUM is enabled for this site with: calibre rum config --site=<slug>'
-    )
+    spinner.stop()
     return
   }
 
-  spinner.succeed(`${result.totalCount} pages`)
+  spinner.success({ text: `${result.totalCount} pages` })
 
   const formatters = new Map(
     (result.metrics || []).map(m => [m.value, m.formatter])

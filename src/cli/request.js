@@ -1,19 +1,18 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 
 import { request } from '../api/graphql.js'
 import { humaniseError } from '../utils/api-error.js'
 
 const main = async args => {
   let spinner
-  spinner = ora('Connecting to Calibre')
-  spinner.color = 'magenta'
+  spinner = createSpinner('Connecting to Calibre')
   spinner.start()
 
   let result
   try {
     result = await request(args)
   } catch (e) {
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 

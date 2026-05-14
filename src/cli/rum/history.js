@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 import { format as dateFormat } from 'date-fns'
 
@@ -13,7 +13,7 @@ const main = async args => {
   let result
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -21,18 +21,16 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   if (!result.history || result.history.length === 0) {
-    spinner.fail(
-      'No RUM history available. Check that RUM is enabled for this site with: calibre rum config --site=<slug>'
-    )
+    spinner.stop()
     return
   }
 
-  spinner.succeed('RUM History')
+  spinner.success({ text: 'RUM History' })
 
   const formatters = new Map(
     (result.metrics || []).map(m => [m.value, m.formatter])

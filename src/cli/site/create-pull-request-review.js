@@ -1,5 +1,5 @@
 import { promises as fs } from 'fs'
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 
 import {
   create,
@@ -27,7 +27,7 @@ const main = async function (args) {
   let spinner
 
   if (!args.json && !args.markdown) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   if (args.configPath) {
@@ -39,7 +39,7 @@ const main = async function (args) {
     const response = await create(args)
 
     if (!args.waitForResult) {
-      spinner.succeed(`Pull Request Review queued: ${args.branch}.`)
+      spinner.success({ text: `Pull Request Review queued: ${args.branch}.` })
 
       console.log(
         `View progress by running \`calibre site pull-request-review ${args.branch} --site=${args.site}\``
@@ -48,8 +48,8 @@ const main = async function (args) {
       return print(args, response)
     } else {
       if (spinner) {
-        spinner.succeed(`Pull Request Review queued: ${args.branch}`)
-        spinner = ora('Waiting for Pull Request Review to complete').start()
+        spinner.success({ text: `Pull Request Review queued: ${args.branch}` })
+        spinner = createSpinner('Waiting for Pull Request Review to complete').start()
       }
 
       const completedResponse = await waitForReviewCompletion(
@@ -58,7 +58,7 @@ const main = async function (args) {
       )
 
       if (spinner) {
-        spinner.succeed('Pull Request Review completed')
+        spinner.success({ text: 'Pull Request Review completed' })
       }
 
       print(args, completedResponse)
@@ -72,7 +72,7 @@ const main = async function (args) {
     }
   } catch (e) {
     if (args.json || args.markdown) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 }

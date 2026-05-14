@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 
 import { config } from '../../api/rum.js'
 import { humaniseError } from '../../utils/api-error.js'
@@ -8,7 +8,7 @@ const main = async args => {
   let result
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -16,16 +16,16 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   if (!result) {
-    spinner.fail('RUM is not configured for this site.')
+    spinner.stop()
     return
   }
 
-  spinner.succeed('RUM Configuration')
+  spinner.success({ text: 'RUM Configuration' })
 
   console.log(`  Enabled: ${result.enabled}`)
   console.log(`  Sample Rate: ${result.sampleRate}`)

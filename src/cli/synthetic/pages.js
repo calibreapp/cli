@@ -1,5 +1,5 @@
-import chalk from 'chalk'
-import ora from 'ora'
+import { styleText } from 'node:util'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { list } from '../../api/page.js'
@@ -10,7 +10,7 @@ const main = async args => {
   let index
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -18,16 +18,16 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   spinner.stop()
-  console.log(`${chalk.bold(index.pages.length)} pages`)
+  console.log(`${styleText('bold', String(index.pages.length))} pages`)
 
   const rows = index.pages.map(row => {
     return {
-      uuid: chalk.grey(row.uuid),
+      uuid: styleText('gray', row.uuid),
       name: row.name,
       url: row.url
     }

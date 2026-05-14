@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 import { format as dateFormat } from 'date-fns'
 
@@ -10,7 +10,7 @@ const main = async args => {
   let pullRequestReviews
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -19,7 +19,7 @@ const main = async args => {
       return console.log(JSON.stringify(pullRequestReviews, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 

@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import { subDays } from 'date-fns'
 import { parseISO } from 'date-fns'
 
@@ -10,7 +10,7 @@ import { options } from '../../utils/cli.js'
 const main = async args => {
   let spinner
   if (!args.json && !args.csv) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   let to, from
@@ -43,7 +43,7 @@ const main = async args => {
     if (args.json) return console.error(e)
     if (args.csv) return console.error('Error', e)
 
-    spinner.fail(humaniseError(e))
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 }

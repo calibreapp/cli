@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import { AsyncParser } from '@json2csv/node'
 
 import { snapshot } from '../../api/snapshot-metrics.js'
@@ -61,7 +61,7 @@ const formatCSV = payload => {
 const main = async args => {
   let spinner
   if (!args.json && !args.csv) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -88,7 +88,7 @@ const main = async args => {
     if (args.json || args.csv) {
       console.error(e)
     } else {
-      spinner.fail()
+      spinner.stop()
       throw new Error(humaniseError(e))
     }
   }

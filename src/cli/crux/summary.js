@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { summary } from '../../api/crux.js'
@@ -12,7 +12,7 @@ const main = async args => {
   let result
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -20,18 +20,16 @@ const main = async args => {
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
     if (args.json) return console.error(e)
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   if (!result.cruxAggregateMetrics || result.cruxAggregateMetrics.length === 0) {
-    spinner.fail(
-      'No CrUX data available for this site. CrUX requires sufficient Chrome user traffic.'
-    )
+    spinner.stop()
     return
   }
 
-  spinner.succeed(`CrUX Assessment: ${formatGrading(result.cruxCvwAssessment)}`)
+  spinner.success({ text: `CrUX Assessment: ${formatGrading(result.cruxCvwAssessment)}` })
 
   if (result.cruxFormFactorDensity) {
     const d = result.cruxFormFactorDensity
