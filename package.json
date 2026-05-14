@@ -1,8 +1,8 @@
 {
   "name": "calibre",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "engines": {
-    "node": ">= 20"
+    "node": ">= 22"
   },
   "type": "module",
   "description": "Performance monitoring with Synthetic testing, Chrome UX Report, and Real User Metrics",
