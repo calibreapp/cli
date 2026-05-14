@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`deploy delete deletes deploy 1`] = `
+"- Connecting to Calibre
+✔ Deploy deleted: 8c68b9f6-b5bf-49bc-abd7-896db6338818"
+`;
