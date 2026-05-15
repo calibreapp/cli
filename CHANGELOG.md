@@ -7,6 +7,7 @@
 
 ## 🚩 Enhancements
 
+- Add support for project-level `calibre.json`, e.g.: `{ "site": "my-site-slug" }` to avoid having to pass `--site` for every command.
 - Commands that have pagination now support an `--all` flag, which will automatically paginate through all results and return a complete list.
 - Use consistent JSON error output.
 - Use consistent table formatting.
