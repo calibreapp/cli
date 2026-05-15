@@ -9,45 +9,6 @@ import * as Test from './cli/test.js'
 import * as Token from './cli/token.js'
 import * as MetricList from './cli/metric-list.js'
 
-import * as Connections from './cli/synthetic/connections.js'
-import * as Devices from './cli/synthetic/devices.js'
-import * as Locations from './cli/synthetic/locations.js'
-
-import { deprecatedHandler } from './utils/deprecation.js'
-
-const deprecatedCommands = [
-  {
-    command: 'connection-list',
-    describe: false,
-    builder: Connections.builder,
-    handler: deprecatedHandler(
-      'connection-list',
-      'synthetic connections',
-      Connections.handler
-    )
-  },
-  {
-    command: 'device-list',
-    describe: false,
-    builder: Devices.builder,
-    handler: deprecatedHandler(
-      'device-list',
-      'synthetic devices',
-      Devices.handler
-    )
-  },
-  {
-    command: 'location-list',
-    describe: false,
-    builder: Locations.builder,
-    handler: deprecatedHandler(
-      'location-list',
-      'synthetic locations',
-      Locations.handler
-    )
-  }
-]
-
 const commands = [
   Site,
   Synthetic,
@@ -58,8 +19,7 @@ const commands = [
   Team,
   Token,
   Request,
-  MetricList,
-  ...deprecatedCommands
+  MetricList
 ]
 
 export default commands
