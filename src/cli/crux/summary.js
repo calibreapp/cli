@@ -25,9 +25,11 @@ const main = async args => {
   }
 
   if (!result.cruxAggregateMetrics || result.cruxAggregateMetrics.length === 0) {
-    spinner.error({
-      text: 'No CrUX data available for this site. CrUX requires sufficient Chrome user traffic.'
-    })
+    if (result.monitoringStatus?.crux) {
+      spinner.error({ text: result.monitoringStatus.crux })
+    } else {
+      spinner.stop()
+    }
     process.exitCode = 2
     return
   }

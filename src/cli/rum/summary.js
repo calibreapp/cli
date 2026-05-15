@@ -34,9 +34,11 @@ const main = async args => {
   }
 
   if (!result.aggregate || result.aggregate.length === 0) {
-    spinner.error({
-      text: 'No RUM data available. Check that RUM is enabled for this site with: calibre rum config --site=<slug>'
-    })
+    if (result.monitoringStatus?.rum) {
+      spinner.error({ text: result.monitoringStatus.rum })
+    } else {
+      spinner.stop()
+    }
     process.exitCode = 2
     return
   }

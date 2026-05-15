@@ -19,6 +19,9 @@ const SUMMARY_QUERY = `
   query GetCruxSummary($site: String!, $formFactor: CruxFormFactor) {
     organisation {
       site(slug: $site) {
+        monitoringStatus {
+          crux
+        }
         cruxCvwAssessment(formFactor: $formFactor)
         cruxFormFactorDensity {
           desktop
