@@ -10,6 +10,9 @@
 - Replaced `ora` with `nanospinner` for terminal spinners.
 - Removed `log-symbols` dependency in favour of Unicode characters.
 - Updated CI matrix to test Node.js 22, 24, and 26.
+- Use consistent JSON error output.
+- Use consistent table formatting.
+- Use consistent date parsing.
 
 # 7.0.0 (2026-05-07)
 
