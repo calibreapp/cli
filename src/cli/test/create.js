@@ -84,11 +84,11 @@ const main = async function (args) {
   }
 
   if (args.expiresAt) {
-    const date = new Date(args.expiresAt).valueOf()
+    const date = parseISO(args.expiresAt)
 
-    if (isNaN(date)) {
+    if (!isValid(date)) {
       throw new Error(
-        'Please enter a valid `expiresAt` ISO8601 date time string'
+        'Please enter a valid ISO8601 date string, e.g. 2025-12-31 or 2025-12-31T23:59:59Z'
       )
     }
   }
@@ -156,7 +156,7 @@ const builder = {
   },
   expiresAt: {
     describe:
-      'Set a future UTC date time string (ISO8601). After this date, the test will be automatically deleted. (Min=24 hrs, Max=2 years) e.g.: 2025-12-31T23:59:59Z',
+      'Set a future UTC date time string (ISO8601). After this date, the test will be automatically deleted. (Min=24 hrs, Max=2 years) e.g. 2025-12-31 or 2025-12-31T23:59:59Z',
     type: 'string',
     default: new Date(Date.now() + 31556952000).toISOString(),
     defaultDescription: 'Default: Expires 1 year from creation date.'
