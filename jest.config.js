@@ -3,6 +3,5 @@ export default {
   testEnvironment: 'node',
   setupFiles: ['./.jest-setup.js'],
   testTimeout: 5000,
-  preset: 'ts-jest/presets/default-esm',
-  modulePathIgnorePatterns: ['./dist']
+  preset: 'ts-jest/presets/default-esm'
 }

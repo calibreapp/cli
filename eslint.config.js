@@ -5,7 +5,7 @@ import pluginJest from 'eslint-plugin-jest'
 
 export default [
   {
-    ignores: ['coverage/', 'examples/', 'dist/', 'eslint.config.js']
+    ignores: ['coverage/', 'examples/', 'eslint.config.js']
   },
   js.configs.recommended,
   node.configs['flat/recommended-module'],

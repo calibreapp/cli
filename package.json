@@ -7,15 +7,11 @@
   "type": "module",
   "description": "Performance monitoring with Synthetic testing, Chrome UX Report, and Real User Metrics",
   "author": "calibreapp.com",
-  "main": "dist/index.js",
   "bin": {
     "calibre": "src/cli.js"
   },
   "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./dist/index.cjs"
-    },
+    ".": "./index.js",
     "./cli-commands": "./src/cli-commands.js",
     "./cli-metadata": "./src/cli-metadata.js"
   },
@@ -38,7 +34,6 @@
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "esbuild": "^0.27.7",
     "eslint": "^9.36.0",
     "eslint-plugin-jest": "^29.15.2",
     "eslint-plugin-n": "^17.24.0",
@@ -55,8 +50,6 @@
     "ci": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --runInBand --no-colors --verbose=false",
     "test": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --no-colors --verbose=false",
     "lint": "eslint .",
-    "clean": "rm -rf dist/",
-    "build": "npm run clean && esbuild index.js --bundle --platform=node --outfile=dist/index.cjs",
     "generate-cli-md": "node ./generate-cli-md.js > CLI_COMMANDS.md"
   },
   "keywords": [
