@@ -1,8 +1,13 @@
+import { loadProjectConfig } from './project-config.js'
+
+const projectConfig = loadProjectConfig()
+
 const options = {
   site: {
-    demandOption: true,
+    demandOption: !projectConfig.site,
+    default: projectConfig.site,
     describe:
-      'A unique slug identifying each Site. You can find it in Site Settings → General or by using the calibre site list command.',
+      'The Site slug. Resolved from calibre.json if present, or pass explicitly. You can find it in Site Settings → General or by using the calibre site list command',
     type: 'string',
     requiresArg: true
   },

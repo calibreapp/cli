@@ -1,4 +1,4 @@
-import chalk from 'chalk'
+import { styleText } from 'node:util'
 import percentile from 'stats-percentile'
 
 import { format } from '../utils/formatters/index.js'
@@ -46,7 +46,7 @@ ${set.name}
     })
 
     return `
-${chalk.blue.bold(measurement.label)}
+${styleText(['bold', 'blue'], measurement.label)}
 ${
   metrics.length
     ? metrics.join('\n')
@@ -56,7 +56,7 @@ ${
   })
 
   return `
-${chalk.bold('Metric history')}
+${styleText('bold', 'Metric history')}
 ${timeSeries.length ? 'There is no data for this time period' : ''}
 ${metrics.join('\n')}
 `

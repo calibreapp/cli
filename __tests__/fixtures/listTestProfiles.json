@@ -1,0 +1,1 @@
+{"data":{"organisation":{"site":{"testProfiles":[{"uuid":"prof1","name":"Default","device":{"title":"Desktop"},"bandwidth":{"title":"Cable"},"jsIsDisabled":false,"cookies":[]},{"uuid":"prof2","name":"Mobile","device":{"title":"Pixel 5"},"bandwidth":{"title":"4G"},"jsIsDisabled":false,"cookies":[{"name":"session"}]}]}}}}

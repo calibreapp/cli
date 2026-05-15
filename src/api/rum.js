@@ -29,6 +29,9 @@ const SUMMARY_QUERY = `
   query GetRumSummary($site: String!, $metrics: [MetricTag!]!, $filter: RumFilterInput) {
     organisation {
       site(slug: $site) {
+        monitoringStatus {
+          rum
+        }
         rum(metrics: $metrics, filter: $filter) {
           liveVisitors
           distinctCountriesCount

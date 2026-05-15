@@ -36,6 +36,24 @@ const startServer = (mockResponse, resolve, reject) => {
       res.status(200).json(mockResponse)
     })
 
+    // Mock artifact downloads to prevent 404s
+    app.get(/^\/artifacts\/.*/, (req, res) => {
+      const path = req.path
+      if (path.endsWith('.jpg')) {
+        res.set('Content-Type', 'image/jpeg')
+        res.send(Buffer.from('mock-image-data'))
+      } else if (path.endsWith('.mp4')) {
+        res.set('Content-Type', 'video/mp4')
+        res.send(Buffer.from('mock-video-data'))
+      } else if (path.endsWith('.har')) {
+        res.json({ log: { version: '1.2', entries: [] } })
+      } else if (path.endsWith('.json')) {
+        res.json({ mockLighthouseData: true })
+      } else {
+        res.status(404).send('Not Found')
+      }
+    })
+
     server = app.listen(5678, (err) => {
       if (err) {
         reject(err)

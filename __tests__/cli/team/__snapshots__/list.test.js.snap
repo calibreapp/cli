@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`team list lists all teams 1`] = `
-"2 sites
+"2 teams
 SLUG        | NAME     | DESCRIPTION     
 calibre     | Calibre  | Default team    
 engineering | Monitors | Engineering team"

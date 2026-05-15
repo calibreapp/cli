@@ -1,15 +1,14 @@
 import Configstore from 'configstore'
-import chalk from 'chalk'
-import logSymbols from 'log-symbols'
+import { styleText } from 'node:util'
 
 const config = new Configstore('calibre')
 
 const main = async () => {
   if (config.get('token')) {
     config.set('token', null)
-    console.log(`${chalk.bold.green(`${logSymbols.success} API Token removed.`)}\n`)
+    console.log(`${styleText(['bold', 'green'], '\u2714 API Token removed.')}\n`)
   } else {
-    console.log(`${chalk.bold.red(`${logSymbols.error} API Token is not set.`)}\n`)
+    console.log(`${styleText(['bold', 'red'], '\u2716 API Token is not set.')}\n`)
   }
 }
 

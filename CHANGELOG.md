@@ -1,3 +1,26 @@
+# 8.0.0 (Unpublished)
+
+## ⚠️ Breaking changes
+
+- Minimum Node.js version is now 22.13.0 (previously 20, which is now EOL).
+- Removed commands that were deprecated in 7.0.0. There are alternatives for all removed commands. See the 7.0.0 release notes for details.
+- Remove CommonJS exports. The package is now ESM-only. Use `import` instead of `require()`.
+
+## 🚩 Enhancements
+
+- Add support for project-level `calibre.json`, e.g.: `{ "site": "my-site-slug" }` to avoid having to pass `--site` for every command.
+- Commands that have pagination now support an `--all` flag, which will automatically paginate through all results and return a complete list.
+- Use consistent JSON error output.
+- Use consistent table formatting.
+- Use consistent date parsing.
+
+## 🧹 Housekeeping
+
+- Replaced `chalk` with Node.js built-in `node:util` `styleText` for terminal colouring.
+- Replaced `ora` with `nanospinner` for terminal spinners.
+- Removed `log-symbols` dependency in favour of Unicode characters.
+- Updated CI matrix to test Node.js 22, 24, and 26.
+
 # 7.0.0 (2026-05-07)
 
 ## ⚠️ Major release with breaking changes

@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import chalk from 'chalk'
+import { styleText } from 'node:util'
 import listr from 'listr'
 
 import download from '../../utils/download.js'
@@ -43,7 +43,7 @@ const main = async args => {
         }
       },
       {
-        title: `Fetching artifacts for ${chalk.bold(
+        title: `Fetching artifacts for ${styleText('bold',
           `Snapshot #${args.id} -- ${response.snapshot.tests.length} tests`
         )}`,
         task: () => Promise.resolve()

@@ -1,11 +1,6 @@
 import { runCLI } from '../utils'
 
-test('missing site argument', async () => {
-  const out = await runCLI({ args: 'site pages', testForError: true })
-  expect(out).toMatchSnapshot()
-})
-
-test('missing site argument value', async () => {
-  const out = await runCLI({ args: 'site pages --site', testForError: true })
+test('missing subcommand', async () => {
+  const out = await runCLI({ args: 'site', testForError: true })
   expect(out).toMatchSnapshot()
 })

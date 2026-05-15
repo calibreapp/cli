@@ -1,10 +1,10 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import { AsyncParser } from '@json2csv/node'
 
 import { snapshot } from '../../api/snapshot-metrics.js'
 import formatSnapshot from '../../views/snapshot-metrics.js'
 import { options } from '../../utils/cli.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 
 const formatCSV = payload => {
   let data = []
@@ -61,7 +61,7 @@ const formatCSV = payload => {
 const main = async args => {
   let spinner
   if (!args.json && !args.csv) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -86,9 +86,9 @@ const main = async args => {
     )
   } catch (e) {
     if (args.json || args.csv) {
-      console.error(e)
+      formatJsonError(e)
     } else {
-      spinner.fail()
+      spinner.stop()
       throw new Error(humaniseError(e))
     }
   }

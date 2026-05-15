@@ -1,33 +1,33 @@
-import chalk from 'chalk'
-import ora from 'ora'
+import { styleText } from 'node:util'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { list } from '../../api/team.js'
 import { options } from '../../utils/cli.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 
 const main = async args => {
   let index
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
     index = await list(args)
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
-    spinner.fail()
+    if (args.json) return formatJsonError(e)
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   spinner.stop()
-  console.log(`${chalk.bold(index.length)} sites`)
+  console.log(`${styleText('bold', String(index.length))} teams`)
 
   const rows = index.map(row => {
     return {
-      slug: chalk.grey(row.slug),
+      slug: styleText('gray', row.slug),
       name: row.name,
       description: row.description
     }

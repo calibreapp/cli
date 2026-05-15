@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`site list lists all sites 1`] = `
+"2 sites
+SLUG    | NAME         | MONITORING         | CREATED            
+calibre | Calibre      | synthetic crux rum | 10:30AM 15-Jan-2023
+example | Example Site | synthetic          | 2:15PM 20-Mar-2024 "
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`synthetic connections lists connections 1`] = `
+"3 emulated connection speeds
+IDENTIFIER
+cable     
+LTE       
+regular3G "
+`;

@@ -3,6 +3,6 @@
 exports[`metric-list lists metrics 1`] = `
 "2 metrics
 IDENTIFIER               | NAME                     | CATEGORY    | GOOD       | POOR       | RECOMMENDED
-first-contentful-paint   | First Contentful Paint   | Performance | > 1.80 sec | < 3.00 sec | [32m✔[39m          
-largest-contentful-paint | Largest Contentful Paint | Performance | > 2.50 sec | < 4.00 sec | [32m✔[39m          "
+first-contentful-paint   | First Contentful Paint   | Performance | > 1.80 sec | < 3.00 sec | ✔          
+largest-contentful-paint | Largest Contentful Paint | Performance | > 2.50 sec | < 4.00 sec | ✔          "
 `;

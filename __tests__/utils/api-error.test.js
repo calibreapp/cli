@@ -1,4 +1,4 @@
-import { humaniseError } from '../../src/utils/api-error'
+import { humaniseError, formatJsonError } from '../../src/utils/api-error'
 
 import erroredSite from '../fixtures/createSiteError.json'
 
@@ -23,5 +23,16 @@ describe('apiError', () => {
 
   it('error string', () => {
     expect(humaniseError('Error string')).toMatchSnapshot()
+  })
+
+  it('formatJsonError outputs structured JSON to stderr', () => {
+    const original = console.error
+    const calls = []
+    console.error = (...args) => calls.push(args)
+    formatJsonError({ message: 'Something went wrong' })
+    console.error = original
+    expect(calls).toEqual([
+      [JSON.stringify({ error: 'Something went wrong' })]
+    ])
   })
 })

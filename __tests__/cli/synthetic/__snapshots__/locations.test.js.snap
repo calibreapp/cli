@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`synthetic locations lists locations 1`] = `
+"2 test locations
+IDENTIFIER | NAME   | IPV4 ADDRESS
+Sydney     | Sydney | 1.2.3.4     
+London     | London | 5.6.7.8     "
+`;

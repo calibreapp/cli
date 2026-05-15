@@ -1,9 +1,9 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import cookiefile from 'cookiefile'
 
 import formatProfile from '../../views/test-profile.js'
 import { create } from '../../api/test-profile.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
 const { CookieMap } = cookiefile
@@ -13,7 +13,7 @@ const main = async function (args) {
   let cookies = []
 
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   if (args.cookieJar) {
@@ -28,16 +28,16 @@ const main = async function (args) {
   try {
     const response = await create({ ...args, cookies })
     if (!args.json) {
-      spinner.succeed('Created Test Profile')
+      spinner.success({ text: 'Created Test Profile' })
       console.log(formatProfile(response))
     }
 
     // Return result
     if (args.json) return console.log(JSON.stringify(response, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json) return formatJsonError(e)
 
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 }

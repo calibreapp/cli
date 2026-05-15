@@ -1,24 +1,24 @@
-import chalk from 'chalk'
-import ora from 'ora'
+import { styleText } from 'node:util'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { list } from '../../api/test-profile.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
 const main = async args => {
   let index
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
     index = await list(args)
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
-    spinner.fail()
+    if (args.json) return formatJsonError(e)
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
@@ -28,7 +28,7 @@ const main = async args => {
 
   const rows = index.map(row => {
     return {
-      uuid: chalk.cyan(row.uuid),
+      uuid: styleText('cyan', row.uuid),
       name: row.name,
       device: row.device ? row.device.title : 'Desktop',
       connection: row.bandwidth ? row.bandwidth.title : 'Not Throttled',

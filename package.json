@@ -1,27 +1,22 @@
 {
   "name": "calibre",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "engines": {
-    "node": ">= 20"
+    "node": ">= 22.13.0"
   },
   "type": "module",
   "description": "Performance monitoring with Synthetic testing, Chrome UX Report, and Real User Metrics",
   "author": "calibreapp.com",
-  "main": "dist/index.js",
   "bin": {
     "calibre": "src/cli.js"
   },
   "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./dist/index.cjs"
-    },
+    ".": "./index.js",
     "./cli-commands": "./src/cli-commands.js",
     "./cli-metadata": "./src/cli-metadata.js"
   },
   "dependencies": {
     "@json2csv/node": "^7.0.3",
-    "chalk": "^5.6.2",
     "columnify": "^1.6.0",
     "configstore": "^8.0.0",
     "cookiefile": "^1.0.10",
@@ -29,10 +24,9 @@
     "graphql-request": "^7.4.0",
     "humanize": "0.0.9",
     "listr": "^0.14.3",
-    "log-symbols": "^7.0.1",
     "marked": "^15.0.12",
     "marked-terminal": "^7.3.0",
-    "ora": "^9.4.0",
+    "nanospinner": "^1.2.2",
     "p-throttle": "^8.0.0",
     "simple-update-notifier": "^2.0.0",
     "stats-percentile": "^3.3.0",
@@ -40,7 +34,6 @@
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "esbuild": "^0.27.7",
     "eslint": "^9.36.0",
     "eslint-plugin-jest": "^29.15.2",
     "eslint-plugin-n": "^17.24.0",
@@ -57,8 +50,6 @@
     "ci": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --runInBand --no-colors --verbose=false",
     "test": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --no-colors --verbose=false",
     "lint": "eslint .",
-    "clean": "rm -rf dist/",
-    "build": "npm run clean && esbuild index.js --bundle --platform=node --outfile=dist/index.cjs",
     "generate-cli-md": "node ./generate-cli-md.js > CLI_COMMANDS.md"
   },
   "keywords": [

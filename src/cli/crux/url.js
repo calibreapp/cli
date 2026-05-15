@@ -1,9 +1,9 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 import { format as dateFormat } from 'date-fns'
 
 import { url as fetchUrl } from '../../api/crux.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 import { cruxOptions } from '../../utils/crux-options.js'
 import { format } from '../../utils/formatters/index.js'
@@ -13,7 +13,7 @@ const main = async args => {
   let result
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -25,20 +25,18 @@ const main = async args => {
     })
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
-    spinner.fail()
+    if (args.json) return formatJsonError(e)
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   if (!result.cruxUrl) {
-    spinner.fail(
-      'No CrUX data available for this URL. CrUX requires sufficient Chrome user traffic.'
-    )
+    spinner.stop()
     return
   }
 
   const urlData = result.cruxUrl
-  spinner.succeed(`${urlData.url} — ${formatGrading(urlData.cruxCvwAssessment)}`)
+  spinner.success({ text: `${urlData.url} — ${formatGrading(urlData.cruxCvwAssessment)}` })
 
   if (urlData.cruxAggregateMetrics && urlData.cruxAggregateMetrics.length > 0) {
     console.log('')
@@ -54,7 +52,9 @@ const main = async args => {
 
     console.log(
       columnify(metricRows, {
-        columnSplitter: ' | '
+        columnSplitter: ' | ',
+        truncate: true,
+        maxLineWidth: 'auto'
       })
     )
   }
@@ -85,7 +85,9 @@ const main = async args => {
 
     console.log(
       columnify(historyRows, {
-        columnSplitter: ' | '
+        columnSplitter: ' | ',
+        truncate: true,
+        maxLineWidth: 'auto'
       })
     )
   }

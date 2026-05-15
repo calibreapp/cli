@@ -1,25 +1,25 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 
 import { create } from '../../api/deploy.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
 const main = async function (args) {
   let spinner
 
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
     const response = await create(args)
-    if (!args.json) spinner.succeed(`Deploy created: ${response.uuid}`)
+    if (!args.json) spinner.success({ text: `Deploy created: ${response.uuid}` })
 
     // Return result
     if (args.json) return console.log(JSON.stringify(response, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
-    spinner.fail()
+    if (args.json) return formatJsonError(e)
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 }

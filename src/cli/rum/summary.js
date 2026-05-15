@@ -1,8 +1,8 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { summary } from '../../api/rum.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 import { rumFilterOptions } from '../../utils/rum-options.js'
 import { format } from '../../utils/formatters/index.js'
@@ -21,26 +21,29 @@ const main = async args => {
   let result
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
     result = await summary(args)
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
-    spinner.fail()
+    if (args.json) return formatJsonError(e)
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   if (!result.aggregate || result.aggregate.length === 0) {
-    spinner.fail(
-      'No RUM data available. Check that RUM is enabled for this site with: calibre rum config --site=<slug>'
-    )
+    if (result.monitoringStatus?.rum) {
+      spinner.error({ text: result.monitoringStatus.rum })
+    } else {
+      spinner.stop()
+    }
+    process.exitCode = 2
     return
   }
 
-  spinner.succeed('RUM Summary')
+  spinner.success({ text: 'RUM Summary' })
 
   console.log(
     `Live visitors: ${result.liveVisitors} | Countries: ${result.distinctCountriesCount} | Sessions: ${result.aggregate[0].sessionCount}`
@@ -75,7 +78,9 @@ const main = async args => {
 
   console.log(
     columnify(rows, {
-      columnSplitter: ' | '
+      columnSplitter: ' | ',
+      truncate: true,
+      maxLineWidth: 'auto'
     })
   )
 }

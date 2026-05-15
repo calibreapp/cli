@@ -1,4 +1,4 @@
-import chalk from 'chalk'
+import { styleText } from 'node:util'
 import { marked } from 'marked'
 import markedTerminal from 'marked-terminal'
 
@@ -10,10 +10,10 @@ const view = markdownReport => {
     renderer: new markedTerminal({
       emoji: true,
       tab: 2,
-      paragraph: chalk.reset,
-      table: chalk.reset,
-      heading: chalk.bold.hex('#5f5fff'),
-      href: chalk.hex('#008080'),
+      paragraph: text => styleText('reset', text),
+      table: text => styleText('reset', text),
+      heading: text => styleText(['bold', 'magenta'], text),
+      href: text => styleText('cyan', text),
       tableOptions: {
         style: {
           head: ['bold']

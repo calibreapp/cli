@@ -1,0 +1,48 @@
+{
+  "data": {
+    "organisation": {
+      "site": {
+        "rum": {
+          "totalCount": 3,
+          "metrics": [
+            {"value": "lcp", "formatter": "humanDuration"},
+            {"value": "cls", "formatter": "unitless"},
+            {"value": "inp", "formatter": "humanDuration"}
+          ],
+          "aggregate": [
+            {
+              "path": "/",
+              "sessionCount": 5000,
+              "lcp": 2100,
+              "lcpGrading": "good",
+              "cls": 0.05,
+              "clsGrading": "good",
+              "inp": 180,
+              "inpGrading": "good"
+            },
+            {
+              "path": "/about",
+              "sessionCount": 1200,
+              "lcp": 2500,
+              "lcpGrading": "average",
+              "cls": 0.10,
+              "clsGrading": "average",
+              "inp": 220,
+              "inpGrading": "average"
+            },
+            {
+              "path": "/contact",
+              "sessionCount": 800,
+              "lcp": 1900,
+              "lcpGrading": "good",
+              "cls": 0.03,
+              "clsGrading": "good",
+              "inp": 150,
+              "inpGrading": "good"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

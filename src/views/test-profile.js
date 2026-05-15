@@ -1,4 +1,4 @@
-import chalk from 'chalk'
+import { styleText } from 'node:util'
 import { format as dateFormat } from 'date-fns'
 
 const cookies = cookies => {
@@ -28,11 +28,11 @@ const cookies = cookies => {
 
 const view = profile => {
   return `
-${chalk.bold.cyan(`⬢ ${profile.name}`)} (${profile.uuid})
-${chalk.grey(
+${styleText(['bold', 'cyan'], `⬢ ${profile.name}`)} (${profile.uuid})
+${styleText('gray',
   `Created: ${dateFormat(new Date(profile.createdAt), 'h:mma d-MMM-yyyy')}`
 )}
-${chalk.grey(
+${styleText('gray',
   `Updated: ${dateFormat(new Date(profile.updatedAt), 'h:mma d-MMM-yyyy')}`
 )}
 

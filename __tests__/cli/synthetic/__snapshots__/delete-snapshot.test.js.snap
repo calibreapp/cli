@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`synthetic delete-snapshot deletes snapshot 1`] = `
+"- Connecting to Calibre
+✔ Snapshot deleted: 14"
+`;

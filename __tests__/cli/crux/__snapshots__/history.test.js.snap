@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`crux history displays crux history 1`] = `
+"PERIOD      | METRIC                   | P75     
+31-Jan-2024 | Largest Contentful Paint | 2.10 sec
+31-Dec-2023 | Largest Contentful Paint | 2.30 sec
+31-Jan-2024 | Cumulative Layout Shift  | 0.05    
+31-Dec-2023 | Cumulative Layout Shift  | 0.08    "
+`;

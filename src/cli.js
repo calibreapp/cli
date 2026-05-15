@@ -5,7 +5,7 @@ import fs from 'fs'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import updateNotifier from 'simple-update-notifier'
-import chalk from 'chalk'
+import { styleText } from 'node:util'
 
 const pkg = JSON.parse(
   // eslint-disable-next-line security/detect-non-literal-fs-filename
@@ -17,7 +17,7 @@ updateNotifier({ pkg })
 import commands from './cli-commands.js'
 
 yargs(hideBin(process.argv))
-  .usage(`${chalk.bold('♠  calibre')} subcommand [options]`)
+  .usage(`${styleText('bold', '♠  calibre')} subcommand [options]`)
   .scriptName('calibre')
   .commands(commands)
   .demandCommand()
@@ -25,9 +25,9 @@ yargs(hideBin(process.argv))
   .strictCommands()
   .help('help')
   .updateStrings({
-    'Commands:': chalk.grey('Commands:\n'),
-    'Options:': chalk.grey('Options:\n'),
-    'Examples:': chalk.grey('Examples:\n')
+    'Commands:': styleText('gray', 'Commands:\n'),
+    'Options:': styleText('gray', 'Options:\n'),
+    'Examples:': styleText('gray', 'Examples:\n')
   })
   .version(pkg.version)
   .example(
@@ -39,16 +39,22 @@ yargs(hideBin(process.argv))
   .fail((message, error, yargs) => {
     console.error(
       '\n\n',
-      chalk.bold.red(message ? message : error),
+      styleText(['bold', 'red'], message ? message : error),
       '\n\n',
       yargs.help()
     )
 
     if (error && process.env.DEBUG) {
-      console.error('\n\n', chalk.bold('--- Stack trace below'))
+      console.error('\n\n', styleText('bold', '--- Stack trace below'))
       throw error
     }
     // eslint-disable-next-line n/no-process-exit
     process.exit(1)
   })
-  .epilogue('For more information on Calibre, see https://calibreapp.com').argv
+  .epilogue('For more information on Calibre, see https://calibreapp.com')
+  .parseAsync()
+  .catch(err => {
+    console.error(styleText(['bold', 'red'], err.message || String(err)))
+    // eslint-disable-next-line n/no-process-exit
+    process.exit(1)
+  })

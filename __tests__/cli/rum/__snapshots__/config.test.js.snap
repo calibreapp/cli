@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`rum config displays rum config 1`] = `
+"  Enabled: true
+  Sample Rate: 1
+  Allowed Origins: https://example.com, https://www.example.com
+  Endpoint: https://rum.calibreapp.com/collect
+  Identifier: rum_abc123
+  Data Retention: 12 months (max: 24)
+  Exclude EU: false"
+`;

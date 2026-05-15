@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`synthetic test-profiles lists test profiles 1`] = `
+"
+
+UUID  | NAME    | DEVICE  | CONNECTION | JAVASCRIPT DISABLED | COOKIES
+prof1 | Default | Desktop | Cable      | No                  | None   
+prof2 | Mobile  | Pixel 5 | 4G         | No                  | session"
+`;

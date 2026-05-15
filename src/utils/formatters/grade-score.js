@@ -1,9 +1,9 @@
-import chalk from 'chalk'
+import { styleText } from 'node:util'
 
 const toGradeScore = score => {
-  if (score >= 90) return chalk.green.bold(score)
-  if (score > 50 && score < 90) return chalk.yellow.bold(score)
-  if (score <= 50) return chalk.red.bold(score)
+  if (score >= 90) return styleText(['bold', 'green'], score)
+  if (score > 50 && score < 90) return styleText(['bold', 'yellow'], score)
+  if (score <= 50) return styleText(['bold', 'red'], score)
   return 'N/A'
 }
 

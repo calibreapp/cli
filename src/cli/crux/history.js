@@ -1,9 +1,9 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 import { format as dateFormat } from 'date-fns'
 
 import { history } from '../../api/crux.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 import { cruxOptions } from '../../utils/crux-options.js'
 import { format } from '../../utils/formatters/index.js'
@@ -13,7 +13,7 @@ const main = async args => {
   let result
   let spinner
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   try {
@@ -24,19 +24,17 @@ const main = async args => {
     })
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
-    spinner.fail()
+    if (args.json) return formatJsonError(e)
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   if (!result.cruxHistory || result.cruxHistory.length === 0) {
-    spinner.fail(
-      'No CrUX data available for this site. CrUX requires sufficient Chrome user traffic.'
-    )
+    spinner.stop()
     return
   }
 
-  spinner.succeed('CrUX History')
+  spinner.success({ text: 'CrUX History' })
 
   const rows = []
   for (const metricHistory of result.cruxHistory) {
@@ -60,7 +58,9 @@ const main = async args => {
 
   console.log(
     columnify(rows, {
-      columnSplitter: ' | '
+      columnSplitter: ' | ',
+      truncate: true,
+      maxLineWidth: 'auto'
     })
   )
 }

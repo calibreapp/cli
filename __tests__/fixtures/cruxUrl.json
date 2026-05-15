@@ -1,0 +1,57 @@
+{
+  "data": {
+    "organisation": {
+      "site": {
+        "cruxUrl": {
+          "uuid": "123e4567-e89b-12d3-a456-426614174000",
+          "url": "https://example.com/page",
+          "name": "Example Page",
+          "status": "active",
+          "cruxCvwAssessment": "good",
+          "cruxFormFactorDensity": {
+            "desktop": 0.45,
+            "phone": 0.50,
+            "tablet": 0.05
+          },
+          "cruxAggregateMetrics": [
+            {
+              "name": "cruxLargestContentfulPaint",
+              "value": 2100,
+              "grading": "good",
+              "metric": {
+                "label": "Largest Contentful Paint",
+                "formatter": "humanDuration"
+              }
+            },
+            {
+              "name": "cruxCumulativeLayoutShift",
+              "value": 0.05,
+              "grading": "good",
+              "metric": {
+                "label": "Cumulative Layout Shift",
+                "formatter": "unitless"
+              }
+            }
+          ],
+          "cruxHistory": [
+            {
+              "metric": {
+                "name": "cruxLargestContentfulPaint",
+                "label": "Largest Contentful Paint",
+                "formatter": "humanDuration"
+              },
+              "values": [
+                {
+                  "collectionPeriodStart": "2024-01-01T00:00:00Z",
+                  "collectionPeriodEnd": "2024-01-31T23:59:59Z",
+                  "p75Value": 2100,
+                  "p75Grading": "good"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

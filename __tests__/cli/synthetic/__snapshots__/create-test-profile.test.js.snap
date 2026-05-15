@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`synthetic create-test-profile creates test profile 1`] = `
+"⬢ New Profile (profile-uuid-123)
+Created: 10:30AM 15-Jan-2024
+Updated: 10:30AM 15-Jan-2024
+
+• Desktop
+• Cable"
+`;

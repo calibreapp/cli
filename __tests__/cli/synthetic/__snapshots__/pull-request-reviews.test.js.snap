@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`synthetic pull-request-reviews displays help 1`] = `
+"calibre synthetic pull-request-reviews [options]
+
+List Pull Request Reviews for a selected Site.
+
+Options:
+
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+  --site     The Site slug. Resolved from calibre.json if present, or pass
+             explicitly. You can find it in Site Settings → General or by using
+             the calibre site list command     [string] [default: "calibre-app"]
+  --json     Outputs the results of the command in JSON format."
+`;
+
+exports[`synthetic pull-request-reviews lists pull request reviews 1`] = `
+"TITLE                    | BRANCH             | SHA      | STATUS    | CREATED           
+First Test Pull Request  | author/my-branch   | 241ccbb… | completed | 6:48AM 22-Aug-2023
+Second Test Pull Request | author/my-branch-2 | 78f9a44… | completed | 7:31AM 15-Aug-2023"
+`;
+
+exports[`synthetic pull-request-reviews lists pull request reviews as json 1`] = `
+"[
+  {
+    "title": "First Test Pull Request",
+    "status": "completed",
+    "branch": "author/my-branch",
+    "sha": "241ccbb0d2c396c9413adb816fa3ca212aff00da",
+    "createdAt": "2023-08-22T06:48:03Z"
+  },
+  {
+    "title": "Second Test Pull Request",
+    "status": "completed",
+    "branch": "author/my-branch-2",
+    "sha": "78f9a442d4f952b612e2d9627b43a61cd5c7e044",
+    "createdAt": "2023-08-15T07:31:48Z"
+  }
+]"
+`;

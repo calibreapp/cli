@@ -1,0 +1,9 @@
+{
+  "data": {
+    "createSite": {
+      "slug": "new-site",
+      "name": "New Site",
+      "url": "https://new-site.com"
+    }
+  }
+}

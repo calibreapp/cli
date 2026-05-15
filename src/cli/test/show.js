@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 
 import { getTestByUuid } from '../../api/test.js'
 import formatTest from '../../views/markdown.js'
@@ -9,8 +9,8 @@ const main = async args => {
   let spinner
 
   if (!args.json && !args.markdown) {
-    spinner = ora('Connecting to Calibre').start()
-    spinner.text = 'Downloading test results'
+    spinner = createSpinner('Connecting to Calibre').start()
+    spinner.update({ text: 'Downloading test results' })
   }
 
   try {
@@ -26,7 +26,7 @@ const main = async args => {
     spinner.stop()
     console.log(formatTest(response.markdownReport))
   } catch (e) {
-    spinner.fail()
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 }

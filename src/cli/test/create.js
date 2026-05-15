@@ -1,12 +1,13 @@
 import { URL } from 'url'
 
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
+import { parseISO, isValid } from 'date-fns'
 import cookiefile from 'cookiefile'
 import fs from 'fs'
 
 import { create, waitForTest } from '../../api/test.js'
 import formatTest from '../../views/markdown.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
 const { CookieMap } = cookiefile
@@ -18,7 +19,7 @@ const main = async function (args) {
   let blockedHosts = []
 
   if (!args.json && !args.markdown) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   if (args.cookieJar) {
@@ -83,11 +84,11 @@ const main = async function (args) {
   }
 
   if (args.expiresAt) {
-    const date = new Date(args.expiresAt).valueOf()
+    const date = parseISO(args.expiresAt)
 
-    if (isNaN(date)) {
+    if (!isValid(date)) {
       throw new Error(
-        'Please enter a valid `expiresAt` ISO8601 date time string'
+        'Please enter a valid ISO8601 date string, e.g. 2025-12-31 or 2025-12-31T23:59:59Z'
       )
     }
   }
@@ -102,7 +103,7 @@ const main = async function (args) {
     })
 
     if (!args.json && !args.markdown && !args.waitForTest) {
-      spinner.succeed(`Test scheduled: ${formattedTestUrl}`)
+      spinner.success({ text: `Test scheduled: ${formattedTestUrl}` })
     } else {
       const test = await waitForTest(uuid)
 
@@ -112,16 +113,16 @@ const main = async function (args) {
         console.log(test.markdownReport)
       } else {
         if (test.status == 'completed') {
-          spinner.succeed(`Test complete: ${formattedTestUrl}`)
+          spinner.success({ text: `Test complete: ${formattedTestUrl}` })
           console.log(formatTest(test.markdownReport))
         } else {
-          spinner.fail('Test complete')
+          spinner.stop()
         }
       }
     }
   } catch (e) {
-    if (args.json || args.markdown) return console.error(e)
-    spinner.fail()
+    if (args.json || args.markdown) return formatJsonError(e)
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 }
@@ -155,7 +156,7 @@ const builder = {
   },
   expiresAt: {
     describe:
-      'Set a future UTC date time string (ISO8601). After this date, the test will be automatically deleted. (Min=24 hrs, Max=2 years) e.g.: 2025-12-31T23:59:59Z',
+      'Set a future UTC date time string (ISO8601). After this date, the test will be automatically deleted. (Min=24 hrs, Max=2 years) e.g. 2025-12-31 or 2025-12-31T23:59:59Z',
     type: 'string',
     default: new Date(Date.now() + 31556952000).toISOString(),
     defaultDescription: 'Default: Expires 1 year from creation date.'

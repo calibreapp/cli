@@ -1,15 +1,15 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import { URL } from 'url'
 
 import { create } from '../../api/site.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
 const main = async function (args) {
   let spinner
 
   if (!args.json) {
-    spinner = ora('Connecting to Calibre').start()
+    spinner = createSpinner('Connecting to Calibre').start()
   }
 
   const { name, location, url, team, schedule, interval } = args
@@ -61,13 +61,13 @@ const main = async function (args) {
     })
 
     if (!args.json) {
-      spinner.succeed(`${site.name} added to Calibre`)
+      spinner.success({ text: `${site.name} added to Calibre` })
     } else {
       return console.log(JSON.stringify(site, null, 2))
     }
   } catch (e) {
-    if (args.json) return console.error(e)
-    spinner.fail()
+    if (args.json) return formatJsonError(e)
+    spinner.stop()
     throw new Error(humaniseError(e))
   }
 }

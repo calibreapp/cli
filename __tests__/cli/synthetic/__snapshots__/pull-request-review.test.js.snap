@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`synthetic pull-request-review displays help 1`] = `
+"calibre synthetic pull-request-review <branch>
+
+See the results of a Pull Request Review.
+
+Options:
+
+  --help      Show help                                                [boolean]
+  --version   Show version number                                      [boolean]
+  --site      The Site slug. Resolved from calibre.json if present, or pass
+              explicitly. You can find it in Site Settings → General or by using
+              the calibre site list command    [string] [default: "calibre-app"]
+  --json      Outputs the results of the command in JSON format.
+  --markdown  Outputs the results of the command in Markdown format."
+`;
+
+exports[`synthetic pull-request-review displays review 1`] = `
+"# Markdown here
+
+"
+`;
+
+exports[`synthetic pull-request-review displays review json 1`] = `
+"{
+  "title": "My Pull Request",
+  "status": "completed",
+  "branch": "author/branch-name",
+  "markdownReport": "# Markdown here"
+}"
+`;
+
+exports[`synthetic pull-request-review displays review markdown 1`] = `"# Markdown here"`;
