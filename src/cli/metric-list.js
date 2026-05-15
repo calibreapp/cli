@@ -3,7 +3,7 @@ import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { list } from '../api/metric.js'
-import { humaniseError } from '../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../utils/api-error.js'
 import { format } from '../utils/formatters/index.js'
 import { options } from '../utils/cli.js'
 
@@ -18,7 +18,7 @@ const main = async args => {
     index = await list(args)
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json) return formatJsonError(e)
     spinner.stop()
     throw new Error(humaniseError(e))
   }

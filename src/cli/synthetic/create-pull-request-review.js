@@ -5,7 +5,7 @@ import {
   create,
   waitForReviewCompletion
 } from '../../api/pull-request-review.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 import formatMarkdownResult from '../../views/markdown.js'
 
@@ -71,7 +71,7 @@ const main = async function (args) {
       }
     }
   } catch (e) {
-    if (args.json || args.markdown) return console.error(e)
+    if (args.json || args.markdown) return formatJsonError(e)
     spinner.stop()
     throw new Error(humaniseError(e))
   }

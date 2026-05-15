@@ -1,12 +1,13 @@
 import { URL } from 'url'
 
 import { createSpinner } from 'nanospinner'
+import { parseISO, isValid } from 'date-fns'
 import cookiefile from 'cookiefile'
 import fs from 'fs'
 
 import { create, waitForTest } from '../../api/test.js'
 import formatTest from '../../views/markdown.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
 const { CookieMap } = cookiefile
@@ -120,7 +121,7 @@ const main = async function (args) {
       }
     }
   } catch (e) {
-    if (args.json || args.markdown) return console.error(e)
+    if (args.json || args.markdown) return formatJsonError(e)
     spinner.stop()
     throw new Error(humaniseError(e))
   }

@@ -3,7 +3,7 @@ import columnify from 'columnify'
 import { format as dateFormat } from 'date-fns'
 
 import { history } from '../../api/crux.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 import { cruxOptions } from '../../utils/crux-options.js'
 import { format } from '../../utils/formatters/index.js'
@@ -24,7 +24,7 @@ const main = async args => {
     })
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json) return formatJsonError(e)
     spinner.stop()
     throw new Error(humaniseError(e))
   }
@@ -58,7 +58,9 @@ const main = async args => {
 
   console.log(
     columnify(rows, {
-      columnSplitter: ' | '
+      columnSplitter: ' | ',
+      truncate: true,
+      maxLineWidth: 'auto'
     })
   )
 }

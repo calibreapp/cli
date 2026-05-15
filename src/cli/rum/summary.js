@@ -2,7 +2,7 @@ import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { summary } from '../../api/rum.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 import { rumFilterOptions } from '../../utils/rum-options.js'
 import { format } from '../../utils/formatters/index.js'
@@ -28,13 +28,16 @@ const main = async args => {
     result = await summary(args)
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json) return formatJsonError(e)
     spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   if (!result.aggregate || result.aggregate.length === 0) {
-    spinner.stop()
+    spinner.error({
+      text: 'No RUM data available. Check that RUM is enabled for this site with: calibre rum config --site=<slug>'
+    })
+    process.exitCode = 2
     return
   }
 
@@ -73,7 +76,9 @@ const main = async args => {
 
   console.log(
     columnify(rows, {
-      columnSplitter: ' | '
+      columnSplitter: ' | ',
+      truncate: true,
+      maxLineWidth: 'auto'
     })
   )
 }

@@ -2,7 +2,7 @@ import { URL } from 'url'
 import { createSpinner } from 'nanospinner'
 
 import { update } from '../../api/page.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
 const main = async function (args) {
@@ -28,7 +28,7 @@ const main = async function (args) {
     // Return result
     if (args.json) return console.log(JSON.stringify(response, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json) return formatJsonError(e)
     spinner.stop()
     throw new Error(humaniseError(e))
   }

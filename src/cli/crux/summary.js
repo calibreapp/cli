@@ -2,7 +2,7 @@ import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { summary } from '../../api/crux.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 import { cruxOptions } from '../../utils/crux-options.js'
 import { format } from '../../utils/formatters/index.js'
@@ -19,13 +19,16 @@ const main = async args => {
     result = await summary({ site: args.site, formFactor: args.formFactor })
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json) return formatJsonError(e)
     spinner.stop()
     throw new Error(humaniseError(e))
   }
 
   if (!result.cruxAggregateMetrics || result.cruxAggregateMetrics.length === 0) {
-    spinner.stop()
+    spinner.error({
+      text: 'No CrUX data available for this site. CrUX requires sufficient Chrome user traffic.'
+    })
+    process.exitCode = 2
     return
   }
 
@@ -52,7 +55,9 @@ const main = async args => {
 
   console.log(
     columnify(rows, {
-      columnSplitter: ' | '
+      columnSplitter: ' | ',
+      truncate: true,
+      maxLineWidth: 'auto'
     })
   )
 }

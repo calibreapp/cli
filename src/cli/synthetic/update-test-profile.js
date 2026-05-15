@@ -3,7 +3,7 @@ import cookiefile from 'cookiefile'
 
 import formatProfile from '../../views/test-profile.js'
 import { update } from '../../api/test-profile.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 
 const { CookieMap } = cookiefile
@@ -37,7 +37,7 @@ const main = async function (args) {
     // Return result
     if (args.json) return console.log(JSON.stringify(response, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json) return formatJsonError(e)
 
     spinner.stop()
     throw new Error(humaniseError(e))

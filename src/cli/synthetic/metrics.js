@@ -2,7 +2,7 @@ import { createSpinner } from 'nanospinner'
 import { subDays } from 'date-fns'
 import { parseISO } from 'date-fns'
 
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { list } from '../../api/time-series.js'
 import formatPulseTimeline from '../../views/pulse-timeline.js'
 import { options } from '../../utils/cli.js'
@@ -40,7 +40,7 @@ const main = async args => {
     spinner.stop()
     console.log(formatPulseTimeline(timeSeries))
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json) return formatJsonError(e)
     if (args.csv) return console.error('Error', e)
 
     spinner.stop()

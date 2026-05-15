@@ -21,4 +21,9 @@ const humaniseError = apiError => {
   }
 }
 
-export { handleError, humaniseError }
+const formatJsonError = e => {
+  const message = humaniseError(e)
+  console.error(JSON.stringify({ error: message }))
+}
+
+export { handleError, humaniseError, formatJsonError }

@@ -7,7 +7,7 @@ import { format as dateFormat } from 'date-fns'
 
 import { getList } from '../../api/test.js'
 import { options } from '../../utils/cli.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 
 const titleize = string => string.charAt(0).toUpperCase() + string.substring(1)
 
@@ -22,7 +22,7 @@ const main = async args => {
     index = await getList()
     if (args.json) return console.log(JSON.stringify(index, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json) return formatJsonError(e)
     spinner.stop()
     throw new Error(humaniseError(e))
   }

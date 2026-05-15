@@ -2,7 +2,7 @@ import { createSpinner } from 'nanospinner'
 import columnify from 'columnify'
 
 import { pages } from '../../api/rum.js'
-import { humaniseError } from '../../utils/api-error.js'
+import { humaniseError, formatJsonError } from '../../utils/api-error.js'
 import { options } from '../../utils/cli.js'
 import { rumFilterOptions } from '../../utils/rum-options.js'
 import { format } from '../../utils/formatters/index.js'
@@ -19,7 +19,7 @@ const main = async args => {
     result = await pages(args)
     if (args.json) return console.log(JSON.stringify(result, null, 2))
   } catch (e) {
-    if (args.json) return console.error(e)
+    if (args.json) return formatJsonError(e)
     spinner.stop()
     throw new Error(humaniseError(e))
   }
@@ -56,7 +56,9 @@ const main = async args => {
 
   console.log(
     columnify(rows, {
-      columnSplitter: ' | '
+      columnSplitter: ' | ',
+      truncate: true,
+      maxLineWidth: 'auto'
     })
   )
 

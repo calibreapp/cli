@@ -54,7 +54,8 @@ const view = measurements => {
 
   return columnify(rows, {
     columnSplitter: ' | ',
-    maxLineWidth: '80',
+    truncate: true,
+    maxLineWidth: 'auto',
     config: {
       score: {
         align: 'right'
