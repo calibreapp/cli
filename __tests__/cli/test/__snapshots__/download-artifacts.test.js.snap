@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`test download-artifacts downloads test artifacts 1`] = `"The "path" argument must be of type string. Received undefined"`;

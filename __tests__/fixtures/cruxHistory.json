@@ -1,0 +1,52 @@
+{
+  "data": {
+    "organisation": {
+      "site": {
+        "cruxHistory": [
+          {
+            "metric": {
+              "name": "cruxLargestContentfulPaint",
+              "label": "Largest Contentful Paint",
+              "formatter": "humanDuration"
+            },
+            "values": [
+              {
+                "collectionPeriodStart": "2024-01-01T00:00:00Z",
+                "collectionPeriodEnd": "2024-01-31T23:59:59Z",
+                "p75Value": 2100,
+                "p75Grading": "good"
+              },
+              {
+                "collectionPeriodStart": "2023-12-01T00:00:00Z",
+                "collectionPeriodEnd": "2023-12-31T23:59:59Z",
+                "p75Value": 2300,
+                "p75Grading": "average"
+              }
+            ]
+          },
+          {
+            "metric": {
+              "name": "cruxCumulativeLayoutShift",
+              "label": "Cumulative Layout Shift",
+              "formatter": "unitless"
+            },
+            "values": [
+              {
+                "collectionPeriodStart": "2024-01-01T00:00:00Z",
+                "collectionPeriodEnd": "2024-01-31T23:59:59Z",
+                "p75Value": 0.05,
+                "p75Grading": "good"
+              },
+              {
+                "collectionPeriodStart": "2023-12-01T00:00:00Z",
+                "collectionPeriodEnd": "2023-12-31T23:59:59Z",
+                "p75Value": 0.08,
+                "p75Grading": "average"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

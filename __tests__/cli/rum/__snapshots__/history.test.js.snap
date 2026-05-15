@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`rum history displays rum history 1`] = `
+"DATE        | LCP      | CLS  | INP    | FCP      | TTFB   | SESSIONS
+15-Jan-2024 | 2.10 sec | 0.05 | 180 ms | 1.80 sec | 800 ms | 1250    
+14-Jan-2024 | 2.30 sec | 0.08 | 200 ms | 1.90 sec | 850 ms | 1180    "
+`;

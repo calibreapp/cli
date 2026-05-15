@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`crux summary displays crux summary 1`] = `
-"Form factors: desktop 4500.0% | phone 5000.0% | tablet 500.0%
+"Form factors: desktop 45.0% | phone 50.0% | tablet 5.0%
 
 METRIC                    | P75     
 Largest Contentful Paint  | 2.10 sec

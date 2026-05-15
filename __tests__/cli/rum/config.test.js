@@ -4,15 +4,15 @@ import {
   teardownIntegrationServer
 } from '../../utils'
 
-import listPages from '../../fixtures/listPages.json'
+import rumConfig from '../../fixtures/rumConfig.json'
 
-describe('site snapshots', () => {
-  beforeAll(async () => await setupIntegrationServer(listPages))
+describe('rum config', () => {
+  beforeAll(async () => await setupIntegrationServer(rumConfig))
   afterAll(async () => await teardownIntegrationServer())
 
-  test('lists all snapshots', async () => {
+  test('displays rum config', async () => {
     const out = await runCLI({
-      args: 'site pages --site=test'
+      args: 'rum config --site=test'
     })
     expect(out).toMatchSnapshot()
   })

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`rum pages displays rum pages 1`] = `
+"PATH     | SESSIONS | LCP      | CLS  | INP   
+/        | 5000     | 2.10 sec | 0.05 | 180 ms
+/about   | 1200     | 2.50 sec | 0.1  | 220 ms
+/contact | 800      | 1.90 sec | 0.03 | 150 ms"
+`;

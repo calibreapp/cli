@@ -1,0 +1,1 @@
+{"data":{"organisation":{"singlePageTest":{"uuid":"test-1","har":"http://localhost:5678/artifacts/test-1/requests.har","lighthouse":"http://localhost:5678/artifacts/test-1/lighthouse.json","image":"http://localhost:5678/artifacts/test-1/image.jpg","video":"http://localhost:5678/artifacts/test-1/render.mp4"}}}}

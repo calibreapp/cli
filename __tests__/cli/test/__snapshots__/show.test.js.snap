@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`test show shows test details 1`] = `
+"# Test Results
+
+## Performance Metrics
+
+  * LCP: 2.1s
+  * FCP: 1.8s
+
+All tests passed successfully.
+
+"
+`;

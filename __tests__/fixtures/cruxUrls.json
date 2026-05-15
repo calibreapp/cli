@@ -1,0 +1,70 @@
+{
+  "data": {
+    "organisation": {
+      "site": {
+        "cruxUrlsList": {
+          "edges": [
+            {
+              "node": {
+                "uuid": "123e4567-e89b-12d3-a456-426614174000",
+                "url": "https://example.com/page1",
+                "name": "Page 1",
+                "status": "active",
+                "cruxCvwAssessment": "good",
+                "cruxAggregateMetrics": [
+                  {
+                    "name": "cruxLargestContentfulPaint",
+                    "value": 2100,
+                    "grading": "good",
+                    "metric": {
+                      "label": "Largest Contentful Paint",
+                      "formatter": "humanDuration"
+                    }
+                  },
+                  {
+                    "name": "cruxCumulativeLayoutShift",
+                    "value": 0.05,
+                    "grading": "good",
+                    "metric": {
+                      "label": "Cumulative Layout Shift",
+                      "formatter": "unitless"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "node": {
+                "uuid": "223e4567-e89b-12d3-a456-426614174001",
+                "url": "https://example.com/page2",
+                "name": "Page 2",
+                "status": "active",
+                "cruxCvwAssessment": "average",
+                "cruxAggregateMetrics": [
+                  {
+                    "name": "cruxLargestContentfulPaint",
+                    "value": 3500,
+                    "grading": "average",
+                    "metric": {
+                      "label": "Largest Contentful Paint",
+                      "formatter": "humanDuration"
+                    }
+                  },
+                  {
+                    "name": "cruxCumulativeLayoutShift",
+                    "value": 0.15,
+                    "grading": "average",
+                    "metric": {
+                      "label": "Cumulative Layout Shift",
+                      "formatter": "unitless"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

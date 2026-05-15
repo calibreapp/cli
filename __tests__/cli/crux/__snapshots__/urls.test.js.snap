@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`crux urls lists crux urls 1`] = `
+"URL                       | ASSESSMENT        | CRUXLARGESTCONTENTFULPAINT | CRUXCUMULATIVELAYOUTSHIFT
+https://example.com/page1 | Good              | 2.10 sec                   | 0.05                     
+https://example.com/page2 | Needs Improvement | 3.50 sec                   | 0.15                     "
+`;

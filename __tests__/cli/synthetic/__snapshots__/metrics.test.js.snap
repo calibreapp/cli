@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`synthetic metrics lists metrics 1`] = `
+"
+Metric history
+
+
+First Contentful Paint
+
+Home
+Desktop - Home
+
+  Min: 1.80 sec
+  Max: 1.80 sec
+  Median: 1.80 sec
+  p95: 1.80 sec
+
+
+"
+`;

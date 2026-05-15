@@ -1,0 +1,30 @@
+{
+  "data": {
+    "organisation": {
+      "sites": [
+        {
+          "slug": "calibre",
+          "name": "Calibre",
+          "url": "https://calibreapp.com",
+          "createdAt": "2023-01-15T10:30:00Z",
+          "monitoringStatus": {
+            "synthetic": null,
+            "crux": null,
+            "rum": null
+          }
+        },
+        {
+          "slug": "example",
+          "name": "Example Site",
+          "url": "https://example.com",
+          "createdAt": "2024-03-20T14:15:00Z",
+          "monitoringStatus": {
+            "synthetic": null,
+            "crux": "CrUX not enabled",
+            "rum": "RUM not enabled"
+          }
+        }
+      ]
+    }
+  }
+}

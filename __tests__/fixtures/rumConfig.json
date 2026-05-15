@@ -1,0 +1,22 @@
+{
+  "data": {
+    "organisation": {
+      "site": {
+        "rumConfig": {
+          "enabled": true,
+          "sampleRate": 1.0,
+          "allowedOrigins": ["https://example.com", "https://www.example.com"],
+          "endpoint": "https://rum.calibreapp.com/collect",
+          "identifier": "rum_abc123",
+          "dataRetentionMonths": 12,
+          "maxDataRetentionMonths": 24,
+          "excludeEu": false,
+          "createdAt": "2023-01-01T00:00:00Z",
+          "updatedAt": "2024-01-01T00:00:00Z",
+          "suspendedAt": null,
+          "systemSuspended": false
+        }
+      }
+    }
+  }
+}

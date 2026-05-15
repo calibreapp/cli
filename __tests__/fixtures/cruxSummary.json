@@ -4,9 +4,9 @@
       "site": {
         "cruxCvwAssessment": "good",
         "cruxFormFactorDensity": {
-          "desktop": 45,
-          "phone": 50,
-          "tablet": 5
+          "desktop": 0.45,
+          "phone": 0.50,
+          "tablet": 0.05
         },
         "cruxAggregateMetrics": [
           {

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`crux url displays crux url details 1`] = `
+"
+METRIC                   | P75     
+Largest Contentful Paint | 2.10 sec
+Cumulative Layout Shift  | 0.05    
+
+History:
+PERIOD      | METRIC                   | P75     
+31-Jan-2024 | Largest Contentful Paint | 2.10 sec"
+`;

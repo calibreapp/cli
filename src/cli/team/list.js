@@ -23,7 +23,7 @@ const main = async args => {
   }
 
   spinner.stop()
-  console.log(`${styleText('bold', String(index.length))} sites`)
+  console.log(`${styleText('bold', String(index.length))} teams`)
 
   const rows = index.map(row => {
     return {

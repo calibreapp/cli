@@ -1,0 +1,10 @@
+{
+  "data": {
+    "createDeploy": {
+      "uuid": "8c68b9f6-b5bf-49bc-abd7-896db6338999",
+      "revision": "abc123def456",
+      "repository": "https://github.com/calibreapp/example",
+      "username": "deployuser"
+    }
+  }
+}

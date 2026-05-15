@@ -1,41 +1,23 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`missing site argument 1`] = `
+exports[`missing subcommand 1`] = `
 "
 
- Missing required argument: site 
+ Not enough non-option arguments: got 0, need at least 1 
 
- calibre site pages [options]
+ calibre site <command>
+
+Manage your Sites.
+
+Commands:
+
+  calibre site create <name> [options]  Add a Site for Calibre to monitor.
+  calibre site list                     List all Sites you are tracking in
+                                        Calibre.
+  calibre site delete <slug> [options]  Delete a selected Site.
 
 Options:
 
   --help     Show help                                                 [boolean]
-  --version  Show version number                                       [boolean]
-  --site     A unique slug identifying each Site. You can find it in Site
-             Settings → General or by using the calibre site list command.
-                                                             [string] [required]
-  --count    The number of items to return (default: 25, maximum: 500).
-                                                                   [default: 25]
-  --cursor   The cursor to fetch records after
-  --json     Outputs the results of the command in JSON format."
-`;
-
-exports[`missing site argument value 1`] = `
-"
-
- Not enough arguments following: site 
-
- calibre site pages [options]
-
-Options:
-
-  --help     Show help                                                 [boolean]
-  --version  Show version number                                       [boolean]
-  --site     A unique slug identifying each Site. You can find it in Site
-             Settings → General or by using the calibre site list command.
-                                                             [string] [required]
-  --count    The number of items to return (default: 25, maximum: 500).
-                                                                   [default: 25]
-  --cursor   The cursor to fetch records after
-  --json     Outputs the results of the command in JSON format."
+  --version  Show version number                                       [boolean]"
 `;

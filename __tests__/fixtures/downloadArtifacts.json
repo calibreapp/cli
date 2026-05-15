@@ -1,0 +1,1 @@
+{"data":{"organisation":{"site":{"snapshot":{"tests":[{"page":{"uuid":"page-1","name":"Home"},"testProfile":{"uuid":"prof-1","name":"Desktop"},"image":"http://localhost:5678/artifacts/14/image.jpg","video":"http://localhost:5678/artifacts/14/render.mp4","har":"http://localhost:5678/artifacts/14/requests.har","lighthouse":"http://localhost:5678/artifacts/14/lighthouse.json"}]}}}}}

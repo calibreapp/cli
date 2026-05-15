@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`synthetic devices lists devices 1`] = `
+"2 test devices
+IDENTIFIER | NAME    | TYPE    | SCREEN WIDTH | SCREEN HEIGHT | STATUS 
+Desktop    | Desktop | desktop | 1920         | 1080          | Current
+Pixel5     | Pixel 5 | mobile  | 393          | 851           | Current"
+`;
