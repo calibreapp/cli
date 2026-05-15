@@ -4,6 +4,7 @@
 
 - Minimum Node.js version is now 22.13.0 (previously 20, which is now EOL).
 - Removed commands that were deprecated in 7.0.0. There are alternatives for all removed commands. See the 7.0.0 release notes for details.
+- Remove CommonJS exports. The package is now ESM-only. Use `import` instead of `require()`.
 
 ## 🚩 Enhancements
 
