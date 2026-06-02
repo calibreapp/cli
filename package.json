@@ -51,7 +51,7 @@
     "jest": "^30.0.3",
     "prettier": "^3.8.1",
     "ts-jest": "^29.4.9",
-    "typescript": "^5.2.2"
+    "typescript": "^6.0.3"
   },
   "scripts": {
     "ci": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --runInBand --no-colors --verbose=false",
